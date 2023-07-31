@@ -43,7 +43,7 @@
                     </button>
                 </div>
             </div>
-            <div class="mb-3 form-check">
+            <div class="my-4 form-check">
                 <input type="checkbox" class="form-check-input" id="agree" name="agree" checked={!!form?.data?.agree}>
                 <label class="form-check-label" for="agree">I agree ...</label>
             </div>

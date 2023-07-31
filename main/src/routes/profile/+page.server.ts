@@ -1,12 +1,7 @@
 import { redirect } from '@sveltejs/kit';
-import { getMe } from '$lib/server/user.ts'
+import { checkAuth } from '$lib/check.js'
 
-export async function load({cookies}) {
-	try {
-		const data = await getMe(cookies.get("auth"));
-		return data;
-	} catch (error) {
-		throw redirect(303, '/account/login?back=/profile');
-	}
-
+export async function load({cookies, url}) {
+	let data = await checkAuth(cookies, url);
+	throw redirect(303, "/users/"+data.username);
 }

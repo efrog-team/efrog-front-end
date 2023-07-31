@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 
-export function load({cookies}) {
+export function load() {
 	throw redirect(303, '/tasks/1');
 }

@@ -1,10 +1,14 @@
-<slot />
+<div class="account-container">
+    <slot />
+</div>
+
 <style global>
     :global(.header){
         color: var(--accent-color)
     }
-    :global(.main-container){
-        max-width: 740px!important;
+    .account-container{
+        max-width: 740px;
+        margin: 0 auto;
     }
     :global(.form-box){
         background-color: var(--color1);

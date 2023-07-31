@@ -1,6 +1,7 @@
 
 <script>
 	import { page } from '$app/stores';
+    export let data;
 </script>
 
 <nav class="navbar navbar-dark navbar-expand-sm">
@@ -22,9 +23,18 @@
             </li>
         </ul>
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/profile">Профіль</a>
-            </li>
+            {#if data?.username}
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Профіль</a>
+                </li>
+            {:else}
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/register?back={$page.url.searchParams.get("back") || '/'}">Реєстрація</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/login?back={$page.url.searchParams.get("back") || '/'}">Вхід</a>
+                </li>
+            {/if}
         </ul>
         </div>
     </div>

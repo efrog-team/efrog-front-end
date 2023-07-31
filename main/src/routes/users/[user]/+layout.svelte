@@ -1,0 +1,35 @@
+<script lang='ts'>
+    import { page } from '$app/stores';
+
+    let baseName: string = '';
+    let pageName: string = '';
+
+    page.subscribe((record)=>{
+        baseName = (record.url.pathname.match(/^\/users\/[^/]+/) || [""])[0];
+        pageName = record.url.pathname.replace(baseName, "");
+    });
+
+</script>
+<ul class="nav">
+    <li class="nav-item">   
+        <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>Профіль</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {pageName === '/sumitions' ? 'active':''}" href="{baseName}/sumitions">Submitions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {pageName === '/groups' ? 'active':''}" href="{baseName}/groups">Groups?</a>
+    </li>
+</ul>
+
+<slot />
+
+<style>
+    .nav .nav-link{
+        padding-left: 0;
+    }
+
+    .active{
+        color: var(--accent-color);
+    }
+</style>

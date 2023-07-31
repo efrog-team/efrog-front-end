@@ -1,5 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { create, getTocken } from '$lib/server/user.ts'
+import { create, getTocken, getMe } from '$lib/server/user.ts'
 
 let emailCheck = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 let usernameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,}$/)
@@ -42,6 +42,7 @@ export const actions = {
 		}
 		const token = await getTocken(formData.get("username"), formData.get("password"));
 		cookies.set('auth', token, { path: '/' });
+		cookies.set('username', formData.get("username"), { path: '/' });
 		throw redirect(303, url.searchParams.get('back') || '/');
 	}
 }

@@ -31,6 +31,7 @@ export const actions = {
 			});
 		}
 		cookies.set('auth', token, { path: '/' });
+		cookies.set('username', formData.get("username"), { path: '/' });
 		throw redirect(303, url.searchParams.get('back') || '/');
 	}
 }
