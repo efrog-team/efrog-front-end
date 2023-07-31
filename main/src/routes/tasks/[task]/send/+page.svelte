@@ -27,12 +27,6 @@
 </form>
 
 <style>
-    .form-control, .form-select{
-        background-color: var(--color3);
-        border-color: var(--color2);
-        color: var(--font-color)
-    }
-
     textarea{
         font-family: monospace;
     }

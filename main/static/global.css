@@ -16,10 +16,12 @@
     --accent-dark:#28743b;
     --hover-color1: #37373d;
     --hover-color1: #8e8e89;
+    --s-text:rgb(194, 194, 194);
     --color1: #1e1e1e;
     --color2: #252526;
     --color3: #333333;
     --font-color: #fff;
+    --error-color: #a51615;
 }
 
 body{
@@ -35,6 +37,20 @@ body{
     --bs-btn-hover-bg: var(--accent-dark);
 }
 
-.form-control:focus, .form-select:focus{
-    box-shadow: 0 0 0 .25rem #1e9b3e5f
+.form-control:focus, .form-select:focus, .form-check-input:focus{
+    box-shadow: 0 0 0 .25rem #1e9b3e5f;
+    background-color: var(--color3);
+    border-color: var(--color2);
+    color: var(--font-color)
+}
+
+.form-control, .form-select{
+    background-color: var(--color3);
+    border-color: var(--color2);
+    color: var(--font-color)
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
 }
