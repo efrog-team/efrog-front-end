@@ -1,5 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { create, getTocken } from '$lib/server/user.ts'
+import { create, getToken } from '$lib/server/user.ts'
 
 interface DataObj{
 	username: string,
@@ -23,7 +23,7 @@ export const actions = {
 		let token;
 		try{
 			validateInput(formData); 
-			token = await getTocken(formData.get("username"), formData.get("password"));
+			token = await getToken(formData.get("username"), formData.get("password"));
 		}catch (error){
 			return fail(422,{
 				error: error.message,

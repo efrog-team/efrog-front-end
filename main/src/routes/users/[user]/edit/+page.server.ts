@@ -1,6 +1,6 @@
 import { error, redirect, fail } from '@sveltejs/kit';
 import { checkAuth } from '$lib/check.ts';
-import { updateUserInfo, updateUserPass, getTocken } from '$lib/server/user.ts';
+import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user.ts';
 
 export async function load({params, cookies, url}) {
 	const data = await checkAuth(cookies, url);
@@ -48,10 +48,11 @@ export const actions = {
 	},
     password: async ({ request, url, cookies, params}) => {
         const formData = await request.formData();
+		let token;
 		try{
-			let tocken = await getTocken(params.user, formData.get("curPass"));
+			token = await getToken(params.user, formData.get("curPass"));
 			validateFormPass(formData); 
-			await updateUserPass(params.user, formData.get("newPass"), tocken);
+			await updateUserPass(params.user, formData.get("newPass"), token);
 		}catch (error){
 			return fail(422,{
 				error: error.message,
@@ -59,7 +60,7 @@ export const actions = {
 				type: "pass"
 			});
 		}
-		cookies.set('username', formData.get("username"), { path: '/' });
-		await checkAuth(cookies, url);
+		token = await getToken(params.user, formData.get("newPass"));
+		cookies.set('auth', token, { path: '/' });
     }
 }

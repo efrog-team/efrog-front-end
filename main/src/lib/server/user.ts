@@ -8,7 +8,7 @@ export async function create(username: string, email: string, name: string, pass
     }
 }
 
-export async function getTocken(username: string, password: string) {
+export async function getToken(username: string, password: string) {
     let response = await request("POST", "/token", {username, password});
     const json = await response.json();
     if(!response.ok){
