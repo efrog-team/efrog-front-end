@@ -7,7 +7,6 @@ export async function load({params, cookies, url}) {
     if(data.username != params.user){
         throw error(403);
     }
-	console.log("load");
     return data;
 }
 
@@ -40,7 +39,8 @@ export const actions = {
 		}catch (error){
 			return fail(422,{
 				error: error.message,
-				data: formToObj(formData)
+				data: formToObj(formData),
+				type: "info"
 			});
 		}
 		cookies.set('username', formData.get("username"), { path: '/' });
@@ -55,7 +55,8 @@ export const actions = {
 		}catch (error){
 			return fail(422,{
 				error: error.message,
-				data: formToObj(formData)
+				data: formToObj(formData),
+				type: "pass"
 			});
 		}
 		cookies.set('username', formData.get("username"), { path: '/' });

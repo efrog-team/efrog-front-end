@@ -14,14 +14,15 @@
 :root{
     --accent-color: #308d47;
     --accent-dark:#28743b;
-    --hover-color1: #37373d;
+    --hover-color2: #37373d;
     --hover-color1: #8e8e89;
+    --dropdown-bg: #53535d;
     --s-text:rgb(194, 194, 194);
     --color1: #1e1e1e;
     --color2: #252526;
     --color3: #333333;
     --font-color: #fff;
-    --error-color: #a51615;
+    --error-color: #d74b4a;
 }
 
 body{

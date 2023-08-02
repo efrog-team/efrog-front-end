@@ -1,3 +1,5 @@
 export function load({cookies}) {
-	return {username: !!cookies.get("username")};
+	return {
+		username: cookies.get("username"),
+	};
 }
