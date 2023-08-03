@@ -14,21 +14,24 @@
 :root{
     --accent-color: #308d47;
     --accent-dark:#28743b;
-    --hover-color2: #37373d;
-    --hover-color1: #8e8e89;
-    --dropdown-bg: #53535d;
+    --dropdown-bg: #212529;
+    --dropdown-border-color: #191929;
     --s-text:rgb(194, 194, 194);
     --color1: #1e1e1e;
     --color2: #252526;
     --color3: #333333;
     --font-color: #fff;
-    --error-color: #d74b4a;
+    --error-color: #7F1D1D;
+    --hover-bg: #313030;
+    --box-shadow: 0 0 0 .25rem #1e9b3e5f;
 }
 
 body{
     font-family:'e-Ukraine';
     background-color: var(--color1);
-    color: var(--font-color)
+    color: var(--font-color);
+    --bs-body-color: var(--font-color);
+    --bs-border-color: var(--color2);
 }
 
 .btn-accent{
@@ -39,7 +42,7 @@ body{
 }
 
 .form-control:focus, .form-select:focus, .form-check-input:focus{
-    box-shadow: 0 0 0 .25rem #1e9b3e5f;
+    box-shadow: var(--box-shadow);
     background-color: var(--color3);
     border-color: var(--color2);
     color: var(--font-color)
@@ -54,4 +57,57 @@ body{
 .form-check-input:checked {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+}
+
+.header{
+    color: var(--accent-color);
+}
+
+.list-group-item{
+    --bs-list-group-border-color: var(--color2);
+    --bs-list-group-bg: var(--color3);
+    --bs-list-group-color: var(--font-color);
+}
+
+.list-group-item-action{
+    --bs-list-group-border-color: var(--color2);
+    --bs-list-group-bg: var(--color3);
+    --bs-list-group-color: var(--font-color);
+    --bs-list-group-action-hover-color: var(--font-color);
+    --bs-list-group-action-hover-bg: var(--hover-bg);
+    --bs-list-group-action-active-color: var(--accent-color);
+    --bs-list-group-action-active-bg: var(--hover-bg);
+}
+
+.dropdown-menu-dark{
+    --bs-dropdown-bg: var(--dropdown-bg);
+    --bs-dropdown-link-active-bg: var(--dropdown-bg);
+    --bs-dropdown-link-hover-bg: var(--dropdown-bg);
+    --bs-dropdown-link-active-color: var(--accent-color);
+    --bs-dropdown-link-hover-color: var(--accent-color);
+    --bs-dropdown-link-color: var(--font-color);
+    --bs-border-width: 1px;
+    --bs-dropdown-border-color: var(--dropdown-border-color);
+}
+
+.input-group-text{
+    --bs-tertiary-bg: var(--color3);
+}
+.form-error{
+    color: var(--error-color);
+}
+
+.nav-link{
+    --bs-nav-link-color: var(--font-color);
+}
+.nav-link:focus,.nav-link:hover{
+    --bs-nav-link-hover-color: var(--accent-color);
+}
+
+.modal{
+    --bs-modal-bg: var(--color1);
+}
+
+.btn-close{
+    --bs-btn-close-focus-shadow: var(--box-shadow);
 }

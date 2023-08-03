@@ -40,7 +40,7 @@
 {/if}
 
 <style>
-    .list-group-item, .card{
+    .card{
         border-color: var(--color2);
         background-color: var(--color3);
         color: var(--font-color);

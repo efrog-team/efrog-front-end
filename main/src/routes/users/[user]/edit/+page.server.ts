@@ -1,5 +1,5 @@
 import { error, redirect, fail } from '@sveltejs/kit';
-import { checkAuth } from '$lib/check.ts';
+import { checkAuth } from '$lib/check.js';
 import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user.ts';
 
 export async function load({params, cookies, url}) {
@@ -64,3 +64,4 @@ export const actions = {
 		cookies.set('auth', token, { path: '/' });
     }
 }
+

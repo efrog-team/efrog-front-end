@@ -1,5 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { create, getToken } from '$lib/server/user.ts'
+import { create, getToken } from '$lib/server/user.js'
 
 interface DataObj{
 	username: string,

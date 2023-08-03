@@ -18,7 +18,7 @@
         <a class="nav-link {pageName === '/sumitions' ? 'active':''}" href="{baseName}/sumitions">Submitions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName === '/groups' ? 'active':''}" href="{baseName}/groups">Groups?</a>
+        <a class="nav-link {pageName === '/teams' ? 'active':''}" href="{baseName}/teams">Teams</a>
     </li>
 </ul>
 

@@ -24,9 +24,6 @@
             <li class="nav-item">
             <a class="nav-link {$page.url.pathname === '/olimpiads' ? 'active':''}" href="/olimpiads">Олімпіади</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link {$page.url.pathname === '/groups' ? 'active':''}" href="/groups">Групи</a>
-            </li>
         </ul>
         <ul class="navbar-nav pr-lg-3">
             {#if data?.username}
@@ -70,21 +67,5 @@
     .navbar .active{
         color: var(--accent-color);
         font-weight: 500;
-    }
-    .dropdown-menu-dark{
-        --bs-dropdown-bg: var(--color3);
-        --bs-dropdown-link-active-bg: var(--color3);
-        --bs-dropdown-link-hover-bg: var(--color3);
-        --bs-dropdown-link-active-color: var(--accent-color);
-        --bs-dropdown-link-hover-color: var(--accent-color);
-        --bs-dropdown-link-color: var(--font-color);
-        --bs-border-width: 2px
-    }
-    
-    :global(.nav-link){
-        --bs-nav-link-color: var(--font-color);
-    }
-    :global(.nav-link:focus,.nav-link:hover){
-        --bs-nav-link-hover-color: var(--accent-color);
     }
 </style>

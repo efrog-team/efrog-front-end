@@ -1,5 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { create, getToken, getMe } from '$lib/server/user.ts'
+import { create, getToken, getMe } from '$lib/server/user.js'
 
 let emailCheck = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 let usernameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,}$/)
