@@ -14,7 +14,8 @@
         };
         socket.onmessage = (event) => {
             let message = event.data;
-            results[results.length] = message;
+            results[results.length] = message.replace("\r\n", "\n").split("\n");
+            console.log(message.replace("\r\n", "\n").split("\n"));
         };
     });
 </script>
@@ -23,7 +24,11 @@
     <h3>Результат тестування</h3>
     <ul class="list-group">
     {#each results as res,i}     
-        <li class="list-group-item">{res}</li>
+        <li class="list-group-item">
+            {#each res as mess,j}
+                <span>{mess}</span><br>
+            {/each}
+        </li>
     {/each}
     </ul>
 </div>
