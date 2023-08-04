@@ -3,12 +3,12 @@
 
 	export let data;
 </script>
-<div class="mb-4">
+<div class="mb-3">
     <h2 class="user-header">{data.username}</h2>
 </div>
 <div class="mb-4">
-    <p>Email: {data.email}</p> 
-    <p>Name: {data.name}</p>
+    <p>Email: {data.info.email}</p> 
+    <p>Name: {data.info.name}</p>
 </div>
 
 {#if data.me}

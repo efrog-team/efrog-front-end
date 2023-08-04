@@ -3,6 +3,7 @@
     import Modal from "./Modal.svelte";
 
     export let data;
+    export let form;
     let filtered = data.teams;
 
     enum Owners { me, notMe, all };
@@ -20,9 +21,13 @@
             return cOwner == Owners.all || (cOwner == Owners.me) == (team.owner_username == data.username);
         });
     }
-    let nameModal;
+
     onMount(()=>{
-        nameModal = new window.bootstrap.Modal('#nameModal');
+        document.getElementById('nameModal')?.addEventListener('hide.bs.modal', () => {
+            form = null;
+        });
+        let nameModal = new window.bootstrap.Modal('#nameModal');
+        if(form?.error) nameModal.show();
     });
 </script>
 <div class="mb-4 mt-2">
@@ -71,7 +76,7 @@
     {/each}
     </div>
 </div>
-<Modal></Modal>
+<Modal form={form}></Modal>
 <style>
     .filter{
         padding-left: 0;

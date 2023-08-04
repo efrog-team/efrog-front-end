@@ -20,7 +20,7 @@ function formToObj(formData: FormData): DataObj{
 }
 
 function validateInput(data: FormData){
-	if(!data.get("username")?.match(usernameCheck)) throw new Error("Username must have at least 3 symbol");
+	if(!data.get("username")?.match(usernameCheck)) throw new Error("Bad username");
 	if(data.get("name").length == 0) throw new Error("Name is required");
 	if(!data.get("email")?.match(emailCheck)) throw new Error("Not an email");
 	if(data.get("password")?.length < 8) throw new Error("Password must have at least 8 symbol");

@@ -1,15 +1,10 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { create, getToken } from '$lib/server/user.js'
+import { formToObj } from '$lib/features.js'
 
 interface DataObj{
 	username: string,
 	password: string,
-}
-
-function formToObj(formData: FormData): DataObj{
-	const data = {};
-	formData.forEach((value, key) => (data[key] = value));
-	return data;
 }
 
 function validateInput(data: FormData){

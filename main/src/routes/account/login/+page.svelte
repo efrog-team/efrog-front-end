@@ -8,7 +8,7 @@
     <h2 class="header">Login</h2>
 </div>
 <div class="mb-4">
-    <div class="form-box card">
+    <div>
         <form action="" method="post" novalidate>
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>

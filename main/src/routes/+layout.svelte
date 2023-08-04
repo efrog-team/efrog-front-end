@@ -5,7 +5,7 @@
     export let data;
 
     async function logout(){
-        const res = await fetch('/logout', {method: "PUT"});
+        const res = await fetch('/account/logout', {method: "PUT"});
         invalidateAll();
     }
 </script>
