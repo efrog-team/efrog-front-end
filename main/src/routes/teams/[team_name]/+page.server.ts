@@ -11,7 +11,7 @@ export async function load({params, cookies}) {
     }
     let members = await getMembers(params.team_name);
     let needConfirmation = !!members.find((member)=>member.member_username == cookies.get("username") && 
-        !member.confirmed && !member.canceled);
+        !member.confirmed && !member.declined);
     return {
         teamInfo,
         members,

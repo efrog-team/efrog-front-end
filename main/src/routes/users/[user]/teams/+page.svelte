@@ -7,7 +7,7 @@
     let filtered = data.teams;
 
     enum Owners { me, notMe, all };
-    enum Statuses { active, notActive, all };
+    enum Statuses { active, unactive, all };
 
     let cStatus = Statuses.active;
     let cOwner = Owners.all;
@@ -45,7 +45,7 @@
             <ul class="dropdown-menu dropdown-menu-dark">
                 <li><button class="dropdown-item {cStatus == Statuses.all ? "active": ""}" on:click={ () => cStatus = Statuses.all }>All</button></li>
                 <li><button class="dropdown-item {cStatus == Statuses.active ? "active": ""}" on:click={ () => cStatus = Statuses.active }>Active</button></li>
-                <li><button class="dropdown-item {cStatus == Statuses.notActive ? "active": ""}" on:click={ () => cStatus = Statuses.notActive }>Not active</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.unactive ? "active": ""}" on:click={ () => cStatus = Statuses.unactive }>Unactive</button></li>
             </ul>
         </li>
         <li class="nav-item dropdown">

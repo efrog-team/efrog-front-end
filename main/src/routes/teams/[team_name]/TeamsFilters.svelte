@@ -4,7 +4,7 @@
 
     enum Statuses{
         confirmed,
-        notConfirmed,
+        unconfirmed,
         declined,
         all
     }
@@ -21,8 +21,8 @@
         data = all.filter((member: any) => {
             return cStatus == Statuses.all || 
             (cStatus == Statuses.confirmed && member.confirmed ) ||
-            (cStatus == Statuses.declined && member.canceled ) ||
-            (cStatus == Statuses.notConfirmed && !member.canceled && !member.confirmed);
+            (cStatus == Statuses.declined && member.declined ) ||
+            (cStatus == Statuses.unconfirmed && !member.declined && !member.confirmed);
         });
         data = data.filter((member: any) => {
             return cRole == Roles.all || (cRole == Roles.coach) == member.coach; 
@@ -36,7 +36,7 @@
             <ul class="dropdown-menu dropdown-menu-dark">
                 <li><button class="dropdown-item {cStatus == Statuses.all ? "active": ""}" on:click={ () => cStatus = Statuses.all }>All</button></li>
                 <li><button class="dropdown-item {cStatus == Statuses.confirmed ? "active": ""}" on:click={ () => cStatus = Statuses.confirmed }>Confirmed</button></li>
-                <li><button class="dropdown-item {cStatus == Statuses.notConfirmed ? "active": ""}" on:click={ () => cStatus = Statuses.notConfirmed }>Not confirmed</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.unconfirmed ? "active": ""}" on:click={ () => cStatus = Statuses.unconfirmed }>Unconfirmed</button></li>
                 <li><button class="dropdown-item {cStatus == Statuses.declined ? "active": ""}" on:click={ () => cStatus = Statuses.declined }>Declined</button></li>
             </ul>
         </li>

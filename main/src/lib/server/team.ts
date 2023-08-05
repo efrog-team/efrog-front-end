@@ -11,7 +11,7 @@ interface Member{
     team_name: string
     coach: boolean
     confirmed: boolean
-    canceled: boolean 
+    declined: boolean 
 }
 
 export async function getInfo(team_name: string): Promise<Team> {
@@ -67,7 +67,7 @@ export async function confirmMember(team_name: string, username: string, auth: s
 }
 
 export async function declineMember(team_name: string, username: string, auth: string){
-    await request("PUT", `/teams/${team_name}/members/${username}/cancel`, null, auth);
+    await request("PUT", `/teams/${team_name}/members/${username}/decline`, null, auth);
 }
 
 export async function makeContestant(team_name: string, member_username: string, auth: string) {

@@ -61,7 +61,7 @@
     {#each filtered as member}     
         <span class="list-group-item list-group-item-action d-flex">
             <span class="flex-grow-1">
-                <i class="me-2 bi bi-{member.confirmed ? 'check' : member.canceled ? 'x' : 'question'}-circle"></i>
+                <i class="me-2 bi bi-{member.confirmed ? 'check' : member.declined ? 'x' : 'question'}-circle"></i>
                 <a href="/users/{member.member_username}"><span>{member.member_username}</span></a>
             </span>
             <span class="me-3">{member.coach ? "coach" : "contestant"}</span>
