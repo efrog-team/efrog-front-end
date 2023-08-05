@@ -1,6 +1,9 @@
 <script lang="ts">
     export let form: any;
     export let data: any;
+
+    let username = form?.data?.username || data.username;
+    let email = form?.data?.email || data.email;
 </script>
 
 <h4>Personal information</h4>
@@ -8,7 +11,8 @@
     <form action="?/info" method="post" novalidate>
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" name="username" class="form-control" id="username" value={form?.data?.username || data.username}>
+            <input type="text" class="form-control" id="username" bind:value={username}>
+            <input type="hidden" name = "username" value={username != data.username ? username : null}>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -16,7 +20,8 @@
         </div>
         <div class="mb-4">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" name = "email" class="form-control" id="email" value={form?.data?.email || data.email}>
+            <input type="email" class="form-control" id="email" bind:value={email}>
+            <input type="hidden" name = "email" value={email != data.email ? email : null}>
         </div>
         {#if form?.error}
             <div class="form-error form-text mb-3">{form.error}</div>

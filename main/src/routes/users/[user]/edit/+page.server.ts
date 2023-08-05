@@ -20,9 +20,9 @@ function formToObj(formData: FormData): DataObj{
 }
 
 function validateFormInfo(data){
-	if(!data.get("username")?.match(usernameCheck)) throw new Error("Bad username");
+	if(data.get("username") && !data.get("username")?.match(usernameCheck)) throw new Error("Bad username");
 	if(data.get("name").length == 0) throw new Error("Name is required");
-	if(!data.get("email")?.match(emailCheck)) throw new Error("Not an email");
+	if(data.get("email") && !data.get("email")?.match(emailCheck)) throw new Error("Not an email");
 }
 function validateFormPass(data){
 	if(data.get("newPass")?.length < 8) throw new Error("Password must have at least 8 symbol");
@@ -43,8 +43,7 @@ export const actions = {
 				type: "info"
 			});
 		}
-		cookies.set('username', formData.get("username"), { path: '/' });
-		throw redirect(303, `/users/${formData.get("username")}/edit`)
+		if(formData.get("username")) throw redirect(303, `/users/${formData.get("username")}/edit`)
 	},
     password: async ({ request, url, cookies, params}) => {
         const formData = await request.formData();
