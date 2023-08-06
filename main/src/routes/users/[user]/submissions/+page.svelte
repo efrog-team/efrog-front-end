@@ -3,46 +3,12 @@
 
     export let data;
 
-    let subPub1 = {
-        id: 1,
-        author_user_username: "tester",
-        problem_id: 1,
-        problem_name: "some problem",
-        language_name: "C 17",
-        language_version: "test 12.4",
-        time_sent: "2023-08-05 12:30:45",
-        total_verdict: "Not Solved"
-    }
-    let subPub2 = {
-        id: 5,
-        author_user_username: "tester",
-        problem_id: 1,
-        problem_name: "other problem",
-        language_name: "Node.js",
-        language_version: "test 12.4",
-        time_sent: "2023-01-05 12:30:45",
-        total_verdict: "Solved"
-    }
-    let subPub3 = {
-        id: 7,
-        author_user_username: "tester",
-        problem_id: 1,
-        problem_name: "other problem",
-        language_name: "C++ 17",
-        language_version: "test 12.4",
-        time_sent: "2023-01-05 12:30:45",
-        total_verdict: "Compilation Error"
-    }
-    let submissions = [subPub1, subPub2, subPub3];
-
-    let filtered = submissions;
-
+    let filtered = data.submissions;
     let cLang = "";
     let cVerdict = "";
 
     $: {
-        console.log(cLang)
-        filtered = submissions;
+        filtered = data.submissions;
         if(cLang) filtered = filtered.filter((sub) => sub.language_name == cLang);
         if(cVerdict) filtered = filtered.filter((sub) => sub.total_verdict == cVerdict);
     }

@@ -15,15 +15,17 @@ export interface SubmissionPrivate{
     id: number
     author_user_username: string
     problem_id: number
+    problem_name: string
     code: string
     language_name: string
     language_version: string
     time_sent: string
     checked: boolean
-    correct_score: number
-    total_score: number
-    total_verdict: string
     results: TestCase[]
+    total_verdict: string | undefined
+    correct_score: number | undefined
+    total_score: number | undefined
+    realime_link: string | undefined
 }
 
 interface TestCase{

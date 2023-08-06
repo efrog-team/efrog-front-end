@@ -15,7 +15,7 @@ export let languages = [
 export let verdicts = [
     "Solved",
     "Not Solved",
-    "Compilation Error"
+    "Compilation Error" // rename also at submissions/[submisionId]/full/+page.svelte
 ];
 
 export let caseVerdictIcon: { [key: string]: string; } = {
