@@ -46,7 +46,7 @@
     }
 
     .code{
-        white-space: pre-line;
+        white-space: pre;
         font-family: monospace;
     }
 </style>

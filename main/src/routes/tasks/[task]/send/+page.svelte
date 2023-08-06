@@ -1,14 +1,12 @@
 <script lang='ts'>
-    import { version } from '$app/environment';
-
-    export let data;
+    import { versions } from "../../../config";
 </script>
 
 <form class="mb-5 mt-2" action="?/submit" method="post" >
     <div class="mb-3">
         <label for="language" class="form-label">Мова програмування</label>
         <select class="form-select" id="language" name="language">
-            {#each data.versions as version, i}
+            {#each versions as version, i}
                 <option value={version} selected={i == 0}>{version}</option>
             {/each}
           </select>

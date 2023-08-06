@@ -1,12 +1,19 @@
 <script lang="ts">
+    import { verdictIcon } from "../../config";
+
     export let info: any;
 </script>
-<div class="mt-3 mb-5 d-flex">
+<div class="mt-3 mb-4 d-flex">
     <h3 class="header me-auto">#{info.id}</h3>
-    <h4><i class="bi-question-circle me-3"></i></h4>
+    {#if info.total_verdict}
+    <h4 class="me-2"><i class={verdictIcon[info.total_verdict]}></i></h4>
     <h4>{info.total_verdict}</h4>
+    {:else}
+    <div class="spinner-border me-2"></div>
+    <h4>Testing...</h4>
+    {/if}
 </div>
-<div class="row mb-5">
+<div class=" row mb-5">
     <div class="col-3">
         <div class="header mb-2">Author:</div>
         <div><a href="/users/{info.author_user_username}">{info.author_user_username}</a></div>

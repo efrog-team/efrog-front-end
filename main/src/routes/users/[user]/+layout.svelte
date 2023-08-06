@@ -15,7 +15,7 @@
         <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>Профіль</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName === '/sumitions' ? 'active':''}" href="{baseName}/sumitions">Submitions</a>
+        <a class="nav-link {pageName === '/submissions' ? 'active':''}" href="{baseName}/submissions">Submissions</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {pageName === '/teams' ? 'active':''}" href="{baseName}/teams">Teams</a>

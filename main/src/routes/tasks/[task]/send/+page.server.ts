@@ -1,12 +1,9 @@
-import { versions } from '$lib/config.js'
 import { checkAuth } from '$lib/check.js'
 import { submit } from '$lib/server/submission.js'
 import { error, redirect } from '@sveltejs/kit';
 
 export async function load({cookies, url}){
     await checkAuth(cookies, url);
-
-    return {versions};
 }
 
 function getLangInfo(str: string){
