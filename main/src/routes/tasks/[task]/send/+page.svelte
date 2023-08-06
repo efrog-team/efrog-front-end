@@ -1,20 +1,15 @@
 <script lang='ts'>
-    import { enhance } from '$app/forms';
+    import { version } from '$app/environment';
 
-    const languages = [
-        "Python 3 (3.10)",
-        "Node.js (20.x)",
-        "C++ 17 (g++ 11.2)",
-        "C 17 (gcc 11.2)"
-    ];
+    export let data;
 </script>
 
-<form class="mb-5 mt-2" action="./testing" method="post" >
+<form class="mb-5 mt-2" action="?/submit" method="post" >
     <div class="mb-3">
         <label for="language" class="form-label">Мова програмування</label>
         <select class="form-select" id="language" name="language">
-            {#each languages as lang, i}
-                <option value={lang} selected={i == 0}>{lang}</option>
+            {#each data.versions as version, i}
+                <option value={version} selected={i == 0}>{version}</option>
             {/each}
           </select>
       </div>

@@ -15,7 +15,6 @@
         socket.onmessage = (event) => {
             let message = event.data;
             results[results.length] = message.replace("\r\n", "\n").split("\n");
-            console.log(message.replace("\r\n", "\n").split("\n"));
         };
     });
 </script>

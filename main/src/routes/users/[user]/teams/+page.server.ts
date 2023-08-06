@@ -10,7 +10,7 @@ export async function load({params, cookies}){
             teams: await usersTeams(params.user),
         }
     } catch (err: any) {
-        throw error(505, err.message);
+        throw error(403, err.message);
     }
 }
 
