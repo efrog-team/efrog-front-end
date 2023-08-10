@@ -37,7 +37,7 @@
                 <td><i class="bi me-2 {verdictIcon[res.verdict_text]}"></i> {res.verdict_text}</td>
                 <td>{res.time_taken} ms</td>
                 <td>{res.cpu_time_taken} ms</td>
-                <td>{(res.memory_taken / 1000).toFixed(1)} MB</td>
+                <td>{(res.memory_taken / 1000).toFixed(2)} MB</td>
                 <td>{res.test_case_score}</td>
               </tr>
             {/each}
@@ -48,7 +48,7 @@
                 <td></td>
                 <th>{total.time} ms</th>
                 <th>{total.cpu} ms</th>
-                <th>{total.memory} MB</th>
+                <th>{(total.memory/1000).toFixed(2)} MB</th>
                 <th>{total.score}</th>
             </tr>
         </tfoot>

@@ -54,7 +54,7 @@
 </div>
 <style>
     .code{
-        white-space: nowrap;
+        white-space: pre-line;
         font-family: monospace;
         overflow-x: auto;
     }
