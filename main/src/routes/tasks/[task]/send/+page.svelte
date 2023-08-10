@@ -23,5 +23,7 @@
 <style>
     textarea{
         font-family: monospace;
+        white-space: nowrap;
+        overflow-x:auto;
     }
 </style>

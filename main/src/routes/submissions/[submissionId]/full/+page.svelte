@@ -29,6 +29,10 @@
             }
         };
     });
+
+    function copyCode(){
+        navigator.clipboard.writeText(data.info.code);
+    }
 </script>
 <GeneralInfo info={data.info} />
 {#if data.info.checked && !data.info.compiled}
@@ -41,15 +45,17 @@
 {:else}
 <TestCases info={data.info} />
 {/if}
-<div class="mb-3">
-    <h4>Code</h4>
+<div class="mb-3 d-flex">
+    <h4 class="me-auto">Code</h4>
+    <button on:click|preventDefault={copyCode} class="nav-link"><i class="me-2 bi bi-files"></i>Copy</button>
 </div>
 <div class="mb-4">
     <div class="mt-2 backing code p-3">{data.info.code}</div>
 </div>
 <style>
     .code{
-        white-space: pre-wrap;
+        white-space: nowrap;
         font-family: monospace;
+        overflow-x: auto;
     }
 </style>
