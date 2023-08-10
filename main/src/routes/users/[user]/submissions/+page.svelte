@@ -6,7 +6,6 @@
     let filtered = data.submissions;
     let cLang = "";
     let cVerdict = "";
-
     $: {
         filtered = data.submissions;
         if(cLang) filtered = filtered.filter((sub) => sub.language_name == cLang);
@@ -50,14 +49,14 @@
             </tr>
         </thead>
         <tbody>
-            {#each filtered || [] as sub, i}
+            {#each filtered as sub, i}
             <tr>
                 <td class="ps-3">{sub.id}</td>
                 <td><a href="/submissions/{sub.id}">{sub.problem_name}</a></td>
                 <td>{sub.time_sent}</td>
                 <td>{`${sub.language_name} (${sub.language_version})`}</td>
                 <td><i class="bi me-2 {verdictIcon[sub.total_verdict]}"></i> {sub.total_verdict}</td>
-              </tr>
+            </tr>
             {/each}
         </tbody>
     </table>

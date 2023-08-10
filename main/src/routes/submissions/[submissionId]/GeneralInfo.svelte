@@ -6,7 +6,7 @@
 <div class="mt-3 mb-4 d-flex">
     <h3 class="header me-auto">#{info.id}</h3>
     {#if info.total_verdict}
-    <h4 class="me-2"><i class={verdictIcon[info.total_verdict]}></i></h4>
+    <h4 class="me-2"><i class="bi {verdictIcon[info.total_verdict]}"></i></h4>
     <h4>{info.total_verdict}</h4>
     {:else}
     <div class="spinner-border me-2"></div>

@@ -13,20 +13,19 @@ export let languages = [
 ];
 
 export let verdicts = [
-    "Solved",
-    "Not Solved",
-    "Compilation Error" // rename also at submissions/[submisionId]/full/+page.svelte
+    "Correct Answer",
+    "Wrong Answer",
+    "Compilation Error",
+    "Time Limit",
+    "Memory Limit",
+    "Runtime Error"
 ];
 
-export let caseVerdictIcon: { [key: string]: string; } = {
+export let verdictIcon: { [key: string]: string; } = {
+    "Memory Limit": "bi-memory text-error",
     "Time Limit": "bi-alarm-circle text-error",
     "Runtime Error": "bi-x-circle text-error",
     "Wrong Answer" : "bi-x-circle text-yellow",
-    "Correct Answer": "bi-check-circle text-accent"
-};
-
-export let verdictIcon: { [key: string]: string; } = {
-    "Solved": "bi-patch-check text-accent",
-    "Not Solved": "bi-x-circle text-yellow",
+    "Correct Answer": "bi-check-circle text-accent", // change also at TastCases.svelte
     "Compilation Error": "bi-exclamation-triangle text-error"
-}
+};

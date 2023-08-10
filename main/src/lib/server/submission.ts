@@ -21,6 +21,8 @@ export interface SubmissionPrivate{
     language_version: string
     time_sent: string
     checked: boolean
+    compiled: boolean
+    compilation_details: string
     results: TestCase[]
     total_verdict: string | undefined
     correct_score: number | undefined
@@ -55,7 +57,7 @@ export async function getSubmission(submission_id: number): Promise<SubmissionPu
 
 export async function getUsersSubmission(username: string): Promise<SubmissionPublic[]> {
     let {body} = await request("GET", `/users/${username}/submissions/public`);
-    return body;
+    return body.submissions;
 }
 
 export async function getMySubmission(submission_id: number, auth:string): 

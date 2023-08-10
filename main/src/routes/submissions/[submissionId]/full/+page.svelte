@@ -6,29 +6,37 @@
 
     export let data;
 
-    if(data.info.results) data.info.results = [];
+    if(!data.info.results) data.info.results = [];
 
     onMount(()=>{
         if(data.info.checked) return;
 
-        // please don't open more than one page with this socket
         let socket = new WebSocket(data.info.realime_link || '');
         socket.onmessage = (event) => {
-            console.log(event.data);
-            data.info.results[data.info.results.length] = JSON.parse(event.data);
+            const json = JSON.parse(event.data);
+            switch (json.type) {
+                case "result":
+                    data.info.results[data.info.results.length] = json.result;
+                    break;
+                case "totals":
+                    Object.assign(data.info, json.totals);
+                    data.info.checked = true;
+                    break;
+                case "message":
+                    console.log(json.message);
+                    invalidateAll();
+                    break;
+            }
         };
-        socket.onclose = () => {
-            invalidateAll();
-        }
     });
 </script>
 <GeneralInfo info={data.info} />
-{#if data.info.total_verdict === "Compilation Error"}
+{#if data.info.checked && !data.info.compiled}
 <div class="d-flex">
     <h4 class="me-auto">Error Details</h4>
 </div>
 <div class="mb-5">
-    <div class="mt-2 backing code p-3">{data.info?.results?.[0]?.verdict_details}</div>
+    <div class="mt-2 backing code p-3">{data.info?.compilation_details}</div>
 </div>
 {:else}
 <TestCases info={data.info} />
@@ -41,7 +49,7 @@
 </div>
 <style>
     .code{
-        white-space: pre;
+        white-space: pre-wrap;
         font-family: monospace;
     }
 </style>

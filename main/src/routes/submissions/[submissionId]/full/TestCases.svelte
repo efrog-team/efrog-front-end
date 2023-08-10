@@ -1,13 +1,13 @@
 <script lang="ts">
     import type {SubmissionPrivate} from '$lib/server/submission'
-    import { caseVerdictIcon } from '../../../config';
+    import { verdictIcon } from '../../../config';
     export let info: SubmissionPrivate;
 
     $: total = {
-        score: info.results?.reduce((acc, cur) => acc + cur.test_case_score, 0),
         time: info.results?.reduce((acc, cur) => Math.max(acc, cur.time_taken), 0),
         cpu: info.results?.reduce((acc, cur) => Math.max(acc, cur.cpu_time_taken), 0),
-        memory: info.results?.reduce((acc, cur) => Math.max(acc, cur.memory_taken), 0)
+        memory: info.results?.reduce((acc, cur) => Math.max(acc, cur.memory_taken), 0),
+        score: info.results?.reduce((acc, cur) => acc + (cur.verdict_text == "Correct Answer" ? cur.test_case_score : 0), 0)
     }
 
 </script>
@@ -34,10 +34,10 @@
             {#each info.results || [] as res, i}
             <tr>
                 <td class="ps-3">{i+1}</td>
-                <td><i class="bi me-2 {caseVerdictIcon[res.verdict_text]}"></i> {res.verdict_text}</td>
+                <td><i class="bi me-2 {verdictIcon[res.verdict_text]}"></i> {res.verdict_text}</td>
                 <td>{res.time_taken} ms</td>
                 <td>{res.cpu_time_taken} ms</td>
-                <td>{res.memory_taken} MB</td>
+                <td>{(res.memory_taken / 1000).toFixed(1)} MB</td>
                 <td>{res.test_case_score}</td>
               </tr>
             {/each}
