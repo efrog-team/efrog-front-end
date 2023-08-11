@@ -7,17 +7,13 @@
     let filtered = data.members;
 
     async function action(type: string){
-        try {
-            await fetch(`./${data.teamInfo.name}`, {
-                method: 'PUT',
-                body: JSON.stringify({ action: type }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        } catch (err) {
-            console.error(err);
-        }
+        await fetch(`./${data.teamInfo.name}`, {
+            method: 'PUT',
+            body: JSON.stringify({ action: type }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         invalidateAll();
     }
 </script>

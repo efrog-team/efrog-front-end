@@ -34,9 +34,12 @@ export const actions = {
 		try{
 			validateInput(formData); 
 			await create(formData.get("username"), formData.get("email"), formData.get("name"), formData.get("password"));
-		}catch (error){
+		}catch (err){
+			if(err.status && err.status != 409 && err.status != 401){
+				throw err;
+			}
 			return fail(422,{
-				error: error.message,
+				error: err.message || err.body?.message,
 				data: formToObj(formData)
 			});
 		}

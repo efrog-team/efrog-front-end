@@ -23,7 +23,7 @@
                     data.info.checked = true;
                     break;
                 case "message":
-                    console.log(json.message);
+                    alert(json.message);
                     invalidateAll();
                     break;
             }
@@ -40,7 +40,7 @@
     <h4 class="me-auto">Error Details</h4>
 </div>
 <div class="mb-5">
-    <div class="mt-2 backing code p-3">{data.info?.compilation_details}</div>
+    <div class="mt-2 backing error-details p-3">{data.info?.compilation_details}</div>
 </div>
 {:else}
 <TestCases info={data.info} />
@@ -57,5 +57,9 @@
         white-space: pre-line;
         font-family: monospace;
         overflow-x: auto;
+    }
+    .error-details{
+        white-space: pre-wrap;
+        font-family: monospace;
     }
 </style>

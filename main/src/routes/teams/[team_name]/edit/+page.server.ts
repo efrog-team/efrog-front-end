@@ -6,14 +6,9 @@ import { error, fail, redirect } from "@sveltejs/kit";
 
 export async function load({params, cookies, url}) {
     let data = await checkAuth(cookies, url);
-	let teamInfo;
-    try {
-        teamInfo = await getInfo(params.team_name);
-    } catch (err: any) {
-        throw error(404, err.message);
-    }
+	let teamInfo = await getInfo(params.team_name);
     if(data.username != teamInfo.owner_username){
-        throw error(403, "Access denied");
+        throw error(403, "You are not the owner of this team");
     }
 
     return {
@@ -33,36 +28,27 @@ export const actions = {
 		const formData = await request.formData();
 		try{
 			await addMember(params.team_name, formData.get("username"), cookies.get("auth"));
-		}catch (error){
+		}catch (err){
+			if(err.status && err.status != 409){
+				throw err;
+			}
 			return fail(422,{
-				error: error.message,
+				error: err.message,
 				data: formToObj(formData)
 			});
 		}
 	},
     delete: async ({ request, cookies, params}) => {
 		const formData = await request.formData();
-		try{
-			await deleteMember(params.team_name, formData.get("username"), cookies.get("auth"));
-		}catch (err){
-			console.error(err)
-		}
+		await deleteMember(params.team_name, formData.get("username"), cookies.get("auth"));
 	},
 	contestant: async ({ request, cookies, params}) => {
 		const formData = await request.formData();
-		try{
-			await makeContestant(params.team_name, formData.get("username"), cookies.get("auth"));
-		}catch (err){
-			console.error(err)
-		}
+		await makeContestant(params.team_name, formData.get("username"), cookies.get("auth"));
 	},
 	coach: async ({ request, cookies, params}) => {
 		const formData = await request.formData();
-		try{
-			await makeCoach(params.team_name, formData.get("username"), cookies.get("auth"));
-		}catch (err){
-			console.error(err)
-		}
+		await makeCoach(params.team_name, formData.get("username"), cookies.get("auth"));
 	},
     rename: async ({ request, cookies, params}) => {
 		const formData = await request.formData();

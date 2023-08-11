@@ -19,9 +19,12 @@ export const actions = {
 		try{
 			validateInput(formData); 
 			token = await getToken(formData.get("username"), formData.get("password"));
-		}catch (error){
+		}catch (err){
+			if(err.status && err.status != 409 && err.status != 401){
+				throw err;
+			}
 			return fail(422,{
-				error: error.message,
+				error: err.message || err.body?.message,
 				data: formToObj(formData)
 			});
 		}

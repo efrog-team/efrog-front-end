@@ -1,14 +1,9 @@
 import { getMembers, getInfo} from "$lib/server/team.js";
-import { error} from "@sveltejs/kit";
 
 
 export async function load({params, cookies}) {
-    let teamInfo;
-    try {
-        teamInfo = await getInfo(params.team_name); 
-    } catch (err: any) {
-        throw error(404, err.message);
-    }
+    let teamInfo = await getInfo(params.team_name); 
+    
     let members = await getMembers(params.team_name);
     let needConfirmation = !!members.find((member)=>member.member_username == cookies.get("username") && 
         !member.confirmed && !member.declined);

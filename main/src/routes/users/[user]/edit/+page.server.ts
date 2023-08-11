@@ -5,7 +5,7 @@ import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user.ts';
 export async function load({params, cookies, url}) {
 	const data = await checkAuth(cookies, url);
     if(data.username != params.user){
-        throw error(403);
+        throw error(403, "Is in not yout account");
     }
     return data;
 }
@@ -36,9 +36,12 @@ export const actions = {
 		try{
 			validateFormInfo(formData);
 			await updateUserInfo(params.user, formData.get("username"), formData.get("email"), formData.get("name"), cookies.get("auth"));
-		}catch (error){
+		}catch (err){
+			if(err.status && err.status != 409){
+				throw err;
+			}
 			return fail(422,{
-				error: error.message,
+				error: err.message || err.body?.message,
 				data: formToObj(formData),
 				type: "info"
 			});
@@ -47,19 +50,21 @@ export const actions = {
 	},
     password: async ({ request, url, cookies, params}) => {
         const formData = await request.formData();
-		let token;
 		try{
-			token = await getToken(params.user, formData.get("curPass"));
+			let token = await getToken(params.user, formData.get("curPass"));
 			validateFormPass(formData); 
 			await updateUserPass(params.user, formData.get("newPass"), token);
-		}catch (error){
+		}catch (err){
+			if(err.status && err.status != 409 && err.status != 401){
+				throw err;
+			}
 			return fail(422,{
-				error: error.message,
+				error: err.message || err.body?.message,
 				data: formToObj(formData),
 				type: "pass"
 			});
 		}
-		token = await getToken(params.user, formData.get("newPass"));
+		let token = await getToken(params.user, formData.get("newPass"));
 		cookies.set('auth', token, { path: '/' });
     }
 }

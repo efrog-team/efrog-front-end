@@ -19,17 +19,13 @@
     });
 
     async function action(type: string){
-        try {
-            await fetch(`./edit`, {
-                method: 'PUT',
-                body: JSON.stringify({ action: type }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        } catch (err) {
-            console.error(err);
-        }
+        await fetch(`./edit`, {
+            method: 'PUT',
+            body: JSON.stringify({ action: type }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         invalidateAll();
     }
 </script>

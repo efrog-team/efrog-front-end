@@ -26,9 +26,12 @@ export const actions = {
 		try{
 			validateInput(formData); 
 			await create(formData.get("teamName"), cookies.get("auth"));
-		}catch (error){
+		}catch (err){
+			if(err.status && err.status != 409){
+				throw err;
+			}
 			return fail(422,{
-				error: error.message,
+				error: err.message,
 				data: formToObj(formData)
 			});
 		}
