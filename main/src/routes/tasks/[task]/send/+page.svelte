@@ -1,5 +1,6 @@
 <script lang='ts'>
     import { versions } from "../../../config";
+    import CodeInput from "./CodeInput.svelte";
 </script>
 
 <form class="mb-5 mt-2" action="?/submit" method="post" >
@@ -13,17 +14,16 @@
       </div>
         <div class="mb-3">
             <label for="solution" class="form-label">Код програми</label>
-            <textarea name="solution" class="form-control" id="solution" rows="20"  required></textarea>
+            <div id="code-input">
+                <CodeInput/>
+            </div>
         </div>
         <div class="text-end mb-3 d-flex">
             <button type="submit" class="col-12 btn btn-accent">Надіслати розв'язок</button>
         </div>
 </form>
-
 <style>
-    textarea{
-        font-family: monospace;
-        white-space: nowrap;
-        overflow-x:auto;
+    #code-input{
+        position: relative;
     }
 </style>

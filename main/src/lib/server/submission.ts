@@ -1,4 +1,3 @@
-import { actions } from "../../routes/account/login/+page.server"
 import { request } from "./general"
 
 export interface SubmissionPublic{
@@ -67,7 +66,7 @@ export async function getMySubmission(submission_id: number, auth:string):
     return response;
 }
 
-export async function getProblemSubmission(username: string, problem_id: number) {
+export async function getProblemSubmission(username: string, problem_id: number): Promise<SubmissionPublic[]> {
     let {body} = await request("GET", `/users/${username}/submissions/public/problems/${problem_id}`);
     return body.submissions;
 }
