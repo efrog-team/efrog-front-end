@@ -25,8 +25,8 @@
                     data.info.checked = true;
                     break;
                 case "message":
-                    alert(json.message);
-                    invalidateAll();
+                    if(json.status == 404) invalidateAll();
+                    else alert(json.message);
                     break;
             }
         };
