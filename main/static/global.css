@@ -168,9 +168,9 @@ th.header{
 }
 
 .backing{
-    background-color: var(--color3);
-    border-radius: var(--bs-border-radius-lg);
-    border-color: var(--color2);
+    background: var(--color3) !important;
+    border-radius: var(--bs-border-radius-lg) !important;
+    border-color: var(--color2) !important;
 }
 
 .text-accent{

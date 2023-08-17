@@ -1,12 +1,16 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { prismLang } from "../../../config";
 
+    export let lang: string;
+    $: langCode = prismLang[lang];
 
     let highlightEl: HTMLDivElement | null = null;
     let inputEl: HTMLInputElement | null = null;
     onMount(()=>{
         highlightEl = document.querySelector("#highlighting");
         inputEl = document.querySelector("#solution");
+        highlight();
     });
     
     function highlight(){
@@ -15,9 +19,10 @@
             if(code[code.length-1] == '\n'){
                 code += ' ';
             }
-            highlightEl.firstElementChild.innerHTML = code.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");;
+            highlightEl.firstElementChild.innerHTML = code.replaceAll("<", "&lt;");
             window.Prism.highlightElement(highlightEl.firstElementChild);
-        } 
+            sync_scroll();
+        }
     }
 
     function sync_scroll(){
@@ -31,21 +36,21 @@
         let code = inputEl?.value || '';
         if(event.key == "Tab" && inputEl) {
             event.preventDefault(); 
-            let before_tab = code.slice(0, inputEl.selectionStart || 0); 
-            let after_tab = code.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
-            let cursor_pos = (inputEl.selectionEnd || 0) + 1; 
-            inputEl.value = before_tab + "\t" + after_tab; 
-            inputEl.selectionStart = cursor_pos;
-            inputEl.selectionEnd = cursor_pos;
+            let beforeTab = code.slice(0, inputEl.selectionStart || 0); 
+            let afterTab = code.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
+            let cursorPos = (inputEl.selectionEnd || 0) + 1; 
+            inputEl.value = beforeTab + "\t" + afterTab; 
+            inputEl.selectionStart = cursorPos;
+            inputEl.selectionEnd = cursorPos;
             highlight();
         }
     }
 </script>
 
-<textarea spellcheck="false" name="solution" rows=20 class="form-control" id="solution" on:scroll={sync_scroll} on:input={()=>{ highlight(); sync_scroll();}} on:keydown={check_tab} required></textarea>
+<textarea spellcheck="false" name="solution" rows=20 class="form-control" id="solution" on:scroll={sync_scroll} on:input={highlight} on:focus={highlight} on:keydown={check_tab} required></textarea>
 
-<pre id="highlighting" aria-hidden="true">
-  <code class="language-py" id="highlighting-content" ></code>
+<pre class="backing" id="highlighting" aria-hidden="true">
+  <code class="language-{langCode}" id="highlighting-content" ></code>
 </pre>
 <style>
     #solution, #highlighting {
@@ -62,18 +67,19 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 1;
+        z-index: 2;
         color: transparent;
         background: transparent;
-        caret-color: white;
+        caret-color: var(--font-color);
     }
     
     #highlighting {
-        background: var(--color3);
+        width: 100%;
         padding: 0.375rem 0.75rem;
+        margin-top: 0;
         height: calc(1.5rem*20 + 0.75rem + 2*var(--bs-border-width));
-        border-radius: var(--bs-border-radius);
         z-index: 0;
+        user-select: none;
     }
     textarea {
         resize: none;

@@ -12,6 +12,13 @@ export let languages = [
     "C 17 (gcc 11.2)"
 ];
 
+export let prismLang: { [key: string]: string; } = {
+    "Python 3 (3.10)": "py",
+    "Node.js (20.x)": "js",
+    "C++ 17 (g++ 11.2)": "cpp",
+    "C 17 (gcc 11.2)": "c"
+};
+
 export let verdicts = [
     "Correct Answer",
     "Wrong Answer",

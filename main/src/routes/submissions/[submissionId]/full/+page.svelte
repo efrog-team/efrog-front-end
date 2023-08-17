@@ -3,12 +3,14 @@
     import { onMount } from "svelte";
     import GeneralInfo from "../GeneralInfo.svelte";
     import TestCases from "./TestCases.svelte";
+    import { prismLang } from "../../../config";
 
     export let data;
 
     if(!data.info.results) data.info.results = [];
 
     onMount(()=>{
+        window.Prism.highlightAll();
         if(data.info.checked) return;
 
         let socket = new WebSocket(data.info.realime_link || '');
@@ -50,13 +52,17 @@
     <button on:click|preventDefault={copyCode} class="nav-link"><i class="me-2 bi bi-files"></i>Copy</button>
 </div>
 <div class="mb-4">
-    <div class="mt-2 backing code p-3">{data.info.code}</div>
+    <pre class="mt-2 backing code p-3">
+        <code class="language-{prismLang[`${data.info.language_name} (${data.info.language_version})`]}">{data.info.code}</code>
+    </pre>
 </div>
 <style>
-    .code{
-        white-space: pre-line;
+    code{
         font-family: monospace;
-        overflow-x: auto;
+        overflow: auto;
+        tab-size: 4;
+        font-size: 1rem;
+        line-height: 1.5;
     }
     .error-details{
         white-space: pre-wrap;
