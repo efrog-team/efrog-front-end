@@ -10,7 +10,7 @@
     });
 
 </script>
-<ul class="nav">
+<ul class="nav mb-2">
     <li class="nav-item">   
         <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>Умова</a>
     </li>

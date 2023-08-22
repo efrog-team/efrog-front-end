@@ -25,7 +25,9 @@
     --yellow-color: #ffc107;
     --hover-bg: #313030;
     --box-shadow: 0 0 0 .25rem #1e9b3e5f;
-    --box-error-shadow: 0 0 0 .25rem #dc35455f
+    --box-error-shadow: 0 0 0 .25rem #dc35455f;
+    --scrollbar-thumb: #474747;
+    --scrollbar-track: var(--color3);
 }
 
 body{
@@ -183,4 +185,21 @@ th.header{
 
 .text-yellow{
     color: var(--yellow-color);
+}
+
+.scrollbar {
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb { 
+    background: var(--scrollbar-thumb);
+}
+
+.scrollbar::-webkit-scrollbar-track { 
+    background: var(--scrollbar-track);
 }

@@ -14,7 +14,7 @@ export async function request(method:string, path: string , data?: any, auth?:st
 
     // if there is an Internal Server Error
     if(response.status == 500){
-        throw error(500, response.statusText)
+        throw error(500, response.statusText);
     }
 
     const json = await response.json();
