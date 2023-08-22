@@ -1,5 +1,5 @@
 <script lang='ts'>
-    import { versions } from "../../../config";
+    import { versions } from "$lib/config";
     import CodeInput from "./CodeInput.svelte";
 
     let curLanguage: string;

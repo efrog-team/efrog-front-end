@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { SubmissionPublic } from "$lib/server/submission";
-    import { verdictIcon, verdicts, languages } from "../config";
+    import { verdictIcon, verdicts, languages } from "$lib/config.js";
 
     export let submissions: SubmissionPublic[];
 

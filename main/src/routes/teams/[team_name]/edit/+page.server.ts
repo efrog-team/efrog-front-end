@@ -29,11 +29,11 @@ export const actions = {
 		try{
 			await addMember(params.team_name, formData.get("username"), cookies.get("auth"));
 		}catch (err){
-			if(err.status && err.status != 409){
+			if(err.status && err.status != 409 && err.status != 404){
 				throw err;
 			}
 			return fail(422,{
-				error: err.message,
+				error: err.message || err.body?.message,
 				data: formToObj(formData)
 			});
 		}

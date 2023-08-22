@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { prismLang } from "../../../config";
+    import { prismLang } from "$lib/config";
 
     export let lang: string;
     $: langCode = prismLang[lang];

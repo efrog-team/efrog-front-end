@@ -1,4 +1,4 @@
-import { confirmMember, declineMember } from '$lib/server/team.ts';
+import { confirmMember, declineMember } from '$lib/server/team';
 
 export async function PUT({cookies, request, params}) {
     const { action } = await request.json();

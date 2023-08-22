@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { verdictIcon } from "../../config";
+    import { verdictIcon } from "$lib/config";
 
     export let info: any;
 </script>

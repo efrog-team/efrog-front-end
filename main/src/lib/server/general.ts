@@ -1,5 +1,5 @@
 import { error, redirect } from '@sveltejs/kit';
-import { serverUrl } from '../../routes/config';
+import { serverUrl } from '$lib/config';
 
 export async function request(method:string, path: string , data?: any, auth?:string){
     let options: RequestInit = {

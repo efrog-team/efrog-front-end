@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
     import GeneralInfo from "../GeneralInfo.svelte";
     import TestCases from "./TestCases.svelte";
-    import { prismLang } from "../../../config";
+    import { prismLang } from "$lib/config.js";
 
     export let data;
 

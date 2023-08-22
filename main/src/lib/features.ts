@@ -1,4 +1,4 @@
-import { clientUrl } from "../routes/config";
+import { clientUrl } from "$lib/config";
 
 export function formToObj(formData: FormData): any{
 	const data: { [key: string]: any } = {};
