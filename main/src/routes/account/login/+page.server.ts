@@ -1,35 +1,13 @@
-import { fail, redirect } from '@sveltejs/kit';
-import { create, getToken } from '$lib/server/user.js'
-import { formToObj } from '$lib/features.js'
+import { getAuthParams, randomString } from '$lib/features.js';
+import { redirect } from '@sveltejs/kit';
+import { authUrl } from '../../config.js';
 
-interface DataObj{
-	username: string,
-	password: string,
-}
+export async function load({cookies, url}){
+    cookies.set("back", url.searchParams.get("back") || "/", {path: "/"});
 
-function validateInput(data: FormData){
-	if(!data.get("username")) throw new Error("Username is required");
-	if(!data.get("password")) throw new Error("Password is required");
-}
+    const state = randomString(8)
+    cookies.delete("state", { path: '/' });
+    cookies.set("state", state, { path: '/' });
 
-export const actions = {
-	default: async ({ request, url, cookies}) => {
-		const formData = await request.formData();
-		let token;
-		try{
-			validateInput(formData); 
-			token = await getToken(formData.get("username"), formData.get("password"));
-		}catch (err){
-			if(err.status && err.status != 409 && err.status != 401){
-				throw err;
-			}
-			return fail(422,{
-				error: err.message || err.body?.message,
-				data: formToObj(formData)
-			});
-		}
-		cookies.set('auth', token, { path: '/' });
-		cookies.set('username', formData.get("username"), { path: '/' });
-		throw redirect(303, url.searchParams.get('back') || '/');
-	}
+    throw redirect(303, `${authUrl}/login?${ getAuthParams(state) }`);
 }

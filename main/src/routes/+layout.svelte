@@ -1,13 +1,9 @@
 
 <script>
+    import { invalidateAll, goto } from '$app/navigation';
 	import { page } from '$app/stores';
-    import {invalidateAll } from '$app/navigation';
     export let data;
 
-    async function logout(){
-        const res = await fetch('/account/logout', {method: "PUT"});
-        invalidateAll();
-    }
 </script>
 
 <nav class="navbar navbar-dark navbar-expand-sm">
@@ -34,7 +30,7 @@
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                         <li><a class="dropdown-item" href="/users/{data.username}">Account</a></li>
                         <li><a class="dropdown-item" href="/users/{data.username}/edit">Edit account</a></li>
-                        <li><button class="dropdown-item" on:click={logout}>Logout</button></li>
+                        <li><a class="dropdown-item" href="/account/logout?back={$page.url}" on:click={invalidateAll}>Logout</a></li>
                     </ul>
                 </li>
             {:else}

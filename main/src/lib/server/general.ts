@@ -1,7 +1,5 @@
 import { error, redirect } from '@sveltejs/kit';
-
-const serverUrl = "http://localhost:8000"
-const clientUrl = "http://localhost:5173"
+import { serverUrl } from '../../routes/config';
 
 export async function request(method:string, path: string , data?: any, auth?:string){
     let options: RequestInit = {
@@ -26,7 +24,7 @@ export async function request(method:string, path: string , data?: any, auth?:st
     
     // if authorization needed
     if(response.status == 401 || response.status == 403){
-        await fetch(clientUrl + "/account/logout", {method: "PUT"});
+        throw redirect(303, "/account/logout");
     }
 
     throw error(response.status, json.detail || "Undescribed error");
