@@ -1,8 +1,27 @@
-<script>
+<script lang="ts">
     import { page } from '$app/stores';
+    import { onMount } from 'svelte';
 
 	export let data;
+
+    onMount(()=>{
+        (document.querySelectorAll(".katex-render") as NodeListOf<HTMLElement>).forEach((elem)=>{
+            window?.renderMathInElement(elem, {
+                throwOnError: false,
+                output: "html",
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                ],
+            });
+        });
+    })
 </script>
+<svelte:head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.js" integrity="sha384-tMzugJpfLv7v0f+KXzNMqNCC6sVzLMM3sCnZDgzy0lcO/0h3sAkEBg/URFcV0JpE" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+</svelte:head>
 <div class="mb-3">
     <h2 class="problem-title">{data.task.name}</h2>
 </div>
@@ -14,15 +33,15 @@
 </div>
 <div class="mb-4">
     <h5>Умова</h5>
-    <p>{data.task.statement}</p>
+    <p class="katex-render">{data.task.statement}</p>
 </div>
 <div class="mb-4">
     <h5>Вхідні дані</h5>
-    <p>{data.task.input_statement}</p>  
+    <p class="katex-render">{data.task.input_statement}</p>  
 </div>
 <div class="mb-4">
     <h5>Вихідні дані</h5>
-    <p>{data.task.output_statement}</p>  
+    <p class="katex-render">{data.task.output_statement}</p>  
 </div>
 {#if data.task.notes}
 <div class="mb-4">
