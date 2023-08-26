@@ -34,10 +34,10 @@ export async function getExamples(problem_id: number): Promise<TestCase[]> {
 
 export async function usersProblems(username: string, ): Promise<Problem[]>{
     let {body} = await request("GET", `/users/${username}/problems?only_public=true`);
-    return body;
+    return body.problems;
 }
 
 export async function myProblems(username: string, auth: string): Promise<Problem[]>{
     let {body} = await request("GET", `/users/${username}/problems?only_public=false`, null, auth);
-    return body;
+    return body.problems;
 }

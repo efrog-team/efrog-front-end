@@ -1,5 +1,6 @@
 <script>
     export let data;
+    console.log(data)
 </script>
 <div class="mb-4 mt-2">
     <h2 class="header">{data.username}: problems</h2>
@@ -8,8 +9,9 @@
     <div class="list-group">
     {#each data.problems as problem}     
         <li class="list-group-item list-group-item-action d-flex">
-            <span class="col-1">{problem.id}</span>
-            <span class="me-auto">{problem.name}</span>
+            <a href="/problems/{problem.id}" class="col-1">{problem.id}</a>
+            <a href="/problems/{problem.id}" class="me-auto">{problem.name}</a>
+            <span class="me-2">{problem.private ? "private" : "public"}</span>
         </li>
     {/each}
     </div>
