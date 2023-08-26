@@ -1,5 +1,5 @@
 import { checkAuth } from '$lib/check.js';
-import { getMySubmission, type SubmissionPrivate } from '$lib/server/submission.js';
+import { getMySubmission } from '$lib/server/submission.js';
 
 export async function load({params, cookies, url}){
     await checkAuth(cookies, url);
