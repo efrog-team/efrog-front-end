@@ -6,7 +6,6 @@
     import { prismLang } from "$lib/config.js";
 
     export let data;
-
     if(!data.info.results) data.info.results = [];
 
     onMount(()=>{
@@ -52,9 +51,7 @@
     <button on:click|preventDefault={copyCode} class="nav-link"><i class="me-2 bi bi-files"></i>Copy</button>
 </div>
 <div class="mb-4">
-    <pre class="mt-2 backing code p-3">
-        <code class="language-{prismLang[`${data.info.language_name} (${data.info.language_version})`]}">{data.info.code}</code>
-    </pre>
+    <pre class="mt-2 backing code p-3"><code class="language-{prismLang[`${data.info.language_name} (${data.info.language_version})`]}">{data.info.code}</code></pre>
 </div>
 <style>
     code{

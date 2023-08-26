@@ -1,5 +1,5 @@
 <script>
-    import Submissions from "../../../components/Submissions.svelte";
+    import Submissions from "$lib/components/Submissions.svelte";
 
     export let data;
 </script>

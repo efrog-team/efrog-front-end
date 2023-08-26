@@ -3,6 +3,6 @@ import { getMySubmission, type SubmissionPrivate } from '$lib/server/submission.
 
 export async function load({params, cookies, url}){
     await checkAuth(cookies, url);
-    let {body, status} = await getMySubmission(Number(params.submissionId), cookies.get("auth") || '');
+    let {body} = await getMySubmission(Number(params.submissionId), cookies.get("auth") || '');
     return {info: body};
 }

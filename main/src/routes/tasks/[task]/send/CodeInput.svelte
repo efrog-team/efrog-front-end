@@ -49,9 +49,7 @@
 
 <textarea spellcheck="false" name="solution" rows=20 class="form-control" id="solution" on:scroll={sync_scroll} on:input={highlight} on:focus={highlight} on:keydown={check_tab} required></textarea>
 
-<pre class="backing" id="highlighting" aria-hidden="true">
-  <code class={langCode ? `language-${langCode}` : ''} id="highlighting-content" ></code>
-</pre>
+<pre class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ''} id="highlighting-content" ></code></pre>
 <style>
     #solution, #highlighting {
         font-family: monospace;
