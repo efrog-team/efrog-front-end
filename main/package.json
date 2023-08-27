@@ -23,6 +23,7 @@
 	"dependencies": {
 		"@types/katex": "^0.16.2",
 		"@types/prismjs": "^1.26.0",
+		"katex": "^0.16.8",
 		"websocket": "^1.0.34",
 		"ws": "^8.13.0"
 	}

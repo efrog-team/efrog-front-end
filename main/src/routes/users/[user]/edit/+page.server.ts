@@ -1,6 +1,7 @@
 import { error, redirect, fail } from '@sveltejs/kit';
 import { checkAuth } from '$lib/check.js';
 import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user.ts';
+import {formToObj} from '$lib/features.ts'
 
 export async function load({params, cookies, url}) {
 	const data = await checkAuth(cookies, url);
@@ -12,12 +13,6 @@ export async function load({params, cookies, url}) {
 
 let emailCheck = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 let usernameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,}$/)
-
-function formToObj(formData: FormData): DataObj{
-	const data = {};
-	formData.forEach((value, key) => (data[key] = value));
-	return data;
-}
 
 function validateFormInfo(data){
 	if(data.get("username") && !data.get("username")?.match(usernameCheck)) throw new Error("Bad username");

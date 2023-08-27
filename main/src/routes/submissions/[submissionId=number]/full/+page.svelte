@@ -35,6 +35,7 @@
         navigator.clipboard.writeText(data.info.code);
     }
 </script>
+
 <GeneralInfo info={data.info} />
 {#if data.info.checked && !data.info.compiled}
 <div class="d-flex">

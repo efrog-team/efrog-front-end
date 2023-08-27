@@ -1,26 +1,24 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
+    import renderMathInElement from 'katex/contrib/auto-render'
+    import { katexDelimiters } from '$lib/config.js';
 
 	export let data;
 
     onMount(()=>{
         (document.querySelectorAll(".katex-render") as NodeListOf<HTMLElement>).forEach((elem)=>{
-            window?.renderMathInElement(elem, {
+            renderMathInElement(elem, {
                 throwOnError: false,
                 output: "html",
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false},
-                ],
+                errorColor: "#dc3545",
+                delimiters: katexDelimiters,
             });
         });
     })
 </script>
 <svelte:head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.js" integrity="sha384-tMzugJpfLv7v0f+KXzNMqNCC6sVzLMM3sCnZDgzy0lcO/0h3sAkEBg/URFcV0JpE" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
 </svelte:head>
 <div class="mb-3">
     <h2 class="problem-title">{data.task.name}</h2>

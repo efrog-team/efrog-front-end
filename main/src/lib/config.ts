@@ -40,3 +40,10 @@ export let verdictIcon: { [key: string]: string; } = {
     "Correct Answer": "bi-check-circle text-accent", // change also at TastCases.svelte
     "Compilation Error": "bi-exclamation-triangle text-error"
 };
+
+export let katexDelimiters = [
+    {left: '$$', right: '$$', display: true},
+    {left: '$', right: '$', display: false},
+    {left: '\\(', right: '\\)', display: false},
+    {left: '\\[', right: '\\]', display: true}
+]
