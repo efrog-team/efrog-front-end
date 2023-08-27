@@ -23,7 +23,7 @@ export async function request(method:string, path: string , data?: any, auth?:st
     }
     
     // if authorization needed
-    if(response.status == 401 || response.status == 403){
+    if(response.status == 401){
         throw redirect(303, "/account/logout");
     }
 

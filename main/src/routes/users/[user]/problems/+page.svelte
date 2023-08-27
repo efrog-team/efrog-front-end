@@ -1,6 +1,5 @@
 <script>
     export let data;
-    console.log(data)
 </script>
 <div class="mb-4 mt-2">
     <h2 class="header">{data.username}: problems</h2>
