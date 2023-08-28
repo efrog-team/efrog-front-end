@@ -1,8 +1,10 @@
 <script lang="ts">
     import { katexDelimiters } from '$lib/config';
     import renderMathInElement from 'katex/contrib/auto-render'
+    import { onMount } from 'svelte';
 
     export let inputName: string;
+    export let value: string | null | undefined;
     export let rows = 5;
 
     function renderTex(textareEl: EventTarget | null){
@@ -28,6 +30,10 @@
         document.getElementById(`preview-${inputName}`)?.classList.toggle("hidden");
         document.getElementById(`tex-input-${inputName}`)?.classList.toggle("hidden");
     }
+
+    onMount(()=>{
+        renderTex(document.querySelector("textarea"));
+    });
 </script>
 <svelte:head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
@@ -37,7 +43,7 @@
     <label class="form-check-label" for="priview-{inputName}">Show preview</label>
   </div>
 <div id="tex-input-{inputName}">
-    <textarea spellcheck="false" name={inputName} rows={rows} class="form-control" on:focusout={(e)=>renderTex(e.target)}></textarea>
+    <textarea spellcheck="false" value={value || null} name={inputName} rows={rows} class="form-control" on:focusout={(e)=>renderTex(e.target)}></textarea>
     <div id=form-error-{inputName} class="form-error mt-2 hidden">Invalid LaTeX</div>
 </div>
 <div id="preview-{inputName}" class="hidden preview pt-2"></div>

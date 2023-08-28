@@ -14,7 +14,7 @@ export async function request(method:string, path: string , data?: any, auth?:st
 
     // if there is an Internal Server Error
     if(response.status == 500){
-        throw error(500, response.statusText);
+        throw error(500, response.statusText+"*");
     }
 
     const json = await response.json();
@@ -23,9 +23,8 @@ export async function request(method:string, path: string , data?: any, auth?:st
     }
     
     // if authorization needed
-    if(response.status == 401){
-        throw redirect(303, "/account/logout");
-    }
-
+    // if(response.status == 401){
+    //     throw redirect(303, "/account/logout");
+    // }
     throw error(response.status, json.detail || "Undescribed error");
 }

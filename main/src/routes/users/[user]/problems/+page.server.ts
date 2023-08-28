@@ -1,4 +1,4 @@
-import { usersProblems } from '$lib/server/task.js';
+import { usersProblems } from '$lib/server/problems.js';
 import { redirect } from '@sveltejs/kit';
 
 export async function load({cookies, params, url}) {

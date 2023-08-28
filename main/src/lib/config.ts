@@ -47,3 +47,16 @@ export let katexDelimiters = [
     {left: '\\(', right: '\\)', display: false},
     {left: '\\[', right: '\\]', display: true}
 ]
+
+export let limits = {
+    time: {
+        default: 2,
+        max: 10,
+        min: 1,
+    },
+    memory: {
+        default: 512,
+        max: 1024,
+        min: 4
+    }
+}

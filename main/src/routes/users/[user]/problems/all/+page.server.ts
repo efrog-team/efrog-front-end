@@ -1,5 +1,5 @@
 import { checkAuth } from '$lib/check.js';
-import { myProblems } from '$lib/server/task.js';
+import { myProblems } from '$lib/server/problems.js';
 import { error } from '@sveltejs/kit';
 
 export async function load({cookies, params, url}) {

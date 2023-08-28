@@ -8,8 +8,8 @@
     <div class="list-group">
     {#each data.problems as problem}     
         <li class="list-group-item list-group-item-action d-flex">
-            <a href="/problems/{problem.id}" class="col-1">{problem.id}</a>
-            <a href="/problems/{problem.id}" class="me-auto">{problem.name}</a>
+            <a href="/tasks/{problem.id}" class="col-1">{problem.id}</a>
+            <a href="/tasks/{problem.id}" class="me-auto">{problem.name}</a>
             <span class="me-2">{problem.private ? "private" : "public"}</span>
         </li>
     {/each}
