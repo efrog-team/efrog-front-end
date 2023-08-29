@@ -1,26 +1,22 @@
 import {formToObj} from '$lib/features.ts'
 import {limits} from '$lib/config.ts'
 import {updateProblem, getProblem, canBeEdited} from '$lib/server/problems.ts'
-import {fail, redirect} from '@sveltejs/kit'
+import {fail, redirect, error} from '@sveltejs/kit'
 
-export async function load({params, cookies}) {
+export async function load({params, cookies, parent}) {
+	let { problem } = await parent();
+
 	return {
 		id: params.problemId,
-		problem: await getProblem(Number(params.problemId), cookies.get("auth")),
+		problem,
 		editable: await canBeEdited(Number(params.problemId), cookies.get("auth"))
 	}
 }
 
 function validateFormInfo(data){
 	if(!data.get("name")?.length) throw new Error("Problem name is required");
-	let tl = Number(data.get("time_restriction"));
-	if(isNaN(tl) || tl < limits.time.min || tl > limits.time.max) 
-		throw new Error("Invalid Time Limit");
-	let ml = Number(data.get("memory_restriction"));
-	if(isNaN(ml) || ml < limits.memory.min || ml > limits.memory.max) 
-		throw new Error("Invalid Memory Limit");
 	if(!data.get("statement")?.length) throw new Error("Statement is required");
-	if(!data.get("input_statement")?.length) throw new Error("Input Format  is required");
+	if(!data.get("input_statement")?.length) throw new Error("Input Format is required");
 	if(!data.get("output_statement")?.length) throw new Error("Output Format is required");
 }
 

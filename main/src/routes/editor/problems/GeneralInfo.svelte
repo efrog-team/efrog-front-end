@@ -15,7 +15,7 @@
         </div>
         <div class="col-sm-9 col-md-4 ">
             <div class="input-group">
-                <input value={data.time_restriction || limits.time.default} type="number" name="time_restriction" id="time-limit" class="form-control" aria-describedby="time-limit-help">
+                <input value={data.time_restriction || limits.time.default} type="number" min={limits.time.min} max={limits.time.max} name="time_restriction" id="time-limit" class="form-control" aria-describedby="time-limit-help">
                 <span class="input-group-text">s</span>
             </div>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="col-sm-9 col-md-4 ">
             <div class="input-group">
-                <input value={data.memory_restriction || limits.memory.default} type="number" name="memory_restriction" id="memory-limit" class="form-control" aria-describedby="memory-limit-help">
+                <input value={data.memory_restriction || limits.memory.default} type="number" min={limits.memory.min} max={limits.memory.max} name="memory_restriction" id="memory-limit" class="form-control" aria-describedby="memory-limit-help">
                 <span class="input-group-text">MB</span>
             </div>
         </div>
@@ -41,6 +41,6 @@
 {#if newProblem}
 <div class="form-check mb-2">
     <input class="form-check-input" type="checkbox" name="public" id="public" checked={!!data.public}>
-    <label class="form-check-label" for="public">Public ( visible for all users )</label>
+    <label class="form-check-label" for="public">Public <span class="form-text">( visible for all users )</span></label>
 </div>
 {/if}

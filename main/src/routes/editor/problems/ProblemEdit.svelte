@@ -4,6 +4,7 @@
     import Statement from "./Statement.svelte";
     import { katexDelimiters } from "$lib/config";
 
+    export let editable = true;
     export let info: any;
     export let newProblem: boolean;
     info = info || { data:{}};
@@ -89,10 +90,12 @@
             </div>
         </div>
     </div>
+    {#if editable}
     <div class="mb-4">
         <button type="submit" class="btn btn-accent mb-2">Save</button>
         {#if info.error}
         <div class="form-error">{info.error}</div>
         {/if}
     </div>
+    {/if}
 </form>

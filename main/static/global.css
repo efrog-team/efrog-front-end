@@ -67,6 +67,11 @@ a{
     color: var(--font-color)
 }
 
+.form-control:disabled{
+    background-color: var(--color2);
+    color: var(--s-text)
+}
+
 .form-check-input:checked {
     background-color: var(--accent-color);
     border-color: var(--accent-color);

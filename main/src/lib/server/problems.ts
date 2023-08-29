@@ -93,7 +93,7 @@ export async function updateTestCase(problem_id: number, test_case_id: number, i
 }
 
 export async function deleteTestCase(problem_id: number, test_case_id: number, auth: string) {
-    await request("DELETE", `/problems/${problem_id}/test-cases/${test_case_id}`);
+    await request("DELETE", `/problems/${problem_id}/test-cases/${test_case_id}`, null, auth);
 }
 
 export async function getTastCase(problem_id: number, test_case_id: number, auth:string): Promise<TestCase> {
