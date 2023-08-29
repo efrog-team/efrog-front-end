@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-            <a class="nav-link {$page.url.pathname === '/tasks' ? 'active':''}" href="/tasks">Завдання</a>
+            <a class="nav-link {$page.url.pathname === '/problems' ? 'active':''}" href="/problems">Завдання</a>
             </li>
             <li class="nav-item">
             <a class="nav-link {$page.url.pathname === '/olimpiads' ? 'active':''}" href="/olimpiads">Олімпіади</a>

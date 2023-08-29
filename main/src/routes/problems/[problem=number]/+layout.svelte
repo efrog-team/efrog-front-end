@@ -5,8 +5,8 @@
     let pageName: string = '';
 
     page.subscribe((record)=>{
-        baseName = record.url.pathname.replace(/[^\d]*$/, "");
-        pageName = record.url.pathname.replace(/^.*\d+/, "");
+        baseName = `/problems/${record.params.problem}`;
+        pageName = record.url.pathname.replace(baseName, "");
     });
 
 </script>

@@ -21,30 +21,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
 </svelte:head>
 <div class="mb-3">
-    <h2 class="problem-title">{data.task.name}</h2>
+    <h2 class="problem-title">{data.problem.name}</h2>
 </div>
 <div class="mb-4">
     <em><p>
-        Time limit: {data.task.time_restriction} s<br>
-        Memory limit: {data.task.memory_restriction} MB
+        Time limit: {data.problem.time_restriction} s<br>
+        Memory limit: {data.problem.memory_restriction} MB
     </p></em>
 </div>
 <div class="mb-4">
     <h5>Умова</h5>
-    <p class="katex-render">{data.task.statement}</p>
+    <p class="katex-render">{data.problem.statement}</p>
 </div>
 <div class="mb-4">
     <h5>Вхідні дані</h5>
-    <p class="katex-render">{data.task.input_statement}</p>  
+    <p class="katex-render">{data.problem.input_statement}</p>  
 </div>
 <div class="mb-4">
     <h5>Вихідні дані</h5>
-    <p class="katex-render">{data.task.output_statement}</p>  
+    <p class="katex-render">{data.problem.output_statement}</p>  
 </div>
-{#if data.task.notes}
+{#if data.problem.notes}
 <div class="mb-4">
     <h5>Примітки</h5>
-    <p>{data.task.notes}</p>  
+    <p>{data.problem.notes}</p>  
 </div>
 {/if}
 <div class="mb-4">

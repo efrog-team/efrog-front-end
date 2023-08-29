@@ -51,7 +51,7 @@
             {#each filtered as sub, i}
             <tr>
                 <td class="ps-3"><a href="/submissions/{sub.id}">{sub.id}</a></td>
-                <td><a href="/tasks/{sub.problem_id}">{sub.problem_name}</a></td>
+                <td><a href="/problems/{sub.problem_id}">{sub.problem_name}</a></td>
                 <td>{sub.time_sent}</td>
                 <td>{`${sub.language_name} (${sub.language_version})`}</td>
                 <td><i class="bi me-2 {verdictIcon[sub.total_verdict]}"></i> {sub.total_verdict}</td>

@@ -20,7 +20,7 @@
     </div>
     <div class="col-3">
         <div class="header mb-2">Problem:</div>
-        <div><a href="/tasks/{info.problem_id}">{info.problem_name}</a></div>
+        <div><a href="/problems/{info.problem_id}">{info.problem_name}</a></div>
     </div>
     <div class="col-3">
         <div class="header mb-2">Language:</div>

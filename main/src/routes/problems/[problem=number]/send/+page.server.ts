@@ -15,7 +15,7 @@ export const actions = {
 	submit: async ({ request, cookies, params }) => {
 		const formData = await request.formData();
 		let {language, version} = getLangInfo(formData.get("language"));
-        let submitionId = await submit(params.task, formData.get("solution"), language, 
+        let submitionId = await submit(params.problem, formData.get("solution"), language, 
                 version, cookies.get("auth"));
 
         throw redirect(303, `/submissions/${submitionId}/full`);

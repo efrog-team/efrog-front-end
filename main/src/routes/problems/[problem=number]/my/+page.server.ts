@@ -4,6 +4,6 @@ import { getProblemSubmission } from '$lib/server/submission.js';
 export async function load({params, cookies, url}){
     await checkAuth(cookies, url);
     return {
-        submissions: await getProblemSubmission(cookies.get("username") || "", Number(params.task))
+        submissions: await getProblemSubmission(cookies.get("username") || "", Number(params.problem))
     }
 }
