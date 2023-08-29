@@ -3,15 +3,6 @@ import {limits} from '$lib/config.ts'
 import {updateProblem, getProblem, canBeEdited} from '$lib/server/problems.ts'
 import {fail, redirect, error} from '@sveltejs/kit'
 
-export async function load({params, cookies, parent}) {
-	let { problem } = await parent();
-
-	return {
-		id: params.problemId,
-		problem,
-		editable: await canBeEdited(Number(params.problemId), cookies.get("auth"))
-	}
-}
 
 function validateFormInfo(data){
 	if(!data.get("name")?.length) throw new Error("Problem name is required");

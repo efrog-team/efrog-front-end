@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="mb-3 row">
-        <div class="col-md-6 col-12">
+        <div class="col-md-6 col-12 mb-3 mb-md-0">
             <label for="input-{info.id}" class="form-label">Input</label>
             <textarea value={info.input} class="form-control scrollbar" name="input" id="input-{info.id}" rows="8"></textarea>
         </div>
@@ -35,7 +35,9 @@
     <div>
         <div class="mb-2">
             <button type="submit" class="btn btn-accent me-2">Save</button>
+            {#if info.id}
             <button type="submit" formaction="?/delete" class="btn btn-outline-danger">Delete</button>
+            {/if}
         </div>
         {#if error}
         <div class="form-error">{error}</div>

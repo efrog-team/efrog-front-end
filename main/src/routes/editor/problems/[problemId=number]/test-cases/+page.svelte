@@ -21,11 +21,7 @@
 
     if(form?.id == 0) addTestCase();
 </script>
-
-<div class="mb-4">
-    <h2 class="header">Test Cases ({data.id})</h2>
-</div>
-<div class="mb-3">
+<div class="mb-3 mt-3">
     <button on:click={addTestCase} class="btn btn-accent" disabled={createMode}><i class="bi bi-plus-lg"></i> Add Test Case</button>
 </div>
 <div class="accordion accordion-flush accordion-dark mb-4">

@@ -2,11 +2,10 @@ import {formToObj} from '$lib/features'
 import {getTestCases, createTestCase, updateTestCase, deleteTestCase, makeTestCaseClosed, makeTestCaseOpened, canBeEdited} from '$lib/server/problems'
 import {fail, redirect, error} from '@sveltejs/kit'
 
-export async function load({params, cookies}) {
+export async function load({params, cookies, parent}) {
+	let {editable} = await parent();
 	return {
-		id: params.problemId,
 		testCases: await getTestCases(Number(params.problemId), cookies.get("auth")),
-		editable: await canBeEdited(Number(params.problemId), cookies.get("auth"))
 	}
 }
 
@@ -50,6 +49,7 @@ export const actions = {
 	},
     delete: async ({ request, cookies, params }) => {
         const formData = await request.formData();
+
 		await deleteTestCase(Number(params.problemId), Number(formData.get("id")), cookies.get("auth"));
 	}
 }
