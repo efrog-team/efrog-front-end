@@ -32,7 +32,7 @@
     }
 
     onMount(()=>{
-        renderTex(document.querySelector("textarea"));
+        renderTex(document.getElementById(`ta-${inputName}`));
     });
 </script>
 <svelte:head>
@@ -43,7 +43,7 @@
     <label class="form-check-label" for="priview-{inputName}">Show preview</label>
   </div>
 <div id="tex-input-{inputName}">
-    <textarea spellcheck="false" value={value || null} name={inputName} rows={rows} class="form-control" on:focusout={(e)=>renderTex(e.target)}></textarea>
+    <textarea id="ta-{inputName}" spellcheck="false" value={value || null} name={inputName} rows={rows} class="form-control" on:focusout={(e)=>renderTex(e.target)}></textarea>
     <div id=form-error-{inputName} class="form-error mt-2 hidden">Invalid LaTeX</div>
 </div>
 <div id="preview-{inputName}" class="hidden preview pt-2"></div>

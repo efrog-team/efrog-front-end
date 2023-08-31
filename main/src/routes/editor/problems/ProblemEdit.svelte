@@ -72,7 +72,7 @@
             </h5>
             <div id="output-panel" class="accordion-collapse collapse">
                 <div class="accordion-body pb-4">
-                    <Statement value={info.data["output_statement"]} inputName={"output_statement"}/>
+                    <Statement value={info.data.output_statement} inputName={"output_statement"}/>
                 </div>
             </div>
         </div>
