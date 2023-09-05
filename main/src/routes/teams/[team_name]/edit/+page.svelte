@@ -67,7 +67,7 @@
             <form method="post">
                 <input type="hidden" name="username" value={member.member_username}>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-                    <li><button class="dropdown-item {member.member_username == data.teamInfo.owner_username ? 'disabled' : ''}" type="submit" formaction="?/delete">Delete</button></li>
+                    <li><button class="dropdown-item {member.member_username == data.teamInfo.owner_user_username ? 'disabled' : ''}" type="submit" formaction="?/delete">Delete</button></li>
                     <li>
                         {#if member.coach}
                         <button class="dropdown-item" type="submit" formaction="?/contestant">Make contestant</button>

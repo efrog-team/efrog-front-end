@@ -10,7 +10,7 @@ export async function load({params, cookies}) {
     return {
         teamInfo,
         members,
-        me: teamInfo.owner_username == cookies.get("username"),
+        me: teamInfo.owner_user_username == cookies.get("username"),
         needConfirmation,
     }
 }

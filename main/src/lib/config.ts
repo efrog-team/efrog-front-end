@@ -57,6 +57,8 @@ export let limits = {
     memory: {
         default: 512,
         max: 1024,
-        min: 4
+        min: 2
     }
 }
+
+export let itemsOnPage = 100;

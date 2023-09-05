@@ -20,6 +20,9 @@
     <li class="nav-item">
         <a class="nav-link {pageName === '/teams' ? 'active':''}" href="{baseName}/teams">Teams</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {pageName === '/problems' ? 'active':''}" href="{baseName}/problems">problems</a>
+    </li>
 </ul>
 
 <slot />

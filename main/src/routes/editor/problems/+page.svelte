@@ -5,10 +5,7 @@
     let filteredProblems = data.problems;
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">My problems</h2>
-</div>
-<div class="mb-3">
-    <a class="btn btn-accent" href="/editor/problems">Manage my problems <i class="bi bi-arrow-right"></i></a>
+    <h2 class="header">Manage my problems</h2>
 </div>
 <ProblemFilter bind:data={filteredProblems}/>
 <div class="mt-3 mb-4">
@@ -18,6 +15,7 @@
             <a href="/problems/{problem.id}" class="col-1">{problem.id}</a>
             <a href="/problems/{problem.id}" class="me-auto">{problem.name}</a>
             <span class="me-2">{problem.private ? "private" : "public"}</span>
+            <a class="col-1 text-end nav-link" href="./problems/{problem.id}">edit</a>
         </li>
     {/each}
     </div>

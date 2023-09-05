@@ -30,7 +30,7 @@
     </h2>
 </div>
 <div class="mb-4">
-    <p>Owner: {data.teamInfo.owner_username}</p> 
+    <p>Owner: {data.teamInfo.owner_user_username}</p> 
 </div>
 {#if data.me}
 <div class="mb-4">

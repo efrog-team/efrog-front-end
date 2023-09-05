@@ -206,6 +206,24 @@ th.header{
     --bs-table-hover-color: #fff;
 }
 
+.pagination {
+    --bs-pagination-color: var(--font-color);
+    --bs-pagination-bg: var(--color3);
+    --bs-pagination-border-color: var(--color2);
+    --bs-pagination-hover-color: var(--accent-color);
+    --bs-pagination-hover-bg: var(--color3);
+    --bs-pagination-hover-border-color: var(--color2);
+    --bs-pagination-focus-color: var(--font-color);
+    --bs-pagination-focus-bg: var(--accent-dark);
+    --bs-pagination-focus-box-shadow: var(--box-shadow);
+    --bs-pagination-active-color: var(--font-color);
+    --bs-pagination-active-bg: var(--accent-dark);
+    --bs-pagination-active-border-color: var(--accent-dark);
+    --bs-pagination-disabled-color: var(--s-text);
+    --bs-pagination-disabled-bg: var(--color3);
+    --bs-pagination-disabled-border-color: var(--color2)
+}
+
 .backing{
     background: var(--color3) !important;
     border-radius: var(--bs-border-radius-lg) !important;

@@ -2,7 +2,7 @@ import { request } from "./general"
 
 interface Team{
     name: string
-    owner_username: string
+    owner_user_username: string
     active: boolean
 }
 
