@@ -2,6 +2,11 @@ export const authUrl = "http://localhost:4189";
 export const serverUrl = "http://localhost:8000"
 export const clientUrl = "http://localhost:5173"
 
+export let localisations = [
+    "en",
+    "uk"
+];
+
 export let languages = [ 
     "C++ 17",
     "C 17",

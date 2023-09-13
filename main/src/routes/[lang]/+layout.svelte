@@ -8,17 +8,17 @@
 
 <nav class="navbar navbar-dark navbar-expand-sm">
     <div class="container-fluid pt-2 px-md-5">
-        <a class="navbar-brand pr-3" href="/"><img src="/logo.png" alt="Logo" height="40"></a>
+        <a class="navbar-brand pr-3" href="/{data.lang}"><img src="/logo.png" alt="Logo" height="40"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-            <a class="nav-link {$page.url.pathname === '/problems' ? 'active':''}" href="/problems">Завдання</a>
+            <a class="nav-link {$page.url.pathname == `${data.lang}/problems` ? 'active':''}" href="/{data.lang}/problems">Завдання</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link {$page.url.pathname === '/olimpiads' ? 'active':''}" href="/olimpiads">Олімпіади</a>
+            <a class="nav-link {$page.url.pathname == `${data.lang}/olimpiads` ? 'active':''}" href="/{data.lang}/olimpiads">Олімпіади</a>
             </li>
         </ul>
         <ul class="navbar-nav pr-lg-3">
@@ -28,17 +28,17 @@
                         {data.username}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                        <li><a class="dropdown-item" href="/users/{data.username}">Account</a></li>
-                        <li><a class="dropdown-item" href="/users/{data.username}/edit">Edit account</a></li>
-                        <li><a class="dropdown-item" href="/account/logout?back={$page.url}" on:click={invalidateAll}>Logout</a></li>
+                        <li><a class="dropdown-item" href="/{data.lang}/users/{data.username}">Account</a></li>
+                        <li><a class="dropdown-item" href="/{data.lang}/users/{data.username}/edit">Edit account</a></li>
+                        <li><a class="dropdown-item" href="/{data.lang}/account/logout?back={$page.url}" on:click={invalidateAll}>Logout</a></li>
                     </ul>
                 </li>
             {:else}
                 <li class="nav-item">
-                    <a class="nav-link" href="/account/register?back={$page.url.pathname}">Реєстрація</a>
+                    <a class="nav-link" href="/{data.lang}/account/register?back={$page.url.pathname}">Реєстрація</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/account/login?back={$page.url.pathname}">Вхід</a>
+                    <a class="nav-link" href="/{data.lang}/account/login?back={$page.url.pathname}">Вхід</a>
                 </li>
             {/if}
         </ul>
