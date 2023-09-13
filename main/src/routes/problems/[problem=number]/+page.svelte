@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
 </svelte:head>
 <div class="mb-3">
-    <h2><span class="header">{data.problem.name}</span> <i class="bi bi-eye-slash-fill"></i></h2>
+    <h2>
+        <span class="header">{data.problem.name} </span>
+        {#if data.problem.private}
+        <i class="bi bi-eye-slash-fill"></i>
+        {/if}
+    </h2>
 </div>
 <div class="mb-4">
     <em><p>
