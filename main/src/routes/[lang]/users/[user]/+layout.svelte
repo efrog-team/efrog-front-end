@@ -5,7 +5,7 @@
     let pageName: string = '';
 
     page.subscribe((record)=>{
-        baseName = (record.url.pathname.match(/^\/users\/[^/]+/) || [""])[0];
+        baseName = (record.url.pathname.match(/^\/[^/]*\/users\/[^/]+/) || [""])[0];
         pageName = record.url.pathname.replace(baseName, "");
     });
 

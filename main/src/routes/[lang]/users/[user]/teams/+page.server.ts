@@ -21,7 +21,7 @@ function validateInput(formData){
 }
 
 export const actions = {
-	create: async ({ request, cookies}) => {
+	create: async ({ request, cookies, params}) => {
 		const formData = await request.formData();
 		try{
 			validateInput(formData); 
@@ -35,6 +35,6 @@ export const actions = {
 				data: formToObj(formData)
 			});
 		}
-		throw redirect(303, `/teams/${formData.get("teamName")}/edit`);
+		throw redirect(303, `${params.lang}/teams/${formData.get("teamName")}/edit`);
 	}
 }

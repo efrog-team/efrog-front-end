@@ -18,7 +18,7 @@
         });
 
         filtered = filtered.filter( (team) => {
-            return cOwner == Owners.all || (cOwner == Owners.me) == (team.owner_username == data.username);
+            return cOwner == Owners.all || (cOwner == Owners.me) == (team.owner_user_username == data.username);
         });
     }
 
@@ -61,7 +61,7 @@
 <div class="mt-3 mb-4">
     <div class="list-group">
     {#each filtered as team}     
-        <a href = "/teams/{team.name}" class="list-group-item list-group-item-action d-flex">
+        <a href = "/{data.lang}/teams/{team.name}" class="list-group-item list-group-item-action d-flex">
             <span class="me-auto">
                 {#if team.active}
                     <span>{team.name}</span>
@@ -69,7 +69,7 @@
                     <s>{team.name}</s>
                 {/if}
             </span>
-            {#if team.owner_username == data.username}
+            {#if team.owner_user_username == data.username}
                 <span><i class="bi-person-circle"></i></span>
             {/if}
         </a>

@@ -6,7 +6,7 @@ import {formToObj} from '$lib/features.ts'
 export async function load({params, cookies, url}) {
 	const data = await checkAuth(cookies, url);
     if(data.username != params.user){
-        throw error(403, "Is in not yout account");
+        throw error(403, "Is in not your account");
     }
     return data;
 }
@@ -41,7 +41,7 @@ export const actions = {
 				type: "info"
 			});
 		}
-		if(formData.get("username")) throw redirect(303, `/users/${formData.get("username")}/edit`)
+		if(formData.get("username")) throw redirect(303, `/${params.lang}/users/${formData.get("username")}/edit`)
 	},
     password: async ({ request, url, cookies, params}) => {
         const formData = await request.formData();
