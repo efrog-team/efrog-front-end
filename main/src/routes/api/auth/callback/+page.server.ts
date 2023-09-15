@@ -2,8 +2,9 @@ import { getMe } from '$lib/server/user.js';
 import { redirect } from '@sveltejs/kit';
 
 export async function load({cookies, url}) {
+    let back = cookies.get("back") || '/';
     if(url.searchParams.get("state") != cookies.get("state")){
-        throw redirect(307, "/account/login");
+        throw redirect(307, back);
     }
     cookies.delete("state", {path: "/"});
 
@@ -12,9 +13,8 @@ export async function load({cookies, url}) {
         token = url.searchParams.get("code") || "" // hardcode
         myInfo = await getMe(token);
     } catch (err: any) {
-        throw redirect(307, "/account/login");
+        throw redirect(307, back);
     }
-    let back = cookies.get("back") || '/';
     cookies.delete("back", {path: "/"});
     
     cookies.set("auth", token, {path: "/", sameSite: "lax"});
