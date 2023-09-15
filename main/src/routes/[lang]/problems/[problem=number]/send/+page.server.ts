@@ -18,6 +18,6 @@ export const actions = {
         let submitionId = await submit(params.problem, formData.get("solution"), language, 
                 version, cookies.get("auth"));
 
-        throw redirect(303, `/submissions/${submitionId}/full`);
+        throw redirect(303, `/${params.lang}/submissions/${submitionId}/full`);
 	}
 }

@@ -5,7 +5,7 @@
     let pageName: string = '';
 
     page.subscribe((record)=>{
-        baseName = `/problems/${record.params.problem}`;
+        baseName = `/${record.params.lang}/problems/${record.params.problem}`;
         pageName = record.url.pathname.replace(baseName, "");
     });
 

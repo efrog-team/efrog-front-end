@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { page } from "$app/stores";
     import { verdictIcon } from "$lib/config";
 
     export let info: any;
@@ -16,11 +17,11 @@
 <div class=" row mb-5">
     <div class="col-3">
         <div class="header mb-2">Author:</div>
-        <div><a href="/users/{info.author_user_username}">{info.author_user_username}</a></div>
+        <div><a href="/{$page.params.lang}/users/{info.author_user_username}">{info.author_user_username}</a></div>
     </div>
     <div class="col-3">
         <div class="header mb-2">Problem:</div>
-        <div><a href="/problems/{info.problem_id}">{info.problem_name}</a></div>
+        <div><a href="/{$page.params.lang}/problems/{info.problem_id}">{info.problem_name}</a></div>
     </div>
     <div class="col-3">
         <div class="header mb-2">Language:</div>

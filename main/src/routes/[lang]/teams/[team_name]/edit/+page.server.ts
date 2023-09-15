@@ -61,6 +61,6 @@ export const actions = {
 				data: formToObj(formData)
 			});
 		}
-		throw redirect(303, `/teams/${formData.get("teamName")}/edit`);
+		throw redirect(303, `${params.lang}/teams/${formData.get("teamName")}/edit`);
 	},
 }

@@ -58,7 +58,7 @@
         <span class="list-group-item list-group-item-action d-flex">
             <span class="flex-grow-1">
                 <i class="me-2 bi bi-{member.confirmed ? 'check' : member.declined ? 'x' : 'question'}-circle"></i>
-                <a href="/users/{member.member_username}"><span>{member.member_username}</span></a>
+                <a href="/{data.lang}/users/{member.member_username}"><span>{member.member_username}</span></a>
             </span>
             <span class="me-3">{member.coach ? "coach" : "contestant"}</span>
             <button class="nav-link" data-bs-toggle="dropdown" aria-expanded="false">
