@@ -3,7 +3,7 @@ import { myProblems } from '$lib/server/problems.js';
 import { error } from '@sveltejs/kit';
 
 export async function load({cookies, params, url}) {
-    let userInfo = await checkAuth(cookies, url);
+    let userInfo = await checkAuth(cookies, url, params.lang);
 
     if(userInfo.username != params.user) throw  error(403, "Access denied");
     return {

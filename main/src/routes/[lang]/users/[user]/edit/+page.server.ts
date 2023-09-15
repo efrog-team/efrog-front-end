@@ -4,7 +4,7 @@ import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user.ts';
 import {formToObj} from '$lib/features.ts'
 
 export async function load({params, cookies, url}) {
-	const data = await checkAuth(cookies, url);
+	const data = await checkAuth(cookies, url, params.lang);
     if(data.username != params.user){
         throw error(403, "Is in not your account");
     }

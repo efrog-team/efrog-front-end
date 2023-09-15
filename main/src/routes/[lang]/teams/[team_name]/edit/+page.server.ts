@@ -5,7 +5,7 @@ import { error, fail, redirect } from "@sveltejs/kit";
 
 
 export async function load({params, cookies, url}) {
-    let data = await checkAuth(cookies, url);
+    let data = await checkAuth(cookies, url, params.lang);
 	let teamInfo = await getInfo(params.team_name);
     if(data.username != teamInfo.owner_user_username){
         throw error(403, "You are not the owner of this team");

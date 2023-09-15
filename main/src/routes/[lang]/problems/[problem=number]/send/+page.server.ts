@@ -2,8 +2,8 @@ import { checkAuth } from '$lib/check.js'
 import { submit } from '$lib/server/submission.js'
 import { redirect } from '@sveltejs/kit';
 
-export async function load({cookies, url}){
-    await checkAuth(cookies, url);
+export async function load({cookies, url, params}){
+    await checkAuth(cookies, url, params.lang);
 }
 
 function getLangInfo(str: string){
