@@ -1,6 +1,6 @@
 import {formToObj} from '$lib/features'
 import {getTestCases, createTestCase, updateTestCase, deleteTestCase, makeTestCaseClosed, makeTestCaseOpened, canBeEdited} from '$lib/server/problems'
-import {fail, redirect, error} from '@sveltejs/kit'
+import {fail, error} from '@sveltejs/kit'
 
 export async function load({params, cookies, parent}) {
 	let {editable} = await parent();

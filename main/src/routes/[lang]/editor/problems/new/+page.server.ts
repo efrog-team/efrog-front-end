@@ -28,6 +28,6 @@ export const actions = {
 				data: formToObj(formData),
 			});
 		}
-		throw redirect(303, `/editor/problems/${id}`)
+		throw redirect(303, `/${params.lang}/editor/problems/${id}`)
 	}
 }

@@ -1,7 +1,7 @@
 import {formToObj} from '$lib/features.ts'
 import {limits} from '$lib/config.ts'
 import {updateProblem, getProblem, canBeEdited} from '$lib/server/problems.ts'
-import {fail, redirect, error} from '@sveltejs/kit'
+import {fail, error} from '@sveltejs/kit'
 
 
 function validateFormInfo(data){
