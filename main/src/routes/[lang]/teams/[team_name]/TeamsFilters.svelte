@@ -1,5 +1,11 @@
 <script lang="ts">
+    import locs from '$lib/localisation.json';
+
     export let data;
+    export let lang: string;
+
+    let loc = locs[lang as keyof typeof locs].teams.team_filter;
+
     let all = data;
 
     enum Statuses{
@@ -32,20 +38,20 @@
 <div class="mb-2">
     <nav class="nav">
         <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">Status</button>
+            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">{loc.status}</button>
             <ul class="dropdown-menu dropdown-menu-dark">
-                <li><button class="dropdown-item {cStatus == Statuses.all ? "active": ""}" on:click={ () => cStatus = Statuses.all }>All</button></li>
-                <li><button class="dropdown-item {cStatus == Statuses.confirmed ? "active": ""}" on:click={ () => cStatus = Statuses.confirmed }>Confirmed</button></li>
-                <li><button class="dropdown-item {cStatus == Statuses.unconfirmed ? "active": ""}" on:click={ () => cStatus = Statuses.unconfirmed }>Unconfirmed</button></li>
-                <li><button class="dropdown-item {cStatus == Statuses.declined ? "active": ""}" on:click={ () => cStatus = Statuses.declined }>Declined</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.all ? "active": ""}" on:click={ () => cStatus = Statuses.all }>{loc.all}</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.confirmed ? "active": ""}" on:click={ () => cStatus = Statuses.confirmed }>{loc.status_confirmed}</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.unconfirmed ? "active": ""}" on:click={ () => cStatus = Statuses.unconfirmed }>{loc.status_unconfirmed}</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.declined ? "active": ""}" on:click={ () => cStatus = Statuses.declined }>{loc.status_declined}</button></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">Role</button>
+            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">{loc.role}</button>
             <ul class="dropdown-menu dropdown-menu-dark">
-                <li><button class="dropdown-item {cRole == Roles.all ? "active": ""}" on:click={ () => cRole = Roles.all }>All</button></li>
-                <li><button class="dropdown-item {cRole == Roles.coach ? "active": ""}" on:click={ () => cRole = Roles.coach }>Coach</button></li>
-                <li><button class="dropdown-item {cRole == Roles.contestant ? "active": ""}" on:click={ () => cRole = Roles.contestant }>Contestant</button></li>
+                <li><button class="dropdown-item {cRole == Roles.all ? "active": ""}" on:click={ () => cRole = Roles.all }>{loc.all}</button></li>
+                <li><button class="dropdown-item {cRole == Roles.coach ? "active": ""}" on:click={ () => cRole = Roles.coach }>{loc.role_coach}</button></li>
+                <li><button class="dropdown-item {cRole == Roles.contestant ? "active": ""}" on:click={ () => cRole = Roles.contestant }>{loc.role_contestant}</button></li>
             </ul>
         </li>
     </nav>

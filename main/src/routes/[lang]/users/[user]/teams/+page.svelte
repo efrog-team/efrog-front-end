@@ -1,9 +1,11 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import Modal from "./Modal.svelte";
+    import locs from '$lib/localisation.json';
 
     export let data;
     export let form;
+    let loc = locs[data.lang as keyof typeof locs].user.teams;
     let filtered = data.teams;
 
     enum Owners { me, notMe, all };
@@ -31,29 +33,29 @@
     });
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">{data.username}: teams</h2>
+    <h2 class="header">{data.username}: {loc.teams}</h2>
 </div>
 {#if data.me}
 <div class="my-4">
-    <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#nameModal"><i class="bi-plus"></i> Create team</button>
+    <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#nameModal"><i class="bi-plus"></i> {loc.create_team}</button>
 </div>
 {/if}
 <div class="mb-2">
     <nav class="nav">
         <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">Status</button>
+            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">{loc.status}</button>
             <ul class="dropdown-menu dropdown-menu-dark">
-                <li><button class="dropdown-item {cStatus == Statuses.all ? "active": ""}" on:click={ () => cStatus = Statuses.all }>All</button></li>
-                <li><button class="dropdown-item {cStatus == Statuses.active ? "active": ""}" on:click={ () => cStatus = Statuses.active }>Active</button></li>
-                <li><button class="dropdown-item {cStatus == Statuses.unactive ? "active": ""}" on:click={ () => cStatus = Statuses.unactive }>Unactive</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.all ? "active": ""}" on:click={ () => cStatus = Statuses.all }>{loc.all}</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.active ? "active": ""}" on:click={ () => cStatus = Statuses.active }>{loc.active}</button></li>
+                <li><button class="dropdown-item {cStatus == Statuses.unactive ? "active": ""}" on:click={ () => cStatus = Statuses.unactive }>{loc.unactive}</button></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">Owner</button>
+        <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">{loc.owner}</button>
             <ul class="dropdown-menu dropdown-menu-dark">
-                <li><button class="dropdown-item {cOwner == Owners.all ? "active": ""}" on:click={ () => cOwner = Owners.all }>All</button></li>
-                <li><button class="dropdown-item {cOwner == Owners.me ? "active": ""}" on:click={ () => cOwner = Owners.me }>Me</button></li>
-                <li><button class="dropdown-item {cOwner == Owners.notMe ? "active": ""}" on:click={ () => cOwner = Owners.notMe }>Not me</button></li>
+                <li><button class="dropdown-item {cOwner == Owners.all ? "active": ""}" on:click={ () => cOwner = Owners.all }>{loc.all}</button></li>
+                <li><button class="dropdown-item {cOwner == Owners.me ? "active": ""}" on:click={ () => cOwner = Owners.me }>{loc.me}</button></li>
+                <li><button class="dropdown-item {cOwner == Owners.notMe ? "active": ""}" on:click={ () => cOwner = Owners.notMe }>{loc.not_me}</button></li>
             </ul>
         </li>
     </nav>
@@ -76,7 +78,7 @@
     {/each}
     </div>
 </div>
-<Modal form={form}></Modal>
+<Modal lang={data.lang} form={form}></Modal>
 <style>
     .filter{
         padding-left: 0;

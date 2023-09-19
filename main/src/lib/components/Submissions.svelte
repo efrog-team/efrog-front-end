@@ -2,8 +2,11 @@
     import type { SubmissionPublic } from "$lib/server/submission";
     import { verdictIcon, verdicts, languages } from "$lib/config.js";
     import { page } from "$app/stores";
+    import locs from '$lib/localisation.json';
 
     export let submissions: SubmissionPublic[];
+    export let lang: string;
+    let loc = locs[lang as keyof typeof locs].global_components.submissions;
 
     let filtered = submissions;
     let cLang = "";
@@ -18,18 +21,18 @@
 <div class="mb-3">
     <nav class="nav">
         <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">Verdict</button>
+            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">{loc.verdict}</button>
             <ul class="dropdown-menu dropdown-menu-dark">
-                <li><button class="dropdown-item {cVerdict === "" ? "active": ""}" on:click={ () => cVerdict = "" }>All</button></li>
+                <li><button class="dropdown-item {cVerdict === "" ? "active": ""}" on:click={ () => cVerdict = "" }>{loc.all}</button></li>
                 {#each verdicts as verdict}
                 <li><button class="dropdown-item {cVerdict === verdict ? "active": ""}" on:click={ () => cVerdict = verdict }>{verdict}</button></li>
                 {/each}
             </ul>
         </li>
         <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">Language</button>
+            <button class="nav-link dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">{loc.language}</button>
             <ul class="dropdown-menu dropdown-menu-dark">
-                <li><button class="dropdown-item {cLang === "" ? "active": ""}" on:click={ () => cLang = "" }>All</button></li>
+                <li><button class="dropdown-item {cLang === "" ? "active": ""}" on:click={ () => cLang = "" }>{loc.all}</button></li>
                 {#each languages as lang}
                 <li><button class="dropdown-item {cLang === lang ? "active": ""}" on:click={ () => cLang = lang }>{lang}</button></li>
                 {/each}
@@ -41,11 +44,11 @@
     <table class="table-dark table table-hover table table-borderless">
         <thead>
             <tr>
-                <th class="header ps-3">id</th>
-                <th class="header">Problem</th>
-                <th class="header">Date</th>
-                <th class="header">Language</th>
-                <th class="header">Verdict</th>
+                <th class="header ps-3">{loc.id}</th>
+                <th class="header">{loc.problem}</th>
+                <th class="header">{loc.date}</th>
+                <th class="header">{loc.language}</th>
+                <th class="header">{loc.verdict}</th>
             </tr>
         </thead>
         <tbody>

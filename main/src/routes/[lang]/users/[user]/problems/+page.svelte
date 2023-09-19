@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
+    import locs from '$lib/localisation.json'
     export let data;
+
+    let loc = locs[data.lang as keyof typeof locs].user.problems;
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">{data.username}: problems</h2>
+    <h2 class="header">{data.username}: {loc.problems}</h2>
 </div>
 <div class="mt-3 mb-4">
     <div class="list-group">

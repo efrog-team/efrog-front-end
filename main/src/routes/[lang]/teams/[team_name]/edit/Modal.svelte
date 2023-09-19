@@ -1,7 +1,12 @@
 <script lang="ts">
     import { browser } from "$app/environment";
+    import locs from '$lib/localisation.json';
 
     export let form: any;
+    export let lang: string;
+
+    let loc = locs[lang as keyof typeof locs].teams.add_member;
+
     if(browser){
         const memberModal = document.getElementById('memberModal');
         const nameInput = document.getElementById('username');
@@ -15,7 +20,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Add member</h1>
+                <h1 class="modal-title fs-5">{loc.header}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

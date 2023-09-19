@@ -4,4 +4,4 @@
     export let data;
 </script>
 <div class="mt-4"></div>
-<Submissions submissions={data.submissions} />
+<Submissions lang={data.lang} submissions={data.submissions} />

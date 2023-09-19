@@ -3,9 +3,12 @@
     import Modal from './Modal.svelte';
     import { invalidateAll } from '$app/navigation';
     import TeamsFilters from '../TeamsFilters.svelte';
+    import locs from '$lib/localisation.json';
 
     export let data;
     export let form;
+
+    let loc = locs[data.lang as keyof typeof locs].teams;
 
     let newName = form?.data?.teamName || data.teamInfo.name;
     let filtered = data.members;
@@ -31,14 +34,14 @@
 </script>
 
 <div class="mb-4">
-    <h2 class="header">Edit team</h2>
+    <h2 class="header">{loc.edit_team}</h2>
 </div>
 <div class="mb-4">
     <form action="?/rename" method="post">
-        <label for="exampleFormControlInput1" class="form-label">Team name</label>
+        <label for="exampleFormControlInput1" class="form-label">{loc.team_name}</label>
         <div class="d-flex mb-3">
             <input type="text" class="form-control me-1 me-sm-3" id="nameInput" name="teamName" bind:value={newName}>
-            <button class="px-sm-4 px-lg-5 btn {newName == data.teamInfo.name ? 'disabled btn-secondary' : 'btn-accent'}">Save</button>
+            <button class="px-sm-4 px-lg-5 btn {newName == data.teamInfo.name ? 'disabled btn-secondary' : 'btn-accent'}">{loc.save_team_name}</button>
         </div>
         {#if form?.error && form?.data.teamName}
             <div class="form-error form-text mb-3">{form.error}</div>
@@ -46,12 +49,12 @@
     </form>
 </div>
 <div class="mt-5 mb-3">
-    <h4>Members</h4>
+    <h4>{loc.members}</h4>
 </div>
 <div class="mb-4">
-    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#memberModal"><i class="bi-plus"></i>Add member</button>
+    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#memberModal"><i class="bi-plus"></i>{loc.add_member.header}</button>
 </div>
-<TeamsFilters bind:data={filtered} />
+<TeamsFilters lang={data.lang} bind:data={filtered} />
 <div class="mb-4">
     <div class="list-group">
     {#each filtered as member}     
@@ -67,12 +70,12 @@
             <form method="post">
                 <input type="hidden" name="username" value={member.member_username}>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-                    <li><button class="dropdown-item {member.member_username == data.teamInfo.owner_user_username ? 'disabled' : ''}" type="submit" formaction="?/delete">Delete</button></li>
+                    <li><button class="dropdown-item {member.member_username == data.teamInfo.owner_user_username ? 'disabled' : ''}" type="submit" formaction="?/delete">{loc.delete_member}</button></li>
                     <li>
                         {#if member.coach}
-                        <button class="dropdown-item" type="submit" formaction="?/contestant">Make contestant</button>
+                        <button class="dropdown-item" type="submit" formaction="?/contestant">{loc.make_contestant}</button>
                         {:else}
-                        <button class="dropdown-item" type="submit" formaction="?/coach">Make coach</button>
+                        <button class="dropdown-item" type="submit" formaction="?/coach">{loc.make_coach}</button>
                         {/if}
                     </li>
                 </ul>
@@ -82,25 +85,25 @@
     </div>
 </div>
 <div class="mt-5 mb-3">
-    <h4>Danger zone</h4>
+    <h4>{loc.danger_zone.header}</h4>
 </div>
 <div class="mb-3">
     {#if data.teamInfo.active}
-    <button class="btn btn-outline-danger px-4" on:click={()=>action("deactivate")}>Deactivate</button>
-    <span class="text-for-btn btn disabled">Some text</span>
+    <button class="btn btn-outline-danger px-4" on:click={()=>action("deactivate")}>{loc.danger_zone.deactivate}</button>
+    <span class="text-for-btn btn disabled">{loc.danger_zone.deactivate_info}</span>
     {:else}
-    <button class="btn btn-outline-danger px-4" on:click={()=>action("activate")}>Activate</button>
-    <span class="text-for-btn btn disabled">Some text</span>
+    <button class="btn btn-outline-danger px-4" on:click={()=>action("activate")}>{loc.danger_zone.activate}</button>
+    <span class="text-for-btn btn disabled">{loc.danger_zone.activate_info}</span>
     {/if}
 </div>
 
 {#if data.deletable}
 <div class="mb-4">
-    <button class="btn btn-outline-danger px-4" on:click={()=>action("delete")}>Delete</button>
-    <span class="text-for-btn btn disabled">Some text</span>
+    <button class="btn btn-outline-danger px-4" on:click={()=>action("delete")}>{loc.danger_zone.delete}</button>
+    <span class="text-for-btn btn disabled">{loc.danger_zone.delete_info}</span>
 </div>
 {/if}
-<Modal form={form}></Modal>
+<Modal lang={data.lang} form={form}></Modal>
 <style>
     .text-for-btn{
         border-color: transparent;

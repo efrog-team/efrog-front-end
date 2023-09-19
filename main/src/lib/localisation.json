@@ -1,0 +1,119 @@
+{
+    "en":{
+        "layout": {
+            "problems": "Problems",
+            "contests": "Contests",
+            "account": "Account",
+            "edit_account": "Edit Account",
+            "login": "Login",
+            "register": "Register",
+            "logout": "Logout" 
+        },
+        "user": {
+            "layout": {
+                "profile": "Profile",
+                "submissions": "Submissions",
+                "teams": "Teams",
+                "problems": "Problems"
+            },
+            "main": {
+                "email": "Email",
+                "name": "Name",
+                "profile_edit": "Edit profile"
+            },
+            "edit": {
+                "header": "Edit Profile",
+                "personal": "Personal",
+                "login": "Login",
+                "info_header": "Personal Information",
+                "username": "Username",
+                "name": "Name",
+                "email": "Email",
+                "pass_header": "Change Password",
+                "current_pass": "Current password",
+                "new_pass": "New password",
+                "repeat_pass": "Repeat new password",
+                "save": "Save"
+            },
+            "problems": {
+                "problems": "problems",
+                "my_problems": "My problems",
+                "manage": "Manage my problems"
+            },
+            "submissions": {
+                "submissions": "submissions"
+            },
+            "teams": {
+                "teams": "teams",
+                "create_team": "Create team",
+                "team_name": "Team name",
+                "close": "Close",
+                "create": "Create", 
+                "all": "All",
+                "status": "Status",
+                "active": "Active",
+                "unactive": "Unactive",
+                "owner": "Owner",
+                "me": "Me",
+                "not_me": "Not me"
+            }
+        },
+        "teams":{
+            "deactivated": "deactivated",
+            "owner": "Owner",
+            "members": "Members",
+            "edit_team": "Edit team",
+            "team_name": "Team name",
+            "save_team_name": "Save",
+            "delete_member": "Delete",
+            "make_coach": "Make coach",
+            "make_contestant": "Make contestant",
+            "danger_zone": {
+                "header": "Danger zone",
+                "deactivate": "Deactivate",
+                "deactivate_info": "**deactivation info**",
+                "activate": "Activate",
+                "activate_info": "**activation info**",
+                "delete": "Delete",
+                "delete_info": "**deletion info**"
+            },
+            "team_filter": {
+                "all": "All",
+                "status": "Status",
+                "status_confirmed": "Confirmed",
+                "status_unconfirmed": "Confirmed",
+                "status_declined": "Declined",
+                "role": "Role",
+                "role_coach": "Coach",
+                "role_contestant": "Contestant"
+            },
+            "add_member": {
+                "header": "Add member",
+                "member_username": "Member username",
+                "submit": "Add",
+                "close": "Close"
+            },
+            "confirm": {
+                "info": "Confirm that you are member of this team",
+                "confirm": "Confirm",
+                "decline": "Decline"
+            }
+        },
+        "global_components": {
+            "problem_filter": {
+                "all": "All",
+                "public": "Public",
+                "private": "Private",
+                "privacy": "Privacy"
+            },
+            "submissions": {
+                "id": "id",
+                "problem": "Problem",
+                "date": "Date",
+                "verdict": "Verdict",
+                "language": "Language",
+                "all": "All"
+            }
+        }
+    }
+}

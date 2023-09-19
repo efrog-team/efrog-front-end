@@ -1,5 +1,9 @@
 <script lang='ts'>
     import { page } from '$app/stores';
+    import locs from '$lib/localisation.json';
+
+    export let data;
+    let loc = locs[data.lang as keyof typeof locs].user.layout;
 
     let baseName: string = '';
     let pageName: string = '';
@@ -12,16 +16,16 @@
 </script>
 <ul class="nav">
     <li class="nav-item">   
-        <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>Профіль</a>
+        <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>{loc.profile}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName === '/submissions' ? 'active':''}" href="{baseName}/submissions">Submissions</a>
+        <a class="nav-link {pageName === '/submissions' ? 'active':''}" href="{baseName}/submissions">{loc.submissions}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName === '/teams' ? 'active':''}" href="{baseName}/teams">Teams</a>
+        <a class="nav-link {pageName === '/teams' ? 'active':''}" href="{baseName}/teams">{loc.teams}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName === '/problems' ? 'active':''}" href="{baseName}/problems">problems</a>
+        <a class="nav-link {pageName === '/problems' ? 'active':''}" href="{baseName}/problems">{loc.problems}</a>
     </li>
 </ul>
 
