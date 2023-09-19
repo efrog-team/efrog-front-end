@@ -6,7 +6,8 @@
     $: total = {
         time: info.results?.reduce((acc, cur) => Math.max(acc, cur.time_taken), 0),
         cpu: info.results?.reduce((acc, cur) => Math.max(acc, cur.cpu_time_taken), 0),
-        memory: info.results?.reduce((acc, cur) => Math.max(acc, cur.memory_taken), 0),
+        vMemory: info.results?.reduce((acc, cur) => Math.max(acc, cur.virtual_memory_taken), 0),
+        pMemory: info.results?.reduce((acc, cur) => Math.max(acc, cur.physical_memory_taken), 0),
         score: info.results?.reduce((acc, cur) => acc + (cur.verdict_text == "Correct Answer" ? cur.test_case_score : 0), 0)
     }
 
@@ -26,7 +27,8 @@
                 <th class="header">Verdict</th>
                 <th class="header">Time</th>
                 <th class="header">CPU</th>
-                <th class="header">Memory</th>
+                <th class="header">V-Memory</th>
+                <th class="header">P-Memory</th>
                 <th class="header">Score</th>
             </tr>
         </thead>
@@ -37,8 +39,9 @@
                 <td><i class="bi me-2 {verdictIcon[res.verdict_text]}"></i> {res.verdict_text}</td>
                 <td>{res.time_taken} ms</td>
                 <td>{res.cpu_time_taken} ms</td>
-                <td>{(res.memory_taken / 1000).toFixed(2)} MB</td>
-                <td>{res.test_case_score}</td>
+                <td>{(res.virtual_memory_taken / 1000).toFixed(2)} MB</td>
+                <td>{(res.physical_memory_taken / 1000).toFixed(2)} MB</td>
+                <td>{res.verdict_text == "Correct Answer" ? res.test_case_score : 0}/{res.test_case_score}</td>
               </tr>
             {/each}
         </tbody>
@@ -48,7 +51,8 @@
                 <td></td>
                 <th>{total.time} ms</th>
                 <th>{total.cpu} ms</th>
-                <th>{(total.memory/1000).toFixed(2)} MB</th>
+                <th>{(total.vMemory / 1000).toFixed(2)} MB</th>
+                <th>{(total.pMemory / 1000).toFixed(2)} MB</th>
                 <th>{total.score}</th>
             </tr>
         </tfoot>
