@@ -31,7 +31,7 @@ export const actions = {
 				throw err;
 			}
 			return fail(422,{
-				error: err.message,
+				error: err.message || err.body?.message,
 				data: formToObj(formData)
 			});
 		}

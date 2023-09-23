@@ -31,16 +31,16 @@ export interface SubmissionPrivate{
 }
 
 interface TestCase{
-    id: number 
-    submission_id: number 
-    test_case_id: number 
-    test_case_score: number 
-    verdict_text: string 
-    verdict_details: string 
-    time_taken: number 
-    cpu_time_taken: number 
-    memory_taken: number
+    test_case_id: number
+    test_case_score: number
+    test_case_opened: boolean
+    verdict_text: string
+    time_taken: number
+    cpu_time_taken: number
+    virtual_memory_taken: number
+    physical_memory_taken: number 
 }
+
 
 export async function submit(problem_id: number, code: string, language_name:  string, 
         language_version: string, auth: string): Promise<number> {

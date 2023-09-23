@@ -35,7 +35,7 @@
     <div>
         <div class="mb-2">
             <button type="submit" class="btn btn-accent me-2">Save</button>
-            {#if info.id}
+            {#if info.id != 0}
             <button type="submit" formaction="?/delete" class="btn btn-outline-danger">Delete</button>
             {/if}
         </div>

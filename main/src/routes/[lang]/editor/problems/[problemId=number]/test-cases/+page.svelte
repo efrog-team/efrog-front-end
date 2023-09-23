@@ -21,9 +21,11 @@
 
     if(form?.id == 0) addTestCase();
 </script>
+{#if data.editable}
 <div class="mb-3 mt-3">
     <button on:click={addTestCase} class="btn btn-accent" disabled={createMode}><i class="bi bi-plus-lg"></i> Add Test Case</button>
 </div>
+{/if}
 <div class="accordion accordion-flush accordion-dark mb-4">
     {#each data.testCases as testCase, i}
     <div class="accordion-item">

@@ -9,7 +9,7 @@
     );
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">Manage my problems</h2>
+    <h2 class="header">Problems</h2>
 </div>
 <div class="mt-3 mb-4">
     <div class="list-group">
