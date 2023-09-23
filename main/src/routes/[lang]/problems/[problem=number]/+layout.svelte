@@ -1,6 +1,10 @@
 <script lang='ts'>
     import { page } from '$app/stores';
+    import locs from '$lib/localisation.json';
 
+    export let data;
+
+    let loc = locs[data.lang as keyof typeof locs].problems.problem.layout;
     let baseName: string = '';
     let pageName: string = '';
 
@@ -12,13 +16,13 @@
 </script>
 <ul class="nav mb-2">
     <li class="nav-item">   
-        <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>Умова</a>
+        <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>{loc.statement}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName === '/send' ? 'active':''}" href="{baseName}/send">Надіслати</a>
+        <a class="nav-link {pageName === '/send' ? 'active':''}" href="{baseName}/send">{loc.submit}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName === '/my' ? 'active':''}" href="{baseName}/my">Мої розв'язки</a>
+        <a class="nav-link {pageName === '/my' ? 'active':''}" href="{baseName}/my">{loc.submissions}</a>
     </li>
 </ul>
 

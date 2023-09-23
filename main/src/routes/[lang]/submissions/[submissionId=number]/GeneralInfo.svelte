@@ -1,8 +1,12 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { verdictIcon } from "$lib/config";
+    import locs from '$lib/localisation.json';
 
     export let info: any;
+    export let lang: string;
+
+    let loc = locs[lang as keyof typeof locs].submissions;
 </script>
 <div class="mt-3 mb-4 d-flex">
     <h3 class="header me-auto">#{info.id}</h3>
@@ -16,19 +20,19 @@
 </div>
 <div class=" row mb-5">
     <div class="col-3">
-        <div class="header mb-2">Author:</div>
+        <div class="header mb-2">{loc.author}:</div>
         <div><a href="/{$page.params.lang}/users/{info.author_user_username}">{info.author_user_username}</a></div>
     </div>
     <div class="col-3">
-        <div class="header mb-2">Problem:</div>
+        <div class="header mb-2">{loc.problem}:</div>
         <div><a href="/{$page.params.lang}/problems/{info.problem_id}">{info.problem_name}</a></div>
     </div>
     <div class="col-3">
-        <div class="header mb-2">Language:</div>
+        <div class="header mb-2">{loc.language}:</div>
         <div>{`${info.language_name} (${info.language_version})`}</div>
     </div>
     <div class="col-3">
-        <div class="header mb-2">Date:</div>
+        <div class="header mb-2">{loc.date}:</div>
         <div>{info.time_sent}</div>
     </div>
 </div>

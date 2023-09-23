@@ -1,12 +1,15 @@
-<script>
+<script lang="ts">
     import { page } from "$app/stores";
     import ProblemFilter from "$lib/components/ProblemFilter.svelte";
     import { onMount } from "svelte";
     import FromHubModal from "./FromHubModal.svelte";
+    import locs from '$lib/localisation.json';
 
     export let data;
     export let form;
     let filteredProblems = data.problems;
+
+    let loc = locs[data.lang as keyof typeof locs].editor.problems;
 
     onMount(()=>{
         document.getElementById('fromHubModal')?.addEventListener('hide.bs.modal', () => {
@@ -17,13 +20,13 @@
     });
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">Manage my problems</h2>
+    <h2 class="header">{loc.header}</h2>
 </div>
 <div class="mb-3">
-    <a class="btn btn-accent me-3" href="{$page.url.pathname}/new">Create problem <i class="bi bi-plus"></i></a>
-    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#fromHubModal">Add from Hub <i class="bi bi-node-plus"></i></button>
+    <a class="btn btn-accent me-3" href="{$page.url.pathname}/new">{loc.create_problem} <i class="bi bi-plus"></i></a>
+    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#fromHubModal">{loc.from_hub.header} <i class="bi bi-node-plus"></i></button>
 </div>
-<ProblemFilter bind:data={filteredProblems}/>
+<ProblemFilter lang={data.lang} bind:data={filteredProblems}/>
 <div class="mt-3 mb-4">
     <div class="list-group">
     {#each filteredProblems as problem}     
@@ -31,9 +34,9 @@
             <a href="/{data.lang}/problems/{problem.id}" class="col-1">{problem.id}</a>
             <a href="/{data.lang}/problems/{problem.id}" class="me-auto">{problem.name}</a>
             <span class="me-2">{problem.private ? "private" : "public"}</span>
-            <a class="col-1 text-end nav-link" href="./problems/{problem.id}">edit</a>
+            <a class="col-1 text-end nav-link" href="./problems/{problem.id}">{loc.edit_problem}</a>
         </li>
     {/each}
     </div>
 </div>
-<FromHubModal form={form}/>
+<FromHubModal lang={data.lang} form={form}/>

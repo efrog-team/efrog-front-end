@@ -1,7 +1,12 @@
 <script lang="ts">
     import type {SubmissionPrivate} from '$lib/server/submission'
     import { verdictIcon } from '$lib/config';
+    import locs from '$lib/localisation.json';
+
     export let info: SubmissionPrivate;
+    export let lang: string;
+
+    let loc = locs[lang as keyof typeof locs].submissions.test_cases;
 
     $: total = {
         time: info.results?.reduce((acc, cur) => Math.max(acc, cur.time_taken), 0),
@@ -14,7 +19,7 @@
 </script>
 
 <div class="mb-3 d-flex">
-    <h4 class="me-auto">Details</h4>
+    <h4 class="me-auto">{loc.details}</h4>
     {#if info.checked}
     <h4 class="header">{info.correct_score}/{info.total_score}</h4>
     {/if}
@@ -24,12 +29,12 @@
         <thead>
             <tr>
                 <th class="header ps-3">#</th>
-                <th class="header">Verdict</th>
-                <th class="header">Time</th>
-                <th class="header">CPU</th>
-                <th class="header">V-Memory</th>
-                <th class="header">P-Memory</th>
-                <th class="header">Score</th>
+                <th class="header">{loc.verdict}</th>
+                <th class="header">{loc.time}</th>
+                <th class="header">{loc.cpu}</th>
+                <th class="header">{loc.v_memory}</th>
+                <th class="header">{loc.p_memory}</th>
+                <th class="header">{loc.score}</th>
             </tr>
         </thead>
         <tbody>
@@ -37,10 +42,10 @@
             <tr>
                 <td class="ps-3">{i+1}</td>
                 <td><i class="bi me-2 {verdictIcon[res.verdict_text]}"></i> {res.verdict_text}</td>
-                <td>{res.time_taken} ms</td>
-                <td>{res.cpu_time_taken} ms</td>
-                <td>{(res.virtual_memory_taken / 1000).toFixed(2)} MB</td>
-                <td>{(res.physical_memory_taken / 1000).toFixed(2)} MB</td>
+                <td>{res.time_taken} {loc.ms}</td>
+                <td>{res.cpu_time_taken} {loc.ms}</td>
+                <td>{(res.virtual_memory_taken / 1000).toFixed(2)} {loc.mb}</td>
+                <td>{(res.physical_memory_taken / 1000).toFixed(2)} {loc.mb}</td>
                 <td>{res.verdict_text == "Correct Answer" ? res.test_case_score : 0}/{res.test_case_score}</td>
               </tr>
             {/each}
@@ -49,10 +54,10 @@
             <tr>
                 <td></td>
                 <td></td>
-                <th>{total.time} ms</th>
-                <th>{total.cpu} ms</th>
-                <th>{(total.vMemory / 1000).toFixed(2)} MB</th>
-                <th>{(total.pMemory / 1000).toFixed(2)} MB</th>
+                <th>{total.time} {loc.ms}</th>
+                <th>{total.cpu} {loc.ms}</th>
+                <th>{(total.vMemory / 1000).toFixed(2)} {loc.mb}</th>
+                <th>{(total.pMemory / 1000).toFixed(2)} {loc.mb}</th>
                 <th>{total.score}</th>
             </tr>
         </tfoot>

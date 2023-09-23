@@ -1,7 +1,10 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import locs from '$lib/localisation.json';
 
     export let data;
+
+    let loc = locs[data.lang as keyof typeof locs].editor.problems.problem.layout;
 
     let baseName: string, pageName: string;
     page.subscribe((record)=>{
@@ -15,14 +18,14 @@
 </div>
 <ul class="nav mb-2">
     <li class="nav-item">   
-        <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>Statement</a>
+        <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>{loc.statement}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName == '/test-cases' ? 'active':''}" href="{baseName}/test-cases">Test Cases</a>
+        <a class="nav-link {pageName == '/test-cases' ? 'active':''}" href="{baseName}/test-cases">{loc.test_cases}</a>
     </li>
     {#if data.editable}
     <li class="nav-item">
-        <a class="nav-link {pageName == '/danger-zone' ? 'active':''}" href="{baseName}/danger-zone">Danger Zone</a>
+        <a class="nav-link {pageName == '/danger-zone' ? 'active':''}" href="{baseName}/danger-zone">{loc.danger_zone}</a>
     </li>
     {/if}
 </ul>

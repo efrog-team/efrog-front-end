@@ -4,9 +4,12 @@
     import GeneralInfo from "../GeneralInfo.svelte";
     import TestCases from "./TestCases.svelte";
     import { prismLang } from "$lib/config.js";
+    import locs from '$lib/localisation.json';
 
     export let data;
     if(!data.info.results) data.info.results = [];
+
+    let loc = locs[data.lang as keyof typeof locs].submissions;
 
     onMount(()=>{
         window.Prism.highlightAll();
@@ -36,20 +39,20 @@
     }
 </script>
 
-<GeneralInfo info={data.info} />
+<GeneralInfo lang={data.lang} info={data.info} />
 {#if data.info.checked && !data.info.compiled}
 <div class="d-flex">
-    <h4 class="me-auto">Error Details</h4>
+    <h4 class="me-auto">{loc.error_datails}</h4>
 </div>
 <div class="mb-5">
     <div class="mt-2 backing error-details p-3">{data.info?.compilation_details}</div>
 </div>
 {:else}
-<TestCases info={data.info} />
+<TestCases lang={data.lang} info={data.info} />
 {/if}
 <div class="mb-3 d-flex">
     <h4 class="me-auto">Code</h4>
-    <button on:click|preventDefault={copyCode} class="nav-link"><i class="me-2 bi bi-files"></i>Copy</button>
+    <button on:click|preventDefault={copyCode} class="nav-link"><i class="me-2 bi bi-files"></i>{loc.copy_code}</button>
 </div>
 <div class="mb-4">
     <pre class="mt-2 backing code p-3"><code class="language-{prismLang[`${data.info.language_name} (${data.info.language_version})`]}">{data.info.code}</code></pre>

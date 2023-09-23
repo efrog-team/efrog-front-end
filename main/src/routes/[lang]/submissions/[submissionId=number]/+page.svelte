@@ -3,5 +3,5 @@
 
     export let data;
 </script>
-<GeneralInfo info={data.info}/>
+<GeneralInfo lang={data.lang} info={data.info}/>
 

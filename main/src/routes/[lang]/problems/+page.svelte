@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
     export let data;
+    import locs from '$lib/localisation.json';
+
+    let loc = locs[data.lang as keyof typeof locs].problems;
 
     $: firstPage = Math.max(data.page - 2, 0);
     $: lastPage = Math.min(data.page + 2, data.last);
@@ -9,7 +12,7 @@
     );
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">Problems</h2>
+    <h2 class="header">{loc.header}</h2>
 </div>
 <div class="mt-3 mb-4">
     <div class="list-group">

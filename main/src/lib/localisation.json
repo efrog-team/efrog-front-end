@@ -59,7 +59,6 @@
             }
         },
         "teams":{
-            "deactivated": "deactivated",
             "owner": "Owner",
             "members": "Members",
             "edit_team": "Edit team",
@@ -97,6 +96,121 @@
                 "info": "Confirm that you are member of this team",
                 "confirm": "Confirm",
                 "decline": "Decline"
+            }
+        },
+        "submissions": { 
+            "author": "Author", 
+            "problem": "Problem", 
+            "language": "Language", 
+            "date": "Date", 
+            "error_datails": "Error Details", 
+            "copy_code": "Copy",
+            "test_cases": {
+                "details": "Details",
+                "verdict": "Verdict",
+                "time": "Time",
+                "cpu": "CPU",
+                "v_memory": "V-Memory",
+                "p_memory": "P-Memory",
+                "score": "Score", 
+                "mb": "MB",
+                "ms": "ms"
+            }
+        },
+        "problems": {
+            "header": "Problems",
+            "problem": {
+                "layout": {
+                    "statement": "Statement",
+                    "submit": "Submit",
+                    "submissions": "Submissions"
+                },
+                "main": {
+                    "time_limit": "Time limit",
+                    "memory_limit": "Memory limit",
+                    "mb": "MB",
+                    "sec": "s",
+                    "statement": "Statement",
+                    "input_format": "Input format",
+                    "output_format": "Output format",
+                    "notes": "Notes",
+                    "examples": "Examples",
+                    "example": "Example",
+                    "input_data": "Input Data",
+                    "output_data": "Output Data",
+                    "submit": "Submit Solution"
+                },
+                "send": {
+                    "language": "Language",
+                    "code": "Program code",
+                    "submit": "Submit Solution"
+                }
+            }
+        },
+        "editor": {
+            "problems": {
+                "header": "Manage my problems",
+                "create_problem": "Create new problem",
+                "edit_problem": "edit",
+                "from_hub": {
+                    "header": "Add from Hub",
+                    "problem_id": "Problem id",
+                    "close": "Close",
+                    "add": "Add"
+                },
+                "general_info": {
+                    "problem_name": "Problem Name",
+                    "time_limit": "Time limit",
+                    "memory_limit": "Memory limit",
+                    "between": "Must be between",
+                    "and": "and",
+                    "mb": "MB",
+                    "sec": "s",
+                    "public": "Public",
+                    "public_info": "visible for all users"
+                },
+                "problem_edit": {
+                    "general_info": "General Info",
+                    "statement": "Statement",
+                    "input_format": "Input format",
+                    "output_format": "Output format",
+                    "notes": "Notes",
+                    "optional_field": "This is optional field"
+                },
+                "statement": {
+                    "show_preview": "Show preview",
+                    "invalid_latex": "Invalid LaTeX"
+                },
+                "problem": {
+                    "layout": {
+                        "statement": "Statement",
+                        "test_cases": "Test Cases",
+                        "danger_zone": "Danger Zone"
+                    },
+                    "test_cases": {
+                        "add_test_case": "Add Test Case",
+                        "test_case": "Test Case",
+                        "new_test_case": "New Test Case",
+                        "total_score": "Total score",
+                        "test_case_data": {
+                            "opened": "Opened",
+                            "opened_info": "shown in examples",
+                            "score": "Score",
+                            "input_data": "Input Data",
+                            "output_data": "Output Data",
+                            "save": "Save",
+                            "delete": "Delete"
+                        }
+                    },
+                    "danger_zone": {
+                        "make_public": "Make public",
+                        "make_public_info": "**make public info**",
+                        "make_private": "Make private",
+                        "make_private_info": "**make private info**",
+                        "delete": "Delete",
+                        "delete_info": "**deletion info**"
+                    }
+                }
             }
         },
         "global_components": {

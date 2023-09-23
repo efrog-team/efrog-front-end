@@ -2,10 +2,14 @@
     import { katexDelimiters } from '$lib/config';
     import renderMathInElement from 'katex/contrib/auto-render'
     import { onMount } from 'svelte';
+    import locs from '$lib/localisation.json';
 
     export let inputName: string;
     export let value: string | null | undefined;
     export let rows = 5;
+    export let lang: string;
+
+    let loc = locs[lang as keyof typeof locs].editor.problems.statement;
 
     function renderTex(textareEl: EventTarget | null){
         let prewiewEl = document.getElementById(`preview-${inputName}`) as HTMLElement;
@@ -40,11 +44,11 @@
 </svelte:head>
 <div class="form-check form-switch mb-2">
     <input on:change={changePreview} class="form-check-input" type="checkbox" role="switch" id="priview-{inputName}">
-    <label class="form-check-label" for="priview-{inputName}">Show preview</label>
+    <label class="form-check-label" for="priview-{inputName}">{loc.show_preview}</label>
   </div>
 <div id="tex-input-{inputName}">
     <textarea id="ta-{inputName}" spellcheck="false" value={value || null} name={inputName} rows={rows} class="form-control" on:focusout={(e)=>renderTex(e.target)}></textarea>
-    <div id=form-error-{inputName} class="form-error mt-2 hidden">Invalid LaTeX</div>
+    <div id=form-error-{inputName} class="form-error mt-2 hidden">{loc.invalid_latex}</div>
 </div>
 <div id="preview-{inputName}" class="hidden preview pt-2"></div>
 

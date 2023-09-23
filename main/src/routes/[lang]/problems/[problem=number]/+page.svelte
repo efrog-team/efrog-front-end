@@ -3,8 +3,11 @@
     import { onMount } from 'svelte';
     import renderMathInElement from 'katex/contrib/auto-render'
     import { katexDelimiters } from '$lib/config.js';
+    import locs from '$lib/localisation.json';
 
 	export let data;
+
+    let loc = locs[data.lang as keyof typeof locs].problems.problem.main;
 
     onMount(()=>{
         (document.querySelectorAll(".katex-render") as NodeListOf<HTMLElement>).forEach((elem)=>{
@@ -30,37 +33,37 @@
 </div>
 <div class="mb-4">
     <em><p>
-        Time limit: {data.problem.time_restriction} s<br>
-        Memory limit: {data.problem.memory_restriction} MB
+        {loc.time_limit}: {data.problem.time_restriction} {loc.sec}<br>
+        {loc.memory_limit}: {data.problem.memory_restriction} {loc.mb}
     </p></em>
 </div>
 <div class="mb-4">
-    <h5>Умова</h5>
+    <h5>{loc.statement}</h5>
     <p class="katex-render">{data.problem.statement}</p>
 </div>
 <div class="mb-4">
-    <h5>Вхідні дані</h5>
+    <h5>{loc.input_format}</h5>
     <p class="katex-render">{data.problem.input_statement}</p>  
 </div>
 <div class="mb-4">
-    <h5>Вихідні дані</h5>
+    <h5>{loc.output_format}</h5>
     <p class="katex-render">{data.problem.output_statement}</p>  
 </div>
 {#if data.problem.notes}
 <div class="mb-4">
-    <h5>Примітки</h5>
+    <h5>{loc.notes}</h5>
     <p>{data.problem.notes}</p>  
 </div>
 {/if}
 <div class="mb-4">
-    <h5>Приклади</h5>
+    <h5>{loc.examples}</h5>
     {#each data.examples as example, i}
         <div class="mt-3">
-            <h6>Приклад {i+1}</h6>
+            <h6>{loc.example} {i+1}</h6>
             <div class="e-table">
                 <div class="row">
-                    <div class="col-6 e-item pl-3 pt-1 styled-scrollbars">Вхідні дані</div>
-                    <div class="col-6 e-item pr-3 pt-1 styled-scrollbars">Вихідні дані</div>
+                    <div class="col-6 e-item pl-3 pt-1 styled-scrollbars">{loc.input_data}</div>
+                    <div class="col-6 e-item pr-3 pt-1 styled-scrollbars">{loc.output_data}</div>
                 </div>
                 <div class="row">
                     <div class="col-6 e-item pl-3 pb-1 styled-scrollbars">{example.input}</div>
@@ -71,7 +74,7 @@
     {/each}
 </div>
 <div class="mt-5 mb-5 text-center">
-    <button class="btn btn-accent"><a href="{$page.url.pathname}/send">ВІДПРАВИТИ РОЗВ'ЯЗОК</a></button>
+    <button class="btn btn-accent"><a href="{$page.url.pathname}/send">{loc.submit}</a></button>
 </div>
 
 <style>
