@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import Modal from "./Modal.svelte";
+    import AdditionModal from '$lib/components/AdditionModal.svelte'
     import locs from '$lib/localisation.json';
 
     export let data;
@@ -23,14 +22,6 @@
             return cOwner == Owners.all || (cOwner == Owners.me) == (team.owner_user_username == data.username);
         });
     }
-
-    onMount(()=>{
-        document.getElementById('nameModal')?.addEventListener('hide.bs.modal', () => {
-            form = null;
-        });
-        let nameModal = new window.bootstrap.Modal('#nameModal');
-        if(form?.error) nameModal.show();
-    });
 </script>
 <div class="mb-4 mt-2">
     <h2 class="header">{data.username}: {loc.teams}</h2>
@@ -78,7 +69,8 @@
     {/each}
     </div>
 </div>
-<Modal lang={data.lang} form={form}></Modal>
+<AdditionModal lang={data.lang} bind:form={form} modalId="nameModal" header={loc.create_team} inputLable={loc.team_name} inputName="teamName" action="create" okText={loc.create}/>
+
 <style>
     .filter{
         padding-left: 0;

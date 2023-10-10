@@ -18,12 +18,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-            <a class="nav-link {$page.url.pathname == `${data.lang}/problems` ? 'active':''}" href="/{data.lang}/problems">
+            <a class="nav-link {$page.url.pathname == `/${data.lang}/problems` ? 'active':''}" href="/{data.lang}/problems">
                 {loc.problems}
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link {$page.url.pathname == `${data.lang}/olimpiads` ? 'active':''}" href="/{data.lang}/olimpiads">
+            <a class="nav-link {$page.url.pathname == `/${data.lang}/olimpiads` ? 'active':''}" href="/{data.lang}/olimpiads">
                 {loc.contests}
             </a>
             </li>

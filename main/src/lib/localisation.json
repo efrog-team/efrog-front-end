@@ -47,7 +47,6 @@
                 "teams": "teams",
                 "create_team": "Create team",
                 "team_name": "Team name",
-                "close": "Close",
                 "create": "Create", 
                 "all": "All",
                 "status": "Status",
@@ -88,9 +87,7 @@
             },
             "add_member": {
                 "header": "Add member",
-                "member_username": "Member username",
-                "submit": "Add",
-                "close": "Close"
+                "member_username": "Member username"
             },
             "confirm": {
                 "info": "Confirm that you are member of this team",
@@ -154,9 +151,7 @@
                 "edit_problem": "edit",
                 "from_hub": {
                     "header": "Add from efrog-hub",
-                    "problem_id": "Problem id",
-                    "close": "Close",
-                    "add": "Add"
+                    "problem_id": "Problem id"
                 },
                 "general_info": {
                     "problem_name": "Problem Name",
@@ -227,6 +222,10 @@
                 "verdict": "Verdict",
                 "language": "Language",
                 "all": "All"
+            },
+            "addition_modal": {
+                "add":"Add",
+                "close": "Close"
             }
         }
     },
@@ -278,7 +277,6 @@
                 "teams": "команди",
                 "create_team": "Створити команду",
                 "team_name": "Назва команди",
-                "close": "Закрити",
                 "create": "Створити",
                 "all": "Всі командм",
                 "status": "Статус",
@@ -319,9 +317,7 @@
             },
             "add_member": {
                 "header": "Додати учасника",
-                "member_username": "Ім'я користувача учасника",
-                "submit": "Додати",
-                "close": "Закрити"
+                "member_username": "Ім'я користувача учасника"
             },
             "confirm": {
                 "info": "Підтвердіть, що ви є учасником цієї команди",
@@ -385,9 +381,7 @@
                 "edit_problem": "редагувати",
                 "from_hub": {
                     "header": "Додати з efrog-hub",
-                    "problem_id": "ID задачи",
-                    "close": "Закрити",
-                    "add": "Додати"
+                    "problem_id": "ID задачи"
                 },
                 "general_info": {
                     "problem_name": "Назва задачи",
@@ -458,6 +452,10 @@
                 "verdict": "Вердикт",
                 "language": "Мова",
                 "all": "Всі"
+            },
+            "addition_modal": {
+                "add": "Додати",
+                "close": "Закрити"
             }
         }
     }

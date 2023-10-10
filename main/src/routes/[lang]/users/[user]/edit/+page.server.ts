@@ -1,7 +1,7 @@
 import { error, redirect, fail } from '@sveltejs/kit';
 import { checkAuth } from '$lib/check.js';
-import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user.ts';
-import {formToObj} from '$lib/features.ts'
+import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user';
+import {formToObj} from '$lib/features'
 
 export async function load({params, cookies, url}) {
 	const data = await checkAuth(cookies, url, params.lang);

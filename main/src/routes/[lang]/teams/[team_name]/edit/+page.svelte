@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import Modal from './Modal.svelte';
+    import AdditionModal from '$lib/components/AdditionModal.svelte';
     import { invalidateAll } from '$app/navigation';
     import TeamsFilters from '../TeamsFilters.svelte';
     import locs from '$lib/localisation.json';
@@ -12,14 +11,6 @@
 
     let newName = form?.data?.teamName || data.teamInfo.name;
     let filtered = data.members;
-
-    onMount(()=>{
-        document.getElementById('memberModal')?.addEventListener('hide.bs.modal', () => {
-            form = null;
-        });
-        let nameModal = new window.bootstrap.Modal('#memberModal');
-        if(form?.error && form?.data.username) nameModal.show();
-    });
 
     async function action(type: string){
         await fetch(`./edit`, {
@@ -52,7 +43,7 @@
     <h4>{loc.members}</h4>
 </div>
 <div class="mb-4">
-    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#memberModal"><i class="bi-plus"></i>{loc.add_member.header}</button>
+    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#addition-modal"><i class="bi-plus"></i>{loc.add_member.header}</button>
 </div>
 <TeamsFilters lang={data.lang} bind:data={filtered} />
 <div class="mb-4">
@@ -103,7 +94,7 @@
     <span class="text-for-btn btn disabled">{loc.danger_zone.delete_info}</span>
 </div>
 {/if}
-<Modal lang={data.lang} form={form}></Modal>
+<AdditionModal lang={data.lang} bind:form={form} inputName={"username"} inputLable={loc.add_member.member_username} header={loc.add_member.header}/>
 <style>
     .text-for-btn{
         border-color: transparent;

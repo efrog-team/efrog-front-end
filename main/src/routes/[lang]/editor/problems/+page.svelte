@@ -1,8 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import ProblemFilter from "$lib/components/ProblemFilter.svelte";
-    import { onMount } from "svelte";
-    import FromHubModal from "./FromHubModal.svelte";
+    import AdditionModal from "$lib/components/AdditionModal.svelte";
     import locs from '$lib/localisation.json';
 
     export let data;
@@ -10,14 +9,6 @@
     let filteredProblems = data.problems;
 
     let loc = locs[data.lang as keyof typeof locs].editor.problems;
-
-    onMount(()=>{
-        document.getElementById('fromHubModal')?.addEventListener('hide.bs.modal', () => {
-            form = null;
-        });
-        let nameModal = new window.bootstrap.Modal('#fromHubModal');
-        if(form?.error) nameModal.show();
-    });
 </script>
 <div class="mb-4 mt-2">
     <h2 class="header">{loc.header}</h2>
@@ -39,4 +30,5 @@
     {/each}
     </div>
 </div>
-<FromHubModal lang={data.lang} form={form}/>
+<AdditionModal lang={data.lang} bind:form={form} modalId="fromHubModal" type="number" inputName="problemId" 
+    inputLable={loc.from_hub.problem_id} header={loc.from_hub.header} action="fromHub"/>
