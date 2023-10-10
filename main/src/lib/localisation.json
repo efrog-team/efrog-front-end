@@ -59,6 +59,7 @@
             }
         },
         "teams":{
+            "deactivated": "deactivated",
             "owner": "Owner",
             "members": "Members",
             "edit_team": "Edit team",
@@ -183,6 +184,8 @@
                 },
                 "problem": {
                     "layout": {
+                        "edit": "edit",
+                        "noteditable": "not editable",
                         "statement": "Statement",
                         "test_cases": "Test Cases",
                         "danger_zone": "Danger Zone"
@@ -232,7 +235,7 @@
     },
     "uk": {
         "layout": {
-            "problems": "Задачи",
+            "problems": "Задачі",
             "contests": "Змагання",
             "account": "Аккаунт",
             "edit_account": "Редагувати аккаунт",
@@ -245,7 +248,7 @@
                 "profile": "Профіль",
                 "submissions": "Відправки",
                 "teams": "Команди",
-                "problems": "Задачи"
+                "problems": "Задачі"
             },
             "main": {
                 "email": "Електронна пошта",
@@ -267,8 +270,8 @@
                 "save": "Зберегти"
             },
             "problems": {
-                "problems": "Задачи",
-                "my_problems": "Мої задачи",
+                "problems": "Задачі",
+                "my_problems": "Мої задачі",
                 "manage": "Управління моїми задачами"
             },
             "submissions": {
@@ -290,6 +293,7 @@
             }
         },
         "teams": {
+            "deactivated": "неактивна",
             "owner": "Власник",
             "members": "Учасники команди",
             "edit_team": "Редагувати команду",
@@ -349,7 +353,7 @@
             }
         },
         "problems": {
-            "header": "Задачи",
+            "header": "Задачі",
             "problem": {
                 "layout": {
                     "statement": "Умова",
@@ -385,12 +389,12 @@
                 "edit_problem": "редагувати",
                 "from_hub": {
                     "header": "Додати з efrog-hub",
-                    "problem_id": "ID задачи",
+                    "problem_id": "ID задачі",
                     "close": "Закрити",
                     "add": "Додати"
                 },
                 "general_info": {
-                    "problem_name": "Назва задачи",
+                    "problem_name": "Назва задачі",
                     "time_limit": "Ліміт часу",
                     "memory_limit": "Ліміт використання пам'яті",
                     "between": "Має бути між",
@@ -414,6 +418,8 @@
                 },
                 "problem": {
                     "layout": {
+                        "edit": "редагування",
+                        "noteditable": "не можна редагувати",
                         "statement": "Умова",
                         "test_cases": "Тести",
                         "danger_zone": "Зона ризику"
@@ -446,7 +452,7 @@
         },
         "global_components": {
             "problem_filter": {
-                "all": "Всі задачи",
+                "all": "Всі задачі",
                 "public": "Публічні",
                 "private": "Приватні",
                 "privacy": "Приватність"
