@@ -32,11 +32,8 @@
         {data.teamInfo.name}{data.teamInfo.active ? '' : ` (${loc.deactivated})`}
     </h2>
 </div>
-<div class="mb-4">
-    <p>{loc.owner}: {data.teamInfo.owner_user_username}</p> 
-</div>
 {#if data.me}
-<div class="mb-4">
+<div class="mb-4 mt-4">
     <a class="btn btn-accent" href="./{data.teamInfo.name}/edit">{loc.edit_team}</a>
 </div>
 {/if}
@@ -49,7 +46,11 @@
     {#each filtered as member}     
         <span class="list-group-item list-group-item-action d-flex">
             <span class="flex-grow-1">
+                {#if data.teamInfo.owner_user_username == member.member_username}
+                <span><i class="me-2 bi-person-circle"></i></span>
+                {:else}
                 <i class="me-2 bi bi-{member.confirmed ? 'check' : member.declined ? 'x' : 'question'}-circle"></i>
+                {/if}
                 <a href="/{data.lang}/users/{member.member_username}"><span>{member.member_username}</span></a>
             </span>
             <span>{member.coach ? "coach" : "contestant"}</span>

@@ -58,7 +58,7 @@
             }
         },
         "teams":{
-            "owner": "Owner",
+            "owner": "owner",
             "members": "Members",
             "edit_team": "Edit team",
             "team_name": "Team name",
@@ -79,7 +79,7 @@
                 "all": "All",
                 "status": "Status",
                 "status_confirmed": "Confirmed",
-                "status_unconfirmed": "Confirmed",
+                "status_unconfirmed": "Not confirmed",
                 "status_declined": "Declined",
                 "role": "Role",
                 "role_coach": "Coach",
@@ -288,7 +288,7 @@
             }
         },
         "teams": {
-            "owner": "Власник",
+            "owner": "власник",
             "members": "Учасники команди",
             "edit_team": "Редагувати команду",
             "team_name": "Назва команди",

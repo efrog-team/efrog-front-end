@@ -1,6 +1,6 @@
 import { clientUrl } from "$lib/config";
 
-export function formToObj(formData: FormData): any{
+export function formToObj(formData: FormData): {[key: string]: string}{
 	const data: { [key: string]: any } = {};
 	formData.forEach((value, key) => (data[key] = value));
 	return data;
@@ -19,3 +19,13 @@ export function getAuthParams(state: string){
     });
 	return params.toString();
 }
+
+export function isValidDate(str: string){
+    return !isNaN((new Date(str)).getTime());
+}
+
+export function formatDate(date: string|Date|number){
+	date = new Date(date);
+	return date.toISOString().replace("T", " ").slice(0,-5);
+}
+

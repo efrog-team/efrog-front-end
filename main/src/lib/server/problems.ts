@@ -1,6 +1,6 @@
 import { request } from "./general"
 
-interface Problem{
+export interface Problem{
     id: number
     author_user_username: string
     name: string
@@ -13,7 +13,7 @@ interface Problem{
     private: boolean
 }
 
-interface TestCase{
+export interface TestCase{
     id: number
     problem_id: number
     input: string

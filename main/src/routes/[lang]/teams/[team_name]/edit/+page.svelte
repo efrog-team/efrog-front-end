@@ -51,7 +51,11 @@
     {#each filtered as member}     
         <span class="list-group-item list-group-item-action d-flex">
             <span class="flex-grow-1">
+                {#if data.teamInfo.owner_user_username == member.member_username}
+                <span><i class="me-2 bi-person-circle"></i></span>
+                {:else}
                 <i class="me-2 bi bi-{member.confirmed ? 'check' : member.declined ? 'x' : 'question'}-circle"></i>
+                {/if}
                 <a href="/{data.lang}/users/{member.member_username}"><span>{member.member_username}</span></a>
             </span>
             <span class="me-3">{member.coach ? "coach" : "contestant"}</span>

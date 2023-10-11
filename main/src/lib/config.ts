@@ -68,3 +68,7 @@ export let limits = {
 }
 
 export let itemsOnPage = 100;
+
+export let minTimeToContest = 5;
+
+export let minContestDuration = 5;
