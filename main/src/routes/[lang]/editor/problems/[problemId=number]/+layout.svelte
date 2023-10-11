@@ -14,7 +14,7 @@
 </script>
 
 <div class="mb-2">
-    <h2 class="header">{data.editable ? `${data.problem.name}: edit` : `Problem ${data.problem.name} (not editable)`}</h2>
+    <h2 class="header">{data.editable ? `${data.problem.name}: ${loc.edit}` : `${data.problem.name} (${loc.noteditable})`}</h2>
 </div>
 <ul class="nav mb-2">
     <li class="nav-item">   
