@@ -17,7 +17,7 @@ export const actions = {
 		let id;
 		try {
 			validateFormInfo(formData);
-			await updateProblem(params.problemId, formData.get("name"), formData.get("statement"), formData.get("input_statement"), 
+			await updateProblem(Number(params.problemId), formData.get("name"), formData.get("statement"), formData.get("input_statement"), 
 			formData.get("output_statement"), formData.get("notes"), formData.get("time_restriction"), formData.get("memory_restriction"), 
 				cookies.get("auth"));
 		} catch (err) {

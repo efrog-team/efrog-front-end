@@ -24,8 +24,8 @@
         <li class="list-group-item list-group-item-action d-flex">
             <a href="/{data.lang}/problems/{problem.id}" class="col-1">{problem.id}</a>
             <a href="/{data.lang}/problems/{problem.id}" class="me-auto">{problem.name}</a>
-            <span class="me-2">{problem.private ? "private" : "public"}</span>
-            <a class="col-1 text-end nav-link" href="./problems/{problem.id}">{loc.edit_problem}</a>
+            <span class="me-3">{problem.private ? loc.private : loc.public}</span>
+            <a class="col-auto text-end nav-link" href="./problems/{problem.id}">{loc.edit_problem}</a>
         </li>
     {/each}
     </div>

@@ -123,18 +123,6 @@
                     "submissions": "Submissions"
                 },
                 "main": {
-                    "time_limit": "Time limit",
-                    "memory_limit": "Memory limit",
-                    "mb": "MB",
-                    "sec": "s",
-                    "statement": "Statement",
-                    "input_format": "Input format",
-                    "output_format": "Output format",
-                    "notes": "Notes",
-                    "examples": "Examples",
-                    "example": "Example",
-                    "input_data": "Input Data",
-                    "output_data": "Output Data",
                     "submit": "Submit Solution"
                 },
                 "send": {
@@ -149,9 +137,11 @@
                 "header": "Manage my problems",
                 "create_problem": "Create new problem",
                 "edit_problem": "edit",
+                "public": "public",
+                "private": "private",
                 "from_hub": {
                     "header": "Add from efrog-hub",
-                    "problem_id": "Problem id"
+                    "problem_id": "Problem ID"
                 },
                 "general_info": {
                     "problem_name": "Problem Name",
@@ -182,7 +172,8 @@
                         "noteditable": "not editable",
                         "statement": "Statement",
                         "test_cases": "Test Cases",
-                        "danger_zone": "Danger Zone"
+                        "danger_zone": "Danger Zone",
+                        "preview": "Preview"
                     },
                     "test_cases": {
                         "add_test_case": "Add Test Case",
@@ -290,6 +281,20 @@
             "addition_modal": {
                 "add":"Add",
                 "close": "Close"
+            }, 
+            "problem_statement": {
+                "time_limit": "Time limit",
+                "memory_limit": "Memory limit",
+                "mb": "MB",
+                "sec": "s",
+                "statement": "Statement",
+                "input_format": "Input format",
+                "output_format": "Output format",
+                "notes": "Notes",
+                "examples": "Examples",
+                "example": "Example",
+                "input_data": "Input Data",
+                "output_data": "Output Data"
             }
         }
     },
@@ -417,18 +422,6 @@
                     "submissions": "Відправки"
                 },
                 "main": {
-                    "time_limit": "Ліміт часу",
-                    "memory_limit": "Ліміт пам'яті",
-                    "mb": "МБ",
-                    "sec": "с",
-                    "statement": "Умова",
-                    "input_format": "Формат вводу",
-                    "output_format": "Формат виводу",
-                    "notes": "Примітки",
-                    "examples": "Приклади",
-                    "example": "Приклад",
-                    "input_data": "Вхідні дані",
-                    "output_data": "Вихідні дані",
                     "submit": "Надіслати розв'язок"
                 },
                 "send": {
@@ -443,6 +436,8 @@
                 "header": "Управління моїми задачами",
                 "create_problem": "Створити нову задачу",
                 "edit_problem": "редагувати",
+                "public": "публічна",
+                "private": "приватна",
                 "from_hub": {
                     "header": "Додати з efrog-hub",
                     "problem_id": "ID задачі",
@@ -457,8 +452,8 @@
                     "and": "та",
                     "mb": "МБ",
                     "sec": "с",
-                    "public": "Публічний",
-                    "public_info": "видимий для всіх користувачів"
+                    "public": "Публічна",
+                    "public_info": "видима для всіх користувачів"
                 },
                 "problem_edit": {
                     "general_info": "Загальна інформація",
@@ -478,7 +473,8 @@
                         "noteditable": "не можна редагувати",
                         "statement": "Умова",
                         "test_cases": "Тести",
-                        "danger_zone": "Зона ризику"
+                        "danger_zone": "Зона ризику",
+                        "preview": "Прев'ю"
                     },
                     "test_cases": {
                         "add_test_case": "Додати тест",
@@ -586,6 +582,20 @@
             "addition_modal": {
                 "add": "Додати",
                 "close": "Закрити"
+            },
+            "problem_statement": {
+                "time_limit": "Ліміт часу",
+                "memory_limit": "Ліміт пам'яті",
+                "mb": "МБ",
+                "sec": "с",
+                "statement": "Умова",
+                "input_format": "Формат вводу",
+                "output_format": "Формат виводу",
+                "notes": "Примітки",
+                "examples": "Приклади",
+                "example": "Приклад",
+                "input_data": "Вхідні дані",
+                "output_data": "Вихідні дані"
             }
         }
     }
