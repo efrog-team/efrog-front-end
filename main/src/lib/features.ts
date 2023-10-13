@@ -29,3 +29,8 @@ export function formatDate(date: string|Date|number){
 	return date.toISOString().replace("T", " ").slice(0,-5);
 }
 
+export function convertDate(str: string){
+	const pad = (num: number) => String(num).padStart(2, '0')
+	let d = new Date(str+"Z");
+	return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${d.toTimeString().slice(0,8)}`
+}

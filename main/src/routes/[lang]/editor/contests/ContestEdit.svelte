@@ -55,7 +55,7 @@
         <input type="hidden" name="maximum_team_members_number" value="1">
         {/if}
         <div class="mb-3 mt-3">
-            <input class="form-check-input" type="checkbox" name="auto_confirm_participants" id="auto-confirm" checked={info?.data.auto_confirm_participants || false}>
+            <input class="form-check-input" type="checkbox" name="auto_confirm_participants" id="auto-confirm" checked={info?.data ? info?.data.auto_confirm_participants : true}>
             <label class="form-check-label" for="auto-confirm">{loc.auto_approve}</label>
         </div>
     </div>

@@ -8,6 +8,7 @@ export const actions = {
 		const formData = formToObj(await request.formData());
 		let id;
 		try {
+			console.log("end", formData["end_time"])
             validateFormInfo(formData);
 			id = await updateCompetition(Number(params.contest), formData["name"], formData["description"], formatDate(formData["start_time"]), 
                 formatDate(formData["end_time"]), Number(formData["maximum_team_members_number"]), 

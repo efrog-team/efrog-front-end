@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { verdictIcon } from "$lib/config";
+    import { convertDate } from "$lib/features";
     import locs from '$lib/localisation.json';
 
     export let info: any;
@@ -33,7 +34,7 @@
     </div>
     <div class="col-3">
         <div class="header mb-2">{loc.date}:</div>
-        <div>{info.time_sent}</div>
+        <div>{convertDate(info.time_sent)}</div>
     </div>
 </div>
 <style>
