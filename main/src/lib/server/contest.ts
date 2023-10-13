@@ -94,7 +94,7 @@ export async function deleteIndividual(competition_id:number, username: string, 
 }
 
 export async function deleteTeam(competition_id:number, team_name: string, auth: string) {
-    await request('DELETE', `/competitions/${competition_id}/participants/individuals/${team_name}`, null, auth);
+    await request('DELETE', `/competitions/${competition_id}/participants/teams/${team_name}`, null, auth);
 }
 
 export async function addProblem(competition_id: number, problem_id: number, auth: string) {

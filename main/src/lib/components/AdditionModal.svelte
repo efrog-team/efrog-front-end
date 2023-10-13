@@ -46,6 +46,7 @@
                     {#if form?.error}
                         <div class="form-error form-text mb-3">{form.error}</div>
                     {/if}
+                    <slot />
                 </form>
             </div>
             <div class="modal-footer">

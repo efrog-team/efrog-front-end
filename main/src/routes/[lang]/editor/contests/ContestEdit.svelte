@@ -6,7 +6,6 @@
     export let lang: string;
 
     let forTeams = !!info?.data?.maximum_team_members_number && info?.data?.maximum_team_members_number > 1;
-    console.log(info?.data.auto_confirm_participants)
     //let loc = locs[lang as keyof typeof locs].editor.problems.problem_edit;
 </script>
 <form action="?/save" method="post">
