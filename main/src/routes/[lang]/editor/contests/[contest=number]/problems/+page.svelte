@@ -1,10 +1,13 @@
 <script lang="ts">
     import AdditionModal from '$lib/components/AdditionModal.svelte';
+    import locs from '$lib/localisation.json';
     export let data;
     export let form;
+    
+    let loc = locs[data.lang as keyof typeof locs].editor.contests.contest.problems;
 </script>
 <div class="mb-4 mt-3">
-    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#addition-modal"><i class="bi-plus"></i>Add problem</button>
+    <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#addition-modal"><i class="bi-plus"></i>{loc.add_problem}</button>
 </div>
 <div class="mb-4">
     <div class="list-group">
@@ -14,11 +17,10 @@
         <a href="/{data.lang}/problems/{problem.id}" class="me-auto">{problem.name}</a>
         <form method="post"> 
             <input type="hidden" name="problemId" value={problem.id}>
-            <button formaction="?/delete" class="me-2 nav-link">delete</button>
+            <button formaction="?/delete" class="me-2 nav-link">{loc.delete}</button>
         </form>
     </li>
     {/each}
     </div>
 </div>
-<!--text-->
-<AdditionModal bind:form={form} lang={data.lang} inputName="problemId" type="number" header="Add problem" inputLable="problemId"/>
+<AdditionModal bind:form={form} lang={data.lang} inputName="problemId" type="number" header={loc.add_problem} inputLable={loc.problem_id}/>

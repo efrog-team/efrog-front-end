@@ -208,6 +208,68 @@
                         "delete_info": "**deletion info**"
                     }
                 }
+            },
+            "contests": {
+                "header": "Manage My Contests",
+                "create_contest": "Create New Contest",
+                "edit_contest": "edit",
+                "contest_edit": {
+                    "contest_name": "Contest Name",
+                    "description": "Description",
+                    "optional": "optional",
+                    "start_date": "Start Date",
+                    "end_date": "End Date",
+                    "for_teams": "Team Competition",
+                    "max_members": "Maximum Number of Team Members",
+                    "auto_approve": "Automatically Approve All Participants",
+                    "save": "Save"
+                },
+                "contest": {
+                    "layout": {
+                        "edit": "edit",
+                        "noteditable": "not editable",
+                        "general": "General",
+                        "problems": "Problems",
+                        "participants": "Participants",
+                        "danger_zone": "Danger Zone"
+                    },
+                    "participants": {
+                        "add_participant": "Add Participant",
+                        "confirm": "confirm",
+                        "delete": "delete",
+                        "approved": "approved",
+                        "unapproved": "not approved",
+                        "username": "Username",
+                        "team_name": "Team name (username)",
+                        "individual": "Individual participant",
+                        "participants_filter": {
+                            "all": "All",
+                            "form": "Role Type",
+                            "teams": "Teams",
+                            "individuals": "Individuals",
+                            "confirmation": "Confirmation",
+                            "confirmed": "Confirmed",
+                            "unconfirmed": "Not confirmed",
+                            "declined": "Declined",
+                            "approval": "Approval",
+                            "approved": "Approved",
+                            "unapproved": "Not approved"
+                        }
+                    },
+                    "problems": {
+                        "add_problem": "Add Problem",
+                        "delete": "delete",
+                        "problem_id": "Problem ID"
+                    },
+                    "danger_zone": {
+                        "make_public": "Make public",
+                        "make_public_info": "**Make Public Info**",
+                        "make_private": "Make private",
+                        "make_private_info": "**Make Private Info**",
+                        "delete": "Delete",
+                        "delete_info": "**Deletion Info**"
+                    }
+                }
             }
         },
         "global_components": {
@@ -356,7 +418,7 @@
                 },
                 "main": {
                     "time_limit": "Ліміт часу",
-                    "memory_limit": "Ліміт використання пам'яті",
+                    "memory_limit": "Ліміт пам'яті",
                     "mb": "МБ",
                     "sec": "с",
                     "statement": "Умова",
@@ -390,7 +452,7 @@
                 "general_info": {
                     "problem_name": "Назва задачі",
                     "time_limit": "Ліміт часу",
-                    "memory_limit": "Ліміт використання пам'яті",
+                    "memory_limit": "Ліміт пам'яті",
                     "between": "Має бути між",
                     "and": "та",
                     "mb": "МБ",
@@ -432,6 +494,68 @@
                             "save": "Зберегти",
                             "delete": "Видалити"
                         }
+                    },
+                    "danger_zone": {
+                        "make_public": "Зробити публічною",
+                        "make_public_info": "**інформація про зроблення публічним**",
+                        "make_private": "Зробити приватною",
+                        "make_private_info": "**інформація про зроблення приватним**",
+                        "delete": "Видалити",
+                        "delete_info": "**інформація про видалення**"
+                    }
+                }
+            },
+            "contests": {
+                "header": "Управління моїми змаганнями",
+                "create_contest": "Створити нове змагання",
+                "edit_contest": "редагувати",
+                "contest_edit": {
+                    "contest_name": "Назва змагання",
+                    "description": "Опис",
+                    "optional": "необов'язково",
+                    "start_date": "Дата початку",
+                    "end_date": "Дата завершення",
+                    "for_teams": "Командне змагання",
+                    "max_members": "Максимальна кількість учасників у команді",
+                    "auto_approve": "Автоматично схвалювати всіх учасників",
+                    "save": "Зберегти"
+                },
+                "contest": {
+                    "layout": {
+                        "edit": "Редагувати",
+                        "noteditable": "не можна редагувати",
+                        "general": "Загальне",
+                        "problems": "Задачі",
+                        "participants": "Учасники",
+                        "danger_zone": "Зона ризику"
+                    },
+                    "participants": {
+                        "add_participant": "Додати учасника",
+                        "confirm": "підтвердити",
+                        "delete": "видалити",
+                        "approved": "cхвалений",
+                        "unapproved": "не схвалений",
+                        "username": "Ім'я користувача",
+                        "team_name": "Назва команди (ім'я користувача)",
+                        "individual": "Індивідуальний учасник",
+                        "participants_filter": {
+                            "all": "Всі учасники",
+                            "form": "Форма участі",
+                            "teams": "Команда",
+                            "individuals": "Індивідуальний",
+                            "confirmation": "Підтвердження",
+                            "confirmed": "Підтверджено",
+                            "unconfirmed": "Непідтверджено",
+                            "declined": "Відхилено",
+                            "approval": "Схвалення",
+                            "approved": "Схвалений",
+                            "unapproved": "Не схвалений"
+                        }
+                    },
+                    "problems": {
+                        "add_problem": "Додати задачу",
+                        "delete": "видалити",
+                        "problem_id": "ID задачі"
                     },
                     "danger_zone": {
                         "make_public": "Зробити публічною",
