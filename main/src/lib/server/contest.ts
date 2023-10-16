@@ -86,3 +86,42 @@ export async function getAllProblems(competition_id:number, auth: string): Promi
     let {body} = await request("GET", `/competitions/${competition_id}/problems`, null, auth);
     return body.problems;
 }
+
+export async function submit(competition_id: number, problem_id: number, code: string, 
+        language_name: string, language_version: string, auth: string): Promise<number> {
+    let {body} = await request('POST', `/competitions/${competition_id}/submissions`, 
+        {problem_id, code, language_name, language_version}, auth);
+    return body.submission_id;
+}
+export async function getSubmission(competition_id: number, submission_id: number, auth: string)
+        :Promise<{body: SubmissionPrivate, status: number}> {
+    let responce =  await request('GET', `/competitions/${competition_id}/submissions/${submission_id}`, null, auth);
+    return responce;
+}
+
+export async function getIndividualSubmisions(competition_id: number, problem_id: number, username: string, auth: string): Promise<SubmissionPublic[]> {
+    let {body} = await request('GET', 
+        `/competitions/${competition_id}/participants/individuals/${username}/submissions/public/problems/${problem_id}`, 
+        null, auth);
+    return body.submissions;
+}
+
+export async function getTeamSubmisions(competition_id: number, problem_id: number, team_name: string, auth: string): Promise<SubmissionPublic[]> {
+    let {body} = await request('GET', 
+        `/competitions/${competition_id}/participants/individuals/${team_name}/submissions/public/problems/${problem_id}`, 
+        null, auth);
+    return body.submissions;
+}
+
+export async function getAllIndividualSubmisions(competition_id: number, username: string, auth: string): Promise<SubmissionPublic[]> {
+    let {body} = await request('GET',
+        `/competitions/${competition_id}/participants/individuals/${username}/submissions/public`, null, auth);
+    return body.submissions;
+}
+
+export async function getAllTeamSubmisions(competition_id: number, team_name: string, auth: string): Promise<SubmissionPublic[]> {
+    let {body} = await request('GET', 
+        `/competitions/${competition_id}/participants/individuals/${team_name}/submissions/public`, null, auth);
+    return body.submissions;
+}
+
