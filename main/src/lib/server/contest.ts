@@ -1,14 +1,20 @@
 import { request } from "./general"
 import type {Problem, TestCase} from "./problems"
 
-export interface Competition{
+export enum ContestStatus {
+    unstarted = 'unstarted',
+    ongoing = 'ongoing',
+    ended = 'ended'
+}
+
+export interface Competition {
     id: number
     author_user_username: string
     name: string
     description: string
     start_time: string 
     end_time: string 
-    status: string 
+    status: ContestStatus
     private: boolean
     maximum_team_members_number: number
     auto_confirm_participants: boolean
@@ -28,14 +34,14 @@ export interface CompetitionProblem extends Problem{
     test_cases: TestCase[];
 }
 
-export async function createCompetition(name: string, description: string, start_time: string,end_time: string,
+export async function createContest(name: string, description: string, start_time: string,end_time: string,
         _private: boolean, maximum_team_members_number: number, auto_confirm_participants: boolean, auth: string): Promise<number> {
     let {body} = await request("POST", "/competitions", {name, description, start_time, end_time, private:_private,
         maximum_team_members_number, auto_confirm_participants}, auth);
     return Number(body.competition_id);
 } 
 
-export async function getCompetition(competition_id:number, auth: string): Promise<Competition> {
+export async function getContest(competition_id:number, auth: string): Promise<Competition> {
     let {body} = await request("GET", `/competitions/${competition_id}`, null, auth);
     return body;
 }
@@ -53,7 +59,7 @@ export async function canBeEdited(competition_id:number, auth: string): Promise<
     return body.can;
 }
 
-export async function updateCompetition(competition_id:number, name: string, description: string, start_time: string,
+export async function updateContest(competition_id:number, name: string, description: string, start_time: string,
         end_time: string, maximum_team_members_number: number, auto_confirm_participants: boolean, auth: string) {
     await request("PUT", `/competitions/${competition_id}`, {name, description, start_time, end_time,
         maximum_team_members_number, auto_confirm_participants}, auth);
