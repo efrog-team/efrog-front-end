@@ -1,19 +1,5 @@
 import { request } from "./general"
 
-interface Team{
-    name: string
-    owner_user_username: string
-    active: boolean
-}
-
-interface Member{
-    member_username: string
-    team_name: string
-    coach: boolean
-    confirmed: boolean
-    declined: boolean 
-}
-
 export async function getInfo(team_name: string): Promise<Team> {
     let {body} = await request("GET", `/teams/${team_name}`);
     return body;

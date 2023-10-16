@@ -1,47 +1,5 @@
 import { request } from "./general"
 
-export interface SubmissionPublic{
-    id: number
-    author_user_username: string
-    problem_id: number
-    problem_name: string
-    language_name: string
-    language_version: string
-    time_sent: string
-    total_verdict: string
-}
-
-export interface SubmissionPrivate{
-    id: number
-    author_user_username: string
-    problem_id: number
-    problem_name: string
-    code: string
-    language_name: string
-    language_version: string
-    time_sent: string
-    checked: boolean
-    compiled: boolean
-    compilation_details: string
-    results: TestCase[]
-    total_verdict: string | undefined
-    correct_score: number | undefined
-    total_score: number | undefined
-    realime_link: string | undefined
-}
-
-interface TestCase{
-    test_case_id: number
-    test_case_score: number
-    test_case_opened: boolean
-    verdict_text: string
-    time_taken: number
-    cpu_time_taken: number
-    virtual_memory_taken: number
-    physical_memory_taken: number 
-}
-
-
 export async function submit(problem_id: number, code: string, language_name:  string, 
         language_version: string, auth: string): Promise<number> {
     let {body} = await request("POST", "/submissions", {problem_id, code, language_name, 

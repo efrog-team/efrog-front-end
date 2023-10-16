@@ -1,38 +1,4 @@
 import { request } from "./general"
-import type {Problem, TestCase} from "./problems"
-
-export enum ContestStatus {
-    unstarted = 'unstarted',
-    ongoing = 'ongoing',
-    ended = 'ended'
-}
-
-export interface Competition {
-    id: number
-    author_user_username: string
-    name: string
-    description: string
-    start_time: string 
-    end_time: string 
-    status: ContestStatus
-    private: boolean
-    maximum_team_members_number: number
-    auto_confirm_participants: boolean
-}
-
-export interface Participant{
-    competition_id: number
-    username_or_team_name: string
-    individual: boolean
-    author_confirmed: boolean
-    author_declined: boolean
-    participant_confirmed: boolean
-    participant_declined: boolean 
-}
-
-export interface CompetitionProblem extends Problem{
-    test_cases: TestCase[];
-}
 
 export async function createContest(name: string, description: string, start_time: string,end_time: string,
         _private: boolean, maximum_team_members_number: number, auto_confirm_participants: boolean, auth: string): Promise<number> {
@@ -41,7 +7,7 @@ export async function createContest(name: string, description: string, start_tim
     return Number(body.competition_id);
 } 
 
-export async function getContest(competition_id:number, auth: string): Promise<Competition> {
+export async function getContest(competition_id:number, auth: string): Promise<Contest> {
     let {body} = await request("GET", `/competitions/${competition_id}`, null, auth);
     return body;
 }
@@ -107,7 +73,7 @@ export async function addProblem(competition_id: number, problem_id: number, aut
     await request('POST', `/competitions/${competition_id}/problems`, {problem_id}, auth);
 }
 
-export async function getProblem(competition_id: number, problem_id: number, auth: string): Promise<CompetitionProblem> {
+export async function getProblem(competition_id: number, problem_id: number, auth: string): Promise<ContestProblem> {
     let {body} = await request("GET", `/competitions/${competition_id}/problems/${problem_id}`, null, auth);
     return body;
 }
@@ -116,7 +82,7 @@ export async function deleteProblem(competition_id: number, problem_id: number, 
     await request("DELETE", `/competitions/${competition_id}/problems/${problem_id}`, null, auth);
 }
 
-export async function getAllProblems(competition_id:number, auth: string): Promise<CompetitionProblem[]> {
+export async function getAllProblems(competition_id:number, auth: string): Promise<ContestProblem[]> {
     let {body} = await request("GET", `/competitions/${competition_id}/problems`, null, auth);
     return body.problems;
 }

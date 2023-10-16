@@ -1,11 +1,5 @@
 import { request } from "./general"
 
-interface User{
-    username: string
-    email: string
-    name: string
-}
-
 export async function create(username: string, email: string, name: string, password: string){
     await request("POST", "/users", {username, email, name, password});
 }
