@@ -1,5 +1,5 @@
 import {formToObj, formatDate} from '$lib/features'
-import { createCompetition } from '$lib/server/contest.js';
+import { createContest } from '$lib/server/contest.js';
 import {fail, redirect} from '@sveltejs/kit'
 import { validateFormInfo } from '../validate';
 
@@ -9,7 +9,7 @@ export const actions = {
 		let id;
 		try {
             validateFormInfo(formData);
-			id = await createCompetition(formData["name"], formData["description"], formatDate(formData["start_time"]), 
+			id = await createContest(formData["name"], formData["description"], formatDate(formData["start_time"]), 
                 formatDate(formData["end_time"]), true, Number(formData["maximum_team_members_number"]), 
                 !!formData["auto_confirm_participants"], cookies.get("auth")||"");
 		} catch (err: any) {

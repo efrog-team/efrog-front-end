@@ -7,7 +7,7 @@
 
     let loc = locs[data.lang as keyof typeof locs].editor.contests.contest.participants;
 
-    let individual = data.competition.maximum_team_members_number == 1;
+    let individual = data.contest.maximum_team_members_number == 1;
 </script>
 <div class="mb-4 mt-3">
     <button class="btn btn-accent {form?.error ? 'disabled' : ''}" data-bs-toggle="modal" data-bs-target="#addition-modal"><i class="bi-plus"></i>{loc.add_participant}</button>
@@ -17,7 +17,7 @@
     <div class="list-group">
         {#each data.participants as participant}
         <li class="list-group-item list-group-item-action d-flex">
-            <span class="me-2"><i class="me-2 bi bi-{participant.participant_confirmed ? 'check' : participant.participant_confirmed ? 'x' : 'question'}-circle"></i></span>
+            <span class="me-2"><i class="me-2 bi bi-{participant.participant_confirmed ? 'check' : participant.participant_declined ? 'x' : 'question'}-circle"></i></span>
             <a class="me-auto" href="/{data.lang}/{participant.individual?"users":"teams"}/{participant.username_or_team_name}">
                 {participant.username_or_team_name} 
                 {#if !participant.individual}

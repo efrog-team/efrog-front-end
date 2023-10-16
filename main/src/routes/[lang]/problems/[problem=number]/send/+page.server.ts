@@ -1,14 +1,10 @@
 import { checkAuth } from '$lib/check.js'
+import { getLangInfo } from '$lib/features';
 import { submit } from '$lib/server/submission.js'
 import { redirect } from '@sveltejs/kit';
 
 export async function load({cookies, url, params}){
     await checkAuth(cookies, url, params.lang);
-}
-
-function getLangInfo(str: string){
-    let [_, language, version] = str.match(/(.+) \((.+)\)/);
-    return {language, version};
 }
 
 export const actions = {

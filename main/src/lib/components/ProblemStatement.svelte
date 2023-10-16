@@ -1,10 +1,8 @@
 <script lang="ts">
-    import { page } from '$app/stores';
     import { onMount } from 'svelte';
     import renderMathInElement from 'katex/contrib/auto-render'
     import { katexDelimiters } from '$lib/config.js';
     import locs from '$lib/localisation.json';
-    import type { Problem, TestCase } from '$lib/server/problems';
 
 	export let problem: Problem;
     export let examples: TestCase[];

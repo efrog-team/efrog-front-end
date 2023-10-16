@@ -23,7 +23,7 @@
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link {$page.url.pathname == `/${data.lang}/olimpiads` ? 'active':''}" href="/{data.lang}/olimpiads">
+            <a class="nav-link {$page.url.pathname == `/${data.lang}/contests` ? 'active':''}" href="/{data.lang}/contests">
                 {loc.contests}
             </a>
             </li>

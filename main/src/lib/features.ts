@@ -34,3 +34,8 @@ export function convertDate(str: string){
 	let d = new Date(str+"Z");
 	return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${d.toTimeString().slice(0,8)}`
 }
+
+export function getLangInfo(str: string){
+    let [_, language, version] = str.match(/(.+) \((.+)\)/) as string[];
+    return {language, version};
+}

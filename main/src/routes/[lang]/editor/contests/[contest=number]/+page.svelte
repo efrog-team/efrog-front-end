@@ -4,4 +4,4 @@
     export let data;
     export let form;
 </script>
-<ContestEdit lang={data.lang} info={form || {data: data.competition}}/>
+<ContestEdit lang={data.lang} info={form || {data: data.contest}}/>

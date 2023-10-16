@@ -1,13 +1,17 @@
 import { convertDate } from '$lib/features.js';
-import { getCompetition, canBeEdited } from '$lib/server/contest.js';
+import { getContest, canBeEdited } from '$lib/server/contest.js';
+import { error } from '@sveltejs/kit';
 
 export async function load({params, cookies}) {
-	let competition = await getCompetition(Number(params.contest), cookies.get("auth")||"");
-	competition.start_time = convertDate(competition.start_time);
-	competition.end_time = convertDate(competition.end_time);
+	let contest = await getContest(Number(params.contest), cookies.get("auth")||"");
+	contest.start_time = convertDate(contest.start_time);
+	contest.end_time = convertDate(contest.end_time);
+	if(contest.author_user_username != cookies.get("username")){
+		throw error(403);
+	}
 
 	return { 
-		competition,
+		contest,
 		editable: await canBeEdited(Number(params.contest), cookies.get("auth") || ""),
 		id: params.contest
 	 };

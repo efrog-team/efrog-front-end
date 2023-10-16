@@ -18,7 +18,7 @@
 </script>
 {#if data.editable}
 <div class="mb-3 mt-3">
-    {#if data.competition.private}
+    {#if data.contest.private}
     <button class="btn btn-outline-danger px-4" on:click={()=>action("make_public")}>{loc.make_public}</button>
     <span class="text-for-btn btn disabled">{loc.make_public_info}</span>
     {:else}

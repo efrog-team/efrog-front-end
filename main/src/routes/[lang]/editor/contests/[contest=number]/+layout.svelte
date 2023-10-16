@@ -14,7 +14,7 @@
 </script>
 
 <div class="mb-2">
-    <h2 class="header">{data.competition.name} {data.editable ? loc.edit: `(${loc.noteditable})`}</h2>
+    <h2 class="header">{data.contest.name} {data.editable ? loc.edit: `(${loc.noteditable})`}</h2>
 </div>
 <ul class="nav mb-2">
     <li class="nav-item">   

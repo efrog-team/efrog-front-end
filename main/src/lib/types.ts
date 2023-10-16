@@ -47,16 +47,10 @@ interface Contest {
     description: string
     start_time: string 
     end_time: string 
-    status: ContestStatus
+    status: 'unstarted' | 'ongoing' | 'ended'
     private: boolean
     maximum_team_members_number: number
     auto_confirm_participants: boolean
-}
-
-enum ContestStatus {
-    unstarted = 'unstarted',
-    ongoing = 'ongoing',
-    ended = 'ended'
 }
 
 interface Participant{
