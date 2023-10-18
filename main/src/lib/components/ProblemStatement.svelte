@@ -10,7 +10,13 @@
 
     let loc = locs[lang as keyof typeof locs].global_components.problem_statement;
 
+    let statementEl: HTMLElement, inputEl:HTMLElement, outputEl:HTMLElement, notesEl:HTMLElement; 
+
     onMount(()=>{
+        if(statementEl) statementEl.innerText = problem.statement;
+        if(inputEl) inputEl.innerText = problem.input_statement;
+        if(outputEl) outputEl.innerText = problem.output_statement;
+        if(notesEl) notesEl.innerText = problem.notes;
         (document.querySelectorAll(".katex-render") as NodeListOf<HTMLElement>).forEach((elem)=>{
             renderMathInElement(elem, {
                 throwOnError: false,
@@ -40,20 +46,20 @@
 </div>
 <div class="mb-4">
     <h5>{loc.statement}</h5>
-    <p class="katex-render">{problem.statement}</p>
+    <p class="katex-render" bind:this={statementEl}></p>
 </div>
 <div class="mb-4">
     <h5>{loc.input_format}</h5>
-    <p class="katex-render">{problem.input_statement}</p>  
+    <p class="katex-render" bind:this={inputEl}></p>  
 </div>
 <div class="mb-4">
     <h5>{loc.output_format}</h5>
-    <p class="katex-render">{problem.output_statement}</p>  
+    <p class="katex-render" bind:this={outputEl}></p>  
 </div>
 {#if problem.notes}
 <div class="mb-4">
     <h5>{loc.notes}</h5>
-    <p>{problem.notes}</p>  
+    <p class="katex-render"bind:this={notesEl}></p>  
 </div>
 {/if}
 <div class="mb-4">
