@@ -1,19 +1,22 @@
 <script lang="ts">
     import { invalidateAll } from '$app/navigation';
     import { convertDate } from '$lib/features.js';
+    import RegisterModal from './RegisterModal.svelte';
 
     export let data;
+    export let form;
 
     async function action(type: string){
-        type += data.contest.maximum_team_members_number == 1 ? "Individual":"Team";
+        if(!data.userInfo) return;
+        type += data.userInfo.individual ? "Individual":"Team";
         await fetch(`/${data.lang}/contests/${data.contest.id}`, {
             method: 'PUT',
-            body: JSON.stringify({ action: type }),
+            body: JSON.stringify({ action: type, name: data.userInfo.username_or_team_name }),
         });
         invalidateAll();
     }
 </script>
-{#if data.needConfirmation}
+{#if data.userInfo && !data.userInfo.participant_confirmed}
 <div class="alert d-flex align-items-stretch mt-2" role="alert">
     <span class="flex-grow-1 my-auto">confirm info</span>
     <button class="btn btn-accent me-2" on:click={ () => { action("confirm") } }>confirm</button>
@@ -30,6 +33,19 @@
     </div>
     {/if}
 </div>
+{#if !data.userInfo && data.username}
+<div class="mb-4 mt-2">
+    {#if data.contest.maximum_team_members_number == 1}
+    <form method="post" action="?/register">
+        <input type="hidden" name="type" value="individual">
+        <button type="submit" class="btn btn-accent">Register</button>
+    </form>
+    {:else}
+    <button type="submit" class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#reg-modal">Register</button>
+    <RegisterModal form={form} teams={data.userTeams}/>
+    {/if}
+</div>
+{/if}
 <div class="mb-5">
     <div class="mb-2">
         <h3>

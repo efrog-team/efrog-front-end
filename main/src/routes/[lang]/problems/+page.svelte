@@ -12,7 +12,7 @@
     <div class="list-group">
     {#each data.problems as problem, i}     
         <li class="list-group-item list-group-item-action d-flex">
-            <a href="/{data.lang}/problems/{problem.id}" class="col-1">{i + 1}</a>
+            <a href="/{data.lang}/problems/{problem.id}" class="me-4">{i + 1}</a>
             <a href="/{data.lang}/problems/{problem.id}" class="me-auto">{problem.name}</a>
         </li>
     {/each}

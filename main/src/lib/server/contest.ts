@@ -128,7 +128,7 @@ export async function getIndividualSubmisions(competition_id: number, problem_id
 
 export async function getTeamSubmisions(competition_id: number, problem_id: number, team_name: string, auth: string): Promise<SubmissionPublic[]> {
     let {body} = await request('GET', 
-        `/competitions/${competition_id}/participants/individuals/${team_name}/submissions/public/problems/${problem_id}`, 
+        `/competitions/${competition_id}/participants/teams/${team_name}/submissions/public/problems/${problem_id}`, 
         null, auth);
     return body.submissions;
 }
@@ -141,11 +141,11 @@ export async function getAllIndividualSubmisions(competition_id: number, usernam
 
 export async function getAllTeamSubmisions(competition_id: number, team_name: string, auth: string): Promise<SubmissionPublic[]> {
     let {body} = await request('GET', 
-        `/competitions/${competition_id}/participants/individuals/${team_name}/submissions/public`, null, auth);
+        `/competitions/${competition_id}/participants/teams/${team_name}/submissions/public`, null, auth);
     return body.submissions;
 }
 
 export async function getScoreboard(competition_id: number, auth: string) {
-    let {body} = await request("GET", `/co/competitions/${competition_id}/scoreboard`, null, auth);
+    let {body} = await request("GET", `/competitions/${competition_id}/scoreboard`, null, auth);
     return body.participants; 
 }

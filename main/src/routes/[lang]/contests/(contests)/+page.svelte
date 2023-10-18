@@ -12,8 +12,8 @@
     <div class="list-group">
     {#each data.contests as contest, i}     
         <li class="list-group-item list-group-item-action d-flex">
-            <a href="/{data.lang}/contest/{contest.id}" class="col-1">{i + 1}</a>
-            <a href="/{data.lang}/contest/{contest.id}" class="me-auto">{contest.name}</a>
+            <a href="/{data.lang}/contests/{contest.id}" class="me-4">{i + 1}</a>
+            <a href="/{data.lang}/contests/{contest.id}" class="me-auto">{contest.name}</a>
         </li>
     {/each}
     </div>

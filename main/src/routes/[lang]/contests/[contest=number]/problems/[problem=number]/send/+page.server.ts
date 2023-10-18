@@ -1,6 +1,11 @@
+import { checkAuth } from '$lib/check';
 import { getLangInfo } from '$lib/features';
 import { submit } from '$lib/server/contest'
 import { redirect } from '@sveltejs/kit';
+
+export async function load({cookies, params, url}) {
+	await checkAuth(cookies, url, params.lang);
+}
 
 export const actions = {
 	submit: async ({ request, cookies, params }) => {
