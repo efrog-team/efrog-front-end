@@ -264,7 +264,7 @@
             }
         },
         "global_components": {
-            "problem_filter": {
+            "privacy_filter": {
                 "all": "All",
                 "public": "Public",
                 "private": "Private",
@@ -565,7 +565,7 @@
             }
         },
         "global_components": {
-            "problem_filter": {
+            "privacy_filter": {
                 "all": "Всі задачі",
                 "public": "Публічні",
                 "private": "Приватні",

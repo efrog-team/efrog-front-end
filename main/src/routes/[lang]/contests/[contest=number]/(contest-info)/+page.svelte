@@ -6,7 +6,7 @@
 
     async function action(type: string){
         type += data.contest.maximum_team_members_number == 1 ? "Individual":"Team";
-        await fetch(`./${data.contest.id}`, {
+        await fetch(`/${data.lang}/contests/${data.contest.id}`, {
             method: 'PUT',
             body: JSON.stringify({ action: type }),
         });

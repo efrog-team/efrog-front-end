@@ -35,6 +35,21 @@ export async function deleteCpmpetition(competition_id:number, auth: string) {
     await request("DELETE", `/competitions/${competition_id}`, null, auth);
 }
 
+export async function getPublicContests(start: number, limit: number): Promise<Contest[]>{
+    let {body} = await request("GET", `/competitions?start=${start}&limit=${limit}`);
+    return body.competitions;
+}
+
+export async function getParticipatedContests(auth: string): Promise<(Contest&Participant)[]>{
+    let {body} = await request("GET", "/users/me/competitions/participated", null, auth);
+    return body.competitions;
+}
+
+export async function getMyContests(auth: string): Promise<Contest[]>{
+    let {body} = await request("GET", "/users/me/competitions/authored", null, auth);
+    return body.competitions;
+}
+
 export async function addParticipant(competition_id:number, username_or_team_name: string, individual: boolean, 
         auth: string) {
     await request("POST", `/competitions/${competition_id}/participants`, {username_or_team_name, individual}, auth);
@@ -43,6 +58,11 @@ export async function addParticipant(competition_id:number, username_or_team_nam
 export async function getParticipants(competition_id:number, auth: string): Promise<Participant[]> {
     let {body} = await request("GET", `/competitions/${competition_id}/participants`, null, auth);
     return body.participants;
+}
+
+export async function getParticipantData(competition_id: number, username: string, auth: string): Promise<Participant>{
+    let  {body} = await request("GET", `/competitions/${competition_id}/participants/users/${username}`, null, auth);
+    return body;
 }
 
 export async function confirmIndividual(competition_id:number, username: string, auth: string) {
@@ -125,3 +145,7 @@ export async function getAllTeamSubmisions(competition_id: number, team_name: st
     return body.submissions;
 }
 
+export async function getScoreboard(competition_id: number, auth: string) {
+    let {body} = await request("GET", `/co/competitions/${competition_id}/scoreboard`, null, auth);
+    return body.participants; 
+}

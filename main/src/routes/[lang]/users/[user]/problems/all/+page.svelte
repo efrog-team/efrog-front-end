@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ProblemFilter from "$lib/components/ProblemFilter.svelte";
+    import ProblemFilter from "$lib/components/PrivacyFilter.svelte";
     import locs from '$lib/localisation.json'
 
     export let data;

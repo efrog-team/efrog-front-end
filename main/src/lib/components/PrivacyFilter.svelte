@@ -3,7 +3,7 @@
     export let data;
     export let lang: string;
 
-    let loc = locs[lang as keyof typeof locs].global_components.problem_filter;
+    let loc = locs[lang as keyof typeof locs].global_components.privacy_filter;
 
     let all = data;
 
@@ -15,8 +15,8 @@
     let cPrivacy = Privacy.all;
 
     $: {
-        data = all.filter((priblem: any) => {
-            return cPrivacy == Privacy.all || (cPrivacy == Privacy.private) == priblem.private; 
+        data = all.filter((item: Contest | Problem) => {
+            return cPrivacy == Privacy.all || (cPrivacy == Privacy.private) == item.private; 
         });
     }
 </script>

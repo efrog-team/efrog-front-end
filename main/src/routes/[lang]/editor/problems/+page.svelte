@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import ProblemFilter from "$lib/components/ProblemFilter.svelte";
+    import ProblemFilter from "$lib/components/PrivacyFilter.svelte";
     import AdditionModal from "$lib/components/AdditionModal.svelte";
     import locs from '$lib/localisation.json';
 

@@ -54,7 +54,6 @@ interface Contest {
 }
 
 interface Participant{
-    competition_id: number
     username_or_team_name: string
     individual: boolean
     author_confirmed: boolean
