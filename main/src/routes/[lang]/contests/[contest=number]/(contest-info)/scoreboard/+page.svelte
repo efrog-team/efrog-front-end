@@ -1,49 +1,48 @@
 <script lang="ts">
     export let data;
+
+    let problemNumber: {[key:number]: number} = {}
+    data.problems.forEach((problem, i) => problemNumber[problem.id] = i);
+    data.scoreboard.forEach(result => result.problems.sort((a,b)=> problemNumber[a.id]-problemNumber[b.id]));
 </script>
-<!--
-<div class="mb-5 ">
+<div class="mb-5">
     <table class="table-dark table table-hover table table-borderless">
         <thead>
             <tr>
-                <th class="header ps-3">#</th>
-                <th class="header">{loc.verdict}</th>
-                <th class="header">{loc.time}</th>
-                <th class="header">{loc.cpu}</th>
-                <th class="header">{loc.v_memory}</th>
-                <th class="header">{loc.p_memory}</th>
-                <th class="header">{loc.score}</th>
+                <th>Participant</th>
+                <th>Total</th>
+                {#each data.problems as problem, i}
+                    <th>
+                        <a href="/{data.lang}/contests/{data.contest.id}/problems/{problem.id}">
+                            {String.fromCharCode('A'.charCodeAt(0) + i)}
+                        </a>
+                    </th>
+                {/each}
             </tr>
         </thead>
         <tbody>
-            {#each info.results || [] as res, i}
+            {#each data.scoreboard as result}
             <tr>
-                <td class="ps-3">{i+1}</td>
-                <td><i class="bi me-2 {verdictIcon[res.verdict_text]}"></i> {res.verdict_text}</td>
-                <td>{res.time_taken} {loc.ms}</td>
-                <td>{res.cpu_time_taken} {loc.ms}</td>
-                <td>{(res.virtual_memory_taken / 1000).toFixed(2)} {loc.mb}</td>
-                <td>{(res.physical_memory_taken / 1000).toFixed(2)} {loc.mb}</td>
-                <td>{res.verdict_text == "Correct Answer" ? res.test_case_score : 0}/{res.test_case_score}</td>
-              </tr>
+                <td>
+                    <a class="me-auto" href="/{data.lang}/{result.individual?"users":"teams"}/{result.username_or_team_name}">
+                        {result.username_or_team_name} 
+                        {#if !result.individual}
+                        <i class="bi bi-people-fill"></i>
+                        {/if}
+                    </a>
+                </td>
+                <td>{result.total_score!==null?result.total_score: '-'}</td>
+                {#each result.problems as problem}
+                <td>{problem.best_score!==null?problem.best_score: '-'}</td>
+                {/each}
+            </tr>
             {/each}
         </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td></td>
-                <th>{total.time} {loc.ms}</th>
-                <th>{total.cpu} {loc.ms}</th>
-                <th>{(total.vMemory / 1000).toFixed(2)} {loc.mb}</th>
-                <th>{(total.pMemory / 1000).toFixed(2)} {loc.mb}</th>
-                <th>{total.score}</th>
-            </tr>
-        </tfoot>
     </table>
 </div>
 <style>
     th{
-        color:var(--accent-color)
+        font-weight: normal;
+        color: var(--accent-color);
     }
 </style>
--->

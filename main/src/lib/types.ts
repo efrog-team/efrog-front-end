@@ -53,6 +53,17 @@ interface Contest {
     auto_confirm_participants: boolean
 }
 
+interface ScoreboardResult {
+    individual: boolean
+    username_or_team_name: string
+    total_score: number|null
+    problems: {
+        id: number
+        name: string
+        best_score: number
+    }[]
+}
+
 interface Participant{
     username_or_team_name: string
     individual: boolean

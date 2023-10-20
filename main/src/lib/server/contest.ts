@@ -145,7 +145,7 @@ export async function getAllTeamSubmisions(competition_id: number, team_name: st
     return body.submissions;
 }
 
-export async function getScoreboard(competition_id: number, auth: string) {
+export async function getScoreboard(competition_id: number, auth: string): Promise<ScoreboardResult[]> {
     let {body} = await request("GET", `/competitions/${competition_id}/scoreboard`, null, auth);
     return body.participants; 
 }
