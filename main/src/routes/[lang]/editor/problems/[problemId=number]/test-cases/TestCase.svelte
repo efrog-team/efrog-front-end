@@ -1,5 +1,6 @@
 <script lang="ts">
     import locs from '$lib/localisation.json';
+    import InputOutput from './InputOutput.svelte';
     
     export let info: any;
     export let error: any = null;
@@ -27,12 +28,10 @@
     </div>
     <div class="mb-3 row">
         <div class="col-md-6 col-12 mb-3 mb-md-0">
-            <label for="input-{info.id}" class="form-label">{loc.input_data}</label>
-            <textarea value={info.input} class="form-control scrollbar" name="input" id="input-{info.id}" rows="8"></textarea>
+            <InputOutput id={info.id} name='input' value={info.input || ""} lang={lang}/>
         </div>
         <div class="col-md-6 col-12">
-            <label for="output-{info.id}" class="form-label">{loc.output_data}</label>
-            <textarea value={info.solution} class="form-control scrollbar" name="solution" id="output-{info.id}" rows="8"></textarea>
+            <InputOutput id={info.id} name='output' value={info.solution || ""} lang={lang}/>
         </div>
     </div>
     {#if editable}
@@ -49,10 +48,3 @@
     </div>
     {/if}
 </form>
-
-<style>
-    textarea{
-        white-space: nowrap;
-        overflow: auto;
-    }
-</style>

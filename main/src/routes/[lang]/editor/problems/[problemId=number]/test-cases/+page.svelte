@@ -38,7 +38,7 @@
         </h5>
         <div id="panel-{testCase.id}" class="accordion-collapse {testCase.id && form?.id !== testCase.id ? "collapse" : ""}">
             <div class="accordion-body pb-4">
-                <TestCase lang={data.lang} editable={data.editable} error={form?.id === testCase.id ? form.error : null} info={form?.id == testCase.id ? form.data : testCase}/>
+                <TestCase lang={data.lang} editable={data.editable} error={form?.id === testCase.id ? form.error : null} info={form?.id == testCase.id ? form?.data : testCase}/>
             </div>
         </div>
     </div>

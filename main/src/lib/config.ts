@@ -3,11 +3,13 @@ export const serverUrl = "http://localhost:8000"
 export const clientUrl = "http://localhost:5173"
 export const hubUrl = "http://localhost:1204"
 
+// localisations
 export let localisations = [
     "en",
     "uk"
 ];
 
+// submissions
 export let languages = [ 
     "C++ 17",
     "C 17",
@@ -30,23 +32,24 @@ export let prismLang: { [key: string]: string; } = {
 };
 
 export let verdicts = [
-    "Correct Answer",
+    "Correct Answer", // change also at TastCases.svelte
     "Wrong Answer",
     "Compilation Error",
-    "Time Limit",
-    "Memory Limit",
+    "Time Limit Exceeded",
+    "Memory Limit Exceeded",
     "Runtime Error"
 ];
 
 export let verdictIcon: { [key: string]: string; } = {
-    "Memory Limit": "bi-memory text-error",
-    "Time Limit": "bi-alarm-circle text-error",
+    "Memory Limit Exceeded": "bi-memory text-error",
+    "Time Limit Exceeded": "bi-alarm-circle text-error",
     "Runtime Error": "bi-x-circle text-error",
     "Wrong Answer" : "bi-x-circle text-yellow",
-    "Correct Answer": "bi-check-circle text-accent", // change also at TastCases.svelte
+    "Correct Answer": "bi-check-circle text-accent", 
     "Compilation Error": "bi-exclamation-triangle text-error"
 };
 
+// katex render
 export let katexDelimiters = [
     {left: '$$', right: '$$', display: true},
     {left: '$', right: '$', display: false},
@@ -54,6 +57,8 @@ export let katexDelimiters = [
     {left: '\\[', right: '\\]', display: true}
 ]
 
+
+// problem creation
 export let limits = {
     time: {
         default: 2,
@@ -67,8 +72,11 @@ export let limits = {
     }
 }
 
+export let testCaseVisible = 5000;
+
+// pagination
 export let itemsOnPage = 100;
 
+// contest creation
 export let minTimeToContest = 5;
-
 export let minContestDuration = 5;

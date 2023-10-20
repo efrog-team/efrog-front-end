@@ -258,3 +258,7 @@ th.header{
 .scrollbar::-webkit-scrollbar-track { 
     background: var(--scrollbar-track);
 }
+
+input[type="file"]{
+    display: none;
+}

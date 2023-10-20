@@ -186,6 +186,8 @@
                             "score": "Score",
                             "input_data": "Input Data",
                             "output_data": "Output Data",
+                            "from_file": "Load from file",
+                            "clear_disabled": "Clear",
                             "save": "Save",
                             "delete": "Delete"
                         }
@@ -487,6 +489,8 @@
                             "score": "Балів за тест",
                             "input_data": "Вхідні дані",
                             "output_data": "Вихідні дані",
+                            "from_file": "Обрати файл",
+                            "clear_disabled": "Очистити",
                             "save": "Зберегти",
                             "delete": "Видалити"
                         }

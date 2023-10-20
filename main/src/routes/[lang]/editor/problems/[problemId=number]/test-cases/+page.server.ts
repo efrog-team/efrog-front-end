@@ -11,7 +11,7 @@ export async function load({params, cookies, parent}) {
 
 function validateFormInfo(data){
 	if(!data.get("input")?.length) throw new Error("Input is required");
-	if(!data.get("solution")?.length) throw new Error("Output is required");
+	if(!data.get("output")?.length) throw new Error("Output is required");
 }
 
 export const actions = {
@@ -20,11 +20,11 @@ export const actions = {
 		try {
 			validateFormInfo(formData);
 			if(formData.get("id") == 0){
-                await createTestCase(Number(params.problemId), formData.get("input"), formData.get("solution"), 
+                await createTestCase(Number(params.problemId), formData.get("input"), formData.get("output"), 
                     Number(formData.get("score")), !!formData.get("opened"), cookies.get("auth"));
             }else{
                 await updateTestCase(Number(params.problemId), Number(formData.get("id")), 
-                    formData.get("input"), formData.get("solution"), Number(formData.get("score")), 
+                    formData.get("input"), formData.get("output"), Number(formData.get("score")), 
                     cookies.get("auth"));
                 if(formData.get("opened")){
                     await makeTestCaseOpened(Number(params.problemId), Number(formData.get("id")), 
