@@ -96,3 +96,7 @@ export async function getProblems(start: number, limit: number): Promise<Problem
     let {body} = await request("GET", `/problems?start=${start}&limit=${limit}`);
     return body.problems;
 }
+
+export async function deleteAuthorsSubmissions(problem_id: number, auth: string) {
+    await request("DELETE", `/problems/${problem_id}/submissions/authors`, null, auth);
+}

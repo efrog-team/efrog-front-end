@@ -257,7 +257,9 @@
                         "make_private": "Make private",
                         "make_private_info": "**make private info**",
                         "delete": "Delete",
-                        "delete_info": "**deletion info**"
+                        "delete_info": "**deletion info**",
+                        "delete_submissions": "Delete all my submissions",
+                        "delete_submissions_info": "**delete_submissions**"
                     }
                 }
             },
@@ -621,7 +623,9 @@
                         "make_private": "Зробити приватною",
                         "make_private_info": "**інформація про зроблення приватним**",
                         "delete": "Видалити",
-                        "delete_info": "**інформація про видалення**"
+                        "delete_info": "**інформація про видалення**",
+                        "delete_submissions": "Видалити всі мої відправки",
+                        "delete_submissions_info": "**інформація про видалення**"
                     }
                 }
             },

@@ -26,11 +26,9 @@
     <li class="nav-item">
         <a class="nav-link {pageName == '/preview' ? 'active':''}" href="{baseName}/preview">{loc.preview}</a>
     </li>
-    {#if data.editable}
     <li class="nav-item">
         <a class="nav-link {pageName == '/danger-zone' ? 'active':''}" href="{baseName}/danger-zone">{loc.danger_zone}</a>
     </li>
-    {/if}
 </ul>
 <slot />
 

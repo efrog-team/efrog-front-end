@@ -26,9 +26,14 @@
     <span class="text-for-btn btn disabled">{loc.make_private_info}</span>
     {/if}
 </div>
-<div class="mb-4">
+<div class="mb-3">
     <button class="btn btn-outline-danger px-4" on:click={()=>action("delete")}>{loc.delete}</button>
     <span class="text-for-btn btn disabled">{loc.delete_info}</span>
+</div>
+{:else}
+<div class="mb-4">
+    <button class="btn btn-outline-danger px-4" on:click={()=>action("delete_submissions")}>{loc.delete_submissions}</button>
+    <span class="text-for-btn btn disabled">{loc.delete_submissions_info}</span>
 </div>
 {/if}
 <style>
