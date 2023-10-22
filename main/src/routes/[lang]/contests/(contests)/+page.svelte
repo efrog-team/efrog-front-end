@@ -1,13 +1,13 @@
 <script lang="ts">
-    export let data;
     import Pagination from '$lib/components/Pagination.svelte';
     import { itemsOnPage } from '$lib/config.js';
-    //import locs from '$lib/localisation.json';
-
-    //let loc = locs[data.lang as keyof typeof locs].problems;
+    import locs from '$lib/localisation.json';
+    
+    export let data;
+    let loc = locs[data.lang as keyof typeof locs].contests.main
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">Contests</h2>
+    <h2 class="header">{loc.header}</h2>
 </div>
 <div class="mt-3 mb-4">
     <div class="list-group">

@@ -1,16 +1,16 @@
 <script lang="ts">
     import ContestsFilter from "./ContestsFilter.svelte";
+    import locs from '$lib/localisation.json';
 
     export let data;
-    //import locs from '$lib/localisation.json';
 
-    //let loc = locs[data.lang as keyof typeof locs].problems;
+    let loc = locs[data.lang as keyof typeof locs].contests.participated;
     let filteredContests = data.contests;
 </script>
 <div class="mb-4 mt-2">
-    <h2 class="header">Participated contests</h2>
+    <h2 class="header">{loc.header}</h2>
 </div>
-<ContestsFilter bind:data={filteredContests}/>
+<ContestsFilter lang={data.lang} bind:data={filteredContests}/>
 <div class="mt-3 mb-4">
     <div class="list-group">
     {#each filteredContests as contest, i}     
@@ -22,11 +22,11 @@
             <a href="/{data.lang}/contests/{contest.id}" class="me-auto">{contest.name}</a>
             <span>
                 {#if !contest.author_confirmed }
-                <span class="text-yellow">need authors approval</span>
+                <span class="text-yellow">{loc.unapproved.toLowerCase()}</span>
                 {:else if !contest.participant_confirmed }
-                <span class="text-yellow">need confirmation</span>
+                <span class="text-yellow">{loc.unconfirmed.toLowerCase()}</span>
                 {:else}
-                <span class="text-accent">registered</span>
+                <span class="text-accent">{loc.registered.toLowerCase()}</span>
                 {/if}
             </span>
         </li>

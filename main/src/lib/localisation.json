@@ -156,17 +156,22 @@
                 "ended": "Ended",
                 "registration": "Registration"
             },
-            "contest":{
+            "contest": {
                 "layout":{
                     "general": "General",
                     "participants": "Participants",
                     "scoreboard": "Scoreboard"
                 },
                 "main": {
-                    "Confirm that"
+                    "confirm": {
+                        "info": "Confirm that you are member of this contest",
+                        "confirm": "Confirm",
+                        "decline": "Decline"
+                    },
                     "status": "Status",
                     "unstarted": "Scheduled",
-                    "ongoing": "On going",
+                    "ongoing": "Started",
+                    "ended": "Ended",
                     "problems": "Problems",
                     "reg_modal": {
                         "registration": "Registration",
@@ -268,7 +273,7 @@
                     "optional": "optional",
                     "start_date": "Start Date",
                     "end_date": "End Date",
-                    "for_teams": "Team Competition",
+                    "for_teams": "Team Contest",
                     "max_members": "Maximum Number of Team Members",
                     "auto_approve": "Automatically Approve All Participants",
                     "save": "Save"
@@ -520,9 +525,15 @@
                     "scoreboard": "Таблиця результатів"
                 },
                 "main": {
+                    "confirm": {
+                        "info": "Підтвердіть, що ви є учасником цього змагання",
+                        "confirm": "Підтвердити",
+                        "decline": "Відхилити"
+                    },
                     "status": "Статус",
-                    "unstarted": "Запланований",
+                    "unstarted": "Заплановане",
                     "ongoing": "Триває",
+                    "ended": "Завершено",
                     "problems": "Задачі",
                     "reg_modal": {
                         "registration": "Реєстрація",

@@ -1,5 +1,8 @@
 <script lang="ts">
+    import locs from '$lib/localisation.json'
     export let data;
+
+    let loc = locs[data.lang as keyof typeof locs].contests.contest.scoreboard;
 
     let problemNumber: {[key:number]: number} = {}
     data.problems.forEach((problem, i) => problemNumber[problem.id] = i);
@@ -9,8 +12,8 @@
     <table class="table-dark table table-hover table table-borderless">
         <thead>
             <tr>
-                <th>Participant</th>
-                <th>Total</th>
+                <th>{loc.participant}</th>
+                <th>{loc.total}</th>
                 {#each data.problems as problem, i}
                     <th>
                         <a href="/{data.lang}/contests/{data.contest.id}/problems/{problem.id}">
