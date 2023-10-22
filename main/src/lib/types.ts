@@ -104,7 +104,7 @@ interface SubmissionPrivate{
     total_verdict: string | undefined
     correct_score: number | undefined
     total_score: number | undefined
-    realime_link: string | undefined
+    realtime_link: string | undefined
 }
 
 interface TestCaseResult{

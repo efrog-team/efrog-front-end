@@ -1,6 +1,7 @@
 <script lang="ts">
     export let data;
     import Pagination from '$lib/components/Pagination.svelte';
+    import { itemsOnPage } from '$lib/config.js';
     import locs from '$lib/localisation.json';
 
     let loc = locs[data.lang as keyof typeof locs].problems;
@@ -19,5 +20,5 @@
     </div>
 </div>
 <div class="mb-4">
-    <Pagination maxPage={data.last} currentPage={data.page}/>
+    <Pagination lastPage={data.problems.length<itemsOnPage} currentPage={data.page}/>
 </div>

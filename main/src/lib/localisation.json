@@ -5,6 +5,7 @@
             "contests": "Contests",
             "account": "Account",
             "edit_account": "Edit Account",
+            "editor": "Editor",
             "login": "Login",
             "register": "Register",
             "logout": "Logout" 
@@ -132,7 +133,60 @@
                 }
             }
         },
+        "contests":{
+            "layout": {
+                "public": "Public",
+                "participated": "Participated"
+            },
+            "main": {
+                "header": "Public contests"
+            },
+            "participated": {
+                "header": "Participated contests",
+                "unapproved": "Need authors approval",
+                "unconfirmed": "Need confirmation",
+                "registered": "Registered",
+                "all": "All contests",
+                "privacy": "Privacy",
+                "private": "Private",
+                "public": "Public",
+                "status": "Status",
+                "unstarted": "Scheduled",
+                "ongoing": "On going",
+                "ended": "Ended",
+                "registration": "Registration"
+            },
+            "contest":{
+                "layout":{
+                    "general": "General",
+                    "participants": "Participants",
+                    "scoreboard": "Scoreboard"
+                },
+                "main": {
+                    "Confirm that"
+                    "status": "Status",
+                    "unstarted": "Scheduled",
+                    "ongoing": "On going",
+                    "problems": "Problems",
+                    "reg_modal": {
+                        "registration": "Registration",
+                        "as_team": "Register as team",
+                        "as_individual": "Register as individual",
+                        "register": "Register",
+                        "close": "Close"
+                    }
+                },
+                "scoreboard": {
+                    "participant": "Participant",
+                    "total": "Total"
+                }
+            }
+        },
         "editor": {
+            "layout": {
+                "problems": "Problems",
+                "contests": "Contests"
+            },
             "problems": {
                 "header": "Manage my problems",
                 "create_problem": "Create new problem",
@@ -203,7 +257,9 @@
                 }
             },
             "contests": {
-                "header": "Manage My Contests",
+                "header": "Manage my problems",
+                "public": "public",
+                "private": "private",
                 "create_contest": "Create New Contest",
                 "edit_contest": "edit",
                 "contest_edit": {
@@ -306,6 +362,7 @@
             "contests": "Змагання",
             "account": "Аккаунт",
             "edit_account": "Редагувати аккаунт",
+            "editor": "Редактор",
             "login": "Увійти",
             "register": "Зареєструватися",
             "logout": "Вийти"
@@ -433,7 +490,59 @@
                 }
             }
         },
+        "contests": {
+            "layout": {
+                "public": "Публічні",
+                "participated": "Мої"
+            },
+            "main": {
+                "header": "Публічні змагання"
+            },
+            "participated": {
+                "header": "Змагання, в яких Ви брали участь",
+                "unapproved": "Потрібна згода автора",
+                "unconfirmed": "Потрібне підтвердження",
+                "registered": "Зареєстровані",
+                "all": "Усі змагання",
+                "privacy": "Приватність",
+                "private": "Приватні",
+                "public": "Публічні",
+                "status": "Статус",
+                "unstarted": "Заплановані",
+                "ongoing": "Тривають",
+                "ended": "Завершені",
+                "registration": "Реєстрація"
+            },
+            "contest": {
+                "layout": {
+                    "general": "Загальне",
+                    "participants": "Учасники",
+                    "scoreboard": "Таблиця результатів"
+                },
+                "main": {
+                    "status": "Статус",
+                    "unstarted": "Запланований",
+                    "ongoing": "Триває",
+                    "problems": "Задачі",
+                    "reg_modal": {
+                        "registration": "Реєстрація",
+                        "as_team": "Зареєструватись командою",
+                        "as_individual": "Зареєструватись індивідуально",
+                        "register": "Зареєструватись",
+                        "close": "Закрити"
+                    }
+                },
+                "scoreboard": {
+                    "participant": "Учасник",
+                    "total": "Всього"
+                }
+            }
+        },
         "editor": {
+            "layout": {
+                "problems": "Задачі",
+                "contests": "Змагання"
+            },
             "problems": {
                 "header": "Управління моїми задачами",
                 "create_problem": "Створити нову задачу",
@@ -508,6 +617,8 @@
             "contests": {
                 "header": "Управління моїми змаганнями",
                 "create_contest": "Створити нове змагання",
+                "public": "публічне",
+                "private": "приватне",
                 "edit_contest": "редагувати",
                 "contest_edit": {
                     "contest_name": "Назва змагання",
@@ -570,7 +681,7 @@
         },
         "global_components": {
             "privacy_filter": {
-                "all": "Всі задачі",
+                "all": "Всі",
                 "public": "Публічні",
                 "private": "Приватні",
                 "privacy": "Приватність"

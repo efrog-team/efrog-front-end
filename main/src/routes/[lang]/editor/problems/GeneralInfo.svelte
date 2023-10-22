@@ -3,7 +3,6 @@
     import locs from '$lib/localisation.json';
     
     export let data: any = {};
-    export let newProblem: boolean;
     export let lang: string;
 
     let loc = locs[lang as keyof typeof locs].editor.problems.general_info;
@@ -43,9 +42,3 @@
         </div>
     </div>
 </div>
-{#if newProblem}
-<div class="form-check mb-2">
-    <input class="form-check-input" type="checkbox" name="public" id="public" checked={!!data.public}>
-    <label class="form-check-label" for="public">{loc.public} <span class="form-text">({loc.public_info})</span></label>
-</div>
-{/if}

@@ -17,7 +17,7 @@ export const actions = {
 			validateFormInfo(formData);
 			id = await createProblem(formData["name"], formData["statement"], formData["input_statement"], 
 			formData["output_statement"], formData["notes"], Number(formData["time_restriction"]), 
-			Number(formData["memory_restriction"]), !!!formData["public"], cookies.get("auth")||"");
+			Number(formData["memory_restriction"]), true, cookies.get("auth")||"");
 		} catch (err: any) {
 			if(err.status && err.status != 409){
 				throw err;

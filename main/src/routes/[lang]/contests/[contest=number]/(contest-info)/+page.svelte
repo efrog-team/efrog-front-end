@@ -59,8 +59,7 @@
         </h3>
     </div>
     <div >
-        <div class="mb-1">Start date:&nbsp; {convertDate(data.contest.start_time)}<br></div>
-        <div>End date:&nbsp;&nbsp;&nbsp; {convertDate(data.contest.end_time)}</div>
+        <div>{convertDate(data.contest.start_time)} — {convertDate(data.contest.end_time)}</div>
     </div>
 </div>
 {#if data.contest.status != 'unstarted'}

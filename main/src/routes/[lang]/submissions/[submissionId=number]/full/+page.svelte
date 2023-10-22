@@ -15,7 +15,7 @@
         window.Prism.highlightAll();
         if(data.info.checked) return;
 
-        let socket = new WebSocket(data.info.realime_link || '');
+        let socket = new WebSocket(data.info.realtime_link || '');
         socket.onmessage = (event) => {
             const json = JSON.parse(event.data);
             switch (json.type) {

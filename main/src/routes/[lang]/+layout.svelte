@@ -2,6 +2,7 @@
 <script lang="ts">
     import { invalidateAll } from '$app/navigation';
 	import { page } from '$app/stores';
+    import { localisations } from '$lib/config.js';
     import locs from '$lib/localisation.json'
 
     export let data;
@@ -29,6 +30,18 @@
             </li>
         </ul>
         <ul class="navbar-nav pr-lg-3">
+            <!-- <li class="nav-item dropdown me-1">
+                <button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+                    {data.lang}
+                </button>
+                <ul class="lang-menu dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                    {#each localisations as lang}
+                    <li><a class="dropdown-item" href="/{lang}/{$page.url.pathname.slice(4)}">
+                        {lang}
+                    </a></li>
+                    {/each}
+                </ul>
+            </li> -->
             {#if data?.username}
                 <li class="nav-item dropdown">
                     <button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,6 +53,9 @@
                         </a></li>
                         <li><a class="dropdown-item" href="/{data.lang}/users/{data.username}/edit">
                             {loc.edit_account}
+                        </a></li>
+                        <li><a class="dropdown-item" href="/{data.lang}/editor">
+                            {loc.editor}
                         </a></li>
                         <li><a class="dropdown-item" href="/{data.lang}/account/logout?back={$page.url}" on:click={invalidateAll}>
                             {loc.logout}
@@ -80,5 +96,8 @@
     .navbar .active{
         color: var(--accent-color);
         font-weight: 500;
+    }
+    .lang-menu{
+        --bs-dropdown-min-width: 0;
     }
 </style>

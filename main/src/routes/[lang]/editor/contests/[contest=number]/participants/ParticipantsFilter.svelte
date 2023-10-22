@@ -1,6 +1,5 @@
 <script lang="ts">
     import locs from '$lib/localisation.json';
-    import type { Participant } from '$lib/server/contest';
 
     export let data: Participant[];
     export let lang: string;

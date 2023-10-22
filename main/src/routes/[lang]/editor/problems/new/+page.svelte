@@ -10,5 +10,5 @@
 <div class="mb-3">
     <h2 class="header">{loc.create_problem}</h2>
 </div>
-<ProblemEdit lang={data.lang} newProblem={true} info={form}/>
+<ProblemEdit lang={data.lang} info={form}/>
 <div class="pb-4"></div>

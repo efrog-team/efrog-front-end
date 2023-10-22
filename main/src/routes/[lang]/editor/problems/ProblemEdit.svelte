@@ -7,7 +7,6 @@
 
     export let editable = true;
     export let info: any;
-    export let newProblem: boolean;
     export let lang: string;
     info = info || { data:{}};
 
@@ -40,7 +39,7 @@
             </h5>
             <div id="general-panel" class="accordion-collapse collapse">
                 <div class="accordion-body pb-4">
-                    <GeneralInfo lang={lang} newProblem={newProblem} data={info.data}/>
+                    <GeneralInfo lang={lang} data={info.data}/>
                 </div>
             </div>
         </div>

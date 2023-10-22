@@ -7,7 +7,7 @@ export async function load({params, cookies}){
         return {
             username: params.user,
             me: cookies.get("username") === params.user,
-            teams: await usersTeams(params.user),
+            teams: await usersTeams(params.user, cookies.get("username") != params.user),
         }
     } catch (err: any) {
         throw error(403, err.message);

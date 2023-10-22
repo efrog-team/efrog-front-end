@@ -53,10 +53,6 @@
 <div id="preview-{inputName}" class="hidden preview pt-2"></div>
 
 <style>
-    .hidden{
-        display: none;
-    }
-
     .preview{
         min-height: 50px;
     }
