@@ -17,10 +17,16 @@ export async function load({params, cookies, parent}) {
     } 
     let teams: Team[] = [];
     if(contest.maximum_team_members_number>1 && cookies.get("username") && !userInfo){
-        teams = await usersTeams(cookies.get("username")||"", true);
+        teams = await usersTeams(cookies.get("username")||"");
+    }
+    let problems: Problem[] = [];
+    try {
+        problems = await getAllProblems(Number(params.contest), cookies.get("auth")||"");
+    } catch (err: any) {
+        if(err.status != 403) throw err;
     }
     return {
-        problems: await getAllProblems(Number(params.contest), cookies.get("auth")||""),
+        problems: problems,
         userInfo,
         userTeams: teams
     }
