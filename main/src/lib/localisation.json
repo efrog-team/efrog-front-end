@@ -121,15 +121,25 @@
                 "layout": {
                     "statement": "Statement",
                     "submit": "Submit",
-                    "submissions": "Submissions"
+                    "submissions": "Submissions",
+                    "debug": "Debug"
                 },
-                "main": {
-                    "submit": "Submit Solution"
-                },
-                "send": {
+                "pages": {
+                    "submit": "Submit Solution",
                     "language": "Language",
                     "code": "Program code",
-                    "submit": "Submit Solution"
+                    "debug": {
+                        "input": "Input",
+                        "output": "Output",
+                        "time": "Time",
+                        "cpu": "CPU",
+                        "v_memory": "V-Memory",
+                        "p_memory": "P-Memory",
+                        "mb": "MB",
+                        "ms": "ms",
+                        "testing": "Testing",
+                        "run": "Run"
+                    }
                 }
             }
         },
@@ -485,15 +495,25 @@
                 "layout": {
                     "statement": "Умова",
                     "submit": "Надіслати",
-                    "submissions": "Відправки"
+                    "submissions": "Відправки",
+                    "debug": "Запуск"
                 },
-                "main": {
-                    "submit": "Надіслати розв'язок"
-                },
-                "send": {
+                "pages": {
+                    "submit": "Надіслати розв'язок",
                     "language": "Мова",
                     "code": "Код програми",
-                    "submit": "Надіслати розв'язок"
+                    "debug": {
+                        "input": "Ввід",
+                        "output": "Вивід",
+                        "time": "Час",
+                        "cpu": "CPU",
+                        "v_memory": "Вірт-Пам'ять",
+                        "p_memory": "Фіз-Пам'ять",
+                        "mb": "МБ",
+                        "ms": "мс",
+                        "testing": "Тестується",
+                        "run": "Запустити"
+                    }
                 }
             }
         },

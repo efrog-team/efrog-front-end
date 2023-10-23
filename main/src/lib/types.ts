@@ -117,3 +117,12 @@ interface TestCaseResult{
     virtual_memory_taken: number
     physical_memory_taken: number 
 }
+
+interface DebugResult{
+    verdict_text: string
+    time_taken: number
+    cpu_time_taken: number
+    virtual_memory_taken: number
+    physical_memory_taken: number
+    output: string
+}

@@ -25,6 +25,9 @@
     <li class="nav-item">
         <a class="nav-link {pageName == '/my' ? 'active':''}" href="{baseName}/my">{loc.submissions}</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {pageName == '/debug' ? 'active':''}" href="{baseName}/my">{loc.debug}</a>
+    </li>
 </ul>
 
 <slot />

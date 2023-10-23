@@ -28,3 +28,9 @@ export async function getProblemSubmission(username: string, problem_id: number)
     let {body} = await request("GET", `/users/${username}/submissions/public/problems/${problem_id}`);
     return body.submissions;
 }
+
+export async function debug(code: string, language_name: string, language_version: string, input: string, 
+    auth: string): Promise<DebugResult> {
+    let {body} = await request('POST', '/debug', {code, language_name, language_version, input}, auth);
+    return body;
+}

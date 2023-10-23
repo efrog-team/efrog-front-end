@@ -1,5 +1,4 @@
 <script lang="ts">
-    import type {SubmissionPrivate} from '$lib/server/submission'
     import { verdictIcon } from '$lib/config';
     import locs from '$lib/localisation.json';
 

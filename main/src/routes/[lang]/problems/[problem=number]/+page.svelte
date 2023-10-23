@@ -5,7 +5,7 @@
 
 	export let data;
 
-    let loc = locs[data.lang as keyof typeof locs].problems.problem.main;
+    let loc = locs[data.lang as keyof typeof locs].problems.problem.pages;
 </script>
 <ProblemStatement examples={data.examples} lang={data.lang} problem={data.problem}/>
 <div class="mt-5 mb-5 text-center">

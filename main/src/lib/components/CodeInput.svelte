@@ -47,7 +47,7 @@
     }
 </script>
 
-<textarea spellcheck="false" name="solution" rows=20 class="form-control" id="solution" on:scroll={sync_scroll} on:input={highlight} on:focus={highlight} on:keydown={check_tab} required></textarea>
+<textarea spellcheck="false" name="solution" rows=16 class="form-control" id="solution" on:scroll={sync_scroll} on:input={highlight} on:focus={highlight} on:keydown={check_tab} required></textarea>
 
 <pre class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ''} id="highlighting-content" ></code></pre>
 <style>
@@ -75,7 +75,7 @@
         width: 100%;
         padding: 0.375rem 0.75rem;
         margin-top: 0;
-        height: calc(1.5rem*20 + 0.75rem + 2*var(--bs-border-width));
+        height: calc(1.5rem*16 + 0.75rem + 2*var(--bs-border-width));
         z-index: 0;
         user-select: none;
     }

@@ -1,10 +1,10 @@
 <script lang='ts'>
     import { versions } from "$lib/config";
-    import CodeInput from "./CodeInput.svelte";
+    import CodeInput from "$lib/components/CodeInput.svelte";
     import locs from '$lib/localisation.json';
 
     export let data;
-    let loc = locs[data.lang as keyof typeof locs].problems.problem.send;
+    let loc = locs[data.lang as keyof typeof locs].problems.problem.pages;
 
     let curLanguage: string;
 </script>

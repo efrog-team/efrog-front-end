@@ -46,6 +46,7 @@ export let verdictIcon: { [key: string]: string; } = {
     "Runtime Error": "bi-x-circle text-error",
     "Wrong Answer" : "bi-x-circle text-yellow",
     "Correct Answer": "bi-check-circle text-accent", 
+    "OK": "bi-check-circle text-accent",
     "Compilation Error": "bi-exclamation-triangle text-error"
 };
 
