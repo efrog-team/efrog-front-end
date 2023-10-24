@@ -2,6 +2,7 @@
     import { verdictIcon, versions } from "$lib/config";
     import CodeInput from "$lib/components/CodeInput.svelte";
     import locs from '$lib/localisation.json';
+    import { onMount } from "svelte";
 
     export let data;
     let loc = locs[data.lang as keyof typeof locs].problems.problem.pages;
@@ -10,16 +11,26 @@
 
     let debug: null | {checked: boolean, result: null | DebugResult} = null;
 
+    let codeEl: HTMLTextAreaElement;
+
+    onMount(()=>{
+        codeEl = document.getElementById("solution") as HTMLTextAreaElement;
+        codeEl.value = localStorage.getItem("debug") || "";
+        codeEl.focus();
+        codeEl.addEventListener('blur', ()=>{
+            localStorage.setItem("debug", codeEl.value || "");
+        });
+    });
+
     async function submit(){
-        let lang = (document.getElementById("language") as HTMLTextAreaElement).value || "";
-        let code = (document.getElementById("solution") as HTMLTextAreaElement).value || "";
+        let lang = (document.getElementById("language") as HTMLSelectElement).value || "";
         let input = (document.getElementById("input") as HTMLTextAreaElement).value || "";
-        if(!code) return;
+        if(!codeEl.value) return;
         
         debug = {checked: false, result: null};
         let response = await fetch(`./debug`, {
             method: 'POST',
-            body: JSON.stringify({ lang, code, input }),
+            body: JSON.stringify({ lang, code: codeEl.value, input }),
             headers: {
                 'Content-Type': 'application/json'
             }

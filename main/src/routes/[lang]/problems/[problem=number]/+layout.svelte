@@ -20,13 +20,13 @@
         <a class="nav-link {pageName == '' ? 'active':''}" href={baseName}>{loc.statement}</a>
     </li>
     <li class="nav-item">
+        <a class="nav-link {pageName == '/debug' ? 'active':''}" href="{baseName}/debug">{loc.debug}</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link {pageName == '/send' ? 'active':''}" href="{baseName}/send">{loc.submit}</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {pageName == '/my' ? 'active':''}" href="{baseName}/my">{loc.submissions}</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link {pageName == '/debug' ? 'active':''}" href="{baseName}/debug">{loc.debug}</a>
     </li>
 </ul>
 
