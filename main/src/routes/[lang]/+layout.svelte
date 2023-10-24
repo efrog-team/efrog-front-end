@@ -1,15 +1,14 @@
 
 <script lang="ts">
-    import { invalidateAll } from '$app/navigation';
+    import { invalidateAll, afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
     import { localisations } from '$lib/config.js';
     import locs from '$lib/localisation.json'
-
+    
     export let data;
 
     let loc = locs[data.lang as keyof typeof locs].layout;
 </script>
-
 <nav class="navbar navbar-dark navbar-expand-sm">
     <div class="container-fluid pt-2 px-md-5">
         <a class="navbar-brand pr-3" href="/{data.lang}"><img src="/logo.png" alt="Logo" height="40"></a>
@@ -30,18 +29,6 @@
             </li>
         </ul>
         <ul class="navbar-nav pr-lg-3">
-            <!-- <li class="nav-item dropdown me-1">
-                <button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
-                    {data.lang}
-                </button>
-                <ul class="lang-menu dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                    {#each localisations as lang}
-                    <li><a class="dropdown-item" href="/{lang}/{$page.url.pathname.slice(4)}">
-                        {lang}
-                    </a></li>
-                    {/each}
-                </ul>
-            </li> -->
             {#if data?.username}
                 <li class="nav-item dropdown">
                     <button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
@@ -74,6 +61,18 @@
                     </a>
                 </li>
             {/if}
+            <li class="nav-item dropdown ms-2">
+                <button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+                    {data.lang.toUpperCase()}
+                </button>
+                <ul class="lang-menu dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                    {#each localisations as lang}
+                    <li><a data-sveltekit-reload class="dropdown-item" href="/{lang}/{$page.url.pathname.slice(4)}">
+                        {lang.toUpperCase()}
+                    </a></li>
+                    {/each}
+                </ul>
+            </li>
         </ul>
         </div>
     </div>
@@ -97,7 +96,7 @@
         color: var(--accent-color);
         font-weight: 500;
     }
-    /* .lang-menu{
+    .lang-menu{
         --bs-dropdown-min-width: 0;
-    } */
+    }
 </style>
