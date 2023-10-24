@@ -3,14 +3,14 @@
     import locs from '$lib/localisation.json';
 
     export let data;
-    export let path = "";
+    export let pathToProblems = "";
 
     let loc = locs[data.lang as keyof typeof locs].problems.problem.layout;
     let baseName: string = '';
     let pageName: string = '';
 
     page.subscribe((record)=>{
-        baseName = path || `/${record.params.lang}/problems/${record.params.problem}`;
+        baseName = `/${record.params.lang}${pathToProblems}/problems/${record.params.problem}`;
         pageName = record.url.pathname.replace(baseName, "");
     });
 
@@ -26,7 +26,7 @@
         <a class="nav-link {pageName == '/my' ? 'active':''}" href="{baseName}/my">{loc.submissions}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {pageName == '/debug' ? 'active':''}" href="{baseName}/my">{loc.debug}</a>
+        <a class="nav-link {pageName == '/debug' ? 'active':''}" href="{baseName}/debug">{loc.debug}</a>
     </li>
 </ul>
 

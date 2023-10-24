@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 
 export function load({params}) {
-	throw redirect(303, `/en`);
+	throw redirect(303, `/uk`);
 }

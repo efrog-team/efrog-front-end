@@ -13,8 +13,8 @@ export async function rename(team_name: string, name:string , auth: string){
     await request("PUT", `/teams/${team_name}`, {name}, auth);
 }
 
-export async function usersTeams(username: string, confirmed: boolean): Promise<Team[]> {
-    let {body} = await request("GET", `/users/${username}/teams?only_undeclined=true&only_confirmed=${confirmed}`);
+export async function usersTeams(username: string, confirmed: boolean, only_active=true): Promise<Team[]> {
+    let {body} = await request("GET", `/users/${username}/teams?only_undeclined=true&only_confirmed=${confirmed}&only_active=${only_active}`);
     return body.teams;
 }
 

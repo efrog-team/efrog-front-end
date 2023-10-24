@@ -4,6 +4,7 @@
     import { convertDate } from "$lib/features";
     import locs from '$lib/localisation.json';
 
+    export let pathToProblems = '';
     export let info: any;
     export let lang: string;
 
@@ -26,7 +27,7 @@
     </div>
     <div class="col-3">
         <div class="header mb-2">{loc.problem}:</div>
-        <div><a href="/{$page.params.lang}/problems/{info.problem_id}">{info.problem_name}</a></div>
+        <div><a href="/{$page.params.lang}{pathToProblems}/problems/{info.problem_id}">{info.problem_name}</a></div>
     </div>
     <div class="col-3">
         <div class="header mb-2">{loc.language}:</div>

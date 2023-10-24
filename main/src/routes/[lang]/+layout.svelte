@@ -97,7 +97,7 @@
         color: var(--accent-color);
         font-weight: 500;
     }
-    .lang-menu{
+    /* .lang-menu{
         --bs-dropdown-min-width: 0;
-    }
+    } */
 </style>

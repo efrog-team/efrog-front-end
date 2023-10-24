@@ -1,5 +1,4 @@
 <script lang="ts">
-    import type { SubmissionPublic } from "$lib/server/submission";
     import { verdictIcon, verdicts, languages } from "$lib/config.js";
     import { page } from "$app/stores";
     import locs from '$lib/localisation.json';
@@ -7,6 +6,7 @@
 
     export let submissions: SubmissionPublic[];
     export let lang: string;
+    export let basePath = '';
     let loc = locs[lang as keyof typeof locs].global_components.submissions;
 
     let filtered = submissions;
@@ -55,8 +55,8 @@
         <tbody>
             {#each filtered as sub, i}
             <tr>
-                <td class="ps-3"><a href="/{$page.params.lang}/submissions/{sub.id}">{sub.id}</a></td>
-                <td><a href="/{$page.params.lang}/problems/{sub.problem_id}">{sub.problem_name}</a></td>
+                <td class="ps-3"><a href="/{$page.params.lang}{basePath}/submissions/{sub.id}">{sub.id}</a></td>
+                <td><a href="/{$page.params.lang}{basePath}/problems/{sub.problem_id}">{sub.problem_name}</a></td>
                 <td>{convertDate(sub.time_sent)}</td>
                 <td>{`${sub.language_name} (${sub.language_version})`}</td>
                 <td><i class="bi me-2 {verdictIcon[sub.total_verdict]}"></i> {sub.total_verdict}</td>

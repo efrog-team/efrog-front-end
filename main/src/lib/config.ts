@@ -42,7 +42,7 @@ export let verdicts = [
 
 export let verdictIcon: { [key: string]: string; } = {
     "Memory Limit Exceeded": "bi-memory text-error",
-    "Time Limit Exceeded": "bi-alarm-circle text-error",
+    "Time Limit Exceeded": "bi-alarm text-error",
     "Runtime Error": "bi-x-circle text-error",
     "Wrong Answer" : "bi-x-circle text-yellow",
     "Correct Answer": "bi-check-circle text-accent", 

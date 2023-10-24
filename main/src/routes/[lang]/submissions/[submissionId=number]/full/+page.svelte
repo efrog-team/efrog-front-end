@@ -6,6 +6,7 @@
     import { prismLang } from "$lib/config.js";
     import locs from '$lib/localisation.json';
 
+    export let pathToProblems = '';
     export let data;
     if(!data.info.results) data.info.results = [];
 
@@ -39,7 +40,7 @@
     }
 </script>
 
-<GeneralInfo lang={data.lang} info={data.info} />
+<GeneralInfo lang={data.lang} info={data.info} pathToProblems={pathToProblems}/>
 {#if data.info.checked && !data.info.compiled}
 <div class="d-flex">
     <h4 class="me-auto">{loc.error_datails}</h4>
