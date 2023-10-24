@@ -70,11 +70,11 @@
             "danger_zone": {
                 "header": "Danger zone",
                 "deactivate": "Deactivate",
-                "deactivate_info": "**deactivation info**",
+                "deactivate_info": "Make the team unable to participate in contests.",
                 "activate": "Activate",
-                "activate_info": "**activation info**",
+                "activate_info": "Make the team able to participate in contests.",
                 "delete": "Delete",
-                "delete_info": "**deletion info**"
+                "delete_info": "Permanently remove the team from the platform"
             },
             "team_filter": {
                 "all": "All",
@@ -173,6 +173,7 @@
                     "scoreboard": "Scoreboard"
                 },
                 "main": {
+                    "back": "back to the contest",
                     "confirm": {
                         "info": "Confirm that you are member of this contest",
                         "confirm": "Confirm",
@@ -263,13 +264,13 @@
                     },
                     "danger_zone": {
                         "make_public": "Make public",
-                        "make_public_info": "**make public info**",
+                        "make_public_info": "Open the problem for all users to attempt to solve",
                         "make_private": "Make private",
-                        "make_private_info": "**make private info**",
+                        "make_private_info": "Restrict the problem's visibility to the author only",
                         "delete": "Delete",
-                        "delete_info": "**deletion info**",
+                        "delete_info": "Permanently remove the problem from the platform",
                         "delete_submissions": "Delete all my submissions",
-                        "delete_submissions_info": "**delete_submissions**"
+                        "delete_submissions_info": "Remove all your submissions for the problem if the problem changes"
                     }
                 }
             },
@@ -329,11 +330,11 @@
                     },
                     "danger_zone": {
                         "make_public": "Make public",
-                        "make_public_info": "**Make Public Info**",
+                        "make_public_info": "Changes the contest's visibility to allow anyone to see and register for it.",
                         "make_private": "Make private",
-                        "make_private_info": "**Make Private Info**",
+                        "make_private_info": "Restricts the contest's visibility, allowing only the author to add participants.",
                         "delete": "Delete",
-                        "delete_info": "**Deletion Info**"
+                        "delete_info": "Permanently removes the contest from the platform."
                     }
                 }
             }
@@ -444,11 +445,11 @@
             "danger_zone": {
                 "header": "Зона ризику",
                 "deactivate": "Деактивувати",
-                "deactivate_info": "**інформація про деактивацію**",
+                "deactivate_info": "Назавжди видалити команду з платформи.",
                 "activate": "Активувати",
-                "activate_info": "**інформація про активацію**",
+                "activate_info": "Дозволити команді брати участь у змаганнях.",
                 "delete": "Видалити",
-                "delete_info": "**інформація про видалення**"
+                "delete_info": "Заборонити команді брати участь у змаганнях."
             },
             "team_filter": {
                 "all": "Всі",
@@ -529,7 +530,7 @@
                 "header": "Змагання, в яких Ви брали участь",
                 "unapproved": "Потрібна згода автора",
                 "unconfirmed": "Потрібне підтвердження",
-                "registered": "Зареєстровані",
+                "registered": "Зареєстрований",
                 "all": "Усі змагання",
                 "privacy": "Приватність",
                 "private": "Приватні",
@@ -552,6 +553,7 @@
                         "confirm": "Підтвердити",
                         "decline": "Відхилити"
                     },
+                    "back": "перейти до змагання",
                     "status": "Статус",
                     "unstarted": "Заплановане",
                     "ongoing": "Триває",
@@ -639,13 +641,13 @@
                     },
                     "danger_zone": {
                         "make_public": "Зробити публічною",
-                        "make_public_info": "**інформація про зроблення публічним**",
+                        "make_public_info": "Змінює видимість змагання, дозволяючи бачити та вирішувати її.",
                         "make_private": "Зробити приватною",
-                        "make_private_info": "**інформація про зроблення приватним**",
+                        "make_private_info": "Обмежити видимість задачи, дозволяючи лише автору вирішувати її.",
                         "delete": "Видалити",
-                        "delete_info": "**інформація про видалення**",
+                        "delete_info": "Назавжди видалити задачу з платформи.",
                         "delete_submissions": "Видалити всі мої відправки",
-                        "delete_submissions_info": "**інформація про видалення**"
+                        "delete_submissions_info": "Видалити всі Ваші відправки, необхідно при зміні задачі."
                     }
                 }
             },
@@ -705,11 +707,11 @@
                     },
                     "danger_zone": {
                         "make_public": "Зробити публічним",
-                        "make_public_info": "**інформація про зроблення публічним**",
+                        "make_public_info": "Змінює видимість змагання, дозволяючи будь-кому бачити та реєструватися на нього.",
                         "make_private": "Зробити приватним",
-                        "make_private_info": "**інформація про зроблення приватним**",
+                        "make_private_info": "Обмежує видимість конкурсу, дозволяючи лише автору додавати учасників.",
                         "delete": "Видалити",
-                        "delete_info": "**інформація про видалення**"
+                        "delete_info": "Назавжди видалити змагання з платформи."
                     }
                 }
             }
