@@ -25,8 +25,8 @@ export async function canBeEdited(competition_id:number, auth: string): Promise<
     return body.can;
 }
 
-export async function updateContest(competition_id:number, name: string, description: string, start_time: string,
-        end_time: string, maximum_team_members_number: number, auto_confirm_participants: boolean, auth: string) {
+export async function updateContest(competition_id:number, name: string, description: string, start_time: string|null,
+        end_time: string|null, maximum_team_members_number: number, auto_confirm_participants: boolean, auth: string) {
     await request("PUT", `/competitions/${competition_id}`, {name, description, start_time, end_time,
         maximum_team_members_number, auto_confirm_participants}, auth);
 } 

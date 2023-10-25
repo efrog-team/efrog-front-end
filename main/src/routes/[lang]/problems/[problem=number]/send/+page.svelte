@@ -2,11 +2,20 @@
     import { versions } from "$lib/config";
     import CodeInput from "$lib/components/CodeInput.svelte";
     import locs from '$lib/localisation.json';
+    import { onMount } from "svelte";
 
     export let data;
+    export let form;
     let loc = locs[data.lang as keyof typeof locs].problems.problem.pages;
 
-    let curLanguage: string;
+    let curLanguage: string = form?.data?.language || versions[0];
+
+    onMount(()=>{
+        let codeEl = (document.querySelector("#solution") as HTMLTextAreaElement);
+        codeEl.value = form?.data?.solution || "";
+        codeEl.focus();
+        if(form?.error) alert(form.error);
+    });
 </script>
 
 <form class="mb-5 mt-2" action="?/submit" method="post" >

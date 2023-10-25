@@ -12,13 +12,20 @@
     let debug: null | {checked: boolean, result: null | DebugResult} = null;
 
     let codeEl: HTMLTextAreaElement;
+    let langEl: HTMLSelectElement;
 
     onMount(()=>{
         codeEl = document.getElementById("solution") as HTMLTextAreaElement;
+        langEl = document.getElementById("language") as HTMLSelectElement;
+
         codeEl.value = localStorage.getItem("debug") || "";
+        langEl.value = localStorage.getItem("lang") || versions[0];
         codeEl.focus();
         codeEl.addEventListener('blur', ()=>{
             localStorage.setItem("debug", codeEl.value || "");
+        });
+        langEl.addEventListener('change', ()=>{
+            localStorage.setItem("lang", langEl.value || "");
         });
     });
 
@@ -35,6 +42,10 @@
                 'Content-Type': 'application/json'
             }
         });
+        if(!response.ok){
+            alert((await response.json()).message);
+            return;
+        }
         debug.result = await response.json();
         debug.checked = true;
     }

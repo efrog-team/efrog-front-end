@@ -9,5 +9,5 @@
 <div class="mb-2">
    <a class="nav-link" href="/{data.lang}/contests/{$page.params.contest}"> <i class="bi bi-arrow-left"></i> {loc.back}</a>
 </div>
-<Layout data={data} pathToProblems="/contests/{$page.params.contest}"/>
+<Layout data={data} pathToProblems="/contests/{$page.params.contest}" submitEnabled={data.contest.status == 'ongoing'}/>
 <slot />

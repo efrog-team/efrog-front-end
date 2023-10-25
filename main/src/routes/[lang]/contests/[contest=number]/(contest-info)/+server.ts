@@ -2,7 +2,6 @@ import { confirmIndividual, confirmTeam, declineIndividual, declineTeam } from '
 
 export async function PUT({cookies, request, params}) {
     const { action, name } = await request.json();
-    console.log(action)
     switch (action) {
         case "confirmIndividual":
             await confirmIndividual(Number(params.contest), name, cookies.get("auth") || '');

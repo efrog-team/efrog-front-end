@@ -41,6 +41,9 @@
                         <li><a class="dropdown-item" href="/{data.lang}/users/{data.username}/edit">
                             {loc.edit_account}
                         </a></li>
+                        <!-- <li><a class="dropdown-item" href="/{data.lang}/editor">
+                            {loc.editor}
+                        </a></li> -->
                         <li><a class="dropdown-item" href="/{data.lang}/account/logout?back={$page.url}" on:click={invalidateAll}>
                             {loc.logout}
                         </a></li>

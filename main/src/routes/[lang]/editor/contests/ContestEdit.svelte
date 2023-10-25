@@ -7,6 +7,9 @@
 
     let forTeams = !!info?.data?.maximum_team_members_number && info?.data?.maximum_team_members_number > 1;
     let loc = locs[lang as keyof typeof locs].editor.contests.contest_edit;
+
+    let start_time = info?.data.start_time || null;
+    let end_time = info?.data.end_time || null;
 </script>
 <form action="?/save" method="post">
     <div class="mb-4">
@@ -24,7 +27,10 @@
                 <label for="start-time" class="col-form-label">{loc.start_date}</label>
             </div>
             <div class="col-sm-6 col-md-4">
-                <input  type="datetime-local" name="start_time" id="start-time" class="form-control" value={info?.data.start_time || null}>
+                <input  type="datetime-local" id="start-time" class="form-control" bind:value={start_time}>
+                {#if start_time !== info?.data.start_time }
+                <input type="hidden" name="start_time" value={start_time}>
+                {/if}
             </div>
         </div>
         <div class="row align-items-center mb-2">
@@ -32,7 +38,10 @@
                 <label for="end-time" class="col-form-label">{loc.end_date}</label>
             </div>
             <div class="col-sm-6 col-md-4 ">
-                <input type="datetime-local" name="end_time" id="end-time" class="form-control" value={info?.data.end_time || null}>
+                <input type="datetime-local" id="end-time" class="form-control" bind:value={end_time}>
+                {#if end_time !== info?.data.end_time}
+                <input type="hidden" name="end_time" value={end_time}>
+                {/if}
             </div>
         </div>
     </div>

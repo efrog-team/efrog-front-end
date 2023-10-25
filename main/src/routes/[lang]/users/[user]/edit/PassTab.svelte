@@ -28,7 +28,7 @@
             <div class="input-group">
                 <input type={passNewVisible ? "text":"password"} class="form-control" id="new-pass" name="newPass">
                 <button class="input-group-text" on:click|preventDefault={()=>{passNewVisible = !passNewVisible}}>
-                    <i class="bi-eye{passVisible ? '-slash': ''}"></i>
+                    <i class="bi-eye{passNewVisible ? '-slash': ''}"></i>
                 </button>
             </div>
         </div>
@@ -37,7 +37,7 @@
             <div class="input-group">
                 <input type={passRepeatVisible ? "text":"password"} class="form-control" id="repeat-pass" name="repeatPass">
                 <button class="input-group-text" on:click|preventDefault={()=>{passRepeatVisible = !passRepeatVisible}}>
-                    <i class="bi-eye{passVisible ? '-slash': ''}"></i>
+                    <i class="bi-eye{passRepeatVisible ? '-slash': ''}"></i>
                 </button>
             </div>
         </div>

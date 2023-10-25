@@ -79,5 +79,4 @@ export let testCaseVisible = 5000;
 export let itemsOnPage = 100;
 
 // contest creation
-export let minTimeToContest = 5;
 export let minContestDuration = 5;

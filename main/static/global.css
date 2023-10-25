@@ -81,6 +81,10 @@ a{
     color: var(--accent-color);
 }
 
+li a{
+    width: 100%;
+}
+
 .list-group-item{
     --bs-list-group-border-color: var(--color2);
     --bs-list-group-bg: var(--color3);
