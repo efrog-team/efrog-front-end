@@ -24,9 +24,6 @@
     <li class="nav-item">
         <a class="nav-link {pageName === '/teams' ? 'active':''}" href="{baseName}/teams">{loc.teams}</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link {pageName === '/problems' ? 'active':''}" href="{baseName}/problems">{loc.problems}</a>
-    </li>
 </ul>
 
 <slot />
