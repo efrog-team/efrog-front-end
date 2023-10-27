@@ -103,6 +103,7 @@
             "date": "Date", 
             "error_datails": "Error Details", 
             "copy_code": "Copy",
+            "code":"Program code",
             "test_cases": {
                 "details": "Details",
                 "verdict": "Verdict",
@@ -206,7 +207,7 @@
             "problems": {
                 "header": "Manage my problems",
                 "create_problem": "Create new problem",
-                "edit_problem": "edit",
+                "edit_problem": "Edit",
                 "public": "public",
                 "private": "private",
                 "from_hub": {
@@ -279,7 +280,7 @@
                 "public": "public",
                 "private": "private",
                 "create_contest": "Create New Contest",
-                "edit_contest": "edit",
+                "edit_contest": "Edit",
                 "contest_edit": {
                     "contest_name": "Contest Name",
                     "description": "Description",
@@ -303,7 +304,7 @@
                     "participants": {
                         "add_participant": "Add Participant",
                         "confirm": "confirm",
-                        "delete": "delete",
+                        "delete": "Delete",
                         "approved": "approved",
                         "unapproved": "not approved",
                         "username": "Username",
@@ -325,7 +326,7 @@
                     },
                     "problems": {
                         "add_problem": "Add Problem",
-                        "delete": "delete",
+                        "delete": "Delete",
                         "problem_id": "Problem ID"
                     },
                     "danger_zone": {
@@ -478,6 +479,7 @@
             "date": "Дата",
             "error_datails": "Деталі помилки",
             "copy_code": "Скопіювати",
+            "code": "Код програми",
             "test_cases": {
                 "details": "Деталі",
                 "verdict": "Вердикт",
@@ -581,7 +583,7 @@
             "problems": {
                 "header": "Управління моїми задачами",
                 "create_problem": "Створити нову задачу",
-                "edit_problem": "редагувати",
+                "edit_problem": "Редагувати",
                 "public": "публічна",
                 "private": "приватна",
                 "from_hub": {
@@ -656,7 +658,7 @@
                 "create_contest": "Створити нове змагання",
                 "public": "публічне",
                 "private": "приватне",
-                "edit_contest": "редагувати",
+                "edit_contest": "Редагувати",
                 "contest_edit": {
                     "contest_name": "Назва змагання",
                     "description": "Опис",
@@ -680,7 +682,7 @@
                     "participants": {
                         "add_participant": "Додати учасника",
                         "confirm": "підтвердити",
-                        "delete": "видалити",
+                        "delete": "Видалити",
                         "approved": "cхвалений",
                         "unapproved": "не схвалений",
                         "username": "Ім'я користувача",
@@ -702,7 +704,7 @@
                     },
                     "problems": {
                         "add_problem": "Додати задачу",
-                        "delete": "видалити",
+                        "delete": "Видалити",
                         "problem_id": "ID задачі"
                     },
                     "danger_zone": {

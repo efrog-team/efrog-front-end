@@ -19,10 +19,12 @@
     <div class="list-group">
     {#each filteredContests as contest}     
         <li class="list-group-item list-group-item-action d-flex">
-            <a href="/{data.lang}/contests/{contest.id}" class="col-1">{contest.id}</a>
-            <a href="/{data.lang}/contests/{contest.id}" class="me-auto">{contest.name}</a>
-            <span class="me-3">{contest.private ? loc.private : loc.public}</span>
-            <a class="col-auto text-end nav-link" href="./contests/{contest.id}">{loc.edit_contest}</a>
+            <a href="/{data.lang}/contests/{contest.id}" class="col-auto me-4">{contest.id}</a>
+            <a href="/{data.lang}/contests/{contest.id}" class="me-auto">
+                {#if contest.private}<i class="bi bi-lock me-1 text-yellow"></i>{/if}
+                {contest.name}
+            </a>
+            <a class="col-auto text-end nav-link" href="./contests/{contest.id}">{loc.edit_contest} <i class="bi bi-pencil"></i></a>
         </li>
     {/each}
     </div>

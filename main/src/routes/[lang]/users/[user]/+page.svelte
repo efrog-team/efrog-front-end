@@ -16,7 +16,7 @@
 {#if data.me}
 <div class="mb-4">
     <div class="mt-5 mb-5 ">
-        <button class="btn btn-accent"><a href="{$page.url.pathname}/edit">{loc.profile_edit}</a></button>
+        <button class="btn btn-accent"><a href="{$page.url.pathname}/edit">{loc.profile_edit} <i class="bi bi-pencil"></i></a></button>
     </div>
 </div>
 {/if}

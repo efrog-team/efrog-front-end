@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { verdictIcon } from '$lib/config';
+    import { verdictIcon } from '$lib/icons';
     import locs from '$lib/localisation.json';
 
     export let info: SubmissionPrivate;
@@ -24,7 +24,7 @@
     {/if}
 </div>
 <div class="mb-5 ">
-    <table class="table-dark table table-hover table table-borderless">
+    <table class="table-dark table table-hover table table-borderless table-responsive">
         <thead>
             <tr>
                 <th class="header ps-3">#</th>

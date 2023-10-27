@@ -34,7 +34,7 @@
 </div>
 {#if data.me}
 <div class="mb-4 mt-4">
-    <a class="btn btn-accent" href="./{data.teamInfo.name}/edit">{loc.edit_team}</a>
+    <a class="btn btn-accent" href="./{data.teamInfo.name}/edit">{loc.edit_team} <i class="bi bi-pencil"></i></a>
 </div>
 {/if}
 <div class="mt-5 mb-2">

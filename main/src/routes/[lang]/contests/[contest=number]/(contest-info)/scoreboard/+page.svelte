@@ -4,17 +4,21 @@
 
     let loc = locs[data.lang as keyof typeof locs].contests.contest.scoreboard;
 
-    let problemNumber: {[key:number]: number} = {}
-    data.problems.forEach((problem, i) => problemNumber[problem.id] = i);
-    data.scoreboard.forEach(result => result.problems.sort((a,b)=> problemNumber[a.id]-problemNumber[b.id]));
+    data.scoreboard.forEach(result => result.problems.sort((a,b)=> a.id - b.id));
+
+    let positions: number[] = [];
+    for(let i=0; i<data.scoreboard.length; i++){
+        positions.push(i==0 || data.scoreboard[i-1]!=data.scoreboard[i] ? i+1 : positions.at(-1) as number);
+    }
 </script>
+{#if data.scoreboard.length}
 <div class="mb-5">
-    <table class="table-dark table table-hover table table-borderless">
+    <table class="table-dark table table-hover table table-responsive">
         <thead>
             <tr>
-                <th>{loc.participant}</th>
+                <th># {loc.participant}</th>
                 <th>{loc.total}</th>
-                {#each data.problems as problem, i}
+                {#each data.scoreboard[0].problems as problem, i}
                     <th>
                         <a href="/{data.lang}/contests/{data.contest.id}/problems/{problem.id}">
                             {String.fromCharCode('A'.charCodeAt(0) + i)}
@@ -24,9 +28,10 @@
             </tr>
         </thead>
         <tbody>
-            {#each data.scoreboard as result}
+            {#each data.scoreboard as result, i}
             <tr>
                 <td>
+                    <span class="me-1">{positions[i]}.</span>
                     <a class="me-auto" href="/{data.lang}/{result.individual?"users":"teams"}/{result.username_or_team_name}">
                         {result.username_or_team_name} 
                         {#if !result.individual}
@@ -43,6 +48,7 @@
         </tbody>
     </table>
 </div>
+{/if}
 <style>
     th{
         font-weight: normal;

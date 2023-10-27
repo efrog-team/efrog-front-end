@@ -1,6 +1,7 @@
 <script lang="ts">
     import Pagination from '$lib/components/Pagination.svelte';
     import { itemsOnPage } from '$lib/config.js';
+    import { contestStatusIcon } from '$lib/icons.js';
     import locs from '$lib/localisation.json';
     
     export let data;
@@ -14,7 +15,8 @@
     {#each data.contests as contest, i}     
         <li class="list-group-item list-group-item-action d-flex">
             <a href="/{data.lang}/contests/{contest.id}">
-                <span class="me-4">{i + 1}</span>
+                <span class="me-3">{i + 1}</span>
+                <i class="bi {contestStatusIcon[contest.status]} me-3"></i>
                 <span class="me-auto">{contest.name}</span>
             </a>
         </li>

@@ -1,8 +1,9 @@
 <script lang='ts'>
-    import { verdictIcon, versions } from "$lib/config";
+    import { versions } from "$lib/config";
     import CodeInput from "$lib/components/CodeInput.svelte";
     import locs from '$lib/localisation.json';
     import { onMount } from "svelte";
+    import { verdictIcon } from "$lib/icons.js";
 
     export let data;
     let loc = locs[data.lang as keyof typeof locs].problems.problem.pages;

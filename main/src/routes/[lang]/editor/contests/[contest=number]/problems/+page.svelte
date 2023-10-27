@@ -17,7 +17,9 @@
         <a href="/{data.lang}/problems/{problem.id}" class="me-auto">{problem.name}</a>
         <form method="post"> 
             <input type="hidden" name="problemId" value={problem.id}>
-            <button formaction="?/delete" class="me-2 nav-link">{loc.delete}</button>
+            <button formaction="?/delete" class="me-2 nav-link d-flex">
+                {loc.delete}<i class="bi bi-x-lg ms-2"></i>
+            </button>
         </form>
     </li>
     {/each}

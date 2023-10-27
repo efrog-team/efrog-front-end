@@ -3,6 +3,7 @@
     import { invalidateAll } from '$app/navigation';
     import { convertDate } from '$lib/features.js';
     import RegisterModal from './RegisterModal.svelte';
+    import { contestStatusIcon } from '$lib/icons';
 
     export let data;
     export let form;
@@ -36,7 +37,7 @@
     </div>
     {/if}
 </div>
-{#if !data.userInfo && data.username}
+{#if !data.userInfo && data.username && data.contest.status != 'ended'}
 <div class="mb-4 mt-2">
     {#if data.contest.maximum_team_members_number == 1}
     <form method="post" action="?/register">
@@ -52,20 +53,15 @@
 <div class="mb-5">
     <div class="mb-2">
         <h3>
-            {#if data.contest.status == 'ongoing'}
-            <i class="bi bi-play-circle text-accent"></i> {loc.ongoing}
-            {:else if data.contest.status == 'ended'}
-            <i class="bi bi-check-circle text-yellow"></i> {loc.ended}
-            {:else}
-            <i class="bi bi-clock text-yellow"></i> {loc.unstarted}
-            {/if}
+            <i class="bi {contestStatusIcon[data.contest.status]}"></i>
+            {data.contest.status == 'ended' ? loc.ended : data.contest.status == 'ongoing' ? loc.ongoing : loc.unstarted}
         </h3>
     </div>
     <div >
         <div>{convertDate(data.contest.start_time)} — {convertDate(data.contest.end_time)}</div>
     </div>
 </div>
-{#if data.contest.status != 'unstarted'}
+{#if data.contest.status != 'unstarted' && data.problems.length > 0}
 <div class="mb-4">
     <h4>{loc.problems}</h4>
     <div class="mt-3 mb-4">

@@ -52,7 +52,7 @@
 <TestCases lang={data.lang} info={data.info} />
 {/if}
 <div class="mb-3 d-flex">
-    <h4 class="me-auto">Code</h4>
+    <h4 class="me-auto">{loc.code}</h4>
     <button on:click|preventDefault={copyCode} class="nav-link"><i class="me-2 bi bi-files"></i>{loc.copy_code}</button>
 </div>
 <div class="mb-4">

@@ -17,7 +17,7 @@ export const actions = {
             if(!formData["problemId"]) throw Error("ProblemId is required")
 			await addProblem(Number(params.contest), Number(formData["problemId"]), cookies.get("auth")||"");
 		} catch (err: any) {
-			if(err.status && err.status != 409 && err.status != 404){
+			if(err.status && err.status != 409 && err.status != 404 && err.status != 403){
 				throw err;
 			}
 			return fail(422, {

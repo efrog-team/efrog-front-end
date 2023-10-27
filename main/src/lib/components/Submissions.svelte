@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { verdictIcon, verdicts, languages } from "$lib/config.js";
+    import { verdicts, languages } from "$lib/config.js";
     import { page } from "$app/stores";
     import locs from '$lib/localisation.json';
     import { convertDate } from "$lib/features";
+    import { verdictIcon } from "$lib/icons";
 
     export let submissions: SubmissionPublic[];
     export let lang: string;

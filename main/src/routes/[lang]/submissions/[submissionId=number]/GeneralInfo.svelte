@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { verdictIcon } from "$lib/config";
+    import { verdictIcon } from "$lib/icons";
     import { convertDate } from "$lib/features";
     import locs from '$lib/localisation.json';
 
