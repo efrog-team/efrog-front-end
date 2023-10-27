@@ -24,7 +24,7 @@
             },
             "edit": {
                 "header": "Edit Profile",
-                "personal": "Personal",
+                "personal": "Password",
                 "login": "Login",
                 "info_header": "Personal Information",
                 "username": "Username",
@@ -200,8 +200,8 @@
         },
         "editor": {
             "layout": {
-                "problems": "Problems",
-                "contests": "Contests"
+                "problems": "My Problems",
+                "contests": "My Contests"
             },
             "problems": {
                 "header": "Manage my problems",
@@ -378,8 +378,8 @@
         "layout": {
             "problems": "Задачі",
             "contests": "Змагання",
-            "account": "Аккаунт",
-            "edit_account": "Редагувати аккаунт",
+            "account": "Акаунт",
+            "edit_account": "Редагувати акаунт",
             "editor": "Редактор",
             "login": "Увійти",
             "register": "Зареєструватися",
@@ -400,7 +400,7 @@
             "edit": {
                 "header": "Редагувати профіль",
                 "personal": "Особисті дані",
-                "login": "Логін",
+                "login": "Пароль",
                 "info_header": "Особиста інформація",
                 "username": "Ім'я користувача",
                 "name": "Повне ім'я",
@@ -520,14 +520,14 @@
         },
         "contests": {
             "layout": {
-                "public": "Публічні",
-                "participated": "Мої"
+                "public": "Доступні",
+                "participated": "Відібрані"
             },
             "main": {
                 "header": "Публічні змагання"
             },
             "participated": {
-                "header": "Змагання, в яких Ви брали участь",
+                "header": "Змагання, в яких Ви берете участь",
                 "unapproved": "Потрібна згода автора",
                 "unconfirmed": "Потрібне підтвердження",
                 "registered": "Зареєстрований",
@@ -575,8 +575,8 @@
         },
         "editor": {
             "layout": {
-                "problems": "Задачі",
-                "contests": "Змагання"
+                "problems": "Мої задачі",
+                "contests": "Мої змагання"
             },
             "problems": {
                 "header": "Управління моїми задачами",
