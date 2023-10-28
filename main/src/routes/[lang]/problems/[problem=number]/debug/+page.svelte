@@ -82,23 +82,19 @@
     </div>
     {#if debug?.result}
     <div class="mb-4 result rounded p-3">
-        <h4 class="mb-3"><i class="bi {verdictIcon[debug.result?.verdict_text || "" ]}"></i> {debug.result?.verdict_text}</h4>
+        <h4 class="mb-4"><i class="bi {verdictIcon[debug.result?.verdict_text || "" ]}"></i> {debug.result?.verdict_text}</h4>
         <div class="d-flex">
-            <div class="col-3">
-                <div class="header">{loc.debug.time}</div>
-                <div>{debug.result?.time_taken} {loc.debug.ms}</div>
+            <div class="col-4">
+                <span class="header">{loc.debug.time}: </span>
+                <span>{debug.result?.time_taken} {loc.debug.ms}</span>
             </div>
-            <div class="col-3">
-                <div class="header">{loc.debug.cpu}</div>
-                <div>{debug.result?.cpu_time_taken} {loc.debug.ms}</div>
+            <div class="col-4">
+                <span class="header">{loc.debug.cpu}: </span>
+                <span>{debug.result?.cpu_time_taken} {loc.debug.ms}</span>
             </div>
-            <div class="col-3">
-                <div class="header">{loc.debug.v_memory}</div>
-                <div>{(debug.result.virtual_memory_taken/1000).toFixed(2)} {loc.debug.mb}</div>
-            </div>
-            <div class="col-3">
-                <div class="header">{loc.debug.p_memory}</div>
-                <div>{(debug.result.physical_memory_taken/1000).toFixed(2)} {loc.debug.mb}</div>
+            <div class="col-4">
+                <span class="header">{loc.debug.p_memory}: </span>
+                <span>{(debug.result.physical_memory_taken/1000).toFixed(2)} {loc.debug.mb}</span>
             </div>
         </div>
     </div>

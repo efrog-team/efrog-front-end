@@ -10,7 +10,6 @@
     $: total = {
         time: info.results?.reduce((acc, cur) => Math.max(acc, cur.time_taken), 0),
         cpu: info.results?.reduce((acc, cur) => Math.max(acc, cur.cpu_time_taken), 0),
-        vMemory: info.results?.reduce((acc, cur) => Math.max(acc, cur.virtual_memory_taken), 0),
         pMemory: info.results?.reduce((acc, cur) => Math.max(acc, cur.physical_memory_taken), 0),
         score: info.results?.reduce((acc, cur) => acc + (cur.verdict_text == "Correct Answer" ? cur.test_case_score : 0), 0)
     }
@@ -31,7 +30,6 @@
                 <th class="header">{loc.verdict}</th>
                 <th class="header">{loc.time}</th>
                 <th class="header">{loc.cpu}</th>
-                <th class="header">{loc.v_memory}</th>
                 <th class="header">{loc.p_memory}</th>
                 <th class="header">{loc.score}</th>
             </tr>
@@ -43,7 +41,6 @@
                 <td><i class="bi me-2 {verdictIcon[res.verdict_text]}"></i> {res.verdict_text}</td>
                 <td>{res.time_taken} {loc.ms}</td>
                 <td>{res.cpu_time_taken} {loc.ms}</td>
-                <td>{(res.virtual_memory_taken / 1000).toFixed(2)} {loc.mb}</td>
                 <td>{(res.physical_memory_taken / 1000).toFixed(2)} {loc.mb}</td>
                 <td>{res.verdict_text == "Correct Answer" ? res.test_case_score : 0}/{res.test_case_score}</td>
               </tr>
@@ -55,7 +52,6 @@
                 <td></td>
                 <th>{total.time} {loc.ms}</th>
                 <th>{total.cpu} {loc.ms}</th>
-                <th>{(total.vMemory / 1000).toFixed(2)} {loc.mb}</th>
                 <th>{(total.pMemory / 1000).toFixed(2)} {loc.mb}</th>
                 <th>{total.score}</th>
             </tr>

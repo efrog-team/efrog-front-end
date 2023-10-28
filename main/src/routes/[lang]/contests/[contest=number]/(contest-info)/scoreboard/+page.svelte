@@ -8,7 +8,7 @@
 
     let positions: number[] = [];
     for(let i=0; i<data.scoreboard.length; i++){
-        positions.push(i==0 || data.scoreboard[i-1]!=data.scoreboard[i] ? i+1 : positions.at(-1) as number);
+        positions.push(i==0 || data.scoreboard[i-1].total_score!=data.scoreboard[i].total_score ? i+1 : positions.at(-1) as number);
     }
 </script>
 {#if data.scoreboard.length}
@@ -16,7 +16,7 @@
     <table class="table-dark table table-hover table table-responsive">
         <thead>
             <tr>
-                <th># {loc.participant}</th>
+                <th class="ps-3"># {loc.participant}</th>
                 <th>{loc.total}</th>
                 {#each data.scoreboard[0].problems as problem, i}
                     <th>
@@ -30,7 +30,7 @@
         <tbody>
             {#each data.scoreboard as result, i}
             <tr>
-                <td>
+                <td class="ps-3">
                     <span class="me-1">{positions[i]}.</span>
                     <a class="me-auto" href="/{data.lang}/{result.individual?"users":"teams"}/{result.username_or_team_name}">
                         {result.username_or_team_name} 
