@@ -7,10 +7,9 @@
 
     let forTeams = !!info?.data?.maximum_team_members_number && info?.data?.maximum_team_members_number > 1;
     let loc = locs[lang as keyof typeof locs].editor.contests.contest_edit;
-    if(info?.data){
-        info.data.start_time = info.data.start_time.replace(' ', 'T').slice(0, 16);
-        info.data.end_time = info.data.end_time.replace(' ', 'T').slice(0, 16);
-    }
+    if(info?.data.start_time) info.data.start_time = info.data.start_time.replace(' ', 'T').slice(0, 16);
+    if(info?.data.end_time) info.data.end_time = info.data.end_time.replace(' ', 'T').slice(0, 16);
+
     let start_time = info?.data.start_time || null;
     let end_time = info?.data.end_time || null;
 </script>

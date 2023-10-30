@@ -9,6 +9,7 @@ export const actions = {
 		let id;
 		try {
             validateFormInfo(formData);
+			console.log("update", formData["start_time"], formData["start_time"]?formatDate(formData["start_time"]):null);
 			id = await updateContest(Number(params.contest), formData["name"], formData["description"], formData["start_time"]?formatDate(formData["start_time"]):null, 
 				formData["end_time"]?formatDate(formData["end_time"]):null, Number(formData["maximum_team_members_number"]), 
                 !!formData["auto_confirm_participants"], cookies.get("auth")||"");
@@ -18,7 +19,6 @@ export const actions = {
 			}
 			return fail(422, {
 				error: err.message || err.body?.message,
-				data: formData,
 			});
 		}
 	}

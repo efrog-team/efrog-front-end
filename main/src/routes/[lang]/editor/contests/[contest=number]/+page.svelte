@@ -4,4 +4,4 @@
     export let data;
     export let form;
 </script>
-<ContestEdit lang={data.lang} info={form || {data: data.contest}}/>
+<ContestEdit lang={data.lang} info={{error: form?.error, data: data.contest}}/>

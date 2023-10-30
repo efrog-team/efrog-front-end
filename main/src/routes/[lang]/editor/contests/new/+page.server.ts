@@ -9,6 +9,7 @@ export const actions = {
 		let id;
 		try {
             validateFormInfo(formData);
+			console.log("new", formData["start_time"], formData["start_time"]?formatDate(formData["start_time"]):null);
 			id = await createContest(formData["name"], formData["description"], formatDate(formData["start_time"]), 
                 formatDate(formData["end_time"]), true, Number(formData["maximum_team_members_number"]), 
                 !!formData["auto_confirm_participants"], cookies.get("auth")||"");
