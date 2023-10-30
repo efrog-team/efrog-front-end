@@ -27,7 +27,7 @@
     <button class="btn btn-secondary" on:click={ () => { action("decline") } }>{loc.confirm.decline}</button>
  </div>
 {/if}
-{#if data.userInfo}
+{#if data.userInfo && !data.userInfo.author_confirmed}
 <div class="alert mt-2" role="alert">
     <i class="bi bi-exclamation-circle text-error me-2"></i><span>{loc.approve_info}</span>
 </div>
