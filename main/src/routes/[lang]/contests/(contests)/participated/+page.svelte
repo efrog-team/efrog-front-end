@@ -18,10 +18,12 @@
         <li class="list-group-item list-group-item-action d-flex">
             <span class="me-3">{i + 1}</span>
             <i class="bi {contestStatusIcon[contest.status]} me-3"></i>
-            {#if contest.private}
-            <span class="me-2"><i class="bi bi-lock-fill text-yellow"></i></span>
-            {/if}
-            <a href="/{data.lang}/contests/{contest.id}" class="me-auto">{contest.name}</a>
+            <a href="/{data.lang}/contests/{contest.id}" class="me-auto">
+                {contest.name}
+                {#if contest.private}
+                <span class="me-2"><i class="bi bi-lock-fill text-yellow"></i></span>
+                {/if}
+            </a>
             <span>
                 {#if !contest.author_confirmed }
                 <span class="text-yellow">{loc.unapproved}</span>

@@ -84,6 +84,9 @@ a{
 li a{
     width: 100%;
 }
+li span {
+    white-space:nowrap;
+}
 
 .list-group-item{
     --bs-list-group-border-color: var(--color2);

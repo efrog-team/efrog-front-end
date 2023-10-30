@@ -20,10 +20,10 @@
             "main": {
                 "email": "Email",
                 "name": "Name",
-                "profile_edit": "Edit profile"
+                "profile_edit": "Edit Account"
             },
             "edit": {
-                "header": "Edit Profile",
+                "header": "Edit Account",
                 "personal": "Password",
                 "login": "Login",
                 "info_header": "Personal Information",
@@ -180,6 +180,7 @@
                         "confirm": "Confirm",
                         "decline": "Decline"
                     },
+                    "approve_info": "To access the problems of this competition the author must approve you as a participant",
                     "status": "Status",
                     "unstarted": "Scheduled",
                     "ongoing": "Started",
@@ -396,10 +397,10 @@
             "main": {
                 "email": "Електронна пошта",
                 "name": "Ім'я",
-                "profile_edit": "Редагувати профіль"
+                "profile_edit": "Редагувати акаунт"
             },
             "edit": {
-                "header": "Редагувати профіль",
+                "header": "Редагувати акаунт",
                 "personal": "Особисті дані",
                 "login": "Пароль",
                 "info_header": "Особиста інформація",
@@ -555,6 +556,7 @@
                         "confirm": "Підтвердити",
                         "decline": "Відхилити"
                     },
+                    "approve_info":"Щоб отримати доступ до задач цього змагання, автор має підтвердити вашу участь",
                     "back": "перейти до змагання",
                     "status": "Статус",
                     "unstarted": "Заплановане",

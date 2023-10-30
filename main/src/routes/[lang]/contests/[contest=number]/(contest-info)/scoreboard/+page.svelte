@@ -8,7 +8,8 @@
 
     let positions: number[] = [];
     for(let i=0; i<data.scoreboard.length; i++){
-        positions.push(i==0 || data.scoreboard[i-1].total_score!=data.scoreboard[i].total_score ? i+1 : positions.at(-1) as number);
+        positions.push(i==0 || Number(data.scoreboard[i-1].total_score)!=Number(data.scoreboard[i].total_score) ?
+            i+1 : positions.at(-1) as number);
     }
 </script>
 {#if data.scoreboard.length}
