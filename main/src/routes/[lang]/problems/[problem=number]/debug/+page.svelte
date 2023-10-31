@@ -20,7 +20,8 @@
         langEl = document.getElementById("language") as HTMLSelectElement;
 
         codeEl.value = localStorage.getItem("debug") || "";
-        langEl.value = localStorage.getItem("lang") || versions[0];
+        curLanguage = localStorage.getItem("lang") || versions[0];
+        
         codeEl.focus();
         codeEl.addEventListener('blur', ()=>{
             localStorage.setItem("debug", codeEl.value || "");
@@ -29,7 +30,6 @@
             localStorage.setItem("lang", langEl.value || "");
         });
     });
-
     async function submit(){
         let lang = (document.getElementById("language") as HTMLSelectElement).value || "";
         let input = (document.getElementById("input") as HTMLTextAreaElement).value || "";

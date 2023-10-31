@@ -8,9 +8,15 @@
     export let form;
     let loc = locs[data.lang as keyof typeof locs].problems.problem.pages;
 
-    let curLanguage: string = form?.data?.language || versions[0];
+    let curLanguage: string;
 
     onMount(()=>{
+        curLanguage = form?.data?.language || localStorage.getItem("s-lang") || versions[0];
+        let langEl = document.getElementById("language") as HTMLSelectElement;
+        langEl.addEventListener('change', ()=>{
+            localStorage.setItem("s-lang", langEl.value || "");
+        });
+
         let codeEl = (document.querySelector("#solution") as HTMLTextAreaElement);
         codeEl.value = form?.data?.solution || "";
         codeEl.focus();
