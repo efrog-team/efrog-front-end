@@ -16,25 +16,25 @@ export async function load({params, cookies}){
 
 const teamNameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{0,}$/);
 
-function validateInput(formData){
-	if(!formData.get("teamName")?.match(teamNameCheck)) throw new Error("Bad name");
+function validateInput(formData: Dictionary){
+	if(!formData["teamName"]?.match(teamNameCheck)) throw new Error("Bad name");
 }
 
 export const actions = {
 	create: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
+		const formData = formToObj(await request.formData());
 		try{
 			validateInput(formData); 
-			await create(formData.get("teamName"), cookies.get("auth"));
-		}catch (err){
+			await create(formData["teamName"], cookies.get("auth") || "");
+		}catch (err: any){
 			if(err.status && err.status != 409){
 				throw err;
 			}
 			return fail(422,{
 				error: err.message || err.body?.message,
-				data: formToObj(formData)
+				data: formData
 			});
 		}
-		throw redirect(303, `/${params.lang}/teams/${formData.get("teamName")}/edit`);
+		throw redirect(303, `/${params.lang}/teams/${formData["teamName"]}/edit`);
 	}
 };

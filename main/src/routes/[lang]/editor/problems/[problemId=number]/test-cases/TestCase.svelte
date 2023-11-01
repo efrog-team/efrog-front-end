@@ -22,7 +22,7 @@
 				<label class="form-label" for="score-{info.id}">{loc.score}</label>
 			</div>
 			<div class="col-auto">
-				<input class="form-control" value={opened ? "0" : info.score} min="0" type="number" name="score" id="score-{info.id}" disabled={!!opened} readonly={!!opened}>
+				<input class="form-control" value={opened ? "0" : info.score } min="0" type="number" name="score" id="score-{info.id}" disabled={opened} readonly={opened}>
 			</div>
 		</div>
 	</div>

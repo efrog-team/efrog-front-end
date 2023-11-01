@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type Dictionary = {[key:string]: string}
 type FailFormBase = {error: string, data: Dictionary}
 
@@ -127,3 +128,4 @@ interface DebugResult{
     physical_memory_taken: number
     output: string
 }
+/* eslint-enable @typescript-eslint/no-unused-vars */

@@ -14,52 +14,52 @@ export async function load({params, cookies, url}) {
 const emailCheck = new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/);
 const usernameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,}$/);
 
-function validateFormInfo(data){
-	if(data.get("username") && !data.get("username")?.match(usernameCheck)) throw new Error("Bad username");
-	if(data.get("name").length == 0) throw new Error("Name is required");
-	if(data.get("email") && !data.get("email")?.match(emailCheck)) throw new Error("Not an email");
+function validateFormInfo(data: Dictionary){
+	if(data["username"] && !data["username"]?.match(usernameCheck)) throw new Error("Bad username");
+	if(data["name"].length == 0) throw new Error("Name is required");
+	if(data["email"] && !data["email"]?.match(emailCheck)) throw new Error("Not an email");
 }
-function validateFormPass(data){
-	if(data.get("newPass")?.length < 8) throw new Error("Password must have at least 8 symbol");
-	if(data.get("repeatPass") != data.get("newPass")) throw new Error("Passwords must be equal");
+function validateFormPass(data: Dictionary){
+	if(data["newPass"]?.length < 8) throw new Error("Password must have at least 8 symbol");
+	if(data["repeatPass"] != data["newPass"]) throw new Error("Passwords must be equal");
 }
 
 
 export const actions = {
 	info: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
+		const formData = formToObj(await request.formData());
 		try{
 			validateFormInfo(formData);
-			await updateUserInfo(params.user, formData.get("username"), formData.get("email"), formData.get("name"), cookies.get("auth"));
-		}catch (err){
+			await updateUserInfo(params.user, formData["username"], formData["email"], formData["name"], cookies.get("auth") || "");
+		}catch (err: any){
 			if(err.status && err.status != 409){
 				throw err;
 			}
 			return fail(422,{
 				error: err.message || err.body?.message,
-				data: formToObj(formData),
+				data: formData,
 				type: "info"
 			});
 		}
-		if(formData.get("username")) throw redirect(303, `/${params.lang}/users/${formData.get("username")}/edit`);
+		if(formData["username"]) throw redirect(303, `/${params.lang}/users/${formData["username"]}/edit`);
 	},
 	password: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
+		const formData = formToObj(await request.formData());
 		try{
-			const token = await getToken(params.user, formData.get("curPass"));
+			const token = await getToken(params.user, formData["curPass"]);
 			validateFormPass(formData); 
-			await updateUserPass(params.user, formData.get("newPass"), token);
+			await updateUserPass(params.user, formData["newPass"], token);
 		}catch (err: any){
 			if(err.status && err.status != 409 && err.status != 401){
 				throw err;
 			}
 			return fail(422,{
 				error: err.message || err.body?.message,
-				data: formToObj(formData),
+				data: formData,
 				type: "pass"
 			});
 		}
-		const token = await getToken(params.user, formData.get("newPass"));
+		const token = await getToken(params.user, formData["newPass"]);
 		cookies.set("auth", token, { path: "/" });
 	}
 };

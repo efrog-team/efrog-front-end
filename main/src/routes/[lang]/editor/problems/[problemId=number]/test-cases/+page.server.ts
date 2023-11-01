@@ -4,51 +4,48 @@ import {fail} from "@sveltejs/kit";
 
 export async function load({params, cookies}) {
 	return {
-		testCases: await getTestCases(Number(params.problemId), cookies.get("auth")),
+		testCases: await getTestCases(Number(params.problemId), cookies.get("auth")||""),
 	};
 }
 
-function validateFormInfo(data){
-	if(!data.get("input")?.length) throw new Error("Input is required");
-	if(!data.get("output")?.length) throw new Error("Output is required");
+function validateFormInfo(data: Dictionary){
+	if(!data["input"]?.length) throw new Error("Input is required");
+	if(!data["output"]?.length) throw new Error("Output is required");
 }
 
 export const actions = {
 	save: async ({ request, cookies, params }) => {
-		const formData = await request.formData();
+		const formData = formToObj(await request.formData());
 		try {
 			validateFormInfo(formData);
-			if(formData.get("id") == 0){
-				await createTestCase(Number(params.problemId), formData.get("input"), formData.get("output"), 
-					Number(formData.get("score")), !!formData.get("opened"), cookies.get("auth"));
+			if(Number(formData["id"]) == 0){
+				await createTestCase(Number(params.problemId), formData["input"], formData["output"], 
+					Number(formData["score"] || 0), !!formData["opened"], cookies.get("auth")||"");
 			}else{
-				await updateTestCase(Number(params.problemId), Number(formData.get("id")), 
-					formData.get("input"), formData.get("output"), Number(formData.get("score")), 
-					cookies.get("auth"));
-				if(formData.get("opened")){
-					await makeTestCaseOpened(Number(params.problemId), Number(formData.get("id")), 
-						cookies.get("auth"));
+				await updateTestCase(Number(params.problemId), Number(formData["id"]), formData["input"],
+					formData["output"], Number(formData["score"] || 0), cookies.get("auth")||"");
+				if(formData["opened"]){
+					await makeTestCaseOpened(Number(params.problemId), Number(formData["id"]), 
+						cookies.get("auth")||"");
 				}else{
-					await makeTestCaseClosed(Number(params.problemId), Number(formData.get("id")), 
-						cookies.get("auth"));
+					await makeTestCaseClosed(Number(params.problemId), Number(formData["id"]), 
+						cookies.get("auth")||"");
 				}
 			}
-		} catch (err) {
+		} catch (err: any) {
 			if(err.status && err.status != 409){
 				throw err;
 			}
-			const data = formToObj(formData);
-			data.opened = !!data.opened;
 			return fail(422, {
 				error: err.message || err.body?.message,
-				data,
-				id: Number(formData.get("id"))
+				data: formData,
+				id: Number(formData["id"])
 			});
 		}
 	},
 	delete: async ({ request, cookies, params }) => {
-		const formData = await request.formData();
+		const formData = formToObj(await request.formData());
 
-		await deleteTestCase(Number(params.problemId), Number(formData.get("id")), cookies.get("auth"));
+		await deleteTestCase(Number(params.problemId), Number(formData["id"]), cookies.get("auth")||"");
 	}
 };

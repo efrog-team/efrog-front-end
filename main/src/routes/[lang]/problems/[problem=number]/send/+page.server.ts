@@ -9,17 +9,17 @@ export async function load({cookies, url, params}){
 
 export const actions = {
 	submit: async ({ request, cookies, params }) => {
-		const formData = await request.formData();
-		const {language, version} = getLangInfo(formData.get("language"));
+		const formData = formToObj(await request.formData());
+		const {language, version} = getLangInfo(formData["language"]||"");
 		let submitionId;
 		try {
-			submitionId = await submit(params.problem, formData.get("solution"), language, 
-				version, cookies.get("auth"));
+			submitionId = await submit(Number(params.problem), formData["solution"], language, 
+				version, cookies.get("auth")||"");
 		} catch (err: any) {
 			if(err.status != 403) throw err;
 			return fail(422, {
 				error: err.body?.message,
-				data: formToObj(formData),
+				data: formData,
 			});
 		}
 		throw redirect(303, `/${params.lang}/submissions/${submitionId}/full`);

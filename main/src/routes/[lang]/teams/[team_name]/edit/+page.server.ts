@@ -13,54 +13,54 @@ export async function load({params, cookies, url}) {
 
 	return {
 		teamInfo,
-		deletable: await isDeletable(params.team_name, cookies.get("auth")),
+		deletable: await isDeletable(params.team_name, cookies.get("auth") || ""),
 		members: await getMembers(params.team_name)
 	};
 }
 
 const teamNameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{0,}$/);
-function validateName(formData){
-	if(!formData.get("teamName")?.match(teamNameCheck)) throw new Error("Bad name");
+function validateName(formData: Dictionary){
+	if(!formData["teamName"]?.match(teamNameCheck)) throw new Error("Bad name");
 }
 
 export const actions = {
 	add: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
+		const formData = formToObj(await request.formData());
 		try{
-			await addMember(params.team_name, formData.get("username"), cookies.get("auth"));
-		}catch (err){
+			await addMember(params.team_name, formData["username"], cookies.get("auth") || "");
+		}catch (err: any){
 			if(err.status && err.status != 409 && err.status != 404){
 				throw err;
 			}
 			return fail(422,{
 				error: err.message || err.body?.message,
-				data: formToObj(formData)
+				data: formData
 			});
 		}
 	},
 	delete: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
-		await deleteMember(params.team_name, formData.get("username"), cookies.get("auth"));
+		const formData = formToObj(await request.formData());
+		await deleteMember(params.team_name, formData["username"], cookies.get("auth")||"");
 	},
 	contestant: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
-		await makeContestant(params.team_name, formData.get("username"), cookies.get("auth"));
+		const formData = formToObj(await request.formData());
+		await makeContestant(params.team_name, formData["username"], cookies.get("auth") || "");
 	},
 	coach: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
-		await makeCoach(params.team_name, formData.get("username"), cookies.get("auth"));
+		const formData = formToObj(await request.formData());
+		await makeCoach(params.team_name, formData["username"], cookies.get("auth") || "");
 	},
 	rename: async ({ request, cookies, params}) => {
-		const formData = await request.formData();
+		const formData = formToObj(await request.formData());
 		try{
 			validateName(formData);
-			await rename(params.team_name, formData.get("teamName"), cookies.get("auth"));
-		}catch (err){
+			await rename(params.team_name, formData["teamName"], cookies.get("auth") || "");
+		}catch (err: any){
 			return fail(422,{
 				error: err.message,
-				data: formToObj(formData)
+				data: formData
 			});
 		}
-		throw redirect(303, `${params.lang}/teams/${formData.get("teamName")}/edit`);
+		throw redirect(303, `${params.lang}/teams/${formData["teamName"]}/edit`);
 	},
 };
