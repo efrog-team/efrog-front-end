@@ -1,24 +1,24 @@
-import { myProblems } from '$lib/server/problems.js';
-import { formToObj } from "$lib/features.js"
+import { myProblems } from "$lib/server/problems.js";
+import { formToObj } from "$lib/features.js";
 import { fail, redirect } from "@sveltejs/kit";
-import { getFromHub } from '$lib/hub'
-import { createProblem, createTestCase } from '$lib/server/problems'
+import { getFromHub } from "$lib/hub";
+import { createProblem, createTestCase } from "$lib/server/problems";
 
-export async function load({cookies, params, url, parent}) {
-    let {author} = await parent();
-    return {
-        problems: myProblems(author.username, cookies.get("auth") || ""),
-    }
+export async function load({cookies, parent}) {
+	const {author} = await parent();
+	return {
+		problems: myProblems(author.username, cookies.get("auth") || ""),
+	};
 }
 
-export let actions = {
-    fromHub:  async ({ request, cookies, url}) =>{
-        const formData = await request.formData();
+export const actions = {
+	fromHub:  async ({ request, cookies, url}) =>{
+		const formData = await request.formData();
 		let problemId: number;
-        try{
+		try{
 			if(!formData.get("problemId")) throw new Error("Problem id is required");
 	
-			let {task, test} = await getFromHub(Number(formData.get("problemId")), cookies.get("auth") || "");
+			const {task, test} = await getFromHub(Number(formData.get("problemId")), cookies.get("auth") || "");
 
 			problemId = await createProblem(task.name, task.statement, task.input_statement, task.output_statement, 
 				task.note, task.time_limit, task.memory_limit, true, cookies.get("auth") || "");
@@ -35,6 +35,6 @@ export let actions = {
 				data: formToObj(formData)
 			});
 		}
-		throw redirect(303, `${url.pathname}/${problemId}`)
-    }
-}
+		throw redirect(303, `${url.pathname}/${problemId}`);
+	}
+};

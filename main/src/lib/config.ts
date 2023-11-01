@@ -1,72 +1,73 @@
-export const authUrl = "http://localhost:4189";
-export const serverUrl = "http://localhost:8000"
-export const clientUrl = "http://localhost:5173"
-export const hubUrl = "http://localhost:1204"
+export const authUrl = "https://auth.efrog.pp.ua";
+export const serverUrl = "https://api.efrog.pp.ua";
+export const clientUrl = "http://localhost:5173";
+export const hubUrl = "http://localhost:1204";
+
 
 // localisations
-export let localisations = [
-    "en",
-    "uk"
+export const localisations = [
+	"en",
+	"uk"
 ];
 
 // submissions
-export let languages = [ 
-    "C++ 17",
-    "C 17",
-    "Node.js",
-    "Python 3"
- ];
-
- export let versions = [
-    "Python 3 (3.10)",
-    "Node.js (20.x)",
-    "C++ 17 (g++ 11.2)",
-    "C 17 (gcc 11.2)"
+export const languages = [ 
+	"C++ 17",
+	"C 17",
+	"Node.js",
+	"Python 3"
 ];
 
-export let prismLang: { [key: string]: string; } = {
-    "Python 3 (3.10)": "py",
-    "Node.js (20.x)": "js",
-    "C++ 17 (g++ 11.2)": "cpp",
-    "C 17 (gcc 11.2)": "c"
+export const versions = [
+	"Python 3 (3.10)",
+	"Node.js (20.x)",
+	"C++ 17 (g++ 11.2)",
+	"C 17 (gcc 11.2)"
+];
+
+export const prismLang: Dictionary = {
+	"Python 3 (3.10)": "py",
+	"Node.js (20.x)": "js",
+	"C++ 17 (g++ 11.2)": "cpp",
+	"C 17 (gcc 11.2)": "c"
 };
 
-export let verdicts = [
-    "Correct Answer", // change also at TastCases.svelte
-    "Wrong Answer",
-    "Compilation Error",
-    "Time Limit Exceeded",
-    "Memory Limit Exceeded",
-    "Runtime Error"
+export const verdicts = [
+	"Correct Answer", // change also at TastCases.svelte
+	"Wrong Answer",
+	"Compilation Error",
+	"Time Limit Exceeded",
+	"Memory Limit Exceeded",
+	"Runtime Error"
 ];
 
 // katex render
-export let katexDelimiters = [
-    {left: '$$', right: '$$', display: true},
-    {left: '$', right: '$', display: false},
-    {left: '\\(', right: '\\)', display: false},
-    {left: '\\[', right: '\\]', display: true}
-]
+export const katexDelimiters = [
+	{left: "$$", right: "$$", display: true},
+	{left: "$", right: "$", display: false},
+	{left: "\\(", right: "\\)", display: false},
+	{left: "\\[", right: "\\]", display: true}
+];
 
 
 // problem creation
-export let limits = {
-    time: {
-        default: 2,
-        max: 10,
-        min: 1,
-    },
-    memory: {
-        default: 512,
-        max: 1024,
-        min: 2
-    }
-}
+export const limits = {
+	time: {
+		default: 2,
+		max: 10,
+		min: 1,
+	},
+	memory: {
+		default: 512,
+		max: 1024,
+		min: 2
+	}
+};
 
-export let testCaseVisible = 5000;
+export const testCaseVisible = 5000;
 
 // pagination
-export let itemsOnPage = 100;
+export const itemsOnPage = 100;
 
 // contest creation
-export let minContestDuration = 5;
+export const minContestDuration = 5;

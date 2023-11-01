@@ -1,8 +1,8 @@
 import { clientUrl } from "$lib/config";
 
-export function formToObj(formData: FormData): {[key: string]: string}{
-	const data: { [key: string]: any } = {};
-	formData.forEach((value, key) => (data[key] = value));
+export function formToObj(formData: FormData): Dictionary {
+	const data: Dictionary = {};
+	formData.forEach((value, key) => (data[key] = value as string));
 	return data;
 }
 
@@ -13,15 +13,15 @@ export function randomString(length: number): string{
 export function getAuthParams(state: string){
 	const params = new  URLSearchParams({
 		response_type: "code",
-		client_id: "12345678", // oauth imitation
-        state,
-        redirect_uri: clientUrl + "/api/auth/callback"
-    });
+		//client_id: "12345678", // oauth imitation
+		state,
+		redirect_uri: clientUrl + "/api/auth/callback"
+	});
 	return params.toString();
 }
 
 export function isValidDate(str: string){
-    return !isNaN((new Date(str)).getTime());
+	return !isNaN((new Date(str)).getTime());
 }
 
 export function formatDate(date: string|Date|number){
@@ -30,12 +30,13 @@ export function formatDate(date: string|Date|number){
 }
 
 export function convertDate(str: string){
-	const pad = (num: number) => String(num).padStart(2, '0')
-	let d = new Date(str+"Z");
-	return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${d.toTimeString().slice(0,8)}`
+	const pad = (num: number) => String(num).padStart(2, "0");
+	const d = new Date(str+"Z");
+	return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${d.toTimeString().slice(0,8)}`;
 }
 
 export function getLangInfo(str: string){
-    let [_, language, version] = str.match(/(.+) \((.+)\)/) as string[];
-    return {language, version};
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [_, language, version] = str.match(/(.+) \((.+)\)/) as string[];
+	return {language, version};
 }

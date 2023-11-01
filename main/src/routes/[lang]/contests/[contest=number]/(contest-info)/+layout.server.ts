@@ -1,8 +1,8 @@
-import { getContest } from '$lib/server/contest.js';
+import { getContest } from "$lib/server/contest.js";
 
 
 export async function load({params, cookies}) {
-    return {
-        contest: await getContest(Number(params.contest), cookies.get("auth")||"")
-    }
+	return {
+		contest: await getContest(Number(params.contest), cookies.get("auth")||"")
+	};
 }

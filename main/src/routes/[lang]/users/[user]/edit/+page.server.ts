@@ -1,18 +1,18 @@
-import { error, redirect, fail } from '@sveltejs/kit';
-import { checkAuth } from '$lib/check.js';
-import { updateUserInfo, updateUserPass, getToken } from '$lib/server/user';
-import {formToObj} from '$lib/features'
+import { error, redirect, fail } from "@sveltejs/kit";
+import { checkAuth } from "$lib/check.js";
+import { updateUserInfo, updateUserPass, getToken } from "$lib/server/user";
+import {formToObj} from "$lib/features";
 
 export async function load({params, cookies, url}) {
 	const data = await checkAuth(cookies, url, params.lang);
-    if(data.username != params.user){
-        throw error(403, "Is in not your account");
-    }
-    return data;
+	if(data.username != params.user){
+		throw error(403, "Is in not your account");
+	}
+	return {user: data};
 }
 
-let emailCheck = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-let usernameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,}$/)
+const emailCheck = new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/);
+const usernameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,}$/);
 
 function validateFormInfo(data){
 	if(data.get("username") && !data.get("username")?.match(usernameCheck)) throw new Error("Bad username");
@@ -41,15 +41,15 @@ export const actions = {
 				type: "info"
 			});
 		}
-		if(formData.get("username")) throw redirect(303, `/${params.lang}/users/${formData.get("username")}/edit`)
+		if(formData.get("username")) throw redirect(303, `/${params.lang}/users/${formData.get("username")}/edit`);
 	},
-    password: async ({ request, url, cookies, params}) => {
-        const formData = await request.formData();
+	password: async ({ request, cookies, params}) => {
+		const formData = await request.formData();
 		try{
-			let token = await getToken(params.user, formData.get("curPass"));
+			const token = await getToken(params.user, formData.get("curPass"));
 			validateFormPass(formData); 
 			await updateUserPass(params.user, formData.get("newPass"), token);
-		}catch (err){
+		}catch (err: any){
 			if(err.status && err.status != 409 && err.status != 401){
 				throw err;
 			}
@@ -59,8 +59,8 @@ export const actions = {
 				type: "pass"
 			});
 		}
-		let token = await getToken(params.user, formData.get("newPass"));
-		cookies.set('auth', token, { path: '/' });
-    }
-}
+		const token = await getToken(params.user, formData.get("newPass"));
+		cookies.set("auth", token, { path: "/" });
+	}
+};
 

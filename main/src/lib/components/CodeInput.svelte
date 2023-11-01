@@ -1,55 +1,55 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import { prismLang } from "$lib/config";
+	import { onMount } from "svelte";
+	import { prismLang } from "$lib/config";
 
-    export let lang: string;
-    $: langCode = prismLang[lang];
+	export let lang: string;
+	$: langCode = prismLang[lang];
 
-    let highlightEl: HTMLDivElement | null = null;
-    let inputEl: HTMLInputElement | null = null;
-    onMount(()=>{
-        highlightEl = document.querySelector("#highlighting");
-        inputEl = document.querySelector("#solution");
-        highlight();
-    });
+	let highlightEl: HTMLDivElement | null = null;
+	let inputEl: HTMLInputElement | null = null;
+	onMount(()=>{
+		highlightEl = document.querySelector("#highlighting");
+		inputEl = document.querySelector("#solution");
+		highlight();
+	});
     
-    function highlight(){
-        let code = inputEl?.value || '';
-        if(highlightEl?.firstElementChild){
-            if(code[code.length-1] == '\n'){
-                code += ' ';
-            }
-            highlightEl.firstElementChild.innerHTML = code.replaceAll("<", "&lt;");
-            window.Prism.highlightElement(highlightEl.firstElementChild);
-            sync_scroll();
-        }
-    }
+	function highlight(){
+		let code = inputEl?.value || "";
+		if(highlightEl?.firstElementChild){
+			if(code[code.length-1] == "\n"){
+				code += " ";
+			}
+			highlightEl.firstElementChild.innerHTML = code.replaceAll("<", "&lt;");
+			window.Prism.highlightElement(highlightEl.firstElementChild);
+			sync_scroll();
+		}
+	}
 
-    function sync_scroll(){
-        if(highlightEl && inputEl){
-            highlightEl.scrollTop = inputEl.scrollTop;
-            highlightEl.scrollLeft = inputEl.scrollLeft;
-        }
-    }
+	function sync_scroll(){
+		if(highlightEl && inputEl){
+			highlightEl.scrollTop = inputEl.scrollTop;
+			highlightEl.scrollLeft = inputEl.scrollLeft;
+		}
+	}
 
-    function check_tab(event: KeyboardEvent){
-        let code = inputEl?.value || '';
-        if(event.key == "Tab" && inputEl) {
-            event.preventDefault(); 
-            let beforeTab = code.slice(0, inputEl.selectionStart || 0); 
-            let afterTab = code.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
-            let cursorPos = (inputEl.selectionEnd || 0) + 1; 
-            inputEl.value = beforeTab + "\t" + afterTab; 
-            inputEl.selectionStart = cursorPos;
-            inputEl.selectionEnd = cursorPos;
-            highlight();
-        }
-    }
+	function check_tab(event: KeyboardEvent){
+		let code = inputEl?.value || "";
+		if(event.key == "Tab" && inputEl) {
+			event.preventDefault(); 
+			let beforeTab = code.slice(0, inputEl.selectionStart || 0); 
+			let afterTab = code.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
+			let cursorPos = (inputEl.selectionEnd || 0) + 1; 
+			inputEl.value = beforeTab + "\t" + afterTab; 
+			inputEl.selectionStart = cursorPos;
+			inputEl.selectionEnd = cursorPos;
+			highlight();
+		}
+	}
 </script>
 
 <textarea spellcheck="false" name="solution" rows=16 class="form-control" id="solution" on:scroll={sync_scroll} on:input={highlight} on:focus={highlight} on:keydown={check_tab} required></textarea>
 
-<pre class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ''} id="highlighting-content" ></code></pre>
+<pre class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ""} id="highlighting-content" ></code></pre>
 <style>
     #solution, #highlighting {
         font-family: monospace;

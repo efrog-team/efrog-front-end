@@ -1,3 +1,6 @@
+type Dictionary = {[key:string]: string}
+type FailFormBase = {error: string, data: Dictionary}
+
 interface User{
     username: string
     email: string
@@ -47,7 +50,7 @@ interface Contest {
     description: string
     start_time: string 
     end_time: string 
-    status: 'unstarted' | 'ongoing' | 'ended'
+    status: "unstarted" | "ongoing" | "ended"
     private: boolean
     maximum_team_members_number: number
     auto_confirm_participants: boolean

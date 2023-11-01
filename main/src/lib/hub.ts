@@ -1,5 +1,5 @@
-import { error } from '@sveltejs/kit';
-import { hubUrl } from '$lib/config';
+import { error } from "@sveltejs/kit";
+import { hubUrl } from "$lib/config";
 
 interface Problem{
     name: string
@@ -18,20 +18,20 @@ interface TestCase{
 }
 
 export async function getFromHub(taskId: number, token: string): Promise<{task: Problem, test: TestCase[]}>{
-    const response = await fetch(hubUrl + '/api/publicate-task',{
-        method: 'POST',
-        body: JSON.stringify({taskId}),
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: token
-        }
-    });
+	const response = await fetch(hubUrl + "/api/publicate-task",{
+		method: "POST",
+		body: JSON.stringify({taskId}),
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: token
+		}
+	});
 
-    const json = await response.json();
-    if(response.ok){
-        return json;
-    }
-    throw error(response.status, json.error || "Undescribed error");
+	const json = await response.json();
+	if(response.ok){
+		return json;
+	}
+	throw error(response.status, json.error || "Undescribed error");
 }
 
 

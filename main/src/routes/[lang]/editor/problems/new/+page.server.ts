@@ -1,8 +1,8 @@
-import {formToObj} from '$lib/features'
-import {createProblem} from '$lib/server/problems'
-import {fail, redirect} from '@sveltejs/kit'
+import {formToObj} from "$lib/features";
+import {createProblem} from "$lib/server/problems";
+import {fail, redirect} from "@sveltejs/kit";
 
-function validateFormInfo(data: {[key:string]: string}){
+function validateFormInfo(data: Dictionary){
 	if(!data["name"]?.length) throw new Error("Problem name is required");
 	if(!data["statement"]) throw new Error("Statement is required");
 	if(!data["input_statement"]) throw new Error("Input Format is required");
@@ -16,8 +16,8 @@ export const actions = {
 		try {
 			validateFormInfo(formData);
 			id = await createProblem(formData["name"], formData["statement"], formData["input_statement"], 
-			formData["output_statement"], formData["notes"], Number(formData["time_restriction"]), 
-			Number(formData["memory_restriction"]), true, cookies.get("auth")||"");
+				formData["output_statement"], formData["notes"], Number(formData["time_restriction"]), 
+				Number(formData["memory_restriction"]), true, cookies.get("auth")||"");
 		} catch (err: any) {
 			if(err.status && err.status != 409){
 				throw err;
@@ -27,6 +27,6 @@ export const actions = {
 				data: formData,
 			});
 		}
-		throw redirect(303, `/${params.lang}/editor/problems/${id}`)
+		throw redirect(303, `/${params.lang}/editor/problems/${id}`);
 	}
-}
+};

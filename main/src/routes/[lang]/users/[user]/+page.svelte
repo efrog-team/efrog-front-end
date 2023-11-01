@@ -1,24 +1,24 @@
 <script lang="ts">
-    import { page } from '$app/stores';
-    import locs from '$lib/localisation.json';
+	import { page } from "$app/stores";
+	import locs from "$lib/localisation.json";
 
 	export let data;
-    let loc = locs[data.lang as keyof typeof locs].user.main;
+	let loc = locs[data.lang as keyof typeof locs].user.main;
 </script>
 <div class="mb-3">
-    <h2 class="user-header">{data.info.username}</h2>
+	<h2 class="user-header">{data.info.username}</h2>
 </div>
 <div class="mb-4">
-    <p>{loc.email}: {data.info.email}</p> 
-    <p>{loc.name}: {data.info.name}</p>
+	<p>{loc.email}: {data.info.email}</p> 
+	<p>{loc.name}: {data.info.name}</p>
 </div>
 
 {#if data.me}
-<div class="mb-4">
-    <div class="mt-5 mb-5 ">
-        <button class="btn btn-accent"><a href="{$page.url.pathname}/edit">{loc.profile_edit} <i class="bi bi-pencil"></i></a></button>
-    </div>
-</div>
+	<div class="mb-4">
+		<div class="mt-5 mb-5 ">
+			<button class="btn btn-accent"><a href="{$page.url.pathname}/edit">{loc.profile_edit} <i class="bi bi-pencil"></i></a></button>
+		</div>
+	</div>
 {/if}
 
 <style>

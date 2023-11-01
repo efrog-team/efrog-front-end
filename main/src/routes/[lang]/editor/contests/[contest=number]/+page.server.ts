@@ -6,13 +6,12 @@ import { validateFormInfo } from "../validate";
 export const actions = {
 	save: async ({ request, cookies, params }) => {
 		const formData = formToObj(await request.formData());
-		let id;
 		try {
-            validateFormInfo(formData);
+			validateFormInfo(formData);
 			console.log("update", formData["start_time"], formData["start_time"]?formatDate(formData["start_time"]):null);
-			id = await updateContest(Number(params.contest), formData["name"], formData["description"], formData["start_time"]?formatDate(formData["start_time"]):null, 
+			await updateContest(Number(params.contest), formData["name"], formData["description"], formData["start_time"]?formatDate(formData["start_time"]):null, 
 				formData["end_time"]?formatDate(formData["end_time"]):null, Number(formData["maximum_team_members_number"]), 
-                !!formData["auto_confirm_participants"], cookies.get("auth")||"");
+				!!formData["auto_confirm_participants"], cookies.get("auth")||"");
 		} catch (err: any) {
 			if(err.status && err.status != 409 && err.status != 400){
 				throw err;
@@ -22,4 +21,4 @@ export const actions = {
 			});
 		}
 	}
-}
+};

@@ -1,7 +1,6 @@
-import {formToObj} from '$lib/features.ts'
-import {limits} from '$lib/config.ts'
-import {updateProblem, getProblem, canBeEdited} from '$lib/server/problems.ts'
-import {fail, error} from '@sveltejs/kit'
+import {formToObj} from "$lib/features";
+import {updateProblem} from "$lib/server/problems";
+import {fail} from "@sveltejs/kit";
 
 
 function validateFormInfo(data){
@@ -14,13 +13,12 @@ function validateFormInfo(data){
 export const actions = {
 	save: async ({ request, cookies, params }) => {
 		const formData = await request.formData();
-		let id;
 		try {
 			validateFormInfo(formData);
 			await updateProblem(Number(params.problemId), formData.get("name"), formData.get("statement"), formData.get("input_statement"), 
-			formData.get("output_statement"), formData.get("notes"), formData.get("time_restriction"), formData.get("memory_restriction"), 
+				formData.get("output_statement"), formData.get("notes"), formData.get("time_restriction"), formData.get("memory_restriction"), 
 				cookies.get("auth"));
-		} catch (err) {
+		} catch (err: any) {
 			if(err.status && err.status != 409){
 				throw err;
 			}
@@ -30,4 +28,4 @@ export const actions = {
 			});
 		}
 	}
-}
+};

@@ -1,9 +1,9 @@
-import { getUser } from '$lib/server/user.js'
+import { getUser } from "$lib/server/user.js";
 
 export async function load({params, cookies}) {
-    let data = await getUser(params.user);
-    return {
-        info: data,
-        me: data.username == cookies.get("username")
-    }
+	const data = await getUser(params.user);
+	return {
+		info: data,
+		me: data.username == cookies.get("username")
+	};
 }
