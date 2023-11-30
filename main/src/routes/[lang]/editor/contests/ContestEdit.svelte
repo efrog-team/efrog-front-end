@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { toLocalDate, formatDate } from "$lib/features";
 	import locs from "$lib/localisation.json";
 
 	export let editable = true;
@@ -10,8 +11,8 @@
 	if(info?.data.start_time) info.data.start_time = info.data.start_time.replace(" ", "T").slice(0, 16);
 	if(info?.data.end_time) info.data.end_time = info.data.end_time.replace(" ", "T").slice(0, 16);
 
-	let start_time = info?.data.start_time || null;
-	let end_time = info?.data.end_time || null;
+	let start_time =  info?.data.start_time ? toLocalDate(info?.data.start_time) : null;
+	let end_time = info?.data.end_time ? toLocalDate(info.data.end_time) : null;
 </script>
 <form action="?/save" method="post">
 	<div class="mb-4">
@@ -20,7 +21,7 @@
 	</div>
 	<div class="mb-4">
 		<label for="contest-name" class="form-label">{loc.description} ({loc.optional})</label>
-		<textarea rows="5" value={info?.data.description || null} id="description" name="description" class="form-control" ></textarea>
+		<textarea rows="5" value={info?.data.description || ""} id="description" name="description" class="form-control" ></textarea>
 	</div>
 	<hr>
 	<div class="mb-4">
@@ -31,7 +32,7 @@
 			<div class="col-sm-6 col-md-4">
 				<input  type="datetime-local" id="start-time" class="form-control" bind:value={start_time}>
 				{#if start_time !== info?.data.start_time }
-					<input type="hidden" name="start_time" value={start_time}>
+					<input type="hidden" name="start_time" value={start_time ? formatDate(start_time): null}>
 				{/if}
 			</div>
 		</div>
@@ -42,7 +43,7 @@
 			<div class="col-sm-6 col-md-4 ">
 				<input type="datetime-local" id="end-time" class="form-control" bind:value={end_time}>
 				{#if end_time !== info?.data.end_time}
-					<input type="hidden" name="end_time" value={end_time}>
+					<input type="hidden" name="end_time" value={end_time ? formatDate(end_time) : null}>
 				{/if}
 			</div>
 		</div>

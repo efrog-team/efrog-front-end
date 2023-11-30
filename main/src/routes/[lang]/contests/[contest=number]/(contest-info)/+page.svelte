@@ -1,7 +1,7 @@
 <script lang="ts">
 	import locs from "$lib/localisation.json";
 	import { invalidateAll } from "$app/navigation";
-	import { convertDate } from "$lib/features.js";
+	import { toLocalDate } from "$lib/features.js";
 	import RegisterModal from "./RegisterModal.svelte";
 	import { contestStatusIcon } from "$lib/icons";
 
@@ -63,7 +63,7 @@
 		</h3>
 	</div>
 	<div >
-		<div>{convertDate(data.contest.start_time)} — {convertDate(data.contest.end_time)}</div>
+		<div>{toLocalDate(data.contest.start_time)} — {toLocalDate(data.contest.end_time)}</div>
 	</div>
 </div>
 {#if data.contest.status != "unstarted" && data.problems.length > 0}

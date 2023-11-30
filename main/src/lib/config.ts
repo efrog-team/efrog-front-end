@@ -33,7 +33,7 @@ export const prismLang: Dictionary = {
 };
 
 export const verdicts = [
-	"Correct Answer", // change also at TastCases.svelte
+	"Correct Answer", // change also at TestCases.svelte
 	"Wrong Answer",
 	"Compilation Error",
 	"Time Limit Exceeded",

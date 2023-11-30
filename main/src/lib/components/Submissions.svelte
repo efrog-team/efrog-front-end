@@ -2,7 +2,7 @@
 	import { verdicts, languages } from "$lib/config.js";
 	import { page } from "$app/stores";
 	import locs from "$lib/localisation.json";
-	import { convertDate } from "$lib/features";
+	import { toLocalDate } from "$lib/features";
 	import { verdictIcon } from "$lib/icons";
 
 	export let submissions: SubmissionPublic[];
@@ -58,7 +58,7 @@
 				<tr>
 					<td class="ps-3"><a href="/{$page.params.lang}{basePath}/submissions/{sub.id}">{sub.id}</a></td>
 					<td><a href="/{$page.params.lang}{basePath}/problems/{sub.problem_id}">{sub.problem_name}</a></td>
-					<td>{convertDate(sub.time_sent)}</td>
+					<td>{toLocalDate(sub.time_sent)}</td>
 					<td>{`${sub.language_name} (${sub.language_version})`}</td>
 					<td><i class="bi me-2 {verdictIcon[sub.total_verdict]}"></i> {sub.total_verdict}</td>
 				</tr>

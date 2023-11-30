@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import { verdictIcon } from "$lib/icons";
-	import { convertDate } from "$lib/features";
+	import { toLocalDate } from "$lib/features";
 	import locs from "$lib/localisation.json";
 
 	export let pathToProblems = "";
@@ -35,7 +35,7 @@
 	</div>
 	<div class="col-3">
 		<div class="header mb-2">{loc.date}:</div>
-		<div>{convertDate(info.time_sent)}</div>
+		<div>{toLocalDate(info.time_sent)}</div>
 	</div>
 </div>
 <style>

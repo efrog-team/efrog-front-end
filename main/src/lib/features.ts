@@ -29,7 +29,7 @@ export function formatDate(date: string|Date|number){
 	return date.toISOString().replace("T", " ").slice(0,-5);
 }
 
-export function convertDate(str: string){
+export function toLocalDate(str: string){
 	const pad = (num: number) => String(num).padStart(2, "0");
 	const d = new Date(str+"Z");
 	return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${d.toTimeString().slice(0,8)}`;
