@@ -1,5 +1,5 @@
 import { checkAuth } from "$lib/check.js";
-import { formToObj, getLangInfo } from "$lib/features";
+import { formToObj, formatCode, getLangInfo } from "$lib/features";
 import { submit } from "$lib/server/submission.js";
 import { fail, redirect } from "@sveltejs/kit";
 
@@ -13,7 +13,7 @@ export const actions = {
 		const {language, version} = getLangInfo(formData["language"]||"");
 		let submitionId;
 		try {
-			submitionId = await submit(Number(params.problem), formData["solution"], language, 
+			submitionId = await submit(Number(params.problem), formatCode(formData["solution"]||""), language, 
 				version, cookies.get("auth")||"");
 		} catch (err: any) {
 			if(err.status != 403) throw err;

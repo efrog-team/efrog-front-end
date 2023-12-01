@@ -40,3 +40,7 @@ export function getLangInfo(str: string){
 	const [_, language, version] = str.match(/(.+) \((.+)\)/) as string[];
 	return {language, version};
 }
+
+export function formatCode(code: string){
+	return code.replace("\xA0 \xA0 ", "\t ");
+}

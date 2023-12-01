@@ -36,7 +36,7 @@
 
 <style>
     textarea{
-        white-space: nowrap;
+        white-space: pre;
         overflow: auto;
     }
     textarea:disabled{

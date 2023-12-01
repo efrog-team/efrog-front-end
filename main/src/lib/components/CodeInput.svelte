@@ -53,7 +53,7 @@
 <style>
     #solution, #highlighting {
         font-family: monospace;
-        white-space: nowrap;
+        white-space: pre;
         overflow: auto;
         tab-size: 4;
     }
