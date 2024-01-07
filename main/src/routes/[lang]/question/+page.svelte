@@ -22,6 +22,11 @@
         <label for="question" class="form-label">{loc.question}</label>
         <textarea name="question" id="question" rows=15 class="form-control" value="{form?.data.question || ''}"></textarea>
     </div>
+    {#if form?.error}
+    <div class="form-error form-text mb-3">
+        {form?.error}
+    </div>
+    {/if}
     <div class="mb-4">
         <button type="submit" class="btn btn-accent">{loc.submit}</button>
     </div>

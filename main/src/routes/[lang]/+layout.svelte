@@ -29,6 +29,11 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav pr-lg-3">
+				<li class="nav-item ">
+					<a class="nav-link {$page.url.pathname.startsWith(`/${data.lang}/question`) ? "active":""}" href="/{data.lang}/question">
+						<i class="bi bi-question-circle"></i>
+					</a>
+				</li>
 				{#if data?.username}
 					<li class="nav-item dropdown">
 						<button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,16 +46,16 @@
 							<li><a class="dropdown-item" href="/{data.lang}/users/{data.username}/edit">
 								{loc.edit_account}
 							</a></li>
-							<!-- <li><a class="dropdown-item" href="/{data.lang}/editor">
-                            {loc.editor}
-                        </a></li> -->
+							<li><a class="dropdown-item" href="/{data.lang}/editor">
+								{loc.editor}
+							</a></li>
 							<li><a class="dropdown-item" href="/{data.lang}/account/logout?back={$page.url}" on:click={invalidateAll}>
 								{loc.logout}
 							</a></li>
 						</ul>
 					</li>
 				{:else}
-					<li class="nav-item">
+					<li class="nav-item ms-1">
 						<a class="nav-link" href="/{data.lang}/account/register?back={$page.url.pathname}">
 							{loc.register}
 						</a>
@@ -61,7 +66,7 @@
 						</a>
 					</li>
 				{/if}
-				<li class="nav-item dropdown ms-2">
+				<li class="nav-item dropdown">
 					<button class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
 						{data.lang.toUpperCase()}
 					</button>

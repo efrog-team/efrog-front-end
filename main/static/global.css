@@ -170,10 +170,6 @@ li span {
     --bs-btn-close-focus-shadow: var(--box-shadow);
 }
 
-.bi-question-circle, .bi-question{
-    color: var(--yellow-color);
-}
-
 .bi-x-circle, .bi-x{
     color: var(--error-color);
 }
