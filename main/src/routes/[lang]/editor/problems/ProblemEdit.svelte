@@ -94,7 +94,7 @@
 	</div>
 	{#if editable}
 		<div class="mb-4">
-			<button type="submit" class="btn btn-accent mb-2">Save</button>
+			<button type="submit" class="btn btn-accent mb-2">{loc.save}</button>
 			{#if info.error}
 				<div class="form-error">{info.error}</div>
 			{/if}

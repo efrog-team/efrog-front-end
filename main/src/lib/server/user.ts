@@ -26,3 +26,7 @@ export async function updateUserInfo(curUsername:string ,username: string, email
 export async function updateUserPass(username:string, password: string, token: string){
 	await request("PUT", "/users/"+username, {password}, token);
 }
+
+export async function askQuestion(email: string, topic: string, question: string){
+	await request("POST", "/question", {email, topic, question});
+}

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
+    import { page } from "$app/stores";
 	import Pagination from "$lib/components/Pagination.svelte";
 	import { itemsOnPage } from "$lib/config.js";
 	import { contestStatusIcon } from "$lib/icons.js";
@@ -6,11 +8,16 @@
     
 	export let data;
 	let loc = locs[data.lang as keyof typeof locs].contests.main;
+	let approved = $page.url.searchParams.get('unapproved') !== 'true';
 </script>
 <div class="mb-4 mt-2">
 	<h2 class="header">{loc.header}</h2>
 </div>
-<div class="mt-3 mb-4">
+<div class="mb-2">
+	<input id="approved" class="form-check-input" type="checkbox" on:change={()=>goto(`?${approved?'unapproved=true':''}`, {replaceState: true})} bind:checked={approved}>
+	<label class="form-check-label" for="approved">{loc.approved}</label>
+</div>
+<div class="mb-4">
 	<div class="list-group">
 		{#each data.contests as contest, i}     
 			<li class="list-group-item list-group-item-action d-flex">

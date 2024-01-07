@@ -35,8 +35,8 @@ export async function deleteCpmpetition(competition_id:number, auth: string) {
 	await request("DELETE", `/competitions/${competition_id}`, null, auth);
 }
 
-export async function getPublicContests(start: number, limit: number): Promise<Contest[]>{
-	const {body} = await request("GET", `/competitions?start=${start}&limit=${limit}`);
+export async function getPublicContests(start: number, limit: number, unapproved: boolean = false): Promise<Contest[]>{
+	const {body} = await request("GET", `/competitions?start=${start}&limit=${limit}&unapproved=${unapproved}`);
 	return body.competitions;
 }
 

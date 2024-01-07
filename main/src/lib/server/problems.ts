@@ -92,8 +92,8 @@ export async function makeTestCaseClosed(problem_id: number, test_case_id: numbe
 	await request("PUT", `/problems/${problem_id}/test-cases/${test_case_id}/make-closed`, null, auth);
 }
 
-export async function getProblems(start: number, limit: number): Promise<Problem[]>{
-	const {body} = await request("GET", `/problems?start=${start}&limit=${limit}`);
+export async function getProblems(start: number, limit: number, unapproved: boolean = false): Promise<Problem[]>{
+	const {body} = await request("GET", `/problems?start=${start}&limit=${limit}&unapproved=${unapproved}`);
 	return body.problems;
 }
 

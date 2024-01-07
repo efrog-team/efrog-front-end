@@ -6,6 +6,9 @@ interface User{
     username: string
     email: string
     name: string
+    problems_quota: number
+    test_cases_quota: number
+    competitions_quota: number
 }
 
 interface Team{
@@ -33,6 +36,7 @@ interface Problem {
     time_restriction: number
     memory_restriction: number
     private: boolean
+    approved: boolean
 }
 
 interface TestCase {
@@ -55,6 +59,7 @@ interface Contest {
     private: boolean
     maximum_team_members_number: number
     auto_confirm_participants: boolean
+    approved: boolean
 }
 
 interface ScoreboardResult {

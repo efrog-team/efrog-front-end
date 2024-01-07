@@ -22,6 +22,9 @@
 		<li class="nav-item">
 			<a class="nav-link {pageName === "/contests" ? "active":""}" href="{baseName}/contests">{loc.contests}</a>
 		</li>
+		<li class="nav-item">
+			<a class="nav-link {pageName === "/limitation" ? "active":""}" href="{baseName}/limitation">{loc.limitations}</a>
+		</li>
 	</ul>
 {/if}
 <slot />

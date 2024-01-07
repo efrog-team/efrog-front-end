@@ -118,6 +118,7 @@
         },
         "problems": {
             "header": "Problems",
+            "approved": "approved only",
             "problem": {
                 "layout": {
                     "statement": "Statement",
@@ -150,7 +151,8 @@
                 "participated": "Participated"
             },
             "main": {
-                "header": "Public contests"
+                "header": "Public contests",
+                "approved": "approved only"
             },
             "participated": {
                 "header": "Participated contests",
@@ -203,7 +205,8 @@
         "editor": {
             "layout": {
                 "problems": "My Problems",
-                "contests": "My Contests"
+                "contests": "My Contests",
+                "limitations": "Limitations"
             },
             "problems": {
                 "header": "Manage my problems",
@@ -232,7 +235,8 @@
                     "input_format": "Input format",
                     "output_format": "Output format",
                     "notes": "Notes",
-                    "optional_field": "This is optional field"
+                    "optional_field": "This is optional field",
+                    "save": "Save"
                 },
                 "statement": {
                     "show_preview": "Show preview",
@@ -277,7 +281,7 @@
                 }
             },
             "contests": {
-                "header": "Manage my problems",
+                "header": "Manage my contests",
                 "public": "public",
                 "private": "private",
                 "create_contest": "Create New Contest",
@@ -339,7 +343,25 @@
                         "delete_info": "Permanently removes the contest from the platform."
                     }
                 }
+            },
+            "limitations": {
+                "header": "My Limitations",
+                "overview": "Each user on the platform has limits on creating competitions, problems, and test-cases. Here are your current limits:",
+                "contests": "Contests",
+                "problems": "Problems",
+                "test_cases": "Test Cases (for all your problems)",
+                "modify": "In order to modify the existing limitations you need to contact the site administrator or ",
+                "ask": "ask a question"
             }
+        },
+        "question": {
+            "header": "Ask a Question",
+            "owerview": "On this page, you can easily ask questions, report any bugs, or share feedback about the site. It's a quick way to get help or let us know how we can improve your experience.",
+            "email": "Email",
+            "topic": "Topic",
+            "question": "Question",
+            "submit": "Submit",
+            "submitted": "Your question has been submitted!"
         },
         "global_components": {
             "privacy_filter": {
@@ -495,6 +517,7 @@
         },
         "problems": {
             "header": "Задачі",
+            "approved": "тільки перевірені",
             "problem": {
                 "layout": {
                     "statement": "Умова",
@@ -527,7 +550,8 @@
                 "participated": "Відібрані"
             },
             "main": {
-                "header": "Публічні змагання"
+                "header": "Публічні змагання",
+                "approved": "тільки перевірені"
             },
             "participated": {
                 "header": "Змагання, в яких Ви берете участь",
@@ -580,7 +604,8 @@
         "editor": {
             "layout": {
                 "problems": "Мої задачі",
-                "contests": "Мої змагання"
+                "contests": "Мої змагання",
+                "limitations": "Обмеження"
             },
             "problems": {
                 "header": "Управління моїми задачами",
@@ -611,7 +636,8 @@
                     "input_format": "Формат вводу",
                     "output_format": "Формат виводу",
                     "notes": "Примітки",
-                    "optional_field": "Це необов'язковий поле"
+                    "optional_field": "Це необов'язковий поле",
+                    "save": "Зберегти"
                 },
                 "statement": {
                     "show_preview": "Показати попередній перегляд",
@@ -718,7 +744,25 @@
                         "delete_info": "Назавжди видалити змагання з платформи."
                     }
                 }
+            },
+            "limitations": {
+                "header": "Обмеження",
+                "overview": "Кожен користувач платформи має обмеження на створення змагань, задач та тестів для задачі. Ваші поточні обмеження:",
+                "contests": "Змагання",
+                "problems": "Задачі",
+                "test_cases": "Тести",
+                "modify": "Щоб змінити існуючі обмеження, вам потрібно звернутися до адміністратора сайту або ",
+                "ask": "задати питання"
             }
+        },
+        "question": {
+            "header": "Задати питання",
+            "owerview": "На цій сторінці ви можете легко задати питання, повідомити про помилки або поділитися відгуками про сайт. Це швидкий спосіб отримати допомогу або дати нам знати, як ми можемо покращити ваш досвід.",
+            "email": "Електронна Пошта",
+            "topic": "Тема",
+            "question": "Питання",
+            "submit": "Надіслати",
+            "submitted": "Ваше питання надіслано!"
         },
         "global_components": {
             "privacy_filter": {
