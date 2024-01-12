@@ -28,6 +28,7 @@
     --box-error-shadow: 0 0 0 .25rem #dc35455f;
     --scrollbar-thumb: #474747;
     --scrollbar-track: var(--color3);
+    --scrollbar-width: 5px;
 }
 
 body{
@@ -41,6 +42,10 @@ body{
 a{
     color: inherit;
     text-decoration: inherit;
+}
+
+p{
+    word-break: break-word;
 }
 
 .btn-accent{
@@ -83,9 +88,6 @@ a{
 
 li a{
     width: 100%;
-}
-li span {
-    white-space:nowrap;
 }
 
 .list-group-item{
@@ -203,11 +205,6 @@ div:has(table) {
     overflow: auto;
 }
 
-.list-group-item{
-    overflow-x: hidden;
-    white-space: nowrap;
-}
-
 .table-dark{
     --bs-table-color: var(--font-color);
     --bs-table-bg: var(--color3);
@@ -254,21 +251,17 @@ div:has(table) {
     color: var(--yellow-color);
 }
 
-.scrollbar {
-    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-}
 
-.scrollbar::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-.scrollbar::-webkit-scrollbar-thumb { 
+::-webkit-scrollbar-thumb { 
     background: var(--scrollbar-thumb);
 }
 
-.scrollbar::-webkit-scrollbar-track { 
+::-webkit-scrollbar-track { 
     background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar {
+    height: var(--scrollbar-width);
 }
 
 input[type="file"]{

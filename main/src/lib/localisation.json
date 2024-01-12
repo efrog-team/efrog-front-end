@@ -355,13 +355,13 @@
             }
         },
         "question": {
-            "header": "Ask a Question",
+            "header": "Feedback",
             "owerview": "On this page, you can easily ask questions, report any bugs, or share feedback about the site. It's a quick way to get help or let us know how we can improve your experience.",
             "email": "Email",
             "topic": "Topic",
-            "question": "Question",
+            "question": "Message",
             "submit": "Submit",
-            "submitted": "Your question has been submitted!"
+            "submitted": "Your massage has been submitted!"
         },
         "global_components": {
             "privacy_filter": {
@@ -756,13 +756,13 @@
             }
         },
         "question": {
-            "header": "Задати питання",
+            "header": "Зворотній зв'язок",
             "owerview": "На цій сторінці ви можете легко задати питання, повідомити про помилки або поділитися відгуками про сайт. Це швидкий спосіб отримати допомогу або дати нам знати, як ми можемо покращити ваш досвід.",
             "email": "Електронна Пошта",
             "topic": "Тема",
-            "question": "Питання",
+            "question": "Повідомлення",
             "submit": "Надіслати",
-            "submitted": "Ваше питання надіслано!"
+            "submitted": "Ваше повідомлення надіслано!"
         },
         "global_components": {
             "privacy_filter": {

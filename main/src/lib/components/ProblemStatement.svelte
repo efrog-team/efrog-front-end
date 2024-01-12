@@ -69,12 +69,12 @@
 			<h6>{loc.example} {i+1}</h6>
 			<div class="e-table">
 				<div class="row">
-					<div class="col-6 e-item pl-3 pt-1 styled-scrollbars">{loc.input_data}</div>
-					<div class="col-6 e-item pr-3 pt-1 styled-scrollbars">{loc.output_data}</div>
+					<div class="col-6 e-item pl-3 pt-1 scrollbar">{loc.input_data}</div>
+					<div class="col-6 e-item pr-3 pt-1 scrollbar">{loc.output_data}</div>
 				</div>
 				<div class="row">
-					<div class="col-6 e-item pl-3 pb-1 styled-scrollbars">{example.input}</div>
-					<div class="col-6 e-item pr-3 pb-1 styled-scrollbars">{example.solution}</div>
+					<div class="col-6 e-item pl-3 pb-1 scrollbar">{example.input}</div>
+					<div class="col-6 e-item pr-3 pb-1 scrollbar">{example.solution}</div>
 				</div>
 			</div>
 		</div>
