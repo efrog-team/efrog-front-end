@@ -2,6 +2,7 @@ import { error, redirect, fail } from "@sveltejs/kit";
 import { checkAuth } from "$lib/check.js";
 import { updateUserInfo, updateUserPass, getToken } from "$lib/server/user";
 import {formToObj} from "$lib/features";
+import { cookiesMaxAge } from "$lib/config.js";
 
 export async function load({params, cookies, url}) {
 	const data = await checkAuth(cookies, url, params.lang);
@@ -60,7 +61,7 @@ export const actions = {
 			});
 		}
 		const token = await getToken(params.user, formData["newPass"]);
-		cookies.set("auth", token, { path: "/" });
+		cookies.set("auth", token, { path: "/", maxAge: cookiesMaxAge, sameSite: "lax"});
 	}
 };
 

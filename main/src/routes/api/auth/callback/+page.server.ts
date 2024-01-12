@@ -1,3 +1,4 @@
+import { cookiesMaxAge } from "$lib/config.js";
 import { getMe } from "$lib/server/user.js";
 import { redirect } from "@sveltejs/kit";
 
@@ -17,8 +18,8 @@ export async function load({cookies, url}) {
 	}
 	cookies.delete("back", {path: "/"});
     
-	cookies.set("auth", token, {path: "/", sameSite: "lax"});
-	cookies.set("username", myInfo.username, {path: "/"});
+	cookies.set("auth", token, {path: "/", sameSite: "lax", maxAge: cookiesMaxAge});
+	cookies.set("username", myInfo.username, {path: "/", maxAge: cookiesMaxAge});
 
 	throw redirect(303, back);
 }

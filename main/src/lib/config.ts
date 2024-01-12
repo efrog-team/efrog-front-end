@@ -71,3 +71,5 @@ export const itemsOnPage = 100;
 
 // contest creation
 export const minContestDuration = 5;
+
+export const cookiesMaxAge = 60 * 60 * 24 * 30;

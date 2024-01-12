@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /uk
+Allow: /en/problems
+Allow: /uk/contests
+Allow: /uk/editor
+Allow: /en
+Allow: /en/problems
+Allow: /en/contests
+Allow: /en/editor
+Disallow: /*/api
+Disallow: /*/submissions
+Disallow: /*/edit

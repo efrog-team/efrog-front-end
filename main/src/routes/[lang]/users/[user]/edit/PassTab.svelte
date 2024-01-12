@@ -17,7 +17,7 @@
 		<div class="mb-3">
 			<label for="cur-pass" class="form-label">{loc.current_pass}</label>
 			<div class="input-group">
-				<input type={passVisible ? "text":"password"} class="form-control" id="cur-pass" name="curPass">
+				<input type={passVisible ? "text":"password"} class="form-control" id="cur-pass" name="curPass" autocomplete="current-password">
 				<button class="input-group-text" on:click|preventDefault={()=>{passVisible = !passVisible;}}>
 					<i class="bi-eye{passVisible ? "-slash": ""}"></i>
 				</button>
@@ -26,7 +26,7 @@
 		<div class="mb-3">
 			<label for="new-pass" class="form-label">{loc.new_pass}</label>
 			<div class="input-group">
-				<input type={passNewVisible ? "text":"password"} class="form-control" id="new-pass" name="newPass">
+				<input type={passNewVisible ? "text":"password"} class="form-control" id="new-pass" name="newPass" autocomplete="new-password">
 				<button class="input-group-text" on:click|preventDefault={()=>{passNewVisible = !passNewVisible;}}>
 					<i class="bi-eye{passNewVisible ? "-slash": ""}"></i>
 				</button>
@@ -35,7 +35,7 @@
 		<div class="mb-4">
 			<label for="repeat-pass" class="form-label">{loc.repeat_pass}</label>
 			<div class="input-group">
-				<input type={passRepeatVisible ? "text":"password"} class="form-control" id="repeat-pass" name="repeatPass">
+				<input type={passRepeatVisible ? "text":"password"} class="form-control" id="repeat-pass" name="repeatPass" autocomplete="new-password">
 				<button class="input-group-text" on:click|preventDefault={()=>{passRepeatVisible = !passRepeatVisible;}}>
 					<i class="bi-eye{passRepeatVisible ? "-slash": ""}"></i>
 				</button>
