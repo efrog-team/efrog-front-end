@@ -39,7 +39,9 @@
 		navigator.clipboard.writeText(data.info.code);
 	}
 </script>
-
+<svelte:head>
+	<title>#{data.info.id}</title>
+</svelte:head>
 <GeneralInfo lang={data.lang} info={data.info} pathToProblems={pathToProblems}/>
 {#if data.info.checked && !data.info.compiled}
 	<div class="d-flex">

@@ -5,6 +5,9 @@
 	export let data;
 	let loc = locs[data.lang as keyof typeof locs].user.main;
 </script>
+<svelte:head>
+	<title>{data.info.username}</title>
+</svelte:head>
 <div class="mb-3">
 	<h2 class="user-header">{data.info.username}</h2>
 </div>

@@ -25,7 +25,7 @@
 	}
 </script>
 <label for="{name}-{id}" class="form-label">{name=="input"?loc.input_data:loc.output_data}</label>
-<textarea value={visibleText} class="form-control scrollbar mb-2" id="{name}-{id}" rows="8" disabled={disabled} on:input={(e)=>value=e.currentTarget.value}></textarea>
+<textarea value={visibleText} class="form-control mb-2" id="{name}-{id}" rows="8" disabled={disabled} on:input={(e)=>value=e.currentTarget.value}></textarea>
 
 <input type="file" accept=".txt" id="file-{name}-{id}" on:change={(e)=>readFile(e.currentTarget)}>
 <label for="file-{name}-{id}" class="btn btn-dark">{loc.from_file}</label>

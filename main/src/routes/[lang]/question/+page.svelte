@@ -5,6 +5,9 @@
 
     let loc = locs[data.lang as keyof typeof locs].question;
 </script>
+<svelte:head>
+	<title>{loc.header}</title>
+</svelte:head>
 <div class="mb-3 mt-2">
 	<h2 class="header">{loc.header}</h2>
 </div>

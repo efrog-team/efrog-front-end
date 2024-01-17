@@ -20,6 +20,9 @@
 		invalidateAll();
 	}
 </script>
+<svelte:head>
+	<title>{loc.team_name}</title>
+</svelte:head>
 {#if data.needConfirmation}
 	<div class="alert d-flex align-items-stretch mt-2" role="alert">
 		<span class="flex-grow-1 my-auto">{loc.confirm.info}</span>

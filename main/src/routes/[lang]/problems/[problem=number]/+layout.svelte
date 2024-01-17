@@ -16,6 +16,11 @@
 	});
 
 </script>
+<svelte:head>
+	<title>{data.problem.name}</title>
+</svelte:head>
+
+
 <ul class="nav mb-2">
 	<li class="nav-item">   
 		<a class="nav-link {pageName == "" ? "active":""}" href={baseName}>{loc.statement}</a>

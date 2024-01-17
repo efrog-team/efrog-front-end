@@ -8,6 +8,9 @@
 	let loc = locs[data.lang as keyof typeof locs].contests.participated;
 	let filteredContests = data.contests;
 </script>
+<svelte:head>
+	<title>{loc.header}</title>
+</svelte:head>
 <div class="mb-4 mt-2">
 	<h2 class="header">{loc.header}</h2>
 </div>

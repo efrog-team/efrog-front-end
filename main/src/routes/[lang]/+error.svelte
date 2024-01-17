@@ -1,6 +1,9 @@
 <script>
 	import { page } from "$app/stores";
 </script>
+<svelte:head>
+	<title>{$page.status}</title>
+</svelte:head>
 <div class="error-box d-flex align-items-center justify-content-center">
 	<div class="text-center">
 		<h1 class="display-3 fw-bold">{$page.status}</h1>

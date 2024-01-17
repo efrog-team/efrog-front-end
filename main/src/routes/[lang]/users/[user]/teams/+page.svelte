@@ -23,6 +23,9 @@
 		});
 	}
 </script>
+<svelte:head>
+	<title>{data.username} | {loc.teams}</title>
+</svelte:head>
 <div class="mb-4 mt-2">
 	<h2 class="header">{data.username}: {loc.teams}</h2>
 </div>

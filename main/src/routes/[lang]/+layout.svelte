@@ -127,7 +127,7 @@
 	}
 
 	footer img{
-		height: 1.8em;
+		height: 2em;
 		margin-top: -2px;
 	}
 

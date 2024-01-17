@@ -70,11 +70,11 @@
 	<div class="mb-3 row">
 		<div class="col-md-6 col-12 mb-3 mb-md-0">
 			<label for="input" class="form-label ">{loc.debug.input}</label>
-			<textarea class="form-control scrollbar mb-2" id="input" rows="8"></textarea>
+			<textarea class="form-control mb-2" id="input" rows="8"></textarea>
 		</div>
 		<div class="col-md-6 col-12 mb-3 mb-md-0">
 			<label for="output" class="form-label ">{loc.debug.output}</label>
-			<textarea class="form-control scrollbar mb-2" id="output" rows="8" value={debug?.result?.output || null} readonly></textarea>
+			<textarea class="form-control mb-2" id="output" rows="8" value={debug?.result?.output || null} readonly></textarea>
 		</div>
 	</div>
 	<div class="text-end mb-5 d-flex">

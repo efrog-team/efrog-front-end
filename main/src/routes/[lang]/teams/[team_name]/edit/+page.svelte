@@ -23,7 +23,9 @@
 		invalidateAll();
 	}
 </script>
-
+<svelte:head>
+	<title>{data.teamInfo.name} | {loc.edit_team}</title>
+</svelte:head>
 <div class="mb-4">
 	<h2 class="header">{loc.edit_team}</h2>
 </div>
