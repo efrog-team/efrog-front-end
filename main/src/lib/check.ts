@@ -4,7 +4,7 @@ import { getMe } from "$lib/server/user.js";
 export async function checkAuth(cookies: Cookies, url:URL, lang: string){
 	try {
 		const info = await getMe(cookies.get("auth") || "");
-		if(info.username != cookies.get("username")) throw new Error('Invalid username');
+		if(info.username != cookies.get("username")) throw new Error("Invalid username");
 		return info;
 	} catch (error) {
 		// console.log(`Auth Error: ${error}, username: ${cookies.get('username')}, auth: ${cookies.get('auth')}`);

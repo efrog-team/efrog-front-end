@@ -12,7 +12,7 @@ export const actions = {
 		const formData = await request.formData();
 		const {language, version} = getLangInfo(formData.get("language") as string);
 		const submitionId = await submit(Number(params.contest), Number(params.problem), 
-        formatCode(formData.get("solution") as string || ""), language, version, cookies.get("auth") || "");
+			formatCode(formData.get("solution") as string || ""), language, version, cookies.get("auth") || "");
 
 		throw redirect(303, `/${params.lang}/contests/${params.contest}/submissions/${submitionId}`);
 	}
