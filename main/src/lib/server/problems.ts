@@ -53,11 +53,6 @@ export async function makePrivate(problem_id: number, auth: string) {
 	await request("PUT", `/problems/${problem_id}/make-private`, null, auth);
 }
 
-export async function canBeEdited(problem_id: number, auth: string = ""): Promise<boolean> {
-	const {body} = await request("GET", `/problems/${problem_id}/check-if-can-be-edited`, null, auth);
-	return body.can;
-}
-
 export async function createTestCase(problem_id: number, input: string, solution: string, 
 	score: number, opened: boolean, auth: string): Promise<number> {
 	const {body} = await request("POST", `/problems/${problem_id}/test-cases`, {input, solution, score, opened}, auth);
@@ -92,8 +87,8 @@ export async function makeTestCaseClosed(problem_id: number, test_case_id: numbe
 	await request("PUT", `/problems/${problem_id}/test-cases/${test_case_id}/make-closed`, null, auth);
 }
 
-export async function getProblems(start: number, limit: number, unapproved: boolean = false): Promise<Problem[]>{
-	const {body} = await request("GET", `/problems?start=${start}&limit=${limit}&unapproved=${unapproved}`);
+export async function getProblems(start: number, limit: number, unapproved: boolean = false, auth: string): Promise<Problem[]>{
+	const {body} = await request("GET", `/problems?start=${start}&limit=${limit}&unapproved=${unapproved}`, null, auth);
 	return body.problems;
 }
 

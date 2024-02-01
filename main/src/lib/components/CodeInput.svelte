@@ -1,24 +1,16 @@
 <script lang="ts">
-	import { onMount } from "svelte";
 	import { prismLang } from "$lib/config";
 
 	export let lang: string;
 	$: langCode = prismLang[lang];
 
-	let highlightEl: HTMLDivElement | null = null;
-	let inputEl: HTMLInputElement | null = null;
-	onMount(()=>{
-		highlightEl = document.querySelector("#highlighting");
-		inputEl = document.querySelector("#solution");
-		highlight();
-	});
+	let highlightEl: HTMLPreElement;
+	let inputEl: HTMLTextAreaElement;
+
+	let code = "";
     
 	function highlight(){
-		let code = inputEl?.value || "";
 		if(highlightEl?.firstElementChild){
-			if(code[code.length-1] == "\n"){
-				code += " ";
-			}
 			highlightEl.firstElementChild.innerHTML = code.replaceAll("<", "&lt;");
 			window.Prism.highlightElement(highlightEl.firstElementChild);
 			sync_scroll();
@@ -32,24 +24,51 @@
 		}
 	}
 
-	function check_tab(event: KeyboardEvent){
-		let code = inputEl?.value || "";
+	function onKeyDown(event: KeyboardEvent){
 		if(event.key == "Tab" && inputEl) {
 			event.preventDefault(); 
-			let beforeTab = code.slice(0, inputEl.selectionStart || 0); 
-			let afterTab = code.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
-			let cursorPos = (inputEl.selectionEnd || 0) + 1; 
-			inputEl.value = beforeTab + "\t" + afterTab; 
-			inputEl.selectionStart = cursorPos;
-			inputEl.selectionEnd = cursorPos;
-			highlight();
+			insertText("\t");
+			onInput();
+		}else if(event.key == "Enter"){
+			insertText("\n"+getRowStartSpaces());
+			event.preventDefault();
+			onInput();
 		}
+	}
+
+	function onInput(){
+		correctTabs();
+		highlight();
+	}
+
+	function insertText(text: string){
+		let beforeTab = code.slice(0, inputEl.selectionStart || 0); 
+		let afterTab = code.slice(inputEl.selectionEnd || 0, code.length); 
+		let cursorPos = (inputEl.selectionEnd || 0) + text.length; 
+		code = beforeTab + text + afterTab; 
+		inputEl.selectionStart = cursorPos;
+		inputEl.selectionEnd = cursorPos;
+	}
+
+	function correctTabs(){
+		let selStart = inputEl.selectionStart || 0;
+		let lineBreak = code.lastIndexOf("\n", selStart);
+		let spaces = code.slice(lineBreak + 1, selStart).match(/[\t ]*/)?.[0] || "";
+		let newSpaces = spaces.replace(/ {4}/, "\t").replace(/ +\t/, "\t");
+		code = code.slice(0, lineBreak + 1) + newSpaces + code.slice(spaces.length + lineBreak + 1);	
+		inputEl.selectionStart = selStart + newSpaces.length - spaces.length;
+	}
+	
+	function getRowStartSpaces(){
+		let lineBreak = code.lastIndexOf("\n", inputEl.selectionStart || 0);
+		return code.slice(lineBreak + 1, inputEl.selectionStart || 0).match(/[\t ]*/)?.[0] || "";
 	}
 </script>
 
-<textarea spellcheck="false" name="solution" rows=16 class="form-control" id="solution" on:scroll={sync_scroll} on:input={highlight} on:focus={highlight} on:keydown={check_tab} required></textarea>
+<textarea bind:this={inputEl} spellcheck="false" name="solution" rows=16 class="form-control" id="solution" bind:value={code}
+	on:scroll={sync_scroll} on:input={onInput} on:focus={highlight} on:keydown={onKeyDown} required></textarea>
 
-<pre class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ""} id="highlighting-content" ></code></pre>
+<pre bind:this={highlightEl} class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ""} id="highlighting-content" ></code></pre>
 <style>
     #solution, #highlighting {
         font-family: monospace;

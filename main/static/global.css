@@ -271,3 +271,11 @@ input[type="file"]{
 .hidden {
     display: none;
 }
+
+.list-group-item .number {
+    color: var(--s-text);
+    flex: none;
+    width: 30px;
+    letter-spacing: -1px;
+    text-align: center;
+}

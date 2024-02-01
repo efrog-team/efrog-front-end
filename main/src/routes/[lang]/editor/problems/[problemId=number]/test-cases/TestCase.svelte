@@ -4,7 +4,6 @@
     
 	export let info: TestCase | Dictionary;
 	export let error: string | null = null;
-	export let editable = true;
 	export let lang: string;
 	let loc = locs[lang as keyof typeof locs].editor.problems.problem.test_cases.test_case_data;
 	let opened = !!info.opened;
@@ -34,17 +33,15 @@
 			<InputOutput id={Number(info.id)} name='output' value={info.solution || ""} lang={lang}/>
 		</div>
 	</div>
-	{#if editable}
-		<div>
-			<div class="mb-2">
-				<button type="submit" class="btn btn-accent me-2">{loc.save}</button>
-				{#if info.id != 0}
-					<button type="submit" formaction="?/delete" class="btn btn-outline-danger">{loc.delete}</button>
-				{/if}
-			</div>
-			{#if error}
-				<div class="form-error">{error}</div>
+	<div>
+		<div class="mb-2">
+			<button type="submit" class="btn btn-accent me-2">{loc.save}</button>
+			{#if info.id != 0}
+				<button type="submit" formaction="?/delete" class="btn btn-outline-danger">{loc.delete}</button>
 			{/if}
 		</div>
-	{/if}
+		{#if error}
+			<div class="form-error">{error}</div>
+		{/if}
+	</div>
 </form>

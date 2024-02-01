@@ -56,13 +56,13 @@
 	</div>
 {/if}
 <div class="mb-5">
-	<div class="mb-2">
+	<div class="mb-3">
 		<h3>
 			<i class="bi {contestStatusIcon[data.contest.status]}"></i>
 			{data.contest.status == "ended" ? loc.ended : data.contest.status == "ongoing" ? loc.ongoing : loc.unstarted}
 		</h3>
 	</div>
-	<div >
+	<div class="mb-3">
 		<div>{toLocalDate(data.contest.start_time)} — {toLocalDate(data.contest.end_time)}</div>
 	</div>
 </div>
@@ -73,8 +73,13 @@
 			<div class="list-group">
 				{#each data.problems as problem, i}     
 					<li class="list-group-item list-group-item-action d-flex">
-						<span class="me-3">{String.fromCharCode("A".charCodeAt(0) + i)}</span>
-						<a href="/{data.lang}/contests/{data.contest.id}/problems/{problem.id}" class="me-auto">{problem.name}</a>
+						<span class="me-3 number">{String.fromCharCode("A".charCodeAt(0) + i)}</span>
+						<a href="/{data.lang}/contests/{data.contest.id}/problems/{problem.id}" class="me-auto">
+							{problem.name}
+							{#if problem.solved}
+								<i class="bi bi-check-circle-fill text-success ms-2"></i>
+							{/if}
+						</a>
 					</li>
 				{/each}
 			</div>

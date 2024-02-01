@@ -5,7 +5,6 @@
 	import { katexDelimiters } from "$lib/config";
 	import locs from "$lib/localisation.json";
 
-	export let editable = true;
 	export let info: {error?: string, data: Problem | Dictionary};
 	export let lang: string;
 
@@ -92,12 +91,11 @@
 			</div>
 		</div>
 	</div>
-	{#if editable}
-		<div class="mb-4">
-			<button type="submit" class="btn btn-accent mb-2">{loc.save}</button>
-			{#if info.error}
-				<div class="form-error">{info.error}</div>
-			{/if}
-		</div>
-	{/if}
+	
+	<div class="mb-4">
+		<button type="submit" class="btn btn-accent mb-2">{loc.save}</button>
+		{#if info.error}
+			<div class="form-error">{info.error}</div>
+		{/if}
+	</div>
 </form>

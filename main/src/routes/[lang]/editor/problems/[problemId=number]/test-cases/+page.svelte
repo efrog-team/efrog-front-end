@@ -23,11 +23,9 @@
 
 	if(form?.id == 0) addTestCase();
 </script>
-{#if data.editable}
-	<div class="mb-3 mt-3">
-		<button on:click={addTestCase} class="btn btn-accent" disabled={createMode}><i class="bi bi-plus-lg"></i> {loc.add_test_case}</button>
-	</div>
-{/if}
+<div class="mb-3 mt-3">
+	<button on:click={addTestCase} class="btn btn-accent" disabled={createMode}><i class="bi bi-plus-lg"></i> {loc.add_test_case}</button>
+</div>
 <div class="accordion accordion-flush accordion-dark mb-4">
 	{#each data.testCases as testCase, i}
 		<div class="accordion-item">
@@ -38,7 +36,7 @@
 			</h5>
 			<div id="panel-{testCase.id}" class="accordion-collapse {testCase.id && form?.id !== testCase.id ? "collapse" : ""}">
 				<div class="accordion-body pb-4">
-					<TestCase lang={data.lang} editable={data.editable} error={form?.id === testCase.id ? form.error : null} info={form?.id == testCase.id ? form?.data : testCase}/>
+					<TestCase lang={data.lang} error={form?.id === testCase.id ? form.error : null} info={form?.id == testCase.id ? form?.data : testCase}/>
 				</div>
 			</div>
 		</div>

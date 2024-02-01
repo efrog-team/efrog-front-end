@@ -198,7 +198,12 @@
                 },
                 "scoreboard": {
                     "participant": "Participant",
-                    "total": "Total"
+                    "total": "Total",
+                    "full_scoring": "Count only fully solved problems",
+                    "time_penalty": "time penalty",
+                    "wrong_penalty": "wrong attempt penalty",
+                    "partial_scoring": "count points as a percentage",
+                    "scale_score": "scale from 0 to 100%"
                 }
             }
         },
@@ -211,7 +216,7 @@
             "problems": {
                 "header": "Manage my problems",
                 "create_problem": "Create new problem",
-                "edit_problem": "Edit",
+                "edit_problem": "edit",
                 "public": "public",
                 "private": "private",
                 "from_hub": {
@@ -295,6 +300,12 @@
                     "for_teams": "Team Contest",
                     "max_members": "Maximum Number of Team Members",
                     "auto_approve": "Automatically Approve All Participants",
+                    "scoring": "Scoring",
+                    "partial_scoring": "Count partial score for the problem ( IOI rules )",
+                    "full_scoring": "Count only fully solved problems ( ICPC rules )",
+                    "time_penalty": "Time penalty",
+                    "wrong_penalty": "Wrong attempt penalty",
+                    "scale": "Сount points as a percentage",
                     "save": "Save"
                 },
                 "contest": {
@@ -346,11 +357,11 @@
             },
             "limitations": {
                 "header": "My Limitations",
-                "overview": "Each user on the platform has limits on creating competitions, problems, and test-cases. Here are your current limits:",
+                "overview": "Each user on the platform has a quota on creating competitions, problems, and test-cases. Here is your current quota:",
                 "contests": "Contests",
                 "problems": "Problems",
                 "test_cases": "Test Cases (for all your problems)",
-                "modify": "In order to modify the existing limitations you need to contact the site administrator or ",
+                "modify": "In order to modify the existing quota you need to contact the site administrator or ",
                 "ask": "ask a question"
             }
         },
@@ -469,11 +480,11 @@
             "danger_zone": {
                 "header": "Зона ризику",
                 "deactivate": "Деактивувати",
-                "deactivate_info": "Назавжди видалити команду з платформи.",
+                "deactivate_info": "Заборонити команді брати участь у змаганнях.",
                 "activate": "Активувати",
                 "activate_info": "Дозволити команді брати участь у змаганнях.",
                 "delete": "Видалити",
-                "delete_info": "Заборонити команді брати участь у змаганнях."
+                "delete_info": "Назавжди видалити команду з платформи."
             },
             "team_filter": {
                 "all": "Всі",
@@ -597,7 +608,12 @@
                 },
                 "scoreboard": {
                     "participant": "Учасник",
-                    "total": "Всього"
+                    "total": "Всього",
+                    "full_scoring": "Зараховуються лише повністю вирішені задачі",
+                    "time_penalty": "штраф за час",
+                    "wrong_penalty": "за неправильну відправку",
+                    "partial_scoring": "Зараховуються часткові бали за задачі",
+                    "scale_score": "рахувати бали у процентах"
                 }
             }
         },
@@ -610,7 +626,7 @@
             "problems": {
                 "header": "Управління моїми задачами",
                 "create_problem": "Створити нову задачу",
-                "edit_problem": "Редагувати",
+                "edit_problem": "редагувати",
                 "public": "публічна",
                 "private": "приватна",
                 "from_hub": {
@@ -696,11 +712,17 @@
                     "for_teams": "Командне змагання",
                     "max_members": "Максимальна кількість учасників у команді",
                     "auto_approve": "Автоматично схвалювати всіх учасників",
+                    "scoring": "Оцінювання",
+                    "partial_scoring": "Зараховувати часткові бали за задачі (правила IOI)",
+                    "full_scoring": "Зараховувати лише повністю вирішені задачі (правила ICPC)",
+                    "time_penalty": "Штраф за час",
+                    "wrong_penalty": "Штраф за відправку",
+                    "scale": "Рахувати бали у процентах",
                     "save": "Зберегти"
                 },
                 "contest": {
                     "layout": {
-                        "edit": "Редагувати",
+                        "edit": "редагування",
                         "noteditable": "не можна редагувати",
                         "general": "Загальне",
                         "problems": "Задачі",
@@ -746,12 +768,12 @@
                 }
             },
             "limitations": {
-                "header": "Обмеження",
-                "overview": "Кожен користувач платформи має обмеження на створення змагань, задач та тестів для задачі. Ваші поточні обмеження:",
+                "header": "Мої обмеження",
+                "overview": "Кожен користувач платформи має квоту на створення змагань, задач та тестів для задачі. Ваша поточна квота:",
                 "contests": "Змагання",
                 "problems": "Задачі",
                 "test_cases": "Тести",
-                "modify": "Щоб змінити існуючі обмеження, вам потрібно звернутися до адміністратора сайту або ",
+                "modify": "Щоб змінити існуючу квоту, вам потрібно звернутися до адміністратора сайту або ",
                 "ask": "задати питання"
             }
         },

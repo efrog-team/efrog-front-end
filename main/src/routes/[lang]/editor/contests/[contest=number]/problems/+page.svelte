@@ -13,7 +13,7 @@
 	<div class="list-group">
 		{#each data.problems as problem, i}
 			<li class="list-group-item list-group-item-action d-flex">
-				<a href="/{data.lang}/problems/{problem.id}" class="col-1">{String.fromCharCode("A".charCodeAt(0) + i)}</a>
+				<a href="/{data.lang}/problems/{problem.id}" class="number me-3">{String.fromCharCode("A".charCodeAt(0) + i)}</a>
 				<a href="/{data.lang}/problems/{problem.id}" class="me-auto">{problem.name}</a>
 				<form method="post"> 
 					<input type="hidden" name="problemId" value={problem.id}>

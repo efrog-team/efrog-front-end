@@ -10,26 +10,28 @@
 	let loc = locs[data.lang as keyof typeof locs].layout;
 </script>
 <div class="page-container">
-	<nav class="navbar navbar-dark navbar-expand-sm">
+	<nav class="navbar navbar-dark navbar-expand-md">
 		<div class="container-fluid pt-2 px-md-5">
 			<a class="navbar-brand pr-3" href="/{data.lang}"><img src="/logo.png" alt="efrog logo" height="40"></a>
+			<ul class="navbar-nav me-3">
+				<li class="nav-item">
+					<a class="nav-link {$page.url.pathname.startsWith(`/${data.lang}/problems`) ? "active":""}" href="/{data.lang}/problems">
+						{loc.problems}
+					</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav me-auto"> 
+				<li class="nav-item">
+					<a class="nav-link {$page.url.pathname.startsWith(`/${data.lang}/contests`) ? "active":""}" href="/{data.lang}/contests">
+						{loc.contests}
+					</a>
+				</li>
+			</ul>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav me-auto">
-					<li class="nav-item">
-						<a class="nav-link {$page.url.pathname.startsWith(`/${data.lang}/problems`) ? "active":""}" href="/{data.lang}/problems">
-							{loc.problems}
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link {$page.url.pathname.startsWith(`/${data.lang}/contests`) ? "active":""}" href="/{data.lang}/contests">
-							{loc.contests}
-						</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav pr-lg-3">
+				<ul class="navbar-nav pr-lg-3 ms-auto">
 					<li class="nav-item ">
 						<a class="nav-link {$page.url.pathname.startsWith(`/${data.lang}/question`) ? "active":""}" href="/{data.lang}/question">
 							<i class="bi bi-question-circle"></i>
@@ -56,12 +58,12 @@
 							</ul>
 						</li>
 					{:else}
-						<li class="nav-item ms-1">
+						<li class="nav-item">
 							<a class="nav-link" href="/{data.lang}/account/register?back={$page.url.pathname}">
 								{loc.register}
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item me-1">
 							<a class="nav-link" href="/{data.lang}/account/login?back={$page.url.pathname}">
 								{loc.login}
 							</a>
@@ -118,7 +120,7 @@
     }
 
 	footer{
-		background-color: var(--color3);
+		background-color: var(--color2);
 		font-size: 0.7em;
 		width: 100%;
 		position: absolute;

@@ -37,6 +37,7 @@ interface Problem {
     memory_restriction: number
     private: boolean
     approved: boolean
+    solved: boolean |null
 }
 
 interface TestCase {
@@ -60,17 +61,34 @@ interface Contest {
     maximum_team_members_number: number
     auto_confirm_participants: boolean
     approved: boolean
+    only_count_submissions_with_zero_edition_difference: boolean
+    only_count_solved_or_not: boolean
+    count_scores_as_percentages: boolean
+    time_penalty_coefficient: number
+    wrong_attempt_penalty: number
 }
 
 interface ScoreboardResult {
     individual: boolean
     username_or_team_name: string
     total_score: number|null
+    total_penalty_score: number
     problems: {
         id: number
         name: string
-        best_score: number
+        edition: number
+        best_score: number | null
+        solved: boolean
+        penalty_minutes: number
+        penalty_score: number
+        attempts: number
     }[]
+}
+
+interface Scoreboard {
+    time_penalty_coefficient: number
+    wrong_attempt_penalty: number
+    participants: ScoreboardResult[]
 }
 
 interface Participant{
@@ -95,22 +113,16 @@ interface SubmissionPublic{
     language_version: string
     time_sent: string
     total_verdict: string
+    problem_edition: number
+    edition_difference: number
 }
 
-interface SubmissionPrivate{
-    id: number
-    author_user_username: string
-    problem_id: number
-    problem_name: string
+interface SubmissionPrivate extends SubmissionPublic{
     code: string
-    language_name: string
-    language_version: string
-    time_sent: string
     checked: boolean
     compiled: boolean
     compilation_details: string
     results: TestCaseResult[]
-    total_verdict: string | undefined
     correct_score: number | undefined
     total_score: number | undefined
     realtime_link: string | undefined

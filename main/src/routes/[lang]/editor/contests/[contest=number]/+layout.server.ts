@@ -1,4 +1,4 @@
-import { getContest, canBeEdited } from "$lib/server/contest.js";
+import { getContest } from "$lib/server/contest.js";
 import { error } from "@sveltejs/kit";
 
 export async function load({params, cookies}) {
@@ -9,7 +9,6 @@ export async function load({params, cookies}) {
 
 	return { 
 		contest,
-		editable: await canBeEdited(Number(params.contest), cookies.get("auth") || ""),
 		id: params.contest
 	};
 }

@@ -12,9 +12,11 @@
 		pageName = record.url.pathname.replace(baseName, "");
 	});
 </script>
-
+<svelte:head>
+	<title>{data.contest.name} | {loc.edit}</title>
+</svelte:head>
 <div class="mb-2">
-	<h2 class="header">{data.contest.name} {data.editable ? loc.edit: `(${loc.noteditable})`}</h2>
+	<h2 class="header">{data.contest.name}: {loc.edit}</h2>
 </div>
 <ul class="nav mb-2">
 	<li class="nav-item">   
@@ -26,11 +28,9 @@
 	<li class="nav-item">
 		<a class="nav-link {pageName == "/participants" ? "active":""}" href="{baseName}/participants">{loc.participants}</a>
 	</li>
-	{#if data.editable}
-		<li class="nav-item">
-			<a class="nav-link {pageName == "/danger-zone" ? "active":""}" href="{baseName}/danger-zone">{loc.danger_zone}</a>
-		</li>
-	{/if}
+	<li class="nav-item">
+		<a class="nav-link {pageName == "/danger-zone" ? "active":""}" href="{baseName}/danger-zone">{loc.danger_zone}</a>
+	</li>
 </ul>
 <slot />
 

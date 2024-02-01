@@ -19,7 +19,7 @@
 	<div class="list-group">
 		{#each filteredContests as contest, i}     
 			<li class="list-group-item list-group-item-action d-flex">
-				<span class="me-3">{i + 1}</span>
+				<span class="number me-3">{i + 1}</span>
 				<i class="bi {contestStatusIcon[contest.status]} me-3"></i>
 				<a href="/{data.lang}/contests/{contest.id}" class="me-auto">
 					{contest.name}
@@ -27,7 +27,7 @@
 						<span class="me-2"><i class="bi bi-lock-fill text-yellow"></i></span>
 					{/if}
 				</a>
-				<span>
+				<span class="text-nowrap">
 					{#if !contest.author_confirmed }
 						<span class="text-yellow">{loc.unapproved}</span>
 					{:else if !contest.participant_confirmed }

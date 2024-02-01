@@ -55,7 +55,7 @@
 		</thead>
 		<tbody>
 			{#each filtered as sub}
-				<tr>
+				<tr class={sub.edition_difference ? "invalid" : ""}>
 					<td class="ps-3"><a href="/{$page.params.lang}{basePath}/submissions/{sub.id}">{sub.id}</a></td>
 					<td><a href="/{$page.params.lang}{basePath}/problems/{sub.problem_id}">{sub.problem_name}</a></td>
 					<td>{toLocalDate(sub.time_sent)}</td>
@@ -70,4 +70,7 @@
     a:hover {
         text-decoration: underline;
     }
+	.invalid td{
+		color: var(--s-text);
+	}
 </style>

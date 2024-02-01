@@ -24,8 +24,8 @@
 	<div class="list-group">
 		{#each data.contests as contest, i}     
 			<li class="list-group-item list-group-item-action d-flex">
+				<span class="number me-3">{i + 1}</span>
 				<a href="/{data.lang}/contests/{contest.id}">
-					<span class="me-3">{i + 1}</span>
 					<i class="bi {contestStatusIcon[contest.status]} me-3"></i>
 					<span class="me-auto">{contest.name}</span>
 				</a>

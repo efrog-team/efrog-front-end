@@ -12,9 +12,11 @@
 		pageName = record.url.pathname.replace(baseName, "");
 	});
 </script>
-
+<svelte:head>
+	<title>{data.problem.name} | {loc.edit}</title>
+</svelte:head>
 <div class="mb-2">
-	<h2 class="header">{data.editable ? `${data.problem.name}: ${loc.edit}` : `${data.problem.name} (${loc.noteditable})`}</h2>
+	<h2 class="header">{data.problem.name}: {loc.edit}</h2>
 </div>
 <ul class="nav mb-2">
 	<li class="nav-item">   

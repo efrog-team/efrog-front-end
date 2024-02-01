@@ -10,6 +10,9 @@
 
 	let loc = locs[data.lang as keyof typeof locs].editor.problems;
 </script>
+<svelte:head>
+	<title>{loc.header}</title>
+</svelte:head>
 <div class="mb-4 mt-2">
 	<h2 class="header">{loc.header}</h2>
 </div>
@@ -22,7 +25,7 @@
 	<div class="list-group">
 		{#each filteredProblems as problem}     
 			<li class="list-group-item list-group-item-action d-flex">
-				<a href="/{data.lang}/problems/{problem.id}" class="me-4 col-auto">{problem.id}</a>
+				<a href="/{data.lang}/problems/{problem.id}" class="number me-3 col-auto">{problem.id}</a>
 				<a href="/{data.lang}/problems/{problem.id}" class="me-auto">
 					{#if problem.private}<i class="bi bi-eye-slash-fill me-1"></i>{/if}
 					{problem.name} 

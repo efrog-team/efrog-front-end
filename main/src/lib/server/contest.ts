@@ -1,9 +1,12 @@
 import { request } from "./general";
 
 export async function createContest(name: string, description: string, start_time: string,end_time: string,
-	_private: boolean, maximum_team_members_number: number, auto_confirm_participants: boolean, auth: string): Promise<number> {
+	_private: boolean, maximum_team_members_number: number, auto_confirm_participants: boolean, only_count_solved_or_not: boolean, 
+	count_scores_as_percentages: boolean, time_penalty_coefficient: number, wrong_attempt_penalty: number,
+	auth: string): Promise<number> {
 	const {body} = await request("POST", "/competitions", {name, description, start_time, end_time, private:_private,
-		maximum_team_members_number, auto_confirm_participants}, auth);
+		maximum_team_members_number, auto_confirm_participants, only_count_submissions_with_zero_edition_difference: true, 
+		only_count_solved_or_not, count_scores_as_percentages, time_penalty_coefficient, wrong_attempt_penalty}, auth);
 	return Number(body.competition_id);
 } 
 
@@ -20,15 +23,12 @@ export async function makePrivate(competition_id:number, auth: string) {
 	await request("PUT", `/competitions/${competition_id}/make-private`, null, auth);
 }
 
-export async function canBeEdited(competition_id:number, auth: string): Promise<boolean> {
-	const {body} = await request("GET", `/competitions/${competition_id}/check-if-can-be-edited`, null, auth);
-	return body.can;
-}
-
-export async function updateContest(competition_id:number, name: string, description: string, start_time: string|null,
-	end_time: string|null, maximum_team_members_number: number, auto_confirm_participants: boolean, auth: string) {
-	await request("PUT", `/competitions/${competition_id}`, {name, description, start_time, end_time,
-		maximum_team_members_number, auto_confirm_participants}, auth);
+export async function updateContest(competition_id:number, name: string, description: string, start_time: string|undefined,
+	end_time: string|undefined, maximum_team_members_number: number, auto_confirm_participants: boolean, only_count_solved_or_not: boolean, 
+	count_scores_as_percentages: boolean, time_penalty_coefficient: number, wrong_attempt_penalty: number, auth: string) {
+	await request("PUT", `/competitions/${competition_id}`, {name, description, start_time, end_time, only_count_solved_or_not, 
+		count_scores_as_percentages, time_penalty_coefficient, wrong_attempt_penalty,maximum_team_members_number, auto_confirm_participants, 
+		only_count_submissions_with_zero_edition_difference: true}, auth);
 } 
 
 export async function deleteCpmpetition(competition_id:number, auth: string) {
@@ -145,7 +145,7 @@ export async function getAllTeamSubmisions(competition_id: number, team_name: st
 	return body.submissions;
 }
 
-export async function getScoreboard(competition_id: number, auth: string): Promise<ScoreboardResult[]> {
+export async function getScoreboard(competition_id: number, auth: string): Promise<Scoreboard> {
 	const {body} = await request("GET", `/competitions/${competition_id}/scoreboard`, null, auth);
-	return body.participants; 
+	return body; 
 }

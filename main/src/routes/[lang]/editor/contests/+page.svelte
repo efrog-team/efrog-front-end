@@ -8,6 +8,9 @@
 
 	let loc = locs[data.lang as keyof typeof locs].editor.contests;
 </script>
+<svelte:head>
+	<title>{loc.header}</title>
+</svelte:head>
 <div class="mb-4 mt-2">
 	<h2 class="header">{loc.header}</h2>
 </div>
@@ -19,7 +22,7 @@
 	<div class="list-group">
 		{#each filteredContests as contest}     
 			<li class="list-group-item list-group-item-action d-flex">
-				<a href="/{data.lang}/contests/{contest.id}" class="col-auto me-4">{contest.id}</a>
+				<a href="/{data.lang}/contests/{contest.id}" class="number col-auto me-3">{contest.id}</a>
 				<a href="/{data.lang}/contests/{contest.id}" class="me-auto">
 					{#if contest.private}<i class="bi bi-lock me-1 text-yellow"></i>{/if}
 					{contest.name}

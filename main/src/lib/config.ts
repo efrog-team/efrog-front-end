@@ -1,5 +1,5 @@
-export const authUrl = "https://auth.efrog.pp.ua";
-export const serverUrl = "https://api.efrog.pp.ua";
+export const authUrl = "http://localhost:4189";
+export const serverUrl = "http://localhost:8000";
 export const clientUrl = "http://localhost:5173";
 export const hubUrl = "http://localhost:1204";
 
@@ -71,5 +71,9 @@ export const itemsOnPage = 100;
 
 // contest creation
 export const minContestDuration = 5;
+export const penalti = {
+	time: 1,
+	wrongAttempt: 10,
+};
 
 export const cookiesMaxAge = 60 * 60 * 24 * 30;

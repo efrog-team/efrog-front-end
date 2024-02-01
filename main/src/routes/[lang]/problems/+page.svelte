@@ -23,9 +23,12 @@
 	<div class="list-group">
 		{#each data.problems as problem, i}     
 			<li class="list-group-item list-group-item-action d-flex">
+				<span class="me-3 number">{i + 1}</span>
 				<a href="/{data.lang}/problems/{problem.id}">
-					<span class="me-4">{i + 1}</span>
 					<span class="me-auto">{problem.name}</span>
+					{#if problem.solved}
+						<i class="bi bi-check-circle-fill text-success ms-2"></i>
+					{/if}
 				</a>
 			</li>
 		{/each}
