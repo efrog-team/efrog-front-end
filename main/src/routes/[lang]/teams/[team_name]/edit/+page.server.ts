@@ -4,17 +4,15 @@ import { isDeletable, getMembers, addMember, getInfo, deleteMember, makeContesta
 import { error, fail, redirect } from "@sveltejs/kit";
 
 
-export async function load({params, cookies, url}) {
+export async function load({params, cookies, url, parent}) {
+	let {teamInfo} = await parent();
 	const data = await checkAuth(cookies, url, params.lang);
-	const teamInfo = await getInfo(params.team_name);
 	if(data.username != teamInfo.owner_user_username){
 		throw error(403, "You are not the owner of this team");
 	}
 
 	return {
-		teamInfo,
 		deletable: await isDeletable(params.team_name, cookies.get("auth") || ""),
-		members: await getMembers(params.team_name)
 	};
 }
 
@@ -61,6 +59,6 @@ export const actions = {
 				data: formData
 			});
 		}
-		throw redirect(303, `${params.lang}/teams/${formData["teamName"]}/edit`);
+		throw redirect(303, `/${params.lang}/teams/${formData["teamName"]}/edit`);
 	},
 };

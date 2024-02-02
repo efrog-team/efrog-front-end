@@ -15,6 +15,9 @@
 <svelte:head>
 	<title>{data.contest.name} | {loc.edit}</title>
 </svelte:head>
+<div class="mb-3">
+	<a class="nav-link" href="/{data.lang}/editor/contests"> <i class="bi bi-arrow-left"></i> {loc.back}</a>
+</div>
 <div class="mb-2">
 	<h2 class="header">{data.contest.name}: {loc.edit}</h2>
 </div>

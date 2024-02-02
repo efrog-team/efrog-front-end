@@ -6,7 +6,9 @@
 	export let form;
 	let loc = locs[data.lang as keyof typeof locs].editor.problems;
 </script>
-
+<div class="mb-3">
+	<a class="nav-link" href="/{data.lang}/editor/problems"> <i class="bi bi-arrow-left"></i> {loc.problem.layout.back} </a>
+</div>
 <div class="mb-3">
 	<h2 class="header">{loc.create_problem}</h2>
 </div>

@@ -8,7 +8,10 @@
 </script>
 
 <div class="mb-3">
+	<a class="nav-link" href="/{data.lang}/editor/contests"> <i class="bi bi-arrow-left"></i> {loc.contest.layout.back}</a>
+</div>
+<div class="mb-3">
 	<h2 class="header">{loc.create_contest}</h2>
 </div>
 <ContestEdit lang={data.lang} info={form}/>
-<div class="pb-4"></div>
+

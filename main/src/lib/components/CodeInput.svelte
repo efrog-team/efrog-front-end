@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { prismLang } from "$lib/config";
+    import { onMount } from "svelte";
 
 	export let lang: string;
 	$: langCode = prismLang[lang];
@@ -7,11 +8,13 @@
 	let highlightEl: HTMLPreElement;
 	let inputEl: HTMLTextAreaElement;
 
-	let code = "";
+	onMount(()=>{
+		if(highlightEl) highlight();
+	});
     
 	function highlight(){
 		if(highlightEl?.firstElementChild){
-			highlightEl.firstElementChild.innerHTML = code.replaceAll("<", "&lt;");
+			highlightEl.firstElementChild.innerHTML = inputEl.value.replaceAll("<", "&lt;");
 			window.Prism.highlightElement(highlightEl.firstElementChild);
 			sync_scroll();
 		}
@@ -42,30 +45,30 @@
 	}
 
 	function insertText(text: string){
-		let beforeTab = code.slice(0, inputEl.selectionStart || 0); 
-		let afterTab = code.slice(inputEl.selectionEnd || 0, code.length); 
-		let cursorPos = (inputEl.selectionEnd || 0) + text.length; 
-		code = beforeTab + text + afterTab; 
+		let beforeTab = inputEl.value.slice(0, inputEl.selectionStart || 0); 
+		let afterTab = inputEl.value.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
+		let cursorPos = (inputEl.selectionStart || 0) + text.length; 
+		inputEl.value = beforeTab + text + afterTab; 
 		inputEl.selectionStart = cursorPos;
 		inputEl.selectionEnd = cursorPos;
 	}
 
 	function correctTabs(){
 		let selStart = inputEl.selectionStart || 0;
-		let lineBreak = code.lastIndexOf("\n", selStart);
-		let spaces = code.slice(lineBreak + 1, selStart).match(/[\t ]*/)?.[0] || "";
+		let lineBreak = inputEl.value.lastIndexOf("\n", selStart);
+		let spaces = inputEl.value.slice(lineBreak + 1, selStart).match(/[\t ]*/)?.[0] || "";
 		let newSpaces = spaces.replace(/ {4}/, "\t").replace(/ +\t/, "\t");
-		code = code.slice(0, lineBreak + 1) + newSpaces + code.slice(spaces.length + lineBreak + 1);	
+		inputEl.value = inputEl.value.slice(0, lineBreak + 1) + newSpaces + inputEl.value.slice(spaces.length + lineBreak + 1);	
 		inputEl.selectionStart = selStart + newSpaces.length - spaces.length;
 	}
 	
 	function getRowStartSpaces(){
-		let lineBreak = code.lastIndexOf("\n", inputEl.selectionStart || 0);
-		return code.slice(lineBreak + 1, inputEl.selectionStart || 0).match(/[\t ]*/)?.[0] || "";
+		let lineBreak = inputEl.value.lastIndexOf("\n", inputEl.selectionStart-1 || -1);
+		return inputEl.value.slice(lineBreak + 1, inputEl.selectionStart || 0).match(/[\t ]*/)?.[0] || "";
 	}
 </script>
 
-<textarea bind:this={inputEl} spellcheck="false" name="solution" rows=16 class="form-control" id="solution" bind:value={code}
+<textarea bind:this={inputEl} spellcheck="false" name="solution" rows=16 class="form-control" id="solution"
 	on:scroll={sync_scroll} on:input={onInput} on:focus={highlight} on:keydown={onKeyDown} required></textarea>
 
 <pre bind:this={highlightEl} class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ""} id="highlighting-content" ></code></pre>

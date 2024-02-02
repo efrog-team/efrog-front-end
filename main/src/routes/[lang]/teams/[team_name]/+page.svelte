@@ -35,12 +35,7 @@
 		{data.teamInfo.name}{data.teamInfo.active ? "" : ` (${loc.deactivated})`}
 	</h2>
 </div>
-{#if data.me}
-	<div class="mb-4 mt-4">
-		<a class="btn btn-accent" href="./{data.teamInfo.name}/edit">{loc.edit_team} <i class="bi bi-pencil"></i></a>
-	</div>
-{/if}
-<div class="mt-5 mb-2">
+<div class="mt-4 mb-2">
 	<h4>{loc.members}</h4>
 </div>
 <TeamsFilters lang={data.lang} bind:data={filtered} />
@@ -61,7 +56,11 @@
 		{/each}
 	</div>
 </div>
-
+{#if data.me}
+	<div class="mb-4 mt-4">
+		<a class="btn btn-accent mt-2" href="./{data.teamInfo.name}/edit">{loc.edit_team} <i class="bi bi-pencil"></i></a>
+	</div>
+{/if}
 <style>
     .alert{
         --bs-alert-bg: var(--color3)

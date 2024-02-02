@@ -93,7 +93,7 @@
 	<footer class="pb-2 pt-3 px-4 d-flex">
 		<img src="/logo.png" alt="efrog logo">
 		<span class="align-middle ms-3">efrog.team@gmail.com</span>
-		<span class="align-middle ms-auto">© 2022 efrog</span>
+		<span class="align-middle ms-auto">© 2024 efrog</span>
 	</footer>
 </div>
 <style>

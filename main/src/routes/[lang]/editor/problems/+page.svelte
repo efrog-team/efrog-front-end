@@ -25,12 +25,12 @@
 	<div class="list-group">
 		{#each filteredProblems as problem}     
 			<li class="list-group-item list-group-item-action d-flex">
-				<a href="/{data.lang}/problems/{problem.id}" class="number me-3 col-auto">{problem.id}</a>
-				<a href="/{data.lang}/problems/{problem.id}" class="me-auto">
-					{#if problem.private}<i class="bi bi-eye-slash-fill me-1"></i>{/if}
+				<span class="number me-3 col-auto">{problem.id}</span>
+				<a href="./problems/{problem.id}" class="me-auto">
+					{#if problem.private}<i class="bi bi-lock me-1"></i>{/if}
 					{problem.name} 
 				</a>
-				<a class="col-auto text-end nav-link" href="./problems/{problem.id}">{loc.edit_problem} <i class="bi bi-pencil"></i></a>
+				<a href="/{data.lang}/problems/{problem.id}" class="col-auto text-end nav-link">{loc.see_problem} <i class="bi bi-arrow-right"></i></a>
 			</li>
 		{/each}
 	</div>

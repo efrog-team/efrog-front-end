@@ -37,9 +37,9 @@
 		<span class="header">{data.contest.name} </span>
 	</h2>
 	{#if data.contest.description.trim()}
-		<div class="mb-3">
-			<em>{data.contest.description}</em>
-		</div>
+		<p class="mb-3">
+			{data.contest.description}
+		</p>
 	{/if}
 </div>
 {#if !data.userInfo && data.username && data.contest.status != "ended"}

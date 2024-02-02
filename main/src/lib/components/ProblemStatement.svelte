@@ -33,9 +33,6 @@
 <div class="mb-3">
 	<h2>
 		<span class="header">{problem.name} </span>
-		{#if problem.private}
-			<i class="bi bi-eye-slash-fill"></i>
-		{/if}
 		{#if problem.solved}
 			<i class="bi bi-check-circle-fill text-success ms-2"></i>
 		{/if}

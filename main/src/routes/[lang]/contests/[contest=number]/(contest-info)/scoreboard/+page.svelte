@@ -12,15 +12,14 @@
 			i+1 : positions.at(-1) as number);
 	}
 </script>
-<div class="mb-2">
-	<em>
-		{#if data.contest.only_count_solved_or_not}
-			{loc.full_scoring} ({loc.time_penalty} - {data.contest.time_penalty_coefficient}, {loc.wrong_penalty} - {data.contest.wrong_attempt_penalty}) 
-		{:else}
-			{loc.partial_scoring} {data.contest.count_scores_as_percentages ? `(${loc.scale_score})`: ""}
-		{/if}
-	</em>
-</div>
+<p>
+	<i class="bi bi-info-circle"></i>
+	{#if data.contest.only_count_solved_or_not}
+		{loc.full_scoring} ({loc.time_penalty} - {data.contest.time_penalty_coefficient}, {loc.wrong_penalty} - {data.contest.wrong_attempt_penalty}) 
+	{:else}
+		{loc.partial_scoring} {data.contest.count_scores_as_percentages ? `(${loc.scale_score})`: ""}
+	{/if}
+</p>
 {#if data.scoreboard.participants.length}
 	<div class="mb-5">
 		<table class="table-dark table table-hover table table-responsive">
@@ -51,7 +50,7 @@
 						</td>
 						<td class="text-center">
 							{#if data.contest.only_count_solved_or_not}
-								<div class="text-success">{result.total_score}</div>
+								<div class="text-success">{result.total_score!==null?result.total_score: "-"}</div>
 								<div>{result.total_penalty_score}</div>
 							{:else}		
 								{result.total_score!==null?result.total_score: "-"}				
@@ -68,7 +67,7 @@
 									{/if}
 								</td>
 							{:else}						
-								<td class={problem.solved ? "text-success" : ""}>{problem.best_score!==null?problem.best_score: "-"}</td>
+								<td class="{problem.solved ? "text-success" : ""} text-center">{problem.best_score!==null?problem.best_score: "-"}</td>
 							{/if}
 						{/each}
 					</tr>

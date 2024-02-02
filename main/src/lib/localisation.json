@@ -59,6 +59,7 @@
             }
         },
         "teams":{
+            "back": "Back to the team list",
             "deactivated": "deactivated",
             "members": "Members",
             "edit_team": "Edit team",
@@ -216,7 +217,7 @@
             "problems": {
                 "header": "Manage my problems",
                 "create_problem": "Create new problem",
-                "edit_problem": "edit",
+                "see_problem": "to the problem",
                 "public": "public",
                 "private": "private",
                 "from_hub": {
@@ -249,6 +250,7 @@
                 },
                 "problem": {
                     "layout": {
+                        "back": "Back",
                         "edit": "edit",
                         "noteditable": "not editable",
                         "statement": "Statement",
@@ -290,7 +292,7 @@
                 "public": "public",
                 "private": "private",
                 "create_contest": "Create New Contest",
-                "edit_contest": "Edit",
+                "see_contest": "to the contest",
                 "contest_edit": {
                     "contest_name": "Contest Name",
                     "description": "Description",
@@ -310,6 +312,7 @@
                 },
                 "contest": {
                     "layout": {
+                        "back": "Back",
                         "edit": "edit",
                         "noteditable": "not editable",
                         "general": "General",
@@ -469,6 +472,7 @@
             }
         },
         "teams": {
+            "back": "Повернутися до списку команд",
             "deactivated": "неактивна",
             "members": "Учасники команди",
             "edit_team": "Редагувати команду",
@@ -626,7 +630,7 @@
             "problems": {
                 "header": "Управління моїми задачами",
                 "create_problem": "Створити нову задачу",
-                "edit_problem": "редагувати",
+                "see_problem": "дивитися задачу",
                 "public": "публічна",
                 "private": "приватна",
                 "from_hub": {
@@ -661,6 +665,7 @@
                 },
                 "problem": {
                     "layout": {
+                        "back": "Назад",
                         "edit": "редагування",
                         "noteditable": "не можна редагувати",
                         "statement": "Умова",
@@ -702,7 +707,7 @@
                 "create_contest": "Створити нове змагання",
                 "public": "публічне",
                 "private": "приватне",
-                "edit_contest": "Редагувати",
+                "see_contest": "дивитися змагання",
                 "contest_edit": {
                     "contest_name": "Назва змагання",
                     "description": "Опис",
@@ -722,6 +727,7 @@
                 },
                 "contest": {
                     "layout": {
+                        "back": "Назад",
                         "edit": "редагування",
                         "noteditable": "не можна редагувати",
                         "general": "Загальне",

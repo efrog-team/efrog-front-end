@@ -27,7 +27,7 @@
 					{#if contest.private}<i class="bi bi-lock me-1 text-yellow"></i>{/if}
 					{contest.name}
 				</a>
-				<a class="col-auto text-end nav-link" href="./contests/{contest.id}">{loc.edit_contest} <i class="bi bi-pencil"></i></a>
+				<a class="col-auto text-end nav-link" href="./contests/{contest.id}">{loc.see_contest} <i class="bi bi-arrow-right"></i></a>
 			</li>
 		{/each}
 	</div>

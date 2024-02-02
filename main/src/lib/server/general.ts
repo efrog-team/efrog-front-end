@@ -10,7 +10,6 @@ export async function request(method:string, path: string , data?: any, auth?:st
 		}
 	};
 	if(data) options.body = JSON.stringify(data);
-	console.log(path, data);
 	const response = await fetch(serverUrl + path, options);
 
 	// if there is an Internal Server Error
