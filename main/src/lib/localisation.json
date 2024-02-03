@@ -203,8 +203,8 @@
                     "full_scoring": "Count only fully solved problems",
                     "time_penalty": "time penalty",
                     "wrong_penalty": "wrong attempt penalty",
-                    "partial_scoring": "count points as a percentage",
-                    "scale_score": "scale from 0 to 100%"
+                    "partial_scoring": "Count partial score for the problem",
+                    "scale_score": "count points as a percentage"
                 }
             }
         },
