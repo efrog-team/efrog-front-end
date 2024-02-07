@@ -222,6 +222,7 @@
                 "private": "private",
                 "from_hub": {
                     "header": "Add from efrog-hub",
+                    "update_header": "Update from efrog-hub",
                     "problem_id": "Problem ID"
                 },
                 "general_info": {
@@ -644,8 +645,7 @@
                 "from_hub": {
                     "header": "Додати з efrog-hub",
                     "problem_id": "ID задачі",
-                    "close": "Закрити",
-                    "add": "Додати"
+                    "update_header": "Оновити з efrog-hub"
                 },
                 "general_info": {
                     "problem_name": "Назва задачі",

@@ -8,16 +8,10 @@ export async function load({params, cookies}) {
 	};
 }
 
-function validateFormInfo(data: Dictionary){
-	if(!data["input"]?.length) throw new Error("Input is required");
-	if(!data["output"]?.length) throw new Error("Output is required");
-}
-
 export const actions = {
 	save: async ({ request, cookies, params }) => {
 		const formData = formToObj(await request.formData());
 		try {
-			validateFormInfo(formData);
 			if(Number(formData["id"]) == 0){
 				await createTestCase(Number(params.problemId), formData["input"], formData["output"], 
 					Number(formData["score"] || 0), !!formData["opened"], cookies.get("auth")||"");

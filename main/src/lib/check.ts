@@ -7,7 +7,7 @@ export async function checkAuth(cookies: Cookies, url:URL, lang: string){
 		if(info.username != cookies.get("username")) throw new Error("Invalid username");
 		return info;
 	} catch (error) {
-		// console.log(`Auth Error: ${error}, username: ${cookies.get('username')}, auth: ${cookies.get('auth')}`);
+		console.log(`Auth Error: ${error}, username in cookies: ${cookies.get('username')}, info username: ${cookies.get('auth')}`);
 		throw redirect(307, `/${lang}/account/login?back=${url.pathname}`);
 	}
 }

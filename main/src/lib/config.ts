@@ -1,8 +1,7 @@
-export const authUrl = "http://localhost:4189";
-export const serverUrl = "http://localhost:8000";
 export const clientUrl = "http://localhost:5173";
-export const hubUrl = "http://localhost:1204";
-
+export const authUrl = "https://auth.efrog.pp.ua";
+export const serverUrl = "https://api.efrog.pp.ua"
+export const hubUrl = "https://hub.efrog.pp.ua";
 
 // localisations
 export const localisations = [

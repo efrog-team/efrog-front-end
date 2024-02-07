@@ -2,13 +2,17 @@ import { error } from "@sveltejs/kit";
 import { hubUrl } from "$lib/config";
 
 interface Problem{
-    name: string
-    memory_limit: number
-    time_limit: number
-    statement: string
-    input_statement: string
-    output_statement: string
-    note: string
+    name: string, 
+	time_limit: number, 
+	memory_limit: number, 
+	statement: string, 
+	input_statement: string, 
+	output_statement: string, 
+	note: string, 
+	test: TestCase[], 
+	is_checker: boolean, 
+	checker_code: string, 
+	checker_language: string
 }
 
 interface TestCase{
@@ -17,7 +21,7 @@ interface TestCase{
     status: boolean
 }
 
-export async function getFromHub(taskId: number, token: string): Promise<{task: Problem, test: TestCase[]}>{
+export async function getFromHub(taskId: number, token: string): Promise<Problem>{
 	const response = await fetch(hubUrl + "/api/publicate-task",{
 		method: "POST",
 		body: JSON.stringify({taskId}),
