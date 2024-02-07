@@ -2,7 +2,10 @@ import { randomString, getAuthParams } from "$lib/features.js";
 import { redirect } from "@sveltejs/kit";
 import { authUrl } from "$lib/config.js";
 
-export async function load({cookies, url, params}){
+export async function GET({cookies, url, params}){
+	cookies.delete("username", {path: "/"});
+	cookies.delete("auth", {path: "/"});
+	
 	cookies.set("back", url.searchParams.get("back") || "/", {path: "/"});
 
 	const state = randomString(8);

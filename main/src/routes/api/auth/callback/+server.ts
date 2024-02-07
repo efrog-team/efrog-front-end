@@ -2,7 +2,7 @@ import { cookiesMaxAge } from "$lib/config.js";
 import { getMe } from "$lib/server/user.js";
 import { redirect } from "@sveltejs/kit";
 
-export async function load({cookies, url}) {
+export async function GET({cookies, url}) {
 	const back = cookies.get("back") || "/";
 	if(url.searchParams.get("state") != cookies.get("state")){
 		throw redirect(307, back);

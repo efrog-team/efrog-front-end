@@ -8,8 +8,6 @@ export async function checkAuth(cookies: Cookies, url:URL, lang: string){
 		return info;
 	} catch (error) {
 		// console.log(`Auth Error: ${error}, username: ${cookies.get('username')}, auth: ${cookies.get('auth')}`);
-		cookies.delete("username", {path: "/"});
-		cookies.delete("auth", {path: "/"});
 		throw redirect(307, `/${lang}/account/login?back=${url.pathname}`);
 	}
 }
