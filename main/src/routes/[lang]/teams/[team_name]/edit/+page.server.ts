@@ -1,11 +1,11 @@
 import { checkAuth } from "$lib/check";
 import { formToObj } from "$lib/features.js";
-import { isDeletable, getMembers, addMember, getInfo, deleteMember, makeContestant, makeCoach, rename } from "$lib/server/team.js";
+import { isDeletable, addMember, deleteMember, makeContestant, makeCoach, rename } from "$lib/server/team.js";
 import { error, fail, redirect } from "@sveltejs/kit";
 
 
 export async function load({params, cookies, url, parent}) {
-	let {teamInfo} = await parent();
+	const {teamInfo} = await parent();
 	const data = await checkAuth(cookies, url, params.lang);
 	if(data.username != teamInfo.owner_user_username){
 		throw error(403, "You are not the owner of this team");

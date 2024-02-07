@@ -5,6 +5,8 @@
 	export let info: TestCase | Dictionary;
 	export let error: string | null = null;
 	export let lang: string;
+	export let checker = false;
+
 	let loc = locs[lang as keyof typeof locs].editor.problems.problem.test_cases.test_case_data;
 	let opened = !!info.opened;
 </script>
@@ -30,7 +32,7 @@
 			<InputOutput id={Number(info.id)} name='input' value={info.input || ""} lang={lang}/>
 		</div>
 		<div class="col-md-6 col-12">
-			<InputOutput id={Number(info.id)} name='output' value={info.solution || ""} lang={lang}/>
+			<InputOutput disabledByChecker={info.opened==false && checker} id={Number(info.id)} name='output' value={info.solution || ""} lang={lang}/>
 		</div>
 	</div>
 	<div>

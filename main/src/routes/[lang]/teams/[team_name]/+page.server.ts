@@ -1,5 +1,5 @@
 export async function load({cookies, parent}) {
-	let {members, teamInfo} = await parent();
+	const {members, teamInfo} = await parent();
 	const needConfirmation = !!members.find((member)=>member.member_username == cookies.get("username") && 
         !member.confirmed && !member.declined);
 	return {

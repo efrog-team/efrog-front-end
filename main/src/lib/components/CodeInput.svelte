@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { prismLang } from "$lib/config";
-    import { onMount } from "svelte";
+	import { onMount } from "svelte";
 
 	export let lang: string;
+	export let initialCode: string = "";
 	$: langCode = prismLang[lang];
 
 	let highlightEl: HTMLPreElement;
@@ -68,10 +69,11 @@
 	}
 </script>
 
-<textarea bind:this={inputEl} spellcheck="false" name="solution" rows=16 class="form-control" id="solution"
-	on:scroll={sync_scroll} on:input={onInput} on:focus={highlight} on:keydown={onKeyDown} required></textarea>
-
-<pre bind:this={highlightEl} class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ""} id="highlighting-content" ></code></pre>
+<div id="code-input">
+	<textarea value={initialCode} bind:this={inputEl} spellcheck="false" name="solution" rows=16 class="form-control" id="solution"
+		on:scroll={sync_scroll} on:input={onInput} on:focus={highlight} on:keydown={onKeyDown} required></textarea>
+	<pre bind:this={highlightEl} class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ""} id="highlighting-content" ></code></pre>
+</div>
 <style>
     #solution, #highlighting {
         font-family: monospace;
@@ -103,5 +105,8 @@
     }
     textarea {
         resize: none;
+    }
+	#code-input{
+        position: relative;
     }
 </style>

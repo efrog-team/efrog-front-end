@@ -1,8 +1,8 @@
 <script lang="ts">
-    import locs from "$lib/localisation.json";
-    export let data;
+	import locs from "$lib/localisation.json";
+	export let data;
 
-    let loc = locs[data.lang as keyof typeof locs].teams;
+	let loc = locs[data.lang as keyof typeof locs].teams;
 
 </script>
 <div class="mb-3">

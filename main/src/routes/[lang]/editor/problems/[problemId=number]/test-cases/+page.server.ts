@@ -1,10 +1,10 @@
 import {formToObj} from "$lib/features";
-import {getTestCases, createTestCase, updateTestCase, deleteTestCase, makeTestCaseClosed, makeTestCaseOpened} from "$lib/server/problems";
+import { createTestCase, updateTestCase, deleteTestCase, makeTestCaseClosed, makeTestCaseOpened, getFullProblem} from "$lib/server/problems";
 import {fail} from "@sveltejs/kit";
 
 export async function load({params, cookies}) {
 	return {
-		testCases: await getTestCases(Number(params.problemId), cookies.get("auth")||""),
+		full: await getFullProblem(+params.problemId, cookies.get("auth") || "")
 	};
 }
 

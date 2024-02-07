@@ -5,6 +5,12 @@ export async function getProblem(problem_id: number, auth: string = ""): Promise
 	return body;
 }
 
+export async function getFullProblem(problem_id: number, auth: string = ""): Promise<ProblemFull>{
+	const {body} = await request("GET", `/problems/${problem_id}/full`, null, auth);
+	if(body.custom_checker) body.custom_checker.language = `${body.custom_checker.language_name} (${body.custom_checker.language_version})`;
+	return body;
+}
+
 export async function getExamples(problem_id: number, auth: string = ""): Promise<TestCase[]> {
 	const {body} = await request("GET", `/problems/${problem_id}/test-cases?only_opened=true`, null, auth);
 	return body.test_cases;
@@ -42,6 +48,11 @@ export async function updateProblem(problem_id: number, name: string, statement:
 
 export async function deleteProblem(problem_id: number, auth: string){
 	await request("DELETE", `/problems/${problem_id}`, null, auth);
+}
+
+export async function problemDeletable(problem_id: number, auth: string): Promise<boolean> {
+	const {body} = await request("GET", `/problems/${problem_id}/check-if-can-be-deleted`, null, auth);
+	return body.can;
 }
 
 export async function makePublic(problem_id: number, auth: string) {
@@ -85,6 +96,25 @@ export async function makeTestCaseOpened(problem_id: number, test_case_id: numbe
 
 export async function makeTestCaseClosed(problem_id: number, test_case_id: number, auth: string) {
 	await request("PUT", `/problems/${problem_id}/test-cases/${test_case_id}/make-closed`, null, auth);
+}
+
+
+export async function getChecker(problem_id: number, auth: string): Promise<Checker> {
+	const {body} = await request("GET", `/problems/${problem_id}/custom-checker`, null, auth);
+	body.language = `${body.language_name} (${body.language_version})`;
+	return body;
+}
+
+export async function createChecker(problem_id: number, language_name: string, language_version: string, code: string, auth: string) {
+	await request("POST", `/problems/${problem_id}/custom-checker`, {language_name, language_version, code}, auth);
+}
+
+export async function updateChecker(problem_id: number, language_name: string, language_version: string, code: string, auth: string) {
+	await request("PUT", `/problems/${problem_id}/custom-checker`, {language_name, language_version, code}, auth);
+}
+
+export async function deleteChecker(problem_id: number, auth: string) {
+	await request("DELETE", `/problems/${problem_id}/custom-checker`, null, auth);
 }
 
 export async function getProblems(start: number, limit: number, unapproved: boolean = false, auth: string): Promise<Problem[]>{

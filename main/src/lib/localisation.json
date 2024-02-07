@@ -255,6 +255,7 @@
                         "noteditable": "not editable",
                         "statement": "Statement",
                         "test_cases": "Test Cases",
+                        "checker": "Checker",
                         "danger_zone": "Danger Zone",
                         "preview": "Preview"
                     },
@@ -274,6 +275,13 @@
                             "save": "Save",
                             "delete": "Delete"
                         }
+                    },
+                    "checker":{
+                        "add_checker": "Add Checker",
+                        "language": "Language",
+                        "code": "Checker code",
+                        "save": "Save",
+                        "delete": "Delete"
                     },
                     "danger_zone": {
                         "make_public": "Make public",
@@ -670,6 +678,7 @@
                         "noteditable": "не можна редагувати",
                         "statement": "Умова",
                         "test_cases": "Тести",
+                        "checker": "Перевірка розв'язку",
                         "danger_zone": "Зона ризику",
                         "preview": "Прев'ю"
                     },
@@ -689,6 +698,13 @@
                             "save": "Зберегти",
                             "delete": "Видалити"
                         }
+                    },
+                    "checker": {
+                        "add_checker": "Додати програму перевірки розв'язку",
+                        "language": "Мова",
+                        "code": "Код програми",
+                        "save": "Зберегти",
+                        "delete": "Видалити"
                     },
                     "danger_zone": {
                         "make_public": "Зробити публічною",

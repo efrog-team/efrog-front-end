@@ -40,6 +40,20 @@ interface Problem {
     solved: boolean |null
 }
 
+interface ProblemFull extends Problem{ 
+    test_cases: TestCase[]
+    custom_checker: Checker | null
+}
+
+interface Checker {
+    code: string
+    language?: string,
+    language_name: string
+    language_version: string
+    id: number
+    problem_id: number
+}
+
 interface TestCase {
     id: number
     problem_id: number

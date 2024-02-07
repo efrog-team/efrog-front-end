@@ -35,16 +35,10 @@
 	</div>
 	<div class="mb-3">
 		<label for="solution" class="form-label">{loc.code}</label>
-		<div id="code-input">
-			<CodeInput lang={curLanguage}/>
-		</div>
+		<CodeInput lang={curLanguage}/>
 	</div>
 	<div class="text-end mb-3 d-flex">
 		<button type="submit" class="col-12 btn btn-accent">{loc.submit}</button>
 	</div>
 </form>
-<style>
-    #code-input{
-        position: relative;
-    }
-</style>
+

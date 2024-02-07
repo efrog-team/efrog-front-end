@@ -63,9 +63,7 @@
 	</div>
 	<div class="mb-3">
 		<label for="solution" class="form-label">{loc.code}</label>
-		<div id="code-input">
-			<CodeInput lang={curLanguage}/>
-		</div>
+		<CodeInput lang={curLanguage}/>
 	</div>
 	<div class="mb-3 row">
 		<div class="col-md-6 col-12 mb-3 mb-md-0">
@@ -103,9 +101,6 @@
 	{/if}
 </div>
 <style>
-    #code-input{
-        position: relative;
-    }
     :global(.result){
         background-color: var(--color3);
     }

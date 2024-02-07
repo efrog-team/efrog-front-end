@@ -5,7 +5,9 @@ export const verdictIcon: Dictionary = {
 	"Wrong Answer" : "bi-x-circle text-yellow",
 	"Correct Answer": "bi-check-circle text-accent", 
 	"OK": "bi-check-circle text-accent",
-	"Compilation Error": "bi-exclamation-triangle text-error"
+	"Compilation Error": "bi-exclamation-triangle text-error",
+	"Custom Checker Erro": "bi-exclamation-circle text-error",
+	"Internal Server Error": "bi-exclamation-circle text-error"
 };
 
 export const contestStatusIcon: Dictionary = {

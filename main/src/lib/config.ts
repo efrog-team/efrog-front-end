@@ -38,7 +38,9 @@ export const verdicts = [
 	"Compilation Error",
 	"Time Limit Exceeded",
 	"Memory Limit Exceeded",
-	"Runtime Error"
+	"Custom Checker Error",
+	"Runtime Error",
+	"Internal Server Error"
 ];
 
 // katex render
