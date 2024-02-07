@@ -11,7 +11,8 @@ export const localisations = [
 ];
 
 // submissions
-export const languages = [ 
+export const languages = [
+	"C#",
 	"C++ 17",
 	"C 17",
 	"Node.js",
@@ -22,14 +23,16 @@ export const versions = [
 	"Python 3 (3.10)",
 	"Node.js (20.x)",
 	"C++ 17 (g++ 11.2)",
-	"C 17 (gcc 11.2)"
+	"C 17 (gcc 11.2)",
+	"C# (Mono 6.8)"
 ];
 
 export const prismLang: Dictionary = {
 	"Python 3 (3.10)": "py",
 	"Node.js (20.x)": "js",
 	"C++ 17 (g++ 11.2)": "cpp",
-	"C 17 (gcc 11.2)": "c"
+	"C 17 (gcc 11.2)": "c",
+	"C# (Mono 6.8)": "cs"
 };
 
 export const verdicts = [
