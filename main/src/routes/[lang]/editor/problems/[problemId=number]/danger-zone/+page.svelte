@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { invalidateAll } from "$app/navigation";
+	import { goto, invalidateAll } from "$app/navigation";
 	import locs from "$lib/localisation.json";
 
 	export let data;
@@ -13,30 +13,36 @@
 				"Content-Type": "application/json"
 			}
 		});
+		if(type == "delete"){
+			goto(`/${data.lang}/editor/problems`);
+			return;
+		}
 		invalidateAll();
 	}
 </script>
 
-<div class="mb-3 mt-3">
-	{#if data.problem.private}
-		<button class="btn btn-outline-danger px-4" on:click={()=>action("make_public")}>{loc.make_public}</button>
-		<span class="text-for-btn btn disabled">{loc.make_public_info}</span>
-	{:else}
-		<button class="btn btn-outline-danger px-4" on:click={()=>action("make_private")}>{loc.make_private}</button>
-		<span class="text-for-btn btn disabled">{loc.make_private_info}</span>
-	{/if}
+<div class="mb-3 mt-4">
+	<div class="d-flex justify-content-between">
+		{#if data.problem.private}
+			<span>{loc.make_public_info}</span>
+			<div><button class="text-nowrap btn btn-outline-danger px-4" on:click={()=>action("make_public")}>{loc.make_public}</button></div>
+		{:else}
+			<span >{loc.make_private_info}</span>
+			<div><button class="text-nowrap btn btn-outline-danger px-4" on:click={()=>action("make_private")}>{loc.make_private}</button></div>
+		{/if}
+	</div>
 </div>
+{#if data.deletable}
+	<div class="mb-3">
+		<div class="d-flex justify-content-between">
+			<span>{loc.delete_info}</span>
+			<div><button class="text-nowrap btn btn-outline-danger px-4" on:click={()=>action("delete")}>{loc.delete}</button></div>
+		</div>
+	</div>
+{/if}
 <div class="mb-3">
-	<button class="btn btn-outline-danger px-4" on:click={()=>action("delete")}>{loc.delete}</button>
-	<span class="text-for-btn btn disabled">{loc.delete_info}</span>
+	<div class="d-flex justify-content-between">
+		<span>{loc.delete_submissions_info}</span>
+		<div><button class="text-nowrap btn btn-outline-danger px-4" on:click={()=>action("delete_submissions")}>{loc.delete_submissions}</button></div>
+	</div>
 </div>
-<div class="mb-4">
-	<button class="btn btn-outline-danger px-4" on:click={()=>action("delete_submissions")}>{loc.delete_submissions}</button>
-	<span class="text-for-btn btn disabled">{loc.delete_submissions_info}</span>
-</div>
-<style>
-    .text-for-btn{
-        border-color: transparent;
-        color: var(--font-color)
-    }
-</style>

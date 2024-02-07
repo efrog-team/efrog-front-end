@@ -1,6 +1,6 @@
 <script lang="ts">
 	import AdditionModal from "$lib/components/AdditionModal.svelte";
-	import { invalidateAll } from "$app/navigation";
+	import { goto, invalidateAll } from "$app/navigation";
 	import TeamsFilters from "../TeamsFilters.svelte";
 	import locs from "$lib/localisation.json";
 
@@ -15,11 +15,15 @@
 	async function action(type: string){
 		await fetch("./edit", {
 			method: "PUT",
-			body: JSON.stringify({ action: type }),
+			body: JSON.stringify({ action: type, owner: data.teamInfo.owner_user_username }),
 			headers: {
 				"Content-Type": "application/json"
 			}
 		});
+		if(type == "delete"){
+			goto(`/${data.lang}/users/${data.teamInfo.owner_user_username}/teams`, {replaceState: true});
+			return;
+		}
 		invalidateAll();
 	}
 </script>
@@ -81,29 +85,26 @@
 		{/each}
 	</div>
 </div>
-<div class="mt-5 mb-3">
+<div class="mt-5 mb-4">
 	<h4>{loc.danger_zone.header}</h4>
 </div>
 <div class="mb-3">
-	{#if data.teamInfo.active}
-		<button class="btn btn-outline-danger px-4" on:click={()=>action("deactivate")}>{loc.danger_zone.deactivate}</button>
-		<span class="text-for-btn btn disabled">{loc.danger_zone.deactivate_info}</span>
-	{:else}
-		<button class="btn btn-outline-danger px-4" on:click={()=>action("activate")}>{loc.danger_zone.activate}</button>
-		<span class="text-for-btn btn disabled">{loc.danger_zone.activate_info}</span>
-	{/if}
+	<div class="d-flex justify-content-between">
+		{#if data.teamInfo.active}
+			<span>{loc.danger_zone.deactivate_info}</span>
+			<div><button class="text-nowrap btn btn-outline-danger px-4" on:click={()=>action("deactivate")}>{loc.danger_zone.deactivate}</button></div>
+		{:else}
+			<span>{loc.danger_zone.activate_info}</span>
+			<div><button class="text-nowrap btn btn-outline-danger px-4" on:click={()=>action("activate")}>{loc.danger_zone.activate}</button></div>
+		{/if}
+	</div>
 </div>
-
 {#if data.deletable}
 	<div class="mb-4">
-		<button class="btn btn-outline-danger px-4" on:click={()=>action("delete")}>{loc.danger_zone.delete}</button>
-		<span class="text-for-btn btn disabled">{loc.danger_zone.delete_info}</span>
+		<div class="d-flex justify-content-between">
+			<span>{loc.danger_zone.delete_info}</span>
+			<div><button class="text-nowrap btn btn-outline-danger px-4" on:click={()=>action("delete")}>{loc.danger_zone.delete}</button></div>
+		</div>
 	</div>
 {/if}
 <AdditionModal lang={data.lang} bind:form={form} inputName={"username"} inputLable={loc.add_member.member_username} header={loc.add_member.header}/>
-<style>
-    .text-for-btn{
-        border-color: transparent;
-        color: var(--font-color)
-    }
-</style>

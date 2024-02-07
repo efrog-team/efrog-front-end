@@ -22,12 +22,12 @@
 	<div class="list-group">
 		{#each filteredContests as contest}     
 			<li class="list-group-item list-group-item-action d-flex">
-				<a href="/{data.lang}/contests/{contest.id}" class="number col-auto me-3">{contest.id}</a>
-				<a href="/{data.lang}/contests/{contest.id}" class="me-auto">
+				<span class="number col-auto me-3">{contest.id}</span>
+				<a href="./contests/{contest.id}" class="me-auto">
 					{#if contest.private}<i class="bi bi-lock me-1 text-yellow"></i>{/if}
 					{contest.name}
 				</a>
-				<a class="col-auto text-end nav-link" href="./contests/{contest.id}">{loc.see_contest} <i class="bi bi-arrow-right"></i></a>
+				<a class="col-auto text-end nav-link" href="/{data.lang}/contests/{contest.id}">{loc.see_contest} <i class="bi bi-arrow-right"></i></a>
 			</li>
 		{/each}
 	</div>
