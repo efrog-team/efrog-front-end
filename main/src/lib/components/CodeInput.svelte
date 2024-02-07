@@ -15,8 +15,12 @@
     
 	function highlight(){
 		if(highlightEl?.firstElementChild){
-			if(inputEl.value.at(-1) == "\n") inputEl.value += " ";
-			highlightEl.firstElementChild.innerHTML = inputEl.value.replaceAll("<", "&lt;");
+			if(inputEl.value.at(-1) == "\n") {
+				let selStart = inputEl.selectionStart;
+				inputEl.value = inputEl.value + " ";
+				inputEl.selectionStart = inputEl.selectionEnd = selStart;
+			}
+			highlightEl.firstElementChild.innerHTML = inputEl.value.replaceAll("<", "&lt;") + " ";
 			window.Prism.highlightElement(highlightEl.firstElementChild);
 			sync_scroll();
 		}
