@@ -26,6 +26,10 @@
 			});
 		});
 	});
+
+	function copy(text: string){
+		navigator.clipboard.writeText(text);
+	}
 </script>
 <svelte:head>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
@@ -69,8 +73,14 @@
 			<h6>{loc.example} {i+1}</h6>
 			<div class="e-table">
 				<div class="row">
-					<div class="col-6 e-item pl-3 pt-1">{loc.input_data}</div>
-					<div class="col-6 e-item pr-3 pt-1">{loc.output_data}</div>
+					<div class="col-6 e-item pl-3 pt-1">
+						{loc.input_data} 
+						<button class="copy-btn ms-2" on:click|preventDefault={()=>copy(example.input)}><i class="bi bi-files"></i></button>
+					</div>
+					<div class="col-6 e-item pr-3 pt-1">
+						{loc.output_data}
+						<button class="copy-btn ms-2" on:click|preventDefault={()=>copy(example.solution)}><i class="bi bi-files"></i></button>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-6 e-item pl-3 pb-1">{example.input}</div>
@@ -93,4 +103,11 @@
         border: 1px solid var(--color2);
         overflow-x: auto;
     }
+	.copy-btn{
+		all: unset;
+		cursor: pointer;
+	}
+	.copy-btn:focus{
+		color: var(--accent-color);
+	}
 </style>

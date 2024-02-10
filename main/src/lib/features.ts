@@ -42,5 +42,5 @@ export function getLangInfo(str: string){
 }
 
 export function formatCode(code: string){
-	return code.replace("\xA0 \xA0 ", "\t ");
+	return code.replaceAll("\xA0 \xA0 ", "\t").replaceAll('\t', '    ')
 }

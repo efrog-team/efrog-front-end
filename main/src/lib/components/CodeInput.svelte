@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { prismLang } from "$lib/config";
-	import { onMount } from "svelte";
+    import { onMount, tick } from "svelte";
 
 	export let lang: string;
 	export let initialCode: string = "";
@@ -12,14 +12,15 @@
 	onMount(()=>{
 		if(highlightEl) highlight();
 	});
-    
-	function highlight(){
+
+	async function highlight(){
 		if(highlightEl?.firstElementChild){
 			if(inputEl.value.at(-1) == "\n") {
 				let selStart = inputEl.selectionStart;
 				inputEl.value = inputEl.value + " ";
 				inputEl.selectionStart = inputEl.selectionEnd = selStart;
 			}
+			await tick()
 			highlightEl.firstElementChild.innerHTML = inputEl.value.replaceAll("<", "&lt;") + " ";
 			window.Prism.highlightElement(highlightEl.firstElementChild);
 			sync_scroll();
@@ -51,11 +52,11 @@
 	}
 
 	function insertText(text: string){
-		let beforeTab = inputEl.value.slice(0, inputEl.selectionStart || 0); 
-		let afterTab = inputEl.value.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
+		let before = inputEl.value.slice(0, inputEl.selectionStart || 0); 
+		let after = inputEl.value.slice(inputEl.selectionEnd || 0, inputEl.value.length); 
 		let cursorPos = (inputEl.selectionStart || 0) + text.length; 
-		inputEl.value = beforeTab + text + afterTab; 
-		inputEl.selectionStart = cursorPos;
+		inputEl.value = before + text + after; 
+		inputEl.selectionStart = inputEl.selectionEnd = cursorPos;
 		inputEl.selectionEnd = cursorPos;
 	}
 
@@ -65,7 +66,7 @@
 		let spaces = inputEl.value.slice(lineBreak + 1, selStart).match(/[\t ]*/)?.[0] || "";
 		let newSpaces = spaces.replace(/ {4}/, "\t").replace(/ +\t/, "\t");
 		inputEl.value = inputEl.value.slice(0, lineBreak + 1) + newSpaces + inputEl.value.slice(spaces.length + lineBreak + 1);	
-		inputEl.selectionStart = selStart + newSpaces.length - spaces.length;
+		inputEl.selectionStart = inputEl.selectionEnd = selStart + newSpaces.length - spaces.length;
 	}
 	
 	function getRowStartSpaces(){
@@ -76,7 +77,7 @@
 
 <div id="code-input">
 	<textarea value={initialCode} bind:this={inputEl} spellcheck="false" name="solution" rows=16 class="form-control" id="solution"
-		on:scroll={sync_scroll} on:input={onInput} on:focus={highlight} on:keydown={onKeyDown} required></textarea>
+		on:scroll={sync_scroll} on:input={onInput} on:keydown={onKeyDown} required></textarea>
 	<pre bind:this={highlightEl} class="backing" id="highlighting" aria-hidden="true"><code class={langCode ? `language-${langCode}` : ""} id="highlighting-content" ></code></pre>
 </div>
 <style>

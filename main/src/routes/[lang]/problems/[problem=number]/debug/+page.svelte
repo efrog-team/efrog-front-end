@@ -14,13 +14,16 @@
 
 	let codeEl: HTMLTextAreaElement;
 	let langEl: HTMLSelectElement;
+	let inputEl: HTMLTextAreaElement;
+	let initialCode: string = "";
+	let initialInput: string = "";
 
 	onMount(()=>{
 		codeEl = document.getElementById("solution") as HTMLTextAreaElement;
-		langEl = document.getElementById("language") as HTMLSelectElement;
 
-		codeEl.value = localStorage.getItem("debug") || "";
+		initialCode = localStorage.getItem("debug") || "";
 		curLanguage = localStorage.getItem("lang") || versions[0];
+		initialInput = localStorage.getItem("debug-input") || "";
         
 		codeEl.focus();
 		codeEl.addEventListener("blur", ()=>{
@@ -29,16 +32,17 @@
 		langEl.addEventListener("change", ()=>{
 			localStorage.setItem("lang", langEl.value || "");
 		});
+		inputEl.addEventListener("blur", ()=>{
+			localStorage.setItem("debug-input", inputEl.value || "");
+		})
 	});
 	async function submit(){
-		let lang = (document.getElementById("language") as HTMLSelectElement).value || "";
-		let input = (document.getElementById("input") as HTMLTextAreaElement).value || "";
 		if(!codeEl.value) return;
         
 		debug = {checked: false, result: null};
 		let response = await fetch("./debug", {
 			method: "POST",
-			body: JSON.stringify({ lang, code: codeEl.value, input }),
+			body: JSON.stringify({ lang: curLanguage, code: codeEl.value, input: inputEl.value }),
 			headers: {
 				"Content-Type": "application/json"
 			}
@@ -55,7 +59,7 @@
 <div class="mb-5 mt-2">
 	<div class="mb-3">
 		<label for="language" class="form-label">{loc.language}</label>
-		<select bind:value={curLanguage} class="form-select" id="language">
+		<select bind:this={langEl} bind:value={curLanguage} class="form-select" id="language">
 			{#each versions as version}
 				<option value={version} >{version}</option>
 			{/each}
@@ -63,12 +67,12 @@
 	</div>
 	<div class="mb-3">
 		<label for="solution" class="form-label">{loc.code}</label>
-		<CodeInput lang={curLanguage}/>
+		<CodeInput initialCode={initialCode} lang={curLanguage}/>
 	</div>
 	<div class="mb-3 row">
 		<div class="col-md-6 col-12 mb-3 mb-md-0">
-			<label for="input" class="form-label ">{loc.debug.input}</label>
-			<textarea class="form-control mb-2" id="input" rows="8"></textarea>
+			<label for="input" class="form-label">{loc.debug.input}</label>
+			<textarea value={initialInput} bind:this={inputEl} class="form-control mb-2" id="input" rows="8"></textarea>
 		</div>
 		<div class="col-md-6 col-12 mb-3 mb-md-0">
 			<label for="output" class="form-label ">{loc.debug.output}</label>
