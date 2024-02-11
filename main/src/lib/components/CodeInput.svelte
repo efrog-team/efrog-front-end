@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { prismLang } from "$lib/config";
-    import { onMount, tick } from "svelte";
+	import { onMount, tick } from "svelte";
 
 	export let lang: string;
 	export let initialCode: string = "";
@@ -20,7 +20,7 @@
 				inputEl.value = inputEl.value + " ";
 				inputEl.selectionStart = inputEl.selectionEnd = selStart;
 			}
-			await tick()
+			await tick();
 			highlightEl.firstElementChild.innerHTML = inputEl.value.replaceAll("<", "&lt;") + " ";
 			window.Prism.highlightElement(highlightEl.firstElementChild);
 			sync_scroll();

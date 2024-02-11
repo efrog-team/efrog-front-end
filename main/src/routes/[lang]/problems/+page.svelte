@@ -20,7 +20,7 @@
 	<label class="form-check-label" for="approved">{loc.approved}</label>
 </div>
 <div class="mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each data.problems as problem, i}     
 			<li class="list-group-item list-group-item-action d-flex">
 				<span class="me-3 number">{i + 1}</span>
@@ -32,7 +32,7 @@
 				</a>
 			</li>
 		{/each}
-	</div>
+	</ul>
 </div>
 <div class="mb-4">
 	<Pagination lastPage={data.problems.length<itemsOnPage} currentPage={data.page}/>

@@ -14,7 +14,7 @@
 </div>
 <ParticipantsFilter lang={data.lang} bind:data={data.participants} onlyIndividuals={individual}/>
 <div class="mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each data.participants as participant}
 			<li class="list-group-item list-group-item-action d-flex">
 				<span class="me-2"><i class="me-2 bi bi-{participant.participant_confirmed ? "check" : participant.participant_declined ? "x" : "question"}-circle"></i></span>
@@ -40,7 +40,7 @@
 				</form>
 			</li>
 		{/each}
-	</div>
+	</ul>
 </div>
 {#if individual}
 	<AdditionModal bind:form={form} lang={data.lang} inputName="name" type="text" header={loc.add_participant} inputLable={loc.username}>

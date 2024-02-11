@@ -21,7 +21,7 @@
 	<label class="form-check-label" for="approved">{loc.approved}</label>
 </div>
 <div class="mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each data.contests as contest, i}     
 			<li class="list-group-item list-group-item-action d-flex">
 				<span class="number me-3">{i + 1}</span>
@@ -31,7 +31,7 @@
 				</a>
 			</li>
 		{/each}
-	</div>
+	</ul>
 </div>
 <div class="mb-4">
 	<Pagination lastPage={data.contests.length<itemsOnPage} currentPage={data.page}/>

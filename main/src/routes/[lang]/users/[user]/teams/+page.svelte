@@ -55,7 +55,7 @@
 	</nav>
 </div>
 <div class="mt-3 mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each filtered as team}     
 			<a href = "/{data.lang}/teams/{team.name}" class="list-group-item list-group-item-action d-flex">
 				<span class="me-auto">
@@ -70,7 +70,7 @@
 				{/if}
 			</a>
 		{/each}
-	</div>
+	</ul>
 </div>
 <AdditionModal lang={data.lang} bind:form={form} modalId="nameModal" header={loc.create_team} inputLable={loc.team_name} inputName="teamName" action="create" okText={loc.create}/>
 

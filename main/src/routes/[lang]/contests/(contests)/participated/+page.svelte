@@ -16,7 +16,7 @@
 </div>
 <ContestsFilter lang={data.lang} bind:data={filteredContests}/>
 <div class="mt-3 mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each filteredContests as contest, i}     
 			<li class="list-group-item list-group-item-action d-flex">
 				<span class="number me-3">{i + 1}</span>
@@ -38,5 +38,5 @@
 				</span>
 			</li>
 		{/each}
-	</div>
+	</ul>
 </div> 

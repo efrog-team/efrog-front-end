@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let data;
 </script>
-<div class="list-group">
+<ul class="list-group">
 	{#each data.participants as participant, i}
 		<li class="list-group-item list-group-item-action d-flex">
 			<span class="me-3 number">{i+1}</span>
@@ -13,4 +13,4 @@
 			</a>
 		</li>
 	{/each}
-</div>
+</ul>

@@ -34,7 +34,7 @@
 		});
 		inputEl.addEventListener("blur", ()=>{
 			localStorage.setItem("debug-input", inputEl.value || "");
-		})
+		});
 	});
 	async function submit(){
 		if(!codeEl.value) return;

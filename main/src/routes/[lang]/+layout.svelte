@@ -121,7 +121,8 @@
 
 	footer{
 		background-color: var(--color2);
-		font-size: 0.7em;
+		font-size: 0.9em;
+		font-weight: 100;
 		width: 100%;
 		position: absolute;
 		bottom: 0;

@@ -22,7 +22,7 @@
 </div>
 <ProblemFilter lang={data.lang} bind:data={filteredProblems}/>
 <div class="mt-3 mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each filteredProblems as problem}     
 			<li class="list-group-item list-group-item-action d-flex">
 				<span class="number me-3 col-auto">{problem.id}</span>
@@ -33,7 +33,7 @@
 				<a href="/{data.lang}/problems/{problem.id}" class="col-auto text-end nav-link">{loc.see_problem} <i class="bi bi-arrow-right"></i></a>
 			</li>
 		{/each}
-	</div>
+	</ul>
 </div>
 <AdditionModal lang={data.lang} bind:form={form} modalId="fromHubModal" type="number" inputName="problemId" 
 	inputLable={loc.from_hub.problem_id} header={loc.from_hub.header} action="fromHub"/>

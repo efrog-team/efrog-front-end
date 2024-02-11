@@ -40,7 +40,7 @@
 </div>
 <TeamsFilters lang={data.lang} bind:data={filtered} />
 <div class="mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each filtered as member}     
 			<span class="list-group-item list-group-item-action d-flex">
 				<span class="flex-grow-1">
@@ -54,7 +54,7 @@
 				<span>{member.coach ? "coach" : "contestant"}</span>
 			</span>
 		{/each}
-	</div>
+	</ul>
 </div>
 {#if data.me}
 	<div class="mb-4 mt-4">

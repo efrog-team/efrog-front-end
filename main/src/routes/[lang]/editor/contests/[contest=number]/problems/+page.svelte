@@ -10,7 +10,7 @@
 	<button class="btn btn-accent {form?.error ? "disabled" : ""}" data-bs-toggle="modal" data-bs-target="#addition-modal"><i class="bi-plus"></i>{loc.add_problem}</button>
 </div>
 <div class="mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each data.problems as problem, i}
 			<li class="list-group-item list-group-item-action d-flex">
 				<a href="/{data.lang}/problems/{problem.id}" class="number me-3">{String.fromCharCode("A".charCodeAt(0) + i)}</a>
@@ -23,6 +23,6 @@
 				</form>
 			</li>
 		{/each}
-	</div>
+	</ul>
 </div>
 <AdditionModal bind:form={form} lang={data.lang} inputName="problemId" type="number" header={loc.add_problem} inputLable={loc.problem_id}/>

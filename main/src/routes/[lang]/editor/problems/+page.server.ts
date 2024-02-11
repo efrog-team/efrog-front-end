@@ -27,7 +27,7 @@ export const actions = {
 				await createTestCase(problemId, tst.input, tst.output, 10, tst.status, cookies.get("auth") || "");
 			});
 			if(problem.is_checker) {
-				let {language, version} = getLangInfo(problem.checker_language);
+				const {language, version} = getLangInfo(problem.checker_language);
 				await createChecker(problemId, language, version, problem.checker_code, cookies.get("auth") || "");
 			}
 		}catch (err: any){

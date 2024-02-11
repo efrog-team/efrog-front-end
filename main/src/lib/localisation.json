@@ -214,6 +214,10 @@
                 "contests": "My Contests",
                 "limitations": "Limitations"
             },
+            "main": {
+                "description": "Here, you can easily create and manage your problems and contests. Log in to your account to get started.",
+                "header": "Welcome to the Editor!"
+            },
             "problems": {
                 "header": "Manage my problems",
                 "create_problem": "Create new problem",
@@ -635,6 +639,10 @@
                 "problems": "Мої задачі",
                 "contests": "Мої змагання",
                 "limitations": "Обмеження"
+            },
+            "main": {
+                "description": "Тут ви зможете легко створювати та керувати вашими задачами та конкурсами. Увійдіть до свого облікового запису, щоб почати!",
+                "header": "Вітаємо в Редакторі!"
             },
             "problems": {
                 "header": "Управління моїми задачами",

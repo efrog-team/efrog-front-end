@@ -53,7 +53,7 @@
 </div>
 <TeamsFilters lang={data.lang} bind:data={filtered} />
 <div class="mb-4">
-	<div class="list-group">
+	<ul class="list-group">
 		{#each filtered as member}     
 			<span class="list-group-item list-group-item-action d-flex">
 				<span class="flex-grow-1">
@@ -83,7 +83,7 @@
 				</form>
 			</span>
 		{/each}
-	</div>
+	</ul>
 </div>
 <div class="mt-5 mb-4">
 	<h4>{loc.danger_zone.header}</h4>

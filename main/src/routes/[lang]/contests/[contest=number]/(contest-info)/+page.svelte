@@ -70,7 +70,7 @@
 	<div class="mb-4">
 		<h4>{loc.problems}</h4>
 		<div class="mt-3 mb-4">
-			<div class="list-group">
+			<ul class="list-group">
 				{#each data.problems as problem, i}     
 					<li class="list-group-item list-group-item-action d-flex">
 						<span class="me-3 number">{String.fromCharCode("A".charCodeAt(0) + i)}</span>
@@ -82,7 +82,7 @@
 						</a>
 					</li>
 				{/each}
-			</div>
+			</ul>
 		</div>
 	</div>
 {/if}
