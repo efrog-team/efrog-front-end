@@ -23,7 +23,7 @@ function getSitemapXML(routes: string[]) {
 function getSitemapUrl(lang:string, route: string) {
     let url = `<url>\n<loc>${domain}/${lang}${route}</loc>\n`;
     localisations.forEach((loc)=>{
-        url += `<link rel="alternate" hreflang="${loc}" href="${domain}/${loc}${route}">\n`
+        url += `<xhtml:link rel="alternate" hreflang="${loc}" href="${domain}/${loc}${route}">\n`
     });
     url += `<lastmod>${date}</lastmod>\n</url>\n`;
     return url
