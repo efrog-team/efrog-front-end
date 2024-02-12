@@ -11,3 +11,4 @@ Disallow: /*/api
 Disallow: /*/edit
 Disallow: /uk/account
 Disallow: /en/account
+Sitemap: http://efrog.pp.ua/sitemap.xml
