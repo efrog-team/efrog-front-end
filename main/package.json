@@ -7,7 +7,8 @@
 		"build": "vite build",
 		"preview": "vite preview --port 5173",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"create-sitemap": "npx tsx ./scripts/generate-sitemap.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
@@ -25,9 +26,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-node": "^1.3.1",
 		"@types/katex": "^0.16.2",
 		"@types/prismjs": "^1.26.0",
+		"directory-tree": "^3.5.1",
 		"katex": "^0.16.8",
+		"tsx": "^4.7.1",
 		"websocket": "^1.0.34",
 		"ws": "^8.13.0"
 	}

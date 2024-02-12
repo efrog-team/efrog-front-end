@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
-	export let data;
 	import Pagination from "$lib/components/Pagination.svelte";
 	import { itemsOnPage } from "$lib/config.js";
 	import locs from "$lib/localisation.json";
+	
+	export let data;
 
 	let loc = locs[data.lang as keyof typeof locs].problems;
 	let approved = $page.url.searchParams.get("unapproved") !== "true";
@@ -16,7 +17,7 @@
 	<h2 class="header">{loc.header}</h2>
 </div>
 <div class="mb-2">
-	<input id="approved" class="form-check-input" type="checkbox" on:change={()=>goto(`?${approved?"unapproved=true":""}`, {replaceState: true})} bind:checked={approved}>
+	<input id="approved" class="form-check-input" type="checkbox" on:change={()=>goto(`?page=${data.page}${approved?"&unapproved=true":""}`, {replaceState: true})} bind:checked={approved}>
 	<label class="form-check-label" for="approved">{loc.approved}</label>
 </div>
 <div class="mb-4">
