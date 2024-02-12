@@ -9,7 +9,7 @@ let domain = "https://efrog.pp.ua"
 
 function getSitemapXML(routes: string[]) {
     let sitemap = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    sitemap += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n"
+    sitemap += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" >\n"
     routes.forEach(route => {
         localisations.forEach((loc)=>{
             sitemap += getSitemapUrl(loc, route);
@@ -23,7 +23,7 @@ function getSitemapXML(routes: string[]) {
 function getSitemapUrl(lang:string, route: string) {
     let url = `<url>\n<loc>${domain}/${lang}${route}</loc>\n`;
     localisations.forEach((loc)=>{
-        url += `<xhtml:link rel="alternate" hreflang="${loc}" href="${domain}/${loc}${route}">\n`
+        url += `<xhtml:link rel="alternate" hreflang="${loc}" href="${domain}/${loc}${route}" />\n`
     });
     url += `<lastmod>${date}</lastmod>\n</url>\n`;
     return url
