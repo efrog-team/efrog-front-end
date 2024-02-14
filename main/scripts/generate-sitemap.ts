@@ -2,8 +2,15 @@ import dirTree from 'directory-tree';
 import * as fs from "fs";
 import { localisations } from '../src/lib/config';
 
+
 let baseRoute = "/";
-let routes: string[] = [baseRoute]
+let excludedPaths = [
+    /^\/editor\/.*$/,
+    /^\/contests\/participated$/,
+    /\/question\/submitted/
+];
+
+let routes: string[] = []
 let date = new Date().toISOString().split('T')[0];
 let domain = "https://efrog.pp.ua"
 
@@ -36,7 +43,8 @@ function getEndpoints(tree: dirTree.DirectoryTree, route: string) {
 
             let childRoute = route + child.name;
             if (child.children.some(e => e.name === '+page.svelte')) {
-                routes.push(childRoute.replace(/\/\(.*\)/, ""));
+                let pageRoute = childRoute.replace(/\/\(.*\)/, "");
+                if(!excludedPaths.some(e => e.test(pageRoute))) routes.push(pageRoute);
             }
             getEndpoints(child, childRoute + "/");
         }
