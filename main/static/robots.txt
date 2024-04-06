@@ -1,6 +1,6 @@
 User-agent: *
 Disallow: /*/api
-Disallow: /*/edit
+Disallow: /*/edit/
 Disallow: /*/submissions
 Disallow: /uk/account
 Disallow: /en/account

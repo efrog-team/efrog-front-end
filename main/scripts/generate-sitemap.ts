@@ -64,4 +64,4 @@ const sitemap = getSitemapXML(routes)
 // fs.writeFileSync('.svelte-kit/output/client/sitemap.xml', sitemap);
 
 // If you use the script in prebuild mode use
-fs.writeFileSync('static/sitemap.xml', sitemap);
+fs.writeFileSync('static/sitemaps/sitemap.xml', sitemap);
