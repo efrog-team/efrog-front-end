@@ -7,7 +7,7 @@ import { createProblem, createTestCase } from "$lib/server/problems";
 export async function load({cookies, parent}) {
 	const {author} = await parent();
 	return {
-		problems: myProblems(author.username, cookies.get("auth") || ""),
+		problems: myProblems(author?.username||"", cookies.get("auth") || ""),
 	};
 }
 

@@ -19,7 +19,7 @@ export async function getUser(user:string): Promise<User> {
 	return body;
 }
 
-export async function updateUserInfo(curUsername:string ,username: string, email: string, name: string, token: string){
+export async function updateUserInfo(curUsername:string, username: string, email: string, name: string, token: string){
 	await request("PUT", "/users/"+curUsername, {username, email, name}, token);
 }
 

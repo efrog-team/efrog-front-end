@@ -16,7 +16,7 @@ const emailCheck = new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/);
 const usernameCheck = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,}$/);
 
 function validateFormInfo(data: Dictionary){
-	if(data["username"] && !data["username"]?.match(usernameCheck)) throw new Error("Bad username");
+	if(!data["username"]?.match(usernameCheck)) throw new Error("Bad username");
 	if(data["name"].length == 0) throw new Error("Name is required");
 	if(data["email"] && !data["email"]?.match(emailCheck)) throw new Error("Not an email");
 }
@@ -42,7 +42,7 @@ export const actions = {
 				type: "info"
 			});
 		}
-		if(formData["username"]) throw redirect(303, `/${params.lang}/users/${formData["username"]}/edit`);
+		if(formData["username"] != params.user) throw redirect(303, `/${params.lang}/users/${formData["username"]}/edit`);
 	},
 	password: async ({ request, cookies, params}) => {
 		const formData = formToObj(await request.formData());

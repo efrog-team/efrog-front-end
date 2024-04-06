@@ -4,4 +4,5 @@ Disallow: /*/edit
 Disallow: /*/submissions
 Disallow: /uk/account
 Disallow: /en/account
-Sitemap: http://efrog.pp.ua/sitemap.xml
+
+Sitemap: http://efrog.pp.ua/sitemaps/sitemap.xml

@@ -74,7 +74,11 @@
 		return inputEl.value.slice(lineBreak + 1, inputEl.selectionStart || 0).match(/[\t ]*/)?.[0] || "";
 	}
 </script>
-
+<svelte:head>
+	<link rel="stylesheet" href="/themes/prism-vsc-dark-plus.css">
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@v1.29.0/components/prism-core.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@v1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</svelte:head>
 <div id="code-input">
 	<textarea value={initialCode} bind:this={inputEl} spellcheck="false" name="solution" rows=16 class="form-control" id="solution"
 		on:scroll={sync_scroll} on:input={onInput} on:keydown={onKeyDown} required></textarea>
@@ -88,7 +92,7 @@
         tab-size: 4;
     }
     #highlighting, code{
-        font-size: 1rem;
+        font-size: 1rem !important;
         line-height: 1.5;
     }
     #solution{

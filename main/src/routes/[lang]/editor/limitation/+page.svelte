@@ -14,9 +14,9 @@
 <div class="mb-4">
 	<p>{loc.overview}</p>
 	<p>
-		<span class="me-2 ">{loc.problems}: </span> <span class="text-accent">{data.author.problems_quota}</span> <br>
-		<span class="me-2">{loc.test_cases}: </span> <span class="text-accent">{data.author.test_cases_quota}</span> <br>
-		<span class="me-2 ">{loc.contests}: </span> <span class="text-accent">{data.author.competitions_quota}</span>
+		<span class="me-2 ">{loc.problems}: </span> <span class="text-accent">{data.author?.problems_quota}</span> <br>
+		<span class="me-2">{loc.test_cases}: </span> <span class="text-accent">{data.author?.test_cases_quota}</span> <br>
+		<span class="me-2 ">{loc.contests}: </span> <span class="text-accent">{data.author?.competitions_quota}</span>
 	</p>
 	<p>
 		{loc.modify} <a class="link nav-link" href="/{data.lang}/question">{loc.ask}</a>.
